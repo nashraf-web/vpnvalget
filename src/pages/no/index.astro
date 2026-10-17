@@ -1,0 +1,161 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import Stars from '../../components/Stars.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { topVpns } from '../../data/vpns';
+import { faqSchema, breadcrumbSchema, websiteSchema, organizationSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/`;
+const crumbs = [{ name: 'Hjem', url }];
+const title = 'Beste VPN for Norge i 2026: Testet og sammenlignet';
+const description = 'Vi har vurdert de 6 beste VPN-tjenestene for Norge i 2026. Sammenlign pris, personvern og funksjoner – ærlig guide uten betalt rangering.';
+const faqs = [
+  {
+    question: 'Hvilken VPN er best for Norge i 2026?',
+    answer: 'Etter vår vurdering er NordVPN det beste totalvalget for Norge, med stort servernettverk inkludert servere i Oslo, dokumentert personvern og god ytelse på strømmetjenester. For den prisbevisste er Surfshark et svært godt alternativ med ubegrenset antall enheter.',
+  },
+  {
+    question: 'Er det lovlig å bruke VPN i Norge?',
+    answer: 'Ja, det er fullt lovlig å bruke VPN i Norge. VPN er et legitimt personvernverktøy som brukes av privatpersoner, bedrifter og offentlige virksomheter. Det som er ulovlig med eller uten VPN – for eksempel piratkopiering – forblir ulovlig.',
+  },
+  {
+    question: 'Hva koster en god VPN?',
+    answer: 'Veiledende priser per oktober 2026 ligger fra ca. 23 kr/mnd (Surfshark, CyberGhost på langtidsabonnement) til ca. 69 kr/mnd (ExpressVPN). Månedsabonnement uten binding er dyrere. Alle tjenestene vi anbefaler har minst 30 dagers pengene-tilbake-garanti.',
+  },
+  {
+    question: 'Fungerer VPN med NRK og norske strømmetjenester?',
+    answer: 'Ja – med en norsk server kan du bruke NRK TV, TV 2 Play og andre norske tjenester som vanlig, også når du er i utlandet. De fleste anbefalte tjenestene har servere i Norge.',
+  },
+  {
+    question: 'Bremser VPN ned internetthastigheten?',
+    answer: 'All kryptering gir noe hastighetstap, men med moderne protokoller som WireGuard og NordLynx er tapet vanligvis lite på raske linjer – ofte umerkelig i daglig bruk. Vi publiserer egne hastighetstester fra Norge så snart de er gjennomført.',
+  },
+  {
+    question: 'Kan jeg bruke gratis VPN?',
+    answer: 'Gratis VPN-tjenester har vanligvis hastighetsbegrensninger, datakvoter og færre servere. Noen, som Proton VPNs gratisversjon, er seriøse personvernalternativer, men for strømming og full ytelse anbefaler vi en betalt tjeneste – de koster fra ca. 23 kr/mnd.',
+  },
+  {
+    question: 'Hvordan tester VPNValget VPN-tjenester?',
+    answer: 'Vi vurderer leverandørenes offisielle spesifikasjoner, uavhengige personvernrevisjoner, funksjoner, brukervennlighet og pris. Vi skriver alltid tydelig hva vi har testet selv. Vi mottar aldri betaling for plassering i rangeringen.',
+  },
+];
+const schema = [
+  organizationSchema,
+  websiteSchema(),
+  articleSchema({
+    headline: title, description, url,
+    datePublished: '2026-10-17', dateModified: '2026-10-17',
+  }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+const best = topVpns[0];
+---
+
+<Base title={title} description={description} canonical={url} locale="no"
+       alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="mb-8">
+    <h1 class="text-3xl sm:text-5xl font-extrabold text-ink leading-tight mb-4">
+      Beste VPN for Norge i 2026
+    </h1>
+    <p class="text-lg text-slate-600 leading-relaxed max-w-3xl">
+      Vi har vurdert de <strong>6 beste VPN-tjenestene</strong> for det norske markedet –
+      med vekt på personvern, servere i Norge, pris i kroner og brukervennlighet.
+      Ingen betalt rangering. Sist oppdatert oktober 2026.
+    </p>
+  </header>
+
+  <DirectAnswer>
+    <p><strong>En VPN (virtuelt privat nettverk) krypterer internettrafikken din og skjuler IP-adressen din</strong>, slik at du surfer tryggere og kan få tilgang til innhold som er begrenset til andre land.</p>
+    <p class="mt-2"><strong>Vårt førstevalg for Norge er {best.name}</strong> (karakter {best.rating.toFixed(1)}/5) – med servere i Oslo, dokumentert personvern uten logging og veiledende pris fra {best.priceNokFrom} kr/mnd. Beste budsjettvalg er Surfshark fra 23 kr/mnd med ubegrenset antall enheter.</p>
+  </DirectAnswer>
+
+  <h2 class="text-2xl font-extrabold text-ink mt-10 mb-2">Sammenligning: de 6 beste VPN-ene for Norge</h2>
+  <ComparisonTable vpns={topVpns} />
+
+  <section class="my-12" aria-label="Best i hver kategori">
+    <h2 class="text-2xl font-extrabold text-ink mb-6">Best i hver kategori</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {topVpns.slice(0, 6).map((v) => (
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col">
+          <span class="inline-block self-start bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full mb-3">{v.bestFor}</span>
+          <p class="font-extrabold text-xl text-ink">{v.name}</p>
+          <div class="my-2"><Stars rating={v.rating} size="sm" /></div>
+          <p class="text-sm text-slate-600 flex-1">{v.summary}</p>
+          <p class="text-lg font-extrabold text-ink mt-3">fra {v.priceNokFrom} kr<span class="text-sm font-medium text-slate-500">/mnd</span></p>
+          <div class="mt-4 flex flex-col gap-2">
+            <CtaButton brand={v.goSlug} label={`Se tilbud hos ${v.name}`} />
+            <a href={`/no/anmeldelser/${v.slug}/`} class="text-sm text-brand-600 hover:underline font-medium text-center">Les vår anmeldelse →</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <article class="max-w-3xl text-slate-700 leading-relaxed">
+    <h2 class="text-2xl font-extrabold text-ink mt-12 mb-4">Hvorfor bruke VPN i Norge?</h2>
+    <p class="my-4">Norge er et av verdens mest digitaliserte land – og nordmenn er blant Europas mest aktive strømmere. En VPN løser flere konkrete problemer i hverdagen:</p>
+    <ul class="list-disc pl-6 space-y-2 my-4">
+      <li><strong>Se norsk TV i utlandet.</strong> NRK TV, TV 2 Play og Viaplay er geografisk begrenset. Med en norsk VPN-server får du tilgang til hjemlige sendinger fra ferie eller jobbreise.</li>
+      <li><strong>Se utenlandsk innhold hjemme.</strong> Amerikansk Netflix, BBC iPlayer og andre tjenester har større kataloger enn de norske versjonene.</li>
+      <li><strong>Tryggere på offentlig Wi-Fi.</strong> På kafé, hotell og flyplass beskytter kryptering mot nysgjerrige på samme nettverk.</li>
+      <li><strong>Personvern mot sporing.</strong> Internettleverandøren din ser hvilke nettsteder du besøker. En VPN med strenge retningslinjer mot logging fjerner denne innsikten.</li>
+      <li><strong>Trygg nettbank i utlandet.</strong> Norske banker – inkludert BankID-innlogging – fungerer normalt over VPN med norsk server, og forbindelsen er kryptert på åpne nettverk.</li>
+    </ul>
+
+    <h2 class="text-2xl font-extrabold text-ink mt-12 mb-4">Slik valgte vi de beste VPN-ene</h2>
+    <p class="my-4">Rangeringen bygger på seks kriterier, vektet etter hva som betyr mest for norske brukere:</p>
+    <ol class="list-decimal pl-6 space-y-2 my-4">
+      <li><strong>Personvern og jurisdiksjon</strong> – retningslinjer mot logging, uavhengige revisjoner, og landets lovverk.</li>
+      <li><strong>Servere i Norge</strong> – alle våre anbefalinger har servere i Norge ifølge leverandørene.</li>
+      <li><strong>Ytelse</strong> – moderne protokoller (WireGuard, NordLynx, Lightway) og tilstrekkelig kapasitet.</li>
+      <li><strong>Strømming</strong> – pålitelig tilgang til norske og internasjonale strømmetjenester.</li>
+      <li><strong>Brukervennlighet</strong> – gode apper på norsk eller engelsk for mobil, PC og smart-TV.</li>
+      <li><strong>Pris i kroner</strong> – veiledende månedspris på langtidsabonnement, omregnet til NOK.</li>
+    </ol>
+    <Methodology tested={false} />
+
+    <h2 class="text-2xl font-extrabold text-ink mt-12 mb-4">Er VPN lovlig i Norge?</h2>
+    <p class="my-4"><strong>Ja – VPN er fullt lovlig i Norge.</strong> Det er et anerkjent sikkerhetsverktøy som brukes av privatpersoner, bedrifter og offentlige etater. Norske myndigheter har ingen restriksjoner på VPN-bruk for vanlige borgere. Merk at ulovlige handlinger – som piratkopiering – forblir ulovlige også med VPN.</p>
+
+    <h2 class="text-2xl font-extrabold text-ink mt-12 mb-4">Gratis VPN vs. betalt VPN</h2>
+    <p class="my-4">Gratis VPN-tjenester finansieres ofte med hastighetsbegrensninger, datakvoter eller – i verste fall – salg av brukerdata. Unntaket er Proton VPNs gratisversjon, som drives av det samme sveitsiske selskapet med dokumentert personvern, men med begrenset hastighet og servere.</p>
+    <p class="my-4">For de fleste lønner en betalt tjeneste seg: fra ca. 23 kr/mnd får du full hastighet, servere i Norge og støtte for strømming – med minst 30 dagers pengene-tilbake-garanti.</p>
+
+    <h2 class="text-2xl font-extrabold text-ink mt-12 mb-4">Ofte stilte spørsmål om VPN i Norge</h2>
+  </article>
+
+  <Faq faqs={faqs} />
+
+  <section class="my-12 bg-brand-900 text-white rounded-2xl p-8" aria-label="Vårt førstevalg">
+    <div class="flex flex-col md:flex-row items-center gap-6">
+      <div class="flex-1">
+        <p class="text-brand-100 text-sm font-bold uppercase tracking-wide mb-2">Vårt førstevalg for Norge</p>
+        <p class="text-2xl font-extrabold mb-2">{best.name} – {best.bestFor.toLowerCase()}</p>
+        <div class="mb-3"><Stars rating={best.rating} size="md" /></div>
+        <p class="text-slate-200 leading-relaxed">{best.summary}</p>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <CtaButton brand={best.goSlug} label={`Prøv ${best.name} risikofritt`} sub={`${best.moneyBackDays} dagers pengene-tilbake-garanti`} />
+      </div>
+    </div>
+  </section>
+
+  <nav class="my-12" aria-label="Videre lesning">
+    <h2 class="text-2xl font-extrabold text-ink mb-4">Les videre</h2>
+    <ul class="grid sm:grid-cols-2 gap-3">
+      <li><a class="block bg-white border border-slate-200 rounded-xl p-4 hover:border-brand-500 hover:shadow-sm transition-all" href="/no/anmeldelser/"><span class="font-bold text-ink">Alle VPN-anmeldelser →</span><span class="block text-sm text-slate-500 mt-1">Dyptgående vurderinger av hver tjeneste</span></a></li>
+      <li><a class="block bg-white border border-slate-200 rounded-xl p-4 hover:border-brand-500 hover:shadow-sm transition-all" href="/no/sammenlign/"><span class="font-bold text-ink">Sammenlign side ved side →</span><span class="block text-sm text-slate-500 mt-1">Direkte dueller mellom topptjenestene</span></a></li>
+      <li><a class="block bg-white border border-slate-200 rounded-xl p-4 hover:border-brand-500 hover:shadow-sm transition-all" href="/no/hva-er-vpn/"><span class="font-bold text-ink">Hva er VPN? →</span><span class="block text-sm text-slate-500 mt-1">Enkel forklaring for nybegynnere</span></a></li>
+      <li><a class="block bg-white border border-slate-200 rounded-xl p-4 hover:border-brand-500 hover:shadow-sm transition-all" href="/no/sammenlign/nordvpn-vs-surfshark/"><span class="font-bold text-ink">NordVPN vs Surfshark →</span><span class="block text-sm text-slate-500 mt-1">De to mest populære – hvem vinner?</span></a></li>
+    </ul>
+  </nav>
+</Base>

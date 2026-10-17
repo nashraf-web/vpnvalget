@@ -1,0 +1,34 @@
+---
+/**
+ * Locale stub pages (/se/ /dk/ /de/) — structure ready for phase 2.
+ * noindex until real localized content is published.
+ */
+import Base from '../layouts/Base.astro';
+import { site, type Locale } from '../data/site';
+
+const localeMap = {
+  se: { name: 'Svenska', heading: 'Bästa VPN för Sverige', text: 'Vi arbetar på en svensk version av VPNValget med tester och jämförelser anpassade för den svenska marknaden.' },
+  dk: { name: 'Dansk', heading: 'Bedste VPN til Danmark', text: 'Vi arbejder på en dansk version af VPNValget med tests og sammenligninger tilpasset det danske marked.' },
+  de: { name: 'Deutsch', heading: 'Bestes VPN für Deutschland', text: 'Wir arbeiten an einer deutschen Version von VPNValget mit Tests und Vergleichen für den deutschen Markt.' },
+} as const;
+
+export function getStaticPaths() {
+  return ['se', 'dk', 'de'].map((locale) => ({
+    params: { locale },
+  }));
+}
+
+const { locale } = Astro.params as { locale: keyof typeof localeMap };
+const l = localeMap[locale];
+const url = `${site.url}/${locale}/`;
+---
+
+<Base title={l.heading} description={l.text} canonical={url} locale={locale as Locale}
+       noindex={true} alternates={{ no: `${site.url}/no/`, 'x-default': `${site.url}/no/` }}>
+  <div class="max-w-2xl mx-auto text-center py-16">
+    <h1 class="text-3xl font-extrabold text-ink mb-4">{l.heading}</h1>
+    <p class="text-slate-600 mb-6">{l.text}</p>
+    <p class="text-slate-600">Den norske versjonen er tilgjengelig nå:</p>
+    <a href="/no/" class="inline-block mt-4 bg-brand-500 hover:bg-brand-600 text-white font-bold px-6 py-3 rounded-xl">Gå til norsk versjon</a>
+  </div>
+</Base>

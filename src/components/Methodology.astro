@@ -1,0 +1,17 @@
+---
+/** Methodology / honesty box — what we have and haven't tested. */
+interface Props { tested: boolean }
+const { tested } = Astro.props;
+---
+
+<aside class="bg-slate-100 border border-slate-200 rounded-xl p-5 my-8 text-sm text-slate-600 leading-relaxed" aria-label="Slik vurderer vi">
+  <p class="font-bold text-ink mb-2">🔍 Slik vurderer vi</p>
+  <p>
+    Vurderingen bygger på leverandørens offisielle spesifikasjoner, uavhengige personvernrevisjoner,
+    funksjonstester av apper og vilkår, samt dokumenterte tester fra anerkjente kilder.
+    {tested
+      ? ' Vi har i tillegg utført egne hastighetstester fra servere i Norge – se testdatoer nedenfor.'
+      : ' Vi har foreløpig ikke publisert egne hastighetstester fra Norge – når vi gjør det, merkes testdatoene tydelig.'}
+    Vi mottar aldri betaling for plassering i rangeringen.
+  </p>
+</aside>

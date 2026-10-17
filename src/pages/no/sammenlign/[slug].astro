@@ -1,0 +1,109 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Stars from '../../../components/Stars.astro';
+import DirectAnswer from '../../../components/DirectAnswer.astro';
+import Faq from '../../../components/Faq.astro';
+import CtaButton from '../../../components/CtaButton.astro';
+import { site } from '../../../data/site';
+import { vpnBySlug } from '../../../data/vpns';
+import { faqSchema, breadcrumbSchema, articleSchema } from '../../../data/schema';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('no-vs');
+  return pages.map((p) => ({ params: { slug: p.id.replace(/\.md$/, '') }, props: { page: p } }));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+const vpnA = vpnBySlug(page.data.vpnA)!;
+const vpnB = vpnBySlug(page.data.vpnB)!;
+const url = `${site.url}/no/sammenlign/${page.id.replace(/\.md$/, '')}/`;
+const crumbs = [
+  { name: 'Hjem', url: `${site.url}/no/` },
+  { name: 'Sammenlign', url: `${site.url}/no/sammenlign/` },
+  { name: `${vpnA.name} vs ${vpnB.name}`, url },
+];
+const schema = [
+  articleSchema({
+    headline: page.data.title,
+    description: page.data.description,
+    url,
+    datePublished: page.data.datePublished,
+    dateModified: page.data.dateModified,
+  }),
+  faqSchema(page.data.faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base title={page.data.title} description={page.data.description} canonical={url} locale="no"
+       alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <article>
+    <header class="mb-8">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-ink leading-tight mb-4">{page.data.title}</h1>
+      <p class="text-sm text-slate-500">Oppdatert {page.data.dateModified}</p>
+    </header>
+
+    <DirectAnswer>
+      <p><strong>{page.data.entityDef}</strong></p>
+      <p class="mt-2">{page.data.directAnswer}</p>
+    </DirectAnswer>
+
+    <div class="grid sm:grid-cols-2 gap-4 my-8">
+      {[vpnA, vpnB].map((v) => (
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 text-center">
+          <p class="font-extrabold text-xl text-ink mb-2">{v.name}</p>
+          <div class="flex justify-center mb-3"><Stars rating={v.rating} size="sm" /></div>
+          <p class="text-2xl font-extrabold text-ink mb-1">fra {v.priceNokFrom} kr<span class="text-sm font-medium text-slate-500">/mnd</span></p>
+          <p class="text-xs text-slate-500 mb-4">{v.bestFor}</p>
+          <CtaButton brand={v.goSlug} label={`Velg ${v.name}`} variant={v.order < (v === vpnA ? vpnB.order : vpnA.order) ? 'primary' : 'secondary'} />
+        </div>
+      ))}
+    </div>
+
+    <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white my-8">
+      <table class="w-full text-sm min-w-[560px]">
+        <caption class="sr-only">{vpnA.name} mot {vpnB.name} – sammenligning</caption>
+        <thead>
+          <tr class="bg-brand-900 text-white text-left">
+            <th scope="col" class="px-4 py-3">Kriterium</th>
+            <th scope="col" class="px-4 py-3">{vpnA.name}</th>
+            <th scope="col" class="px-4 py-3">{vpnB.name}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            ['Vår vurdering', `${vpnA.rating.toFixed(1)} / 5`, `${vpnB.rating.toFixed(1)} / 5`],
+            ['Pris fra', `fra ${vpnA.priceNokFrom} kr/mnd`, `fra ${vpnB.priceNokFrom} kr/mnd`],
+            ['Samtidige enheter', vpnA.maxDevices, vpnB.maxDevices],
+            ['Servere', vpnA.servers, vpnB.servers],
+            ['Land', vpnA.countries, vpnB.countries],
+            ['Jurisdiksjon', vpnA.jurisdiction, vpnB.jurisdiction],
+            ['Logging-revisjon', vpnA.noLogsAudit, vpnB.noLogsAudit],
+            ['Pengene tilbake', `${vpnA.moneyBackDays} dager`, `${vpnB.moneyBackDays} dager`],
+            ['Protokoller', vpnA.protocols.join(', '), vpnB.protocols.join(', ')],
+          ].map(([k, a, b]) => (
+            <tr class="border-t border-slate-100">
+              <th scope="row" class="px-4 py-3 text-left font-semibold text-slate-600">{k}</th>
+              <td class="px-4 py-3">{a}</td>
+              <td class="px-4 py-3">{b}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs text-slate-500 -mt-4 mb-8">Veiledende priser per oktober 2026 – faktiske priser kan variere.</p>
+
+    <div class="prose-vpn max-w-none text-slate-700 leading-relaxed space-y-5
+                [&_h2]:text-2xl [&_h2]:font-extrabold [&_h2]:text-ink [&_h2]:mt-10 [&_h2]:mb-4
+                [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-ink [&_h3]:mt-8 [&_h3]:mb-3
+                [&_p]:my-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2 [&_ul]:my-4">
+      <Content />
+    </div>
+
+    <Faq faqs={page.data.faqs} />
+  </article>
+</Base>

@@ -1,0 +1,115 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Stars from '../../../components/Stars.astro';
+import ProsCons from '../../../components/ProsCons.astro';
+import Methodology from '../../../components/Methodology.astro';
+import DirectAnswer from '../../../components/DirectAnswer.astro';
+import Faq from '../../../components/Faq.astro';
+import CtaButton from '../../../components/CtaButton.astro';
+import { site } from '../../../data/site';
+import { vpnBySlug } from '../../../data/vpns';
+import { reviewSchema, faqSchema, breadcrumbSchema, articleSchema } from '../../../data/schema';
+
+export async function getStaticPaths() {
+  const reviews = await getCollection('no-reviews');
+  return reviews.map((r) => ({ params: { slug: r.id.replace(/\.md$/, '') }, props: { review: r } }));
+}
+
+const { review } = Astro.props;
+const { Content } = await render(review);
+const vpn = vpnBySlug(review.data.vpn)!;
+const url = `${site.url}/no/anmeldelser/${review.id.replace(/\.md$/, '')}/`;
+const crumbs = [
+  { name: 'Hjem', url: `${site.url}/no/` },
+  { name: 'Anmeldelser', url: `${site.url}/no/anmeldelser/` },
+  { name: vpn.name, url },
+];
+const schema = [
+  reviewSchema(vpn, url, review.data.directAnswer),
+  articleSchema({
+    headline: review.data.title,
+    description: review.data.description,
+    url,
+    datePublished: review.data.datePublished,
+    dateModified: review.data.dateModified,
+  }),
+  faqSchema(review.data.faqs),
+  breadcrumbSchema(crumbs),
+];
+const alternates = { no: url, 'x-default': url };
+---
+
+<Base
+  title={review.data.title}
+  description={review.data.description}
+  canonical={url}
+  locale="no"
+  alternates={alternates}
+  schema={schema}
+>
+  <Breadcrumbs crumbs={crumbs} />
+  <article>
+    <header class="mb-8">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-ink leading-tight mb-4">{review.data.title}</h1>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-slate-500">
+        <span class="flex items-center gap-2"><Stars rating={vpn.rating} /> <span class="font-medium text-slate-600">Vår vurdering</span></span>
+        <span>Oppdatert {review.data.dateModified}</span>
+      </div>
+      <p class="mt-3 text-xs text-slate-400 italic">{vpn.name}-fakta er hentet fra leverandørens offisielle spesifikasjoner. Karakteren er vår redaksjonelle vurdering.</p>
+    </header>
+
+    <DirectAnswer>
+      <p><strong>{review.data.entityDef}</strong></p>
+      <p class="mt-2">{review.data.directAnswer}</p>
+    </DirectAnswer>
+
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8 flex flex-col sm:flex-row items-center gap-6">
+      <div class="flex-1">
+        <p class="text-sm text-slate-500 mb-1">{vpn.bestFor}</p>
+        <p class="text-3xl font-extrabold text-ink">fra {vpn.priceNokFrom} kr<span class="text-base font-medium text-slate-500">/mnd</span></p>
+        <p class="text-xs text-slate-500 mt-1">{vpn.moneyBackDays} dagers pengene-tilbake-garanti · {vpn.maxDevices} enheter</p>
+      </div>
+      <CtaButton brand={vpn.goSlug} label={`Prøv ${vpn.name}`} sub={`${vpn.moneyBackDays} dager risikofritt`} />
+    </div>
+
+    <div class="prose-vpn max-w-none text-slate-700 leading-relaxed space-y-5
+                [&_h2]:text-2xl [&_h2]:font-extrabold [&_h2]:text-ink [&_h2]:mt-10 [&_h2]:mb-4
+                [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-ink [&_h3]:mt-8 [&_h3]:mb-3
+                [&_p]:my-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2 [&_ul]:my-4
+                [&_table]:w-full [&_table]:text-sm [&_th]:bg-slate-100 [&_th]:px-3 [&_th]:py-2 [&_th]:text-left
+                [&_td]:border-t [&_td]:border-slate-200 [&_td]:px-3 [&_td]:py-2">
+      <Content />
+    </div>
+
+    <ProsCons pros={vpn.pros} cons={vpn.cons} />
+    <Methodology tested={vpn.testedByUs} />
+
+    <section class="my-10 bg-slate-100 rounded-2xl p-6" aria-label="Nøkkelfakta">
+      <h2 class="text-xl font-extrabold text-ink mb-4">Nøkkelfakta</h2>
+      <dl class="grid sm:grid-cols-2 gap-4 text-sm">
+        <div><dt class="font-semibold text-slate-500">Jurisdiksjon</dt><dd class="text-ink">{vpn.jurisdiction}</dd></div>
+        <div><dt class="font-semibold text-slate-500">Retningslinjer mot logging</dt><dd class="text-ink">{vpn.noLogsAudit}</dd></div>
+        <div><dt class="font-semibold text-slate-500">Servere</dt><dd class="text-ink">{vpn.servers}</dd></div>
+        <div><dt class="font-semibold text-slate-500">Land</dt><dd class="text-ink">{vpn.countries}</dd></div>
+        <div><dt class="font-semibold text-slate-500">Servere i Norge</dt><dd class="text-ink">{vpn.norwayServers}</dd></div>
+        <div><dt class="font-semibold text-slate-500">Protokoller</dt><dd class="text-ink">{vpn.protocols.join(', ')}</dd></div>
+      </dl>
+      <p class="text-xs text-slate-500 mt-4">Kilder: leverandørens offisielle nettsider og publiserte revisjonsrapporter, per oktober 2026.</p>
+    </section>
+
+    <Faq faqs={review.data.faqs} />
+
+    {review.data.related.length > 0 && (
+      <section class="my-10" aria-label="Relatert lesning">
+        <h2 class="text-xl font-extrabold text-ink mb-4">Relatert lesning</h2>
+        <ul class="space-y-2">
+          {review.data.related.map((r: string) => (
+            <li><a class="text-brand-600 hover:underline font-medium" href={r}>{r}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </article>
+</Base>

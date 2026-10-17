@@ -1,0 +1,43 @@
+---
+import { site, type Locale } from '../data/site';
+interface Props { locale?: Locale }
+const { locale = 'no' } = Astro.props;
+const base = `/${locale}`;
+---
+
+<footer class="bg-brand-900 text-slate-300 mt-16">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-10 md:grid-cols-4">
+    <div>
+      <p class="text-white font-extrabold text-lg mb-3">{site.name}</p>
+      <p class="text-sm leading-relaxed">{site.tagline}. Vi sammenligner VPN-tjenester for det norske markedet – ærlig og uavhengig.</p>
+    </div>
+    <nav aria-label="Guider">
+      <p class="text-white font-semibold mb-3 text-sm uppercase tracking-wide">Guider</p>
+      <ul class="space-y-2 text-sm">
+        <li><a class="hover:text-white" href={`${base}/`}>Beste VPN for Norge</a></li>
+        <li><a class="hover:text-white" href={`${base}/anmeldelser/`}>VPN-anmeldelser</a></li>
+        <li><a class="hover:text-white" href={`${base}/sammenlign/`}>Sammenlign VPN</a></li>
+        <li><a class="hover:text-white" href={`${base}/hva-er-vpn/`}>Hva er VPN?</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Om nettstedet">
+      <p class="text-white font-semibold mb-3 text-sm uppercase tracking-wide">Om oss</p>
+      <ul class="space-y-2 text-sm">
+        <li><a class="hover:text-white" href={`${base}/om-oss/`}>Om {site.name}</a></li>
+        <li><a class="hover:text-white" href={`${base}/kontakt/`}>Kontakt</a></li>
+        <li><a class="hover:text-white" href={`${base}/personvern/`}>Personvern</a></li>
+        <li><a class="hover:text-white" href={`${base}/annonsering/`}>Annonsering og affiliatelenker</a></li>
+      </ul>
+    </nav>
+    <div>
+      <p class="text-white font-semibold mb-3 text-sm uppercase tracking-wide">Kontakt</p>
+      <p class="text-sm"><a class="hover:text-white underline" href={`mailto:${site.email}`}>{site.email}</a></p>
+      <p class="text-xs mt-4 text-slate-400">© {new Date().getFullYear()} {site.name}. Alle rettigheter reservert.</p>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-slate-400">
+      <p><strong class="text-slate-300">Åpenhet:</strong> {site.name} finansieres delvis gjennom affiliatelenker. Når du kjøper via våre lenker, kan vi motta provisjon – uten ekstra kostnad for deg. Dette påvirker ikke vurderingene våre. Les mer under <a class="underline hover:text-white" href={`${base}/annonsering/`}>Annonsering</a>.</p>
+    </div>
+  </div>
+</footer>

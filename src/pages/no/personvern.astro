@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { site, analytics } from '../../data/site';
+import { breadcrumbSchema } from '../../data/schema';
+
+const url = `${site.url}/no/personvern/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'Personvern', url }];
+const title = 'Personvernerklæring';
+const description = 'Slik behandler VPNValget personopplysninger: vi samler minimalt med data, bruker informasjonskapsler til analyse, og selger aldri data videre.';
+---
+
+<Base title={title} description={description} canonical={url} locale="no"
+       alternates={{ no: url, 'x-default': url }} schema={[breadcrumbSchema(crumbs)]}>
+  <Breadcrumbs crumbs={crumbs} />
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Personvernerklæring</h1>
+    <p class="text-sm text-slate-500 mb-6">Sist oppdatert: 17. oktober 2026</p>
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <h2 class="text-2xl font-extrabold text-ink">1. Hvilke data vi samler inn</h2>
+      <p>{site.name} er et statisk nettsted uten brukerkontoer, kommentarfelt eller nyhetsbrev. Vi samler ikke inn navn, e-postadresser eller andre direkte personopplysninger via nettsiden.</p>
+      <h2 class="text-2xl font-extrabold text-ink">2. Analyse og informasjonskapsler</h2>
+      {analytics.ga4MeasurementId
+        ? <p>Vi bruker Google Analytics 4 for å forstå hvordan nettstedet brukes (besøkte sider, enhetstype, omtrentlig geografi). IP-adresser anonymiseres. Du kan reservere deg mot sporing med nettleserens «Do Not Track»-innstilling eller et personverntillegg.</p>
+        : <p>Vi planlegger å bruke anonymisert besøksanalyse (Google Analytics 4) for å forstå hvordan nettstedet brukes. Inntil det er aktivert, settes ingen analysekapsler av oss.</p>}
+      <h2 class="text-2xl font-extrabold text-ink">3. Affiliatelenker</h2>
+      <p>Når du klikker på en affiliatelenke (merket «Annonse»), sendes du til leverandørens nettside. Der gjelder leverandørens egen personvernerklæring. Våre affiliatenettverk kan bruke informasjonskapsler for å registrere at besøket kom fra oss.</p>
+      <h2 class="text-2xl font-extrabold text-ink">4. Datalagring og deling</h2>
+      <p>Vi selger aldri personopplysninger videre og deler dem ikke med tredjeparter utover det som er beskrevet over.</p>
+      <h2 class="text-2xl font-extrabold text-ink">5. Dine rettigheter</h2>
+      <p>Etter personopplysningsloven/GDPR har du rett til innsyn, retting og sletting av opplysninger om deg. Kontakt oss på <a class="text-brand-600 hover:underline" href={`mailto:${site.email}`}>{site.email}</a> for å utøve rettighetene dine.</p>
+      <h2 class="text-2xl font-extrabold text-ink">6. Kontakt</h2>
+      <p>Behandlingsansvarlig: {site.name}, <a class="text-brand-600 hover:underline" href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    </div>
+  </article>
+</Base>

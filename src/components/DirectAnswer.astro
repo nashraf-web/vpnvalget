@@ -1,0 +1,12 @@
+---
+/** GEO: direct-answer summary box — quotable by AI engines. */
+interface Props { title?: string }
+const { title = 'Kort oppsummert' } = Astro.props;
+---
+
+<aside class="bg-brand-50 border-l-4 border-brand-500 rounded-r-xl p-5 my-8" aria-label={title}>
+  <p class="font-bold text-brand-900 mb-2">⚡ {title}</p>
+  <div class="prose-direct text-slate-700 leading-relaxed">
+    <slot />
+  </div>
+</aside>

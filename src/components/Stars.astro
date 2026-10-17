@@ -1,0 +1,17 @@
+---
+/** Star rating display — editorial rating, labeled "Vår vurdering". */
+interface Props { rating: number; size?: 'sm' | 'md' | 'lg' }
+const { rating, size = 'md' } = Astro.props;
+const pct = (rating / 5) * 100;
+const cls = size === 'lg' ? 'text-2xl' : size === 'sm' ? 'text-sm' : 'text-lg';
+---
+
+<span class={`inline-flex items-center gap-2 ${cls}`} role="img" aria-label={`Vurdering: ${rating.toFixed(1)} av 5`}>
+  <span class="relative inline-block leading-none text-slate-300" aria-hidden="true">
+    <span>★★★★★</span>
+    <span class="absolute inset-0 overflow-hidden text-amber-400" style={`width:${pct}%`}>
+      <span>★★★★★</span>
+    </span>
+  </span>
+  <span class="font-bold text-ink">{rating.toFixed(1)}</span>
+</span>

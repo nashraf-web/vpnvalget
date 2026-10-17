@@ -1,0 +1,106 @@
+---
+/**
+ * Base layout — full SEO + GEO head for every page.
+ * - GA4 loads only when analytics.ga4MeasurementId is set
+ * - Verification meta tags render only when values are set
+ * - hreflang for all locales + x-default
+ * - JSON-LD injected via `schema` prop (array of objects)
+ */
+import '@fontsource/inter';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site, locales, analytics, type Locale } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  locale?: Locale;
+  /** hreflang alternates: locale -> full URL (only include published locales) */
+  alternates?: Partial<Record<Locale | 'x-default', string>>;
+  /** JSON-LD schema objects */
+  schema?: Record<string, unknown>[];
+  noindex?: boolean;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  locale = 'no',
+  alternates = {},
+  schema = [],
+  noindex = false,
+  ogImage = '/og-default.png',
+} = Astro.props;
+
+const lang = locales[locale].lang;
+const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex
+      ? <meta name="robots" content="noindex, nofollow" />
+      : <meta name="robots" content="index, follow, max-image-preview:large" />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    {/* hreflang — multi-country SEO */}
+    {Object.entries(alternates).map(([l, href]) => (
+      <link rel="alternate" hreflang={l} href={href} />
+    ))}
+
+    {/* Open Graph / Twitter */}
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${site.url}${ogImage}`} />
+    <meta property="og:locale" content={lang.replace('-', '_')} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+
+    {/* Site verification placeholders — fill in src/data/site.ts */}
+    {analytics.googleSiteVerification && (
+      <meta name="google-site-verification" content={analytics.googleSiteVerification} />
+    )}
+    {analytics.bingSiteVerification && (
+      <meta name="msvalidate.01" content={analytics.bingSiteVerification} />
+    )}
+
+    {/* GA4 — installed from day one, loads only when ID is configured */}
+    {analytics.ga4MeasurementId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${analytics.ga4MeasurementId}`}></script>
+        <script define:vars={{ gaId: analytics.ga4MeasurementId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){ window.dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', gaId, { anonymize_ip: true });
+        </script>
+      </>
+    )}
+
+    {/* Structured data */}
+    {schema.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
+  </head>
+  <body class="bg-slate-50 text-ink font-sans min-h-screen flex flex-col antialiased">
+    <Header locale={locale} />
+    <main class="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

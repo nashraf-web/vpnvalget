@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/om-oss/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'Om oss', url }];
+const title = 'Om VPNValget – Norges ærlige VPN-guide';
+const description = 'VPNValget er en uavhengig norsk guide til VPN-tjenester. Slik jobber vi: ærlige vurderinger, ingen betalt rangering, og full åpenhet om affiliatelenker.';
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-10-17', dateModified: '2026-10-17' }),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base title={title} description={description} canonical={url} locale="no"
+       alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Om {site.name}</h1>
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p><strong>{site.name}</strong> er en uavhengig guide til VPN-tjenester for det norske markedet. Målet vårt er enkelt: hjelpe nordmenn å velge riktig VPN – uten markedsføringsspråk og uten betalte rangeringer.</p>
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik jobber vi</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Ingen betalt rangering.</strong> Rekkefølgen i sammenligningene våre kan ikke kjøpes. Annonsører får aldri bedre plassering mot betaling.</li>
+        <li><strong>Ærlige fakta.</strong> Tekniske opplysninger hentes fra leverandørenes offisielle spesifikasjoner og uavhengige revisjonsrapporter. Karakterer er våre redaksjonelle vurderinger – merket tydelig som «vår vurdering».</li>
+        <li><strong>Åpenhet om testing.</strong> Vi skriver tydelig hva vi har testet selv og hva vi ikke har testet ennå. Vi publiserer aldri oppdiktede testresultater.</li>
+        <li><strong>Oppdatert innhold.</strong> VPN-markedet endrer seg raskt. Vi gjennomgår sidene jevnlig og merker alle sider med oppdateringsdato.</li>
+      </ul>
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvordan vi tjener penger</h2>
+      <p>Nettstedet finansieres delvis gjennom affiliatelenker. Når du kjøper via en av våre lenker, kan vi motta provisjon fra leverandøren – uten at det koster deg noe ekstra. Alle affiliatelenker er merket med <strong>«Annonse»</strong> i henhold til norsk lov. Les mer på siden om <a class="text-brand-600 hover:underline" href="/no/annonsering/">annonsering</a>.</p>
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Kontakt</h2>
+      <p>Spørsmål, tips eller rettelser? Kontakt oss på <a class="text-brand-600 hover:underline" href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    </div>
+  </article>
+</Base>

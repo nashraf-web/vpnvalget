@@ -1,0 +1,52 @@
+---
+/**
+ * Comparison table — above the fold on money pages.
+ * Prices in NOK ("fra" guideline), ANNONSE on every CTA, rel sponsored.
+ */
+import Stars from './Stars.astro';
+import CtaButton from './CtaButton.astro';
+import type { VpnProvider } from '../data/vpns';
+
+interface Props { vpns: VpnProvider[]; compact?: boolean }
+const { vpns, compact = false } = Astro.props;
+const sorted = [...vpns].sort((a, b) => a.order - b.order);
+---
+
+<div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm bg-white my-8" id="sammenligning">
+  <table class="w-full text-sm min-w-[720px]">
+    <caption class="sr-only">Sammenligning av VPN-tjenester for Norge</caption>
+    <thead>
+      <tr class="bg-brand-900 text-white text-left">
+        <th scope="col" class="px-4 py-3 font-semibold">VPN</th>
+        <th scope="col" class="px-4 py-3 font-semibold">Vår vurdering</th>
+        <th scope="col" class="px-4 py-3 font-semibold">Pris fra</th>
+        <th scope="col" class="px-4 py-3 font-semibold">Enheter</th>
+        <th scope="col" class="px-4 py-3 font-semibold">Pengene tilbake</th>
+        <th scope="col" class="px-4 py-3 font-semibold"><span class="sr-only">Tilbud</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      {sorted.map((v, i) => (
+        <tr class={`border-t border-slate-100 ${i === 0 ? 'bg-amber-50/60' : ''}`}>
+          <td class="px-4 py-4">
+            <div class="font-bold text-ink text-base">{v.name}</div>
+            <div class="mt-1">
+              <span class="inline-block bg-brand-100 text-brand-700 text-xs font-semibold px-2 py-0.5 rounded-full">{v.bestFor}</span>
+            </div>
+            {!compact && <div class="text-xs text-slate-500 mt-1">{v.countries} · {v.servers}</div>}
+          </td>
+          <td class="px-4 py-4"><Stars rating={v.rating} size="sm" /></td>
+          <td class="px-4 py-4 whitespace-nowrap">
+            <span class="font-bold text-ink">fra {v.priceNokFrom} kr<span class="font-normal text-slate-500">/mnd</span></span>
+          </td>
+          <td class="px-4 py-4">{v.maxDevices}</td>
+          <td class="px-4 py-4">{v.moneyBackDays} dager</td>
+          <td class="px-4 py-4">
+            <CtaButton brand={v.goSlug} label={i === 0 ? 'Beste valg' : 'Se tilbud'} variant={i === 0 ? 'primary' : 'secondary'} />
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+<p class="text-xs text-slate-500 -mt-4 mb-8">Veiledende priser per oktober 2026 – faktiske priser kan variere. Sjekk leverandørens nettside for oppdatert pris.</p>

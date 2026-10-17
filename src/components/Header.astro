@@ -1,0 +1,38 @@
+---
+import { site, type Locale } from '../data/site';
+interface Props { locale?: Locale }
+const { locale = 'no' } = Astro.props;
+const base = `/${locale}`;
+const links = [
+  { href: `${base}/`, label: 'Hjem' },
+  { href: `${base}/anmeldelser/`, label: 'Anmeldelser' },
+  { href: `${base}/sammenlign/`, label: 'Sammenlign' },
+  { href: `${base}/hva-er-vpn/`, label: 'Hva er VPN?' },
+  { href: `${base}/om-oss/`, label: 'Om oss' },
+];
+---
+
+<header class="bg-brand-900 text-white sticky top-0 z-50 shadow-md">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href={`${base}/`} class="flex items-center gap-2 font-extrabold text-xl tracking-tight">
+        <img src="/favicon.svg" alt="VPNValget logo" class="w-8 h-8" />
+        <span>{site.name}</span>
+      </a>
+      <nav aria-label="Hovedmeny" class="hidden md:flex items-center gap-6 text-sm font-medium">
+        {links.map((l) => (
+          <a href={l.href} class="text-slate-200 hover:text-white transition-colors">{l.label}</a>
+        ))}
+      </nav>
+      <a href={`${base}/#sammenligning`}
+         class="bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
+        Se beste VPN
+      </a>
+    </div>
+    <nav aria-label="Mobilmeny" class="md:hidden flex gap-4 overflow-x-auto pb-3 text-sm font-medium">
+      {links.map((l) => (
+        <a href={l.href} class="text-slate-200 hover:text-white whitespace-nowrap">{l.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>

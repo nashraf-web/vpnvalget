@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema } from '../../data/schema';
+
+const url = `${site.url}/no/annonsering/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'Annonsering', url }];
+const title = 'Annonsering og affiliatelenker – full åpenhet';
+const description = 'Slik tjener VPNValget penger: affiliatelenker merket med Annonse, ingen betalt rangering, og hva provisjon betyr for deg som leser.';
+---
+
+<Base title={title} description={description} canonical={url} locale="no"
+       alternates={{ no: url, 'x-default': url }} schema={[breadcrumbSchema(crumbs)]}>
+  <Breadcrumbs crumbs={crumbs} />
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Annonsering og affiliatelenker</h1>
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p><strong>Full åpenhet:</strong> {site.name} finansieres delvis gjennom affiliatemarkedsføring. Det betyr at vi kan motta provisjon når du kjøper en VPN-tjeneste via en av lenkene våre.</p>
+      <h2 class="text-2xl font-extrabold text-ink">Hva betyr dette for deg?</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Det koster deg <strong>ingenting ekstra</strong> å handle via våre lenker – prisen er den samme som på leverandørens nettside.</li>
+        <li>Provisjonen betales av leverandøren, ikke av deg.</li>
+        <li>Inntektene gjør det mulig å drive nettstedet og publisere gratis guider.</li>
+      </ul>
+      <h2 class="text-2xl font-extrabold text-ink">Merking etter norsk lov</h2>
+      <p>I henhold til markedsføringsloven merkes alle affiliatelenker tydelig med <strong>«Annonse»</strong> ved siden av hver lenke og knapp. Du skal aldri være i tvil om når en lenke gir oss provisjon.</p>
+      <h2 class="text-2xl font-extrabold text-ink">Ingen betalt rangering</h2>
+      <p>Dette er viktig for oss: <strong>plassering i sammenligninger og karakterer kan ikke kjøpes.</strong> Annonsører får ingen fordeler i vurderingene våre. Våre anmeldelser bygger på leverandørenes offisielle spesifikasjoner, uavhengige revisjoner og redaksjonelt skjønn – ikke på provisjonssatser.</p>
+      <h2 class="text-2xl font-extrabold text-ink">Hvilke nettverk bruker vi?</h2>
+      <p>Vi formidler for tiden programmer direkte og via affiliatenettverk. En fullstendig liste over aktive programmer publiseres her når avtalene er på plass.</p>
+    </div>
+  </article>
+</Base>

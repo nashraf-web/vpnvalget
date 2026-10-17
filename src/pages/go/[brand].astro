@@ -1,0 +1,40 @@
+---
+/**
+ * /go/{brand} — affiliate redirect pages.
+ * Currently redirects to providers' official sites (placeholder).
+ * After Compado approval: swap targets in src/data/site.ts `affiliateTargets`.
+ * These pages are noindex + excluded from sitemap (see astro.config + robots.txt).
+ */
+import { affiliateTargets, site } from '../../data/site';
+import { vpnBySlug } from '../../data/vpns';
+
+export function getStaticPaths() {
+  return Object.keys(affiliateTargets).map((brand) => ({ params: { brand } }));
+}
+
+const { brand } = Astro.params;
+const target = affiliateTargets[brand as string];
+if (!target) return Astro.redirect('/no/', 404);
+const vpn = vpnBySlug(brand as string);
+const name = vpn?.name ?? brand;
+---
+
+<!doctype html>
+<html lang="nb-NO">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="refresh" content={`1;url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>Viderekobler til {name}… | {site.name}</title>
+  </head>
+  <body style="font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;background:#f8fafc;color:#0f172a;">
+    <main style="text-align:center;max-width:28rem;padding:2rem;">
+      <p style="font-weight:700;font-size:1.25rem;margin-bottom:.5rem;">Viderekobler til {name}…</p>
+      <p style="color:#64748b;font-size:.875rem;margin-bottom:1rem;">
+        <strong>Annonse</strong> – affiliatelenke. Hvis viderekoblingen ikke starter, <a href={target} rel="sponsored nofollow noopener" style="color:#0f7ae5;">klikk her</a>.
+      </p>
+    </main>
+  </body>
+</html>
