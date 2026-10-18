@@ -38,9 +38,12 @@ const schema = [
 ];
 ---
 
-<Base title={page.data.title} description={page.data.description} canonical={url} locale="no"
+<Base ogImage="/og-sammenligning.webp" title={page.data.title} description={page.data.description} canonical={url} locale="no"
        alternates={{ no: url, 'x-default': url }} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-sammenligning.webp" alt="To lyspærer holdes opp – symbol på sammenligning av to alternativer" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
   <article>
     <header class="mb-8">
       <h1 class="text-3xl sm:text-4xl font-extrabold text-ink leading-tight mb-4">{page.data.title}</h1>

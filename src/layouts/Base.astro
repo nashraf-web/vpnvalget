@@ -9,6 +9,7 @@
 import '@fontsource/inter';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import { site, locales, analytics, type Locale } from '../data/site';
 
 interface Props {
@@ -32,7 +33,7 @@ const {
   alternates = {},
   schema = [],
   noindex = false,
-  ogImage = '/og-default.png',
+  ogImage = '/og-default.webp',
 } = Astro.props;
 
 const lang = locales[locale].lang;
@@ -78,23 +79,35 @@ const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
       <meta name="msvalidate.01" content={analytics.bingSiteVerification} />
     )}
 
-    {/* GA4 — installed from day one, loads only when ID is configured */}
-    {analytics.ga4MeasurementId && (
-      <>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${analytics.ga4MeasurementId}`}></script>
-        <script define:vars={{ gaId: analytics.ga4MeasurementId }}>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){ window.dataLayer.push(arguments); }
-          gtag('js', new Date());
-          gtag('config', gaId, { anonymize_ip: true });
-        </script>
-      </>
-    )}
+    {/* GA4 — consent-gated. The ID is exposed to the cookie-consent script,
+        which loads gtag.js ONLY after the visitor explicitly accepts.
+        Nothing is loaded before consent (GDPR/ePrivacy). */}
+    <script is:inline define:vars={{ ga4Id: analytics.ga4MeasurementId }}>
+      window.__GA4_ID__ = ga4Id || '';
+    </script>
 
     {/* Structured data */}
     {schema.map((s) => (
       <script type="application/ld+json" set:html={JSON.stringify(s)} />
     ))}
+
+    <style is:global>
+      html { scroll-behavior: smooth; }
+      /* Offset anchored sections below the sticky header */
+      :target { scroll-margin-top: 5.5rem; }
+      #sammenligning { scroll-margin-top: 5.5rem; }
+      @keyframes vv-fade-up {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: none; }
+      }
+      .vv-fade-up { animation: vv-fade-up 0.55s ease-out both; }
+      .vv-fade-up-1 { animation-delay: 0.08s; }
+      .vv-fade-up-2 { animation-delay: 0.16s; }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .vv-fade-up { animation: none; }
+      }
+    </style>
   </head>
   <body class="bg-slate-50 text-ink font-sans min-h-screen flex flex-col antialiased">
     <Header locale={locale} />
@@ -102,5 +115,6 @@ const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
       <slot />
     </main>
     <Footer locale={locale} />
+    <CookieConsent />
   </body>
 </html>

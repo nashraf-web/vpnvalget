@@ -1,0 +1,114 @@
+---
+/**
+ * CookieConsent — GDPR/ePrivacy-compliant cookie banner (Norwegian).
+ *
+ * - No pre-ticked boxes, no dark patterns: "Godta" and "Avslå" have equal visual weight.
+ * - Choice stored in localStorage (key below), never in a cookie.
+ * - Google Analytics 4 loads ONLY after explicit "accepted" choice.
+ * - window.__openCookieSettings() re-opens the banner so users can withdraw consent
+ *   (linked from the footer as "Informasjonskapsler").
+ * - Zero dependencies, vanilla JS, < 3 KB.
+ */
+---
+
+<div
+  id="cookie-banner"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Samtykke til informasjonskapsler"
+  hidden
+  class="fixed bottom-0 inset-x-0 z-[100] px-4 pb-4 sm:pb-6"
+>
+  <div class="max-w-3xl mx-auto bg-white border border-slate-200 rounded-2xl shadow-2xl p-5 sm:p-6">
+    <p class="font-extrabold text-ink text-base mb-2">Vi bruker informasjonskapsler</p>
+    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+      Vi bruker informasjonskapsler til å måle trafikk anonymt (Google Analytics) og til
+      affiliatelenker merket «Annonse». Du velger selv – avslå er like enkelt som å godta.
+      Valget ditt lagres på enheten din. Les mer i
+      <a href="/no/personvern/" class="text-brand-600 hover:underline font-medium">personvernerklæringen</a>.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button
+        type="button"
+        id="cookie-accept"
+        class="flex-1 bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors"
+      >
+        Godta
+      </button>
+      <button
+        type="button"
+        id="cookie-reject"
+        class="flex-1 bg-white hover:bg-slate-100 text-slate-700 font-semibold text-sm px-5 py-2.5 rounded-lg border border-slate-300 transition-colors"
+      >
+        Avslå
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+(function () {
+  'use strict';
+  var KEY = 'vpnvalget-cookie-consent';
+  var GA_ID = (window.__GA4_ID__ || '').trim();
+
+  function getChoice() {
+    try { return localStorage.getItem(KEY); } catch (e) { return null; }
+  }
+  function setChoice(v) {
+    try { localStorage.setItem(KEY, v); } catch (e) { /* private mode: banner reappears, no tracking */ }
+  }
+
+  function loadGA4() {
+    if (!GA_ID || window.__ga4Loaded) return;
+    window.__ga4Loaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
+  var banner = document.getElementById('cookie-banner');
+  var btnAccept = document.getElementById('cookie-accept');
+  var btnReject = document.getElementById('cookie-reject');
+
+  function showBanner() { if (banner) banner.hidden = false; }
+  function hideBanner() { if (banner) banner.hidden = true; }
+
+  function openSettings() {
+    // Withdraw/change consent: clear stored choice and re-show the banner.
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    showBanner();
+    if (banner) banner.scrollIntoView({ block: 'end', behavior: 'smooth' });
+  }
+  window.__openCookieSettings = openSettings;
+
+  if (btnAccept) btnAccept.addEventListener('click', function () {
+    setChoice('accepted');
+    hideBanner();
+    loadGA4();
+  });
+  if (btnReject) btnReject.addEventListener('click', function () {
+    setChoice('rejected');
+    hideBanner();
+    // GA4 is never loaded after a rejection.
+  });
+
+  // Init: honour stored choice; show banner only when no choice exists.
+  var choice = getChoice();
+  if (choice === 'accepted') {
+    loadGA4();
+  } else if (choice !== 'rejected') {
+    // Small delay so the banner doesn't fight first paint.
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () { setTimeout(showBanner, 600); });
+    } else {
+      setTimeout(showBanner, 600);
+    }
+  }
+})();
+</script>

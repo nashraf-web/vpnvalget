@@ -12,15 +12,18 @@ interface Props {
 }
 const { brand, label = 'Besøk tilbudet', sub, variant = 'primary' } = Astro.props;
 const styles = variant === 'primary'
-  ? 'bg-brand-500 hover:bg-brand-600 text-white'
-  : 'bg-white hover:bg-slate-100 text-brand-700 border border-brand-500';
+  ? 'bg-brand-500 hover:bg-brand-600 text-white shadow-md hover:shadow-lg hover:-translate-y-px'
+  : 'bg-white hover:bg-brand-50 text-brand-700 border-2 border-brand-500 hover:border-brand-600';
 ---
 
 <div class="affiliate-cta">
   <a href={goUrl(brand)}
      rel="sponsored nofollow noopener"
-     class={`inline-flex flex-col items-center justify-center gap-0.5 font-bold px-6 py-3 rounded-xl transition-colors text-center ${styles}`}>
-    <span>{label}</span>
+     class={`group inline-flex w-full sm:w-auto flex-col items-center justify-center gap-0.5 font-bold px-7 py-3.5 rounded-xl transition-all duration-200 text-center ${styles}`}>
+    <span class="inline-flex items-center gap-1.5">
+      {label}
+      <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+    </span>
     {sub && <span class="text-xs font-medium opacity-90">{sub}</span>}
   </a>
   <p class="text-[11px] text-slate-500 mt-1.5 text-center">

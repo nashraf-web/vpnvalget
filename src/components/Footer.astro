@@ -36,8 +36,9 @@ const base = `/${locale}`;
     </div>
   </div>
   <div class="border-t border-white/10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-slate-400">
-      <p><strong class="text-slate-300">Åpenhet:</strong> {site.name} finansieres delvis gjennom affiliatelenker. Når du kjøper via våre lenker, kan vi motta provisjon – uten ekstra kostnad for deg. Dette påvirker ikke vurderingene våre. Les mer under <a class="underline hover:text-white" href={`${base}/annonsering/`}>Annonsering</a>.</p>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-slate-400 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+      <p class="flex-1"><strong class="text-slate-300">Åpenhet:</strong> {site.name} finansieres delvis gjennom affiliatelenker. Når du kjøper via våre lenker, kan vi motta provisjon – uten ekstra kostnad for deg. Dette påvirker ikke vurderingene våre. Les mer under <a class="underline hover:text-white" href={`${base}/annonsering/`}>Annonsering</a>.</p>
+      <button type="button" onclick="window.__openCookieSettings && window.__openCookieSettings()" class="underline hover:text-white whitespace-nowrap text-left">Informasjonskapsler</button>
     </div>
   </div>
 </footer>

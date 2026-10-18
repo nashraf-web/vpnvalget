@@ -1,52 +1,158 @@
 ---
 /**
- * Comparison table — above the fold on money pages.
+ * Comparison table — the conversion centerpiece, above the fold on money pages.
+ * - Winner row (#1): gold highlight + "VÅRT FØRSTEVALG" ribbon
+ * - Rank badges, star ratings, NOK "fra" pricing, trust sub-text per CTA
+ * - Desktop: refined table with row hover · Mobile: stacked cards (no h-scroll)
+ * - Sticky winner CTA bar appears on scroll (mobile + desktop)
  * Prices in NOK ("fra" guideline), ANNONSE on every CTA, rel sponsored.
  */
 import Stars from './Stars.astro';
 import CtaButton from './CtaButton.astro';
+import { goUrl } from '../data/site';
 import type { VpnProvider } from '../data/vpns';
 
 interface Props { vpns: VpnProvider[]; compact?: boolean }
 const { vpns, compact = false } = Astro.props;
 const sorted = [...vpns].sort((a, b) => a.order - b.order);
+const winner = sorted[0];
+
+const rankStyle = (i: number) =>
+  i === 0
+    ? 'bg-amber-400 text-amber-950 border-amber-500'
+    : i === 1
+      ? 'bg-slate-200 text-slate-700 border-slate-300'
+      : i === 2
+        ? 'bg-orange-200 text-orange-900 border-orange-300'
+        : 'bg-white text-slate-500 border-slate-200';
 ---
 
-<div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm bg-white my-8" id="sammenligning">
-  <table class="w-full text-sm min-w-[720px]">
-    <caption class="sr-only">Sammenligning av VPN-tjenester for Norge</caption>
-    <thead>
-      <tr class="bg-brand-900 text-white text-left">
-        <th scope="col" class="px-4 py-3 font-semibold">VPN</th>
-        <th scope="col" class="px-4 py-3 font-semibold">Vår vurdering</th>
-        <th scope="col" class="px-4 py-3 font-semibold">Pris fra</th>
-        <th scope="col" class="px-4 py-3 font-semibold">Enheter</th>
-        <th scope="col" class="px-4 py-3 font-semibold">Pengene tilbake</th>
-        <th scope="col" class="px-4 py-3 font-semibold"><span class="sr-only">Tilbud</span></th>
-      </tr>
-    </thead>
-    <tbody>
-      {sorted.map((v, i) => (
-        <tr class={`border-t border-slate-100 ${i === 0 ? 'bg-amber-50/60' : ''}`}>
-          <td class="px-4 py-4">
-            <div class="font-bold text-ink text-base">{v.name}</div>
-            <div class="mt-1">
-              <span class="inline-block bg-brand-100 text-brand-700 text-xs font-semibold px-2 py-0.5 rounded-full">{v.bestFor}</span>
-            </div>
-            {!compact && <div class="text-xs text-slate-500 mt-1">{v.countries} · {v.servers}</div>}
-          </td>
-          <td class="px-4 py-4"><Stars rating={v.rating} size="sm" /></td>
-          <td class="px-4 py-4 whitespace-nowrap">
-            <span class="font-bold text-ink">fra {v.priceNokFrom} kr<span class="font-normal text-slate-500">/mnd</span></span>
-          </td>
-          <td class="px-4 py-4">{v.maxDevices}</td>
-          <td class="px-4 py-4">{v.moneyBackDays} dager</td>
-          <td class="px-4 py-4">
-            <CtaButton brand={v.goSlug} label={i === 0 ? 'Beste valg' : 'Se tilbud'} variant={i === 0 ? 'primary' : 'secondary'} />
-          </td>
+<div id="sammenligning">
+  <!-- ============ DESKTOP TABLE ============ -->
+  <div class="hidden md:block overflow-x-auto rounded-2xl border border-slate-200 shadow-sm bg-white my-8">
+    <table class="w-full text-sm min-w-[780px]">
+      <caption class="sr-only">Sammenligning av VPN-tjenester for Norge</caption>
+      <thead>
+        <tr class="bg-brand-900 text-white text-left">
+          <th scope="col" class="px-4 py-3.5 font-semibold w-14"><span class="sr-only">Rangering</span></th>
+          <th scope="col" class="px-4 py-3.5 font-semibold">VPN</th>
+          <th scope="col" class="px-4 py-3.5 font-semibold">Vår vurdering</th>
+          <th scope="col" class="px-4 py-3.5 font-semibold">Pris fra</th>
+          <th scope="col" class="px-4 py-3.5 font-semibold">Enheter</th>
+          <th scope="col" class="px-4 py-3.5 font-semibold">Pengene tilbake</th>
+          <th scope="col" class="px-4 py-3.5 font-semibold w-44"><span class="sr-only">Tilbud</span></th>
         </tr>
-      ))}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {sorted.map((v, i) => (
+          <tr class={`border-t border-slate-100 transition-colors hover:bg-brand-50/60 ${i === 0 ? 'bg-gradient-to-r from-amber-50 via-amber-50/70 to-white' : ''}`}>
+            <td class="px-4 py-4 align-top">
+              <span class={`inline-flex items-center justify-center w-8 h-8 rounded-full border text-sm font-extrabold ${rankStyle(i)}`} aria-label={`Rangert som nummer ${i + 1}`}>
+                {i + 1}
+              </span>
+            </td>
+            <td class="px-4 py-4 align-top">
+              <div class="font-extrabold text-ink text-base flex items-center gap-2 flex-wrap">
+                {v.name}
+                {i === 0 && (
+                  <span class="inline-flex items-center gap-1 bg-amber-400 text-amber-950 text-[11px] font-extrabold uppercase tracking-wide px-2.5 py-1 rounded-full shadow-sm">
+                    <span aria-hidden="true">🏆</span> Vårt førstevalg
+                  </span>
+                )}
+              </div>
+              <div class="mt-1.5">
+                <span class="inline-block bg-brand-100 text-brand-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">{v.bestFor}</span>
+              </div>
+              {!compact && <div class="text-xs text-slate-500 mt-1.5">{v.countries} · {v.servers}</div>}
+            </td>
+            <td class="px-4 py-4 align-top"><Stars rating={v.rating} size="sm" /></td>
+            <td class="px-4 py-4 align-top whitespace-nowrap">
+              <span class="font-extrabold text-ink text-base">fra {v.priceNokFrom} kr<span class="font-normal text-slate-500 text-sm">/mnd</span></span>
+            </td>
+            <td class="px-4 py-4 align-top text-slate-600">{v.maxDevices}</td>
+            <td class="px-4 py-4 align-top text-slate-600">{v.moneyBackDays} dager</td>
+            <td class="px-4 py-4 align-top">
+              <CtaButton brand={v.goSlug} label={i === 0 ? 'Se beste tilbud' : 'Se tilbud'} sub={`${v.moneyBackDays} dagers garanti`} variant={i === 0 ? 'primary' : 'secondary'} />
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============ MOBILE CARDS ============ -->
+  <div class="md:hidden space-y-4 my-8" role="list" aria-label="Sammenligning av VPN-tjenester">
+    {sorted.map((v, i) => (
+      <article role="listitem" class={`relative bg-white rounded-2xl border p-5 shadow-sm ${i === 0 ? 'border-amber-300 ring-2 ring-amber-300/60' : 'border-slate-200'}`}>
+        {i === 0 && (
+          <span class="absolute -top-3 left-4 inline-flex items-center gap-1 bg-amber-400 text-amber-950 text-[11px] font-extrabold uppercase tracking-wide px-3 py-1 rounded-full shadow">
+            <span aria-hidden="true">🏆</span> Vårt førstevalg
+          </span>
+        )}
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <p class="font-extrabold text-lg text-ink">{v.name}</p>
+            <span class="inline-block bg-brand-100 text-brand-700 text-xs font-semibold px-2.5 py-0.5 rounded-full mt-1.5">{v.bestFor}</span>
+          </div>
+          <span class={`inline-flex items-center justify-center w-9 h-9 rounded-full border text-base font-extrabold shrink-0 ${rankStyle(i)}`} aria-label={`Rangert som nummer ${i + 1}`}>
+            {i + 1}
+          </span>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <Stars rating={v.rating} size="sm" />
+          <p class="font-extrabold text-ink text-lg">fra {v.priceNokFrom} kr<span class="font-normal text-slate-500 text-sm">/mnd</span></p>
+        </div>
+        <dl class="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-600">
+          <div class="bg-slate-50 rounded-lg px-3 py-2"><dt class="font-semibold text-slate-500">Enheter</dt><dd class="font-medium text-ink">{v.maxDevices}</dd></div>
+          <div class="bg-slate-50 rounded-lg px-3 py-2"><dt class="font-semibold text-slate-500">Pengene tilbake</dt><dd class="font-medium text-ink">{v.moneyBackDays} dager</dd></div>
+        </dl>
+        <div class="mt-4">
+          <CtaButton brand={v.goSlug} label={i === 0 ? 'Se beste tilbud' : `Se tilbud hos ${v.name}`} sub={`${v.moneyBackDays} dagers garanti`} variant={i === 0 ? 'primary' : 'secondary'} />
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <p class="text-xs text-slate-500 -mt-2 mb-8">Veiledende priser per oktober 2026 – faktiske priser kan variere. Sjekk leverandørens nettside for oppdatert pris.</p>
 </div>
-<p class="text-xs text-slate-500 -mt-4 mb-8">Veiledende priser per oktober 2026 – faktiske priser kan variere. Sjekk leverandørens nettside for oppdatert pris.</p>
+
+<!-- ============ STICKY WINNER BAR (appears on scroll) ============ -->
+<div id="vv-sticky-bar" class="fixed bottom-0 inset-x-0 z-40 translate-y-full transition-transform duration-300 ease-out" aria-hidden="true">
+  <div class="bg-brand-900/95 backdrop-blur border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.15)]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3 sm:gap-4">
+      <span class="hidden sm:inline-flex items-center gap-1 bg-amber-400 text-amber-950 text-[11px] font-extrabold uppercase tracking-wide px-2.5 py-1 rounded-full shrink-0">
+        <span aria-hidden="true">🏆</span> #1
+      </span>
+      <div class="flex-1 min-w-0">
+        <p class="text-white font-bold text-sm sm:text-base truncate">{winner.name} – {winner.bestFor.toLowerCase()}</p>
+        <p class="text-slate-300 text-xs sm:text-sm">fra {winner.priceNokFrom} kr/mnd · {winner.moneyBackDays} dagers pengene-tilbake-garanti</p>
+      </div>
+      <a href={goUrl(winner.goSlug)} rel="sponsored nofollow noopener"
+         class="shrink-0 bg-brand-500 hover:bg-brand-400 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-colors">
+        Se tilbud
+      </a>
+    </div>
+    <p class="text-center text-[10px] text-slate-400 pb-1.5 -mt-1"><span class="font-semibold uppercase">Annonse</span> – affiliatelenke</p>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var bar = document.getElementById('vv-sticky-bar');
+    var anchor = document.getElementById('sammenligning');
+    if (!bar || !anchor) return;
+    var shown = false;
+    function onScroll() {
+      var past = anchor.getBoundingClientRect().bottom < 0;
+      var nearBottom = (window.innerHeight + window.scrollY) > (document.body.scrollHeight - 600);
+      var shouldShow = past && !nearBottom;
+      if (shouldShow !== shown) {
+        shown = shouldShow;
+        bar.classList.toggle('translate-y-full', !shown);
+        bar.setAttribute('aria-hidden', String(!shown));
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>

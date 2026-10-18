@@ -1,0 +1,65 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { site } from '../../../data/site';
+import { breadcrumbSchema } from '../../../data/schema';
+
+const url = `${site.url}/no/blogg/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'Blogg', url }];
+const title = 'VPN-blogg: nyheter, tips og guider (2026) | VPNValget';
+const description = 'Les siste nytt om VPN, personvern og strømming i Norge. Praktiske tips, tilbud og guider fra VPNValget-redaksjonen.';
+
+// Blog posts — newest first. Add new posts to the top of this array.
+const posts = [
+  {
+    slug: 'vpn-tilbud-black-friday-2026',
+    title: 'VPN-tilbud Black Friday 2026: slik får du best pris',
+    description: 'Black Friday er årets beste tid å kjøpe VPN på. Slik sammenligner du tilbudene og unngår fellene – og hvorfor 2-års abonnement nesten alltid lønner seg.',
+    date: '2026-10-17',
+    dateDisplay: '17. oktober 2026',
+  },
+  {
+    slug: 'nrk-utlandet-vpn-feil-fiks',
+    title: 'NRK i utlandet fungerer ikke med VPN? 7 fiks som virker',
+    description: 'Får du feilmelding når du prøver å se NRK i utlandet med VPN? Her er de 7 vanligste årsakene – og nøyaktig hvordan du fikser hver av dem.',
+    date: '2026-10-17',
+    dateDisplay: '17. oktober 2026',
+  },
+  {
+    slug: 'datatilsynet-personvern-2026',
+    title: 'Datatilsynet advarer: slik beskytter du personvernet ditt i 2026',
+    description: 'Nordmenn spores mer enn noensinne på nett. Her er hva Datatilsynet faktisk sier – og 5 konkrete grep du kan ta i dag, inkludert VPN.',
+    date: '2026-10-17',
+    dateDisplay: '17. oktober 2026',
+  },
+];
+
+const schema = [breadcrumbSchema(crumbs)];
+---
+
+<Base title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-4">VPN-bloggen</h1>
+    <p class="text-slate-600 text-lg mb-10">
+      Nyheter, praktiske tips og guider om VPN, personvern og strømming – skrevet for norske lesere.
+    </p>
+
+    <div class="space-y-8">
+      {posts.map((post) => (
+        <article class="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-md hover:border-brand-500 transition-all">
+          <p class="text-sm text-slate-500 mb-2">{post.dateDisplay}</p>
+          <h2 class="text-xl font-extrabold text-ink mb-2">
+            <a href={`/no/blogg/${post.slug}/`} class="hover:text-brand-600 transition-colors">
+              {post.title}
+            </a>
+          </h2>
+          <p class="text-slate-600 mb-4">{post.description}</p>
+          <a href={`/no/blogg/${post.slug}/`} class="text-brand-600 font-semibold hover:underline">
+            Les innlegget →
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,122 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../../components/DirectAnswer.astro';
+import Faq from '../../../components/Faq.astro';
+import CtaButton from '../../../components/CtaButton.astro';
+import { site } from '../../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../../data/schema';
+
+const url = `${site.url}/no/blogg/vpn-tilbud-black-friday-2026/`;
+const crumbs = [
+  { name: 'Hjem', url: `${site.url}/no/` },
+  { name: 'Blogg', url: `${site.url}/no/blogg/` },
+  { name: 'VPN-tilbud Black Friday 2026', url },
+];
+const title = 'VPN-tilbud Black Friday 2026: slik får du best pris';
+const description = 'Black Friday 2026 faller 27. november. Slik sammenligner du VPN-tilbudene, hvorfor 2-års abonnement nesten alltid lønner seg – og fellene du bør unngå.';
+const faqs = [
+  {
+    question: 'Når er Black Friday 2026?',
+    answer: 'Black Friday 2026 er fredag 27. november. VPN-leverandørene kjører vanligvis tilbudene sine fra uken før og gjennom Cyber Monday 30. november, så du har noen dagers vindu til å sammenligne.',
+  },
+  {
+    question: 'Er Black Friday-tilbud på VPN ekte rabatter?',
+    answer: 'Ja, stort sett. VPN-bransjen bruker Black Friday til å gi de laveste prisene i året – typisk på 2-års abonnement. Men vær kritisk til «før-priser»: sammenlign den reelle månedsprisen, ikke den oppgitte rabattprosenten.',
+  },
+  {
+    question: 'Bør jeg velge 1 måned, 1 år eller 2 år?',
+    answer: 'For lavest månedspris er 2-års abonnement nesten alltid billigst – ofte 60–70 % billigere per måned enn månedsabonnement. Velg lengst binding bare hvis leverandøren har pengene-tilbake-garanti (30–45 dager), slik at du kan angre risikofritt.',
+  },
+  {
+    question: 'Hva koster VPN på Black Friday i Norge?',
+    answer: 'Veiledende priser på de lengste abonnementene: Surfshark fra 23 kr/mnd, NordVPN fra 39 kr/mnd og ExpressVPN fra 69 kr/mnd. På Black Friday faller disse ofte ytterligere. Veiledende priser – sjekk leverandørens nettside for aktuelle tilbud.',
+  },
+  {
+    question: 'Kan jeg angre et Black Friday-kjøp av VPN?',
+    answer: 'Ja, hvis leverandøren har pengene-tilbake-garanti. NordVPN, Surfshark og ExpressVPN har 30 dagers garanti, CyberGhost har 45 dager. Det betyr at du kan kjøpe på Black Friday og teste tjenesten risikofritt i god tid etterpå.',
+  },
+  {
+    question: 'Hvilken VPN bør jeg kjøpe på Black Friday?',
+    answer: 'For de fleste nordmenn er NordVPN (best totalt, fra 39 kr/mnd) eller Surfshark (best på pris, fra 23 kr/mnd) de tryggeste valgene – begge med servere i Norge og 30 dagers pengene-tilbake-garanti. Se vår oversikt over beste VPN for Norge for full sammenligning.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-10-17', dateModified: '2026-10-17' }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-blogg.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-blogg.webp" alt="Avislesing med kaffe og briller, sett ovenfra" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <p class="text-sm text-slate-500 mb-2">17. oktober 2026 · <a class="text-brand-600 hover:underline" href="/no/blogg/">VPN-bloggen</a></p>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">VPN-tilbud Black Friday 2026: slik får du best pris</h1>
+
+    <DirectAnswer>
+      <p><strong>Black Friday 2026 er fredag 27. november – årets billigste tidspunkt å kjøpe VPN på.</strong></p>
+      <p class="mt-2">De beste tilbudene ligger nesten alltid på 2-års abonnement, der månedsprisen kan falle til rundt 23–39 kroner. Sammenlign reell månedspris – ikke rabattprosenten – og kjøp bare fra leverandører med pengene-tilbake-garanti, slik at du kan angre risikofritt.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvorfor Black Friday er VPN-dagen</h2>
+      <p>VPN-bransjen lever av abonnementer, og Black Friday er årets store vervekampanje. Leverandørene konkurrerer om å gi deg den laveste prisen de kommer til å tilby hele året – og i motsetning til mange andre bransjer er rabattene her stort sett ekte: det er de samme produktene, bare billigere.</p>
+      <p>Det betyr at hvis du likevel vurderer VPN, lønner det seg å vente til slutten av november. Forskjellen mellom å kjøpe i oktober og på Black Friday kan være flere hundre kroner over et 2-års abonnement.</p>
+      <p>Tilbudene starter vanligvis uken før selve fredagen og varer gjennom <strong>Cyber Monday 30. november</strong>. Du har altså noen dagers vindu – bruk det til å sammenligne i ro og mak i stedet for å handle i panikk på fredagskvelden.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">2-års abonnement: derfor lønner det seg nesten alltid</h2>
+      <p>Her er regnestykket leverandørene helst vil at du ikke skal tenke over: Månedsprisen på et 2-års abonnement er typisk <strong>60–70 % lavere</strong> enn månedsprisen på et løpende månedsabonnement. Det er ikke en liten forskjell – det er forskjellen mellom å betale over 100 kroner i måneden og rundt 23–39 kroner.</p>
+      <p>Ta de veiledende prisene våre som eksempel (husk: veiledende priser – sjekk leverandørens nettside):</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Surfshark:</strong> fra 23 kr/mnd på lengste abonnement – billigst i testen vår</li>
+        <li><strong>NordVPN:</strong> fra 39 kr/mnd på lengste abonnement – vårt førstevalg totalt</li>
+        <li><strong>ExpressVPN:</strong> fra 69 kr/mnd på lengste abonnement – dyrere, men svært brukervennlig</li>
+      </ul>
+      <p>På Black Friday faller disse prisene gjerne enda lavere. Men 2-års binding krever tillit – og det er her pengene-tilbake-garantien kommer inn.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Garantien som fjerner risikoen</h2>
+      <p>Det lureste trekket på Black Friday er å kjøpe det lengste (og billigste) abonnementet fra en leverandør med <strong>pengene-tilbake-garanti</strong>. Da får du Black Friday-prisen, men kan likevel angre:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordVPN, Surfshark, ExpressVPN, Proton VPN:</strong> 30 dagers pengene-tilbake-garanti</li>
+        <li><strong>CyberGhost:</strong> 45 dagers pengene-tilbake-garanti – lengst i bransjen</li>
+      </ul>
+      <p>Det betyr at du kan kjøpe på Black Friday, teste tjenesten grundig i desember – hastighet, strømming, apper – og få full refusjon hvis du ikke er fornøyd. Du sitter igjen med null risiko og Black Friday-pris hvis du beholder den.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Fellene du bør unngå</h2>
+      <p>Ikke alle «tilbud» er like gode. Her er det du bør se opp for:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Rabattprosenten lyver:</strong> «Spar 74 %!» høres voldsomt ut, men sammenlign den <em>reelle månedsprisen</em> mellom leverandører. En «stor rabatt» på en dyr tjeneste kan fortsatt være dyrere enn konkurrentens normalpris.</li>
+        <li><strong>Fornyelsesprisen:</strong> Noen tilbud gjelder bare første periode. Sjekk hva abonnementet koster når det fornyes – den prisen kan være vesentlig høyere.</li>
+        <li><strong>Gratis måneder som lokkemiddel:</strong> «Få 3 måneder gratis!» er fint, men regn ut totalprisen delt på totalt antall måneder for å sammenligne epler med epler.</li>
+        <li><strong>Ukjente merker:</strong> På Black Friday dukker det opp aggressive tilbud fra VPN-tjenester du aldri har hørt om. Hold deg til etablerte leverandører med dokumenterte retningslinjer mot logging og uavhengige revisjoner – personvernet ditt er ikke stedet å gamble.</li>
+      </ul>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Når bør du IKKE vente til Black Friday?</h2>
+      <p>Det er ett unntak fra «vent til november»-rådet: hvis du trenger VPN <em>nå</em>. Skal du på reise neste uke og trenger beskyttelse på hotellets Wi-Fi, eller sliter du med geoblokkering i dag, er det dumt å vente en måned for å spare noen hundrelapper.</p>
+      <p>Husk også at pengene-tilbake-garantien gjør tidspunktet mindre kritisk: kjøper du i oktober til normalpris og angrer innen 30 dager, kan du alltids kjøpe på nytt på Black Friday. Men ærlig talt – hvis behovet er akutt, kjøp nå. Personvern utsetter man ikke for en rabatt.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik sammenligner du tilbudene – steg for steg</h2>
+      <p>Når tilbudene ruller inn i november, gjør dette:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>1. Regn ut månedspris:</strong> Totalpris delt på antall måneder – inkludert eventuelle «gratis» måneder.</li>
+        <li><strong>2. Sjekk servere i Norge:</strong> Du vil ha norske servere for nettbank, NRK og lav forsinkelse. Alle våre topp 6 har servere i Norge ifølge leverandørene.</li>
+        <li><strong>3. Sjekk garantien:</strong> Minimum 30 dagers pengene-tilbake-garanti. Uten garanti, ingen lang binding.</li>
+        <li><strong>4. Sjekk fornyelsespris:</strong> Hva koster det når første periode utløper?</li>
+        <li><strong>5. Kjøp, test, behold eller angr:</strong> Bruk garantien aktivt den første måneden.</li>
+      </ul>
+      <p>Vil du ha hele sammenligningen klar før tilbudene kommer? Les <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> – der finner du rangeringen vår med veiledende priser, slik at du vet nøyaktig hva som er et godt tilbud når Black Friday-tallene publiseres.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Vårt førstevalg før Black Friday</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – best totalt med servere i Norge, uavhengig reviderte retningslinjer mot logging og 30 dagers pengene-tilbake-garanti. Veiledende fra 39 kr/mnd – følg med på Black Friday-prisen.</p>
+        <CtaButton brand="nordvpn" label="Sjekk NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">På jakt etter lavest pris? <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark</a> ligger veiledende fra 23 kr/mnd med ubegrenset antall enheter.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>

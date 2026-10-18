@@ -1,0 +1,168 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/vpn-for-reise/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'VPN for reise', url }];
+const title = 'VPN for reise: beskytt deg på hotell og flyplass (2026)';
+const description = 'Skal du på reise? Lær hvordan VPN beskytter deg på hotell-Wi-Fi og flyplass, gir tilgang til norsk Netflix og NRK i utlandet, og sparer deg for trøbbel.';
+const faqs = [
+  {
+    question: 'Trenger jeg VPN når jeg reiser?',
+    answer: 'Ja, det anbefales sterkt. Hotell- og flyplass-Wi-Fi er blant de minst sikre nettverkene som finnes, og en VPN krypterer all trafikken din slik at ingen kan avlytte den. I tillegg får du tilgang til norske tjenester som NRK, nettbank og Vipps som om du var hjemme.',
+  },
+  {
+    question: 'Kan jeg se norsk Netflix på ferie med VPN?',
+    answer: 'Ja. Koble til en norsk VPN-server, så får du norsk IP-adresse og tilgang til det norske Netflix-biblioteket, NRK TV og andre norske strømmetjenester – uansett hvor i verden du er.',
+  },
+  {
+    question: 'Er hotell-Wi-Fi farlig uten VPN?',
+    answer: 'Hotell-Wi-Fi er et av de mest utsatte nettverkene: mange ukjente brukere deler samme nettverk, passordet er ofte skrevet på en lapp i resepsjonen, og angripere kan sette opp falske nettverk med hotellets navn. En VPN krypterer trafikken din og nøytraliserer de vanligste angrepene.',
+  },
+  {
+    question: 'Fungerer Vipps i utlandet med VPN?',
+    answer: 'Ja, hvis du kobler til en norsk VPN-server. Da ser Vipps en norsk IP-adresse og fungerer som normalt. Unngå å bytte mellom servere i ulike land, da det kan utløse Vipps sine sikkerhetskontroller. Les vår guide om VPN og Vipps for detaljer.',
+  },
+  {
+    question: 'Er VPN lovlig å bruke på reise?',
+    answer: 'I Norge og de fleste land er VPN helt lovlig. Unntaket er noen få land med streng internettsensur der VPN-bruk er begrenset. Sjekk UDs reiseinformasjon før du drar til slike land, og installer VPN-en før avreise mens du fortsatt er i Norge.',
+  },
+  {
+    question: 'Hvilken VPN er best for reise?',
+    answer: 'Velg en VPN med mange servere verden over, raske tilkoblinger og apper for alle enhetene dine. NordVPN (veiledende fra 39 kr/mnd) er vårt førstevalg med 165+ land. Surfshark (veiledende fra 23 kr/mnd) er et rimeligere alternativ med ubegrenset antall enheter – praktisk for hele familien på tur.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-10-17', dateModified: '2026-10-17' }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-guide.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-guide.webp" alt="Hvit trådløs ruter med antenner" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">VPN for reise: slik beskytter du deg på hotell og flyplass</h1>
+
+    <DirectAnswer>
+      <p><strong>En VPN er noe av det viktigste du kan ha med på reise.</strong></p>
+      <p class="mt-2">Den beskytter deg på usikre hotell- og flyplassnettverk, gir deg tilgang til norske tjenester (NRK, Netflix Norge, nettbank, Vipps) i utlandet, og kan til og med spare deg penger på flybilletter. Installer den før du drar.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvorfor hotell-Wi-Fi er farlig</h2>
+      <p>Du sjekker inn på hotellet, kobler til Wi-Fi-en med passordet fra resepsjonen – og tror du er trygg fordi det kreves passord. Sannheten er mindre betryggende: <strong>Hotellnettverk er blant de mest utsatte nettverkene du kommer til å bruke.</strong></p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Delt passord:</strong> Alle gjestene bruker samme passord. Det betyr at «krypteringen» bare beskytter mot utenforstående – alle på nettverket kan i prinsippet se hverandres trafikk.</li>
+        <li><strong>Falske nettverk:</strong> Angripere setter opp nettverk med navn som ligner hotellets («Hotel_Guest_FREE») og fanger opp intetanende gjester.</li>
+        <li><strong>Utdatert utstyr:</strong> Mange hoteller bruker gammelt nettverksutstyr med kjente sikkerhetshull som aldri blir oppdatert.</li>
+        <li><strong>Ingen kontroll:</strong> Du aner ikke hvem som administrerer nettverket eller hva de logger.</li>
+      </ul>
+      <p>Det samme gjelder flyplasser, kafeer og togstasjoner. En VPN løser dette elegant: <strong>All trafikk krypteres på enheten din før den forlater den</strong> – så selv på et kompromittert nettverk er dataene dine uleselige for angripere.</p>
+      <p>Hvis du vil forstå teknologien bak, les <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva er VPN?</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Sjekkliste: VPN-klar for avreise</h2>
+      <p>Gjør dette <em>før</em> du drar hjemmefra – ikke på flyplassen:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Installer VPN-appen</strong> på alle enheter du tar med: mobil, nettbrett, PC. I noen land er VPN-nettsider blokkert, så du får ikke lastet ned appen etter ankomst.</li>
+        <li><strong>Logg inn og test</strong> at tilkoblingen fungerer – koble til en server og sjekk at internett fungerer som normalt.</li>
+        <li><strong>Skru på kill switch</strong> i innstillingene. Den kutter nettet automatisk hvis VPN-en faller ut, så du aldri surfer ubeskyttet uten å vite det.</li>
+        <li><strong>Skru på automatisk tilkobling</strong> på ukjente nettverk, hvis appen støtter det. Da er du beskyttet fra første sekund på hotell-Wi-Fi-en.</li>
+        <li><strong>Lagre en norsk favorittserver</strong> for NRK, nettbank og Vipps – ett trykk unna når du trenger norske tjenester.</li>
+      </ol>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Se norsk TV i utlandet</h2>
+      <p>En av de mest populære grunnene nordmenn bruker VPN på reise: <strong>norsk underholdning i utlandet.</strong> Koble til en norsk server, så får du:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NRK TV:</strong> Full tilgang som hjemme – les vår guide <a class="text-brand-600 hover:underline" href="/no/se-nrk-i-utlandet/">se NRK i utlandet</a>.</li>
+        <li><strong>Norsk Netflix:</strong> Det norske biblioteket i stedet for det lokale.</li>
+        <li><strong>TV 2 Play og Viaplay:</strong> Dine norske abonnementer fungerer som normalt.</li>
+        <li><strong>Norske nyheter:</strong> VG, Dagbladet og NRK uten regionale begrensninger.</li>
+      </ul>
+      <p>Spesielt for familier med barn er dette gull verdt: Kjente og kjære norske barnetv-programmer på hotellrommet etter en lang dag – uten språkbarrierer eller ukjent innhold.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Nettbank, Vipps og BankID på reise</h2>
+      <p>Skal du betale hotellregningen, overføre penger eller sjekke nettbanken fra utlandet? Norske bank- og betalingstjenester forventer norske IP-adresser:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Bruk alltid norsk server</strong> til nettbank, Vipps og BankID – se våre guider <a class="text-brand-600 hover:underline" href="/no/vpn-og-bankid/">VPN og BankID</a> og <a class="text-brand-600 hover:underline" href="/no/vpn-og-vipps/">VPN og Vipps</a>.</li>
+        <li><strong>Ikke bytt land ofte:</strong> Hold deg til én norsk server for banktjenester gjennom hele reisen.</li>
+        <li><strong>Unngå offentlige PC-er:</strong> Bruk aldri hotellets lobby-PC til nettbank – bruk din egen enhet med VPN.</li>
+      </ul>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Kan VPN spare deg penger på reise?</h2>
+      <p>Her er et triks mange ikke kjenner: <strong>Flybilletter og hoteller prises ulikt etter land.</strong> Flyselskaper og bookingtjenester viser ofte ulike priser basert på hvor i verden du «befinner deg». Ved å bytte VPN-server mellom noen få land og sammenligne priser, hender det at man finner rimeligere alternativer.</p>
+      <p>Ærlighet først: Dette fungerer ikke alltid, og besparelsene varierer. Men det koster deg fem minutter å sjekke – og mange reisende rapporterer at de finner bedre priser ved å sammenligne fra ulike «lokasjoner». Tøm informasjonskapsler mellom hvert søk, slik at nettsiden ikke husker dine tidligere søk og justerer prisene.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">VPN i land med sensur – vær forberedt</h2>
+      <p>De fleste feriedestinasjoner har ingen VPN-restriksjoner. Men noen få land begrenser VPN-bruk. Hvis du skal til et land med kjent internettsensur:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Installer før avreise</strong> – VPN-nettsider og appbutikker kan være blokkert ved ankomst.</li>
+        <li><strong>Last ned konfigurasjonsfiler</strong> for manuell tilkobling som backup.</li>
+        <li><strong>Sjekk UDs reiseinformasjon</strong> for oppdatert veiledning om det aktuelle landet.</li>
+        <li><strong>Velg en leverandør med kamuflasjemodus</strong> (obfuscation) som skjuler at du bruker VPN.</li>
+      </ul>
+      <p>Merk: Det er destinasjonslandets regler som gjelder når du er der. I Norge og EU er VPN helt uproblematisk – les <a class="text-brand-600 hover:underline" href="/no/er-vpn-lovlig-i-norge/">er VPN lovlig i Norge?</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Familien på tur: én VPN dekker alle</h2>
+      <p>Reiser dere flere? Da lønner det seg å velge en VPN med mange samtidige enheter. <strong>Surfshark tillater ubegrenset antall enheter</strong> på ett abonnement – hele familiens mobiler, nettbrett og PC-er beskyttet for veiledende 23 kr/mnd. NordVPN tillater 10 enheter samtidig, som holder for de fleste familier.</p>
+      <p class="text-sm text-slate-500">Veiledende priser – sjekk leverandørens nettside for oppdaterte tilbud.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvilken VPN er best for reise?</h2>
+      <p>For reise teller tre ting mest: mange land å velge mellom, raske servere og apper som fungerer på alle enheter. Våre anbefalinger:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordVPN</strong> – 165+ land, rask NordLynx-protokoll, 10 enheter. Veiledende fra 39 kr/mnd.</li>
+        <li><strong>Surfshark</strong> – 100 land, ubegrenset antall enheter, lavest pris. Veiledende fra 23 kr/mnd.</li>
+        <li><strong>ExpressVPN</strong> – svært brukervennlig, MediaStreamer for smart-TV på hotellet. Veiledende fra 69 kr/mnd.</li>
+      </ul>
+      <p>Alle tre har 30 dagers pengene-tilbake-garanti – bestill før ferien, test på reisen, og få pengene tilbake hvis du ikke er fornøyd.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Flyplass-Wi-Fi: de konkrete farene</h2>
+      <p>Flyplasser er høytrafikkerte knutepunkter der tusenvis av reisende kobler seg til samme nettverk hver dag – et drømmescenario for angripere. Her er hva som faktisk skjer:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Evil twin-nettverk:</strong> Angriperen setter opp et nettverk som heter «Oslo Airport Free WiFi» – du kobler til det i stedet for det ekte, og all trafikken din går gjennom angriperens utstyr.</li>
+        <li><strong>Pakkesniffing:</strong> På ukrypte nettverk kan hvem som helst med gratis programvare lese ukryptert trafikk – e-poster, chatmeldinger, passord på nettsider uten HTTPS.</li>
+        <li><strong>Sesjonskapring:</strong> Angripere stjeler innloggingsinformasjonskapsler og overtar aktive sesjoner – de er «deg» på Facebook, e-post eller nettbutikker uten å kunne passordet ditt.</li>
+        <li><strong>DNS-forfalskning:</strong> Du taster inn bankens adresse, men blir sendt til en falsk kopi som stjeler innloggingsdetaljene dine.</li>
+      </ul>
+      <p>En VPN nøytraliserer alle disse angrepene på én gang, fordi trafikken er kryptert før den forlater enheten din. Angriperen ser bare uleselig kryptert data – uansett hvor ondsinnet nettverket er.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Digital pakkeliste: sikkerhet på reise</h2>
+      <p>Legg til disse punktene på pakkelisten, ved siden av pass og ladere:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>VPN installert og testet</strong> på alle enheter – gjort hjemmefra, ikke på flyplassen.</li>
+        <li><strong>Tofaktorautentisering (2FA)</strong> skrudd på for e-post, bank og sosiale medier – din viktigste forsvarslinje hvis noe går galt.</li>
+        <li><strong>Telefonen låst med PIN/biometri</strong> – og «finn enheten min» aktivert i tilfelle tyveri.</li>
+        <li><strong>Backup av viktige dokumenter</strong> – passkopi, forsikringsnummer og nødnumre lagret kryptert i skyen.</li>
+        <li><strong>Oppdaterte apper og system</strong> – sikkerhetshull tettes i oppdateringer; reis aldri med utdatert programvare.</li>
+        <li><strong>Skru av automatisk Wi-Fi-tilkobling</strong> – telefonen skal ikke koble seg til ukjente nettverk av seg selv.</li>
+      </ul>
+      <p>Bonus: Vurder et eSIM eller lokalt SIM-kort på lengre reiser. Mobildata er generelt tryggere enn offentlig Wi-Fi, og med VPN oppå er du dobbelt beskyttet.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Jobb på reise: hjemmekontor fra hotellet</h2>
+      <p>Reiser du i jobb og må koble til bedriftens systemer fra hotellet? Da er VPN ikke valgfritt – det er ofte påkrevd:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Bedriftens VPN først:</strong> De fleste arbeidsgivere krever tilkobling via bedriftens egen VPN-løsning for tilgang til interne systemer.</li>
+        <li><strong>Ikke miks privat og jobb:</strong> Bruk bedriftens VPN til jobbsystemer og din private VPN til alt annet – ikke kjør dem samtidig.</li>
+        <li><strong>Videomøter:</strong> Hotell-Wi-Fi har ofte dårlig opplastingshastighet. Test Teams/Zoom med VPN før viktige møter, og ha mobildata som backup.</li>
+        <li><strong>Sensitive dokumenter:</strong> Unngå å laste ned sensitive filer til hotellets nettverk uten VPN – og slett lokale kopier etter bruk.</li>
+      </ul>
+      <p>Sjekk alltid arbeidsgiverens IT-regler før avreise. Noen virksomheter har restriksjoner på hvilke land du kan koble til fra, eller krever at sikkerhetsavdelingen godkjenner reisen på forhånd.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Klar for avreise?</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – 165+ land, raske servere og 30 dagers pengene-tilbake-garanti. Veiledende fra 39 kr/mnd.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Se <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full rangering.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>

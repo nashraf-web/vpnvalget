@@ -8,7 +8,7 @@ import Methodology from '../../../components/Methodology.astro';
 import DirectAnswer from '../../../components/DirectAnswer.astro';
 import Faq from '../../../components/Faq.astro';
 import CtaButton from '../../../components/CtaButton.astro';
-import { site } from '../../../data/site';
+import { site, goUrl } from '../../../data/site';
 import { vpnBySlug } from '../../../data/vpns';
 import { reviewSchema, faqSchema, breadcrumbSchema, articleSchema } from '../../../data/schema';
 
@@ -41,7 +41,7 @@ const schema = [
 const alternates = { no: url, 'x-default': url };
 ---
 
-<Base
+<Base ogImage="/og-anmeldelse.webp"
   title={review.data.title}
   description={review.data.description}
   canonical={url}
@@ -50,6 +50,9 @@ const alternates = { no: url, 'x-default': url };
   schema={schema}
 >
   <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-anmeldelse.webp" alt="Bokstaver som staver ordet REVIEW på hvit marmor" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
   <article>
     <header class="mb-8">
       <h1 class="text-3xl sm:text-4xl font-extrabold text-ink leading-tight mb-4">{review.data.title}</h1>
@@ -65,14 +68,32 @@ const alternates = { no: url, 'x-default': url };
       <p class="mt-2">{review.data.directAnswer}</p>
     </DirectAnswer>
 
-    <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8 flex flex-col sm:flex-row items-center gap-6">
-      <div class="flex-1">
-        <p class="text-sm text-slate-500 mb-1">{vpn.bestFor}</p>
-        <p class="text-3xl font-extrabold text-ink">fra {vpn.priceNokFrom} kr<span class="text-base font-medium text-slate-500">/mnd</span></p>
-        <p class="text-xs text-slate-500 mt-1">{vpn.moneyBackDays} dagers pengene-tilbake-garanti · {vpn.maxDevices} enheter</p>
+    <section class="my-8 rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden" aria-label="Vår dom">
+      <div class="bg-brand-900 px-6 py-4 flex items-center justify-between gap-4">
+        <p class="text-white font-extrabold text-sm uppercase tracking-widest">Vår dom</p>
+        <span class="inline-block bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full">{vpn.bestFor}</span>
       </div>
-      <CtaButton brand={vpn.goSlug} label={`Prøv ${vpn.name}`} sub={`${vpn.moneyBackDays} dager risikofritt`} />
-    </div>
+      <div class="p-6 sm:p-8">
+        <div class="flex flex-col sm:flex-row items-center gap-6">
+          <div class="flex flex-col items-center shrink-0 bg-brand-50 border border-brand-100 rounded-2xl px-8 py-5">
+            <span class="text-5xl font-extrabold text-brand-700">{vpn.rating.toFixed(1)}</span>
+            <span class="text-xs text-slate-500 font-medium mt-1">av 5</span>
+            <div class="mt-2"><Stars rating={vpn.rating} size="sm" /></div>
+          </div>
+          <div class="flex-1 text-center sm:text-left">
+            <p class="text-3xl font-extrabold text-ink">fra {vpn.priceNokFrom} kr<span class="text-base font-medium text-slate-500">/mnd</span></p>
+            <ul class="mt-3 space-y-1.5 text-sm text-slate-600">
+              <li class="flex items-center justify-center sm:justify-start gap-2"><span class="text-emerald-500 font-bold" aria-hidden="true">✓</span> {vpn.moneyBackDays} dagers pengene-tilbake-garanti</li>
+              <li class="flex items-center justify-center sm:justify-start gap-2"><span class="text-emerald-500 font-bold" aria-hidden="true">✓</span> {vpn.maxDevices} enheter samtidig</li>
+              <li class="flex items-center justify-center sm:justify-start gap-2"><span class="text-emerald-500 font-bold" aria-hidden="true">✓</span> {vpn.norwayServers}</li>
+            </ul>
+          </div>
+          <div class="shrink-0 w-full sm:w-auto">
+            <CtaButton brand={vpn.goSlug} label={`Prøv ${vpn.name}`} sub={`${vpn.moneyBackDays} dager risikofritt`} />
+          </div>
+        </div>
+      </div>
+    </section>
 
     <div class="prose-vpn max-w-none text-slate-700 leading-relaxed space-y-5
                 [&_h2]:text-2xl [&_h2]:font-extrabold [&_h2]:text-ink [&_h2]:mt-10 [&_h2]:mb-4
@@ -112,4 +133,41 @@ const alternates = { no: url, 'x-default': url };
       </section>
     )}
   </article>
+
+  <!-- Sticky mobile CTA (review pages) -->
+  <div id="vv-review-cta" class="fixed bottom-0 inset-x-0 z-40 md:hidden translate-y-full transition-transform duration-300 ease-out" aria-hidden="true">
+    <div class="bg-brand-900/95 backdrop-blur border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.15)]">
+      <div class="px-4 py-3 flex items-center gap-3">
+        <div class="flex-1 min-w-0">
+          <p class="text-white font-bold text-sm truncate">{vpn.name} – {vpn.rating.toFixed(1)}/5</p>
+          <p class="text-slate-300 text-xs">fra {vpn.priceNokFrom} kr/mnd · {vpn.moneyBackDays} dagers garanti</p>
+        </div>
+        <a href={goUrl(vpn.goSlug)} rel="sponsored nofollow noopener"
+           class="shrink-0 bg-brand-500 hover:bg-brand-400 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-colors">
+          Prøv nå
+        </a>
+      </div>
+      <p class="text-center text-[10px] text-slate-400 pb-1.5 -mt-1"><span class="font-semibold uppercase">Annonse</span> – affiliatelenke</p>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ minScroll: 600 }}>
+    (function () {
+      var bar = document.getElementById('vv-review-cta');
+      if (!bar) return;
+      var shown = false;
+      function onScroll() {
+        var past = window.scrollY > minScroll;
+        var nearBottom = (window.innerHeight + window.scrollY) > (document.body.scrollHeight - 600);
+        var shouldShow = past && !nearBottom;
+        if (shouldShow !== shown) {
+          shown = shouldShow;
+          bar.classList.toggle('translate-y-full', !shown);
+          bar.setAttribute('aria-hidden', String(!shown));
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
 </Base>

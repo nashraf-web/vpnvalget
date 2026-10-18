@@ -7,6 +7,7 @@ import DirectAnswer from '../../components/DirectAnswer.astro';
 import Faq from '../../components/Faq.astro';
 import CtaButton from '../../components/CtaButton.astro';
 import Methodology from '../../components/Methodology.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import { site } from '../../data/site';
 import { topVpns } from '../../data/vpns';
 import { faqSchema, breadcrumbSchema, websiteSchema, organizationSchema, articleSchema } from '../../data/schema';
@@ -62,15 +63,38 @@ const best = topVpns[0];
        alternates={{ no: url, 'x-default': url }} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
 
-  <header class="mb-8">
-    <h1 class="text-3xl sm:text-5xl font-extrabold text-ink leading-tight mb-4">
-      Beste VPN for Norge i 2026
-    </h1>
-    <p class="text-lg text-slate-600 leading-relaxed max-w-3xl">
-      Vi har vurdert de <strong>6 beste VPN-tjenestene</strong> for det norske markedet –
-      med vekt på personvern, servere i Norge, pris i kroner og brukervennlighet.
-      Ingen betalt rangering. Sist oppdatert oktober 2026.
-    </p>
+  <header class="vv-fade-up relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-900 via-brand-900 to-brand-700 text-white px-6 py-10 sm:px-10 sm:py-14 mb-8 shadow-lg">
+    <div aria-hidden="true" class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20% 20%, #fff 1.5px, transparent 1.5px), radial-gradient(circle at 80% 70%, #fff 1.5px, transparent 1.5px); background-size: 42px 42px;"></div>
+    <div class="relative">
+      <p class="vv-fade-up inline-flex items-center gap-2 bg-white/10 border border-white/15 text-brand-100 text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full mb-5">
+        <span class="w-2 h-2 rounded-full bg-emerald-400" aria-hidden="true"></span>
+        Oppdatert oktober 2026
+      </p>
+      <h1 class="vv-fade-up vv-fade-up-1 text-3xl sm:text-5xl font-extrabold leading-tight mb-4 max-w-3xl">
+        Beste VPN for Norge i 2026
+      </h1>
+      <p class="vv-fade-up vv-fade-up-2 text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl">
+        Vi har vurdert de <strong class="text-white">6 beste VPN-tjenestene</strong> for det norske
+        markedet – med vekt på personvern, servere i Norge og pris i kroner.
+        Ærlig guide. Ingen betalt rangering.
+      </p>
+      <div class="vv-fade-up vv-fade-up-2 mt-7 flex flex-col sm:flex-row gap-3">
+        <a href="#sammenligning"
+           class="inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-amber-950 font-extrabold px-7 py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-px">
+          Se sammenligningen <span aria-hidden="true">↓</span>
+        </a>
+        <a href="/no/anmeldelser/"
+           class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold px-7 py-3.5 rounded-xl transition-colors">
+          Les anmeldelser <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <ul class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
+        <li class="flex items-center gap-2 text-slate-200"><span class="text-emerald-400 font-bold" aria-hidden="true">✓</span> 6 tjenester vurdert</li>
+        <li class="flex items-center gap-2 text-slate-200"><span class="text-emerald-400 font-bold" aria-hidden="true">✓</span> Priser i NOK</li>
+        <li class="flex items-center gap-2 text-slate-200"><span class="text-emerald-400 font-bold" aria-hidden="true">✓</span> Pengene-tilbake-garanti</li>
+        <li class="flex items-center gap-2 text-slate-200"><span class="text-emerald-400 font-bold" aria-hidden="true">✓</span> Uavhengig redaksjon</li>
+      </ul>
+    </div>
   </header>
 
   <DirectAnswer>
@@ -82,18 +106,25 @@ const best = topVpns[0];
   <ComparisonTable vpns={topVpns} />
 
   <section class="my-12" aria-label="Best i hver kategori">
-    <h2 class="text-2xl font-extrabold text-ink mb-6">Best i hver kategori</h2>
+    <h2 class="text-2xl font-extrabold text-ink mb-2">Best i hver kategori</h2>
+    <p class="text-slate-500 mb-6">Én vinner per bruksområde – valgt av redaksjonen, ikke av annonsører.</p>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {topVpns.slice(0, 6).map((v) => (
-        <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col">
+      {topVpns.slice(0, 6).map((v, i) => (
+        <div class={`relative bg-white border rounded-2xl p-6 flex flex-col transition-all duration-200 hover:shadow-lg hover:-translate-y-1 hover:border-brand-300 ${i === 0 ? 'border-amber-300 ring-1 ring-amber-300/50' : 'border-slate-200'}`}>
+          {i === 0 && (
+            <span class="absolute -top-3 left-5 inline-flex items-center gap-1 bg-amber-400 text-amber-950 text-[11px] font-extrabold uppercase tracking-wide px-3 py-1 rounded-full shadow">
+              <span aria-hidden="true">🏆</span> #1 totalt
+            </span>
+          )}
           <span class="inline-block self-start bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full mb-3">{v.bestFor}</span>
           <p class="font-extrabold text-xl text-ink">{v.name}</p>
           <div class="my-2"><Stars rating={v.rating} size="sm" /></div>
           <p class="text-sm text-slate-600 flex-1">{v.summary}</p>
-          <p class="text-lg font-extrabold text-ink mt-3">fra {v.priceNokFrom} kr<span class="text-sm font-medium text-slate-500">/mnd</span></p>
+          <p class="text-2xl font-extrabold text-ink mt-3">fra {v.priceNokFrom} kr<span class="text-sm font-medium text-slate-500">/mnd</span></p>
+          <p class="text-xs text-slate-500 mt-1">{v.moneyBackDays} dagers pengene-tilbake-garanti</p>
           <div class="mt-4 flex flex-col gap-2">
             <CtaButton brand={v.goSlug} label={`Se tilbud hos ${v.name}`} />
-            <a href={`/no/anmeldelser/${v.slug}/`} class="text-sm text-brand-600 hover:underline font-medium text-center">Les vår anmeldelse →</a>
+            <a href={`/no/anmeldelser/${v.slug}/`} class="text-sm text-brand-600 hover:text-brand-700 hover:underline font-semibold text-center transition-colors">Les vår anmeldelse →</a>
           </div>
         </div>
       ))}
@@ -158,4 +189,6 @@ const best = topVpns[0];
       <li><a class="block bg-white border border-slate-200 rounded-xl p-4 hover:border-brand-500 hover:shadow-sm transition-all" href="/no/sammenlign/nordvpn-vs-surfshark/"><span class="font-bold text-ink">NordVPN vs Surfshark →</span><span class="block text-sm text-slate-500 mt-1">De to mest populære – hvem vinner?</span></a></li>
     </ul>
   </nav>
+
+  <NewsletterSignup />
 </Base>

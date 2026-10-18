@@ -45,7 +45,7 @@ export const goUrl = (brand: string): string => `/go/${brand}`;
  */
 export const analytics = {
   /** e.g. 'G-XXXXXXXXXX' */
-  ga4MeasurementId: '',
+  ga4MeasurementId: 'G-KN1EL14532',
   /** Google Search Console HTML-tag verification content value */
   googleSiteVerification: '',
   /** Bing Webmaster Tools verification content value */

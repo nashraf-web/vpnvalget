@@ -44,8 +44,11 @@ const schema = [
 ];
 ---
 
-<Base title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+<Base ogImage="/og-streaming.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-streaming.webp" alt="Person strømmer sport på TV med VPN-app på smarttelefonen" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
   <article class="max-w-3xl">
     <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Beste VPN for fotball og Eliteserien</h1>
 

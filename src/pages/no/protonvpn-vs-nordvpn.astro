@@ -1,0 +1,189 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/protonvpn-vs-nordvpn/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'ProtonVPN vs NordVPN', url }];
+const title = 'ProtonVPN vs NordVPN: personvern-duellen (2026)';
+const description = 'ProtonVPN vs NordVPN – hvilken er best for personvern? Vi sammenligner Sveits mot Panama, åpen kildekode, hastighet og pris. Ærlig duell for norske brukere.';
+const faqs = [
+  {
+    question: 'Hvilken har best personvern – ProtonVPN eller NordVPN?',
+    answer: 'Begge er blant markedets beste på personvern med uavhengig reviderte retningslinjer mot logging. Proton VPN har et forsprang på åpenhet: sveitsisk jurisdiksjon, åpen kildekode på alle apper og publiserte revisjonsrapporter. NordVPN har til gjengjeld flere uavhengige revisjoner over tid og RAM-baserte servere. For de aller fleste er begge mer enn gode nok.',
+  },
+  {
+    question: 'Hva betyr det at Proton VPN er basert i Sveits?',
+    answer: 'Sveits står utenfor EU og USA og har tradisjonelt sterke personvernlover. Det betyr at sveitsiske myndigheter ikke uten videre kan kreve utlevert brukerdata til andre land. NordVPN er basert i Panama, som også står utenfor de store overvåkingsalliansene. I praksis er begge jurisdiksjoner gode valg for personvern.',
+  },
+  {
+    question: 'Hvilken er raskest?',
+    answer: 'Vi har ikke publisert egne hastighetstester. NordVPNs NordLynx-protokoll (basert på WireGuard) er kjent for høy hastighet, og selskapet har et svært stort servernettverk med 8 000+ servere. Proton VPN bruker også WireGuard og har 8 600+ servere. Til vanlig norsk bruk – strømming, surfing, videomøter – vil de færreste merke forskjell.',
+  },
+  {
+    question: 'Hvilken er billigst?',
+    answer: 'Prisene er nesten identiske: Proton VPN koster veiledende fra 38 kr/mnd og NordVPN fra 39 kr/mnd på lengste abonnement. Proton VPN skiller seg ut med et gratisabonnement (med begrensninger på hastighet og servere) som lar deg prøve tjenesten uten å betale. Begge har 30 dagers pengene-tilbake-garanti på betalte abonnement.',
+  },
+  {
+    question: 'Hvilken er best for strømming?',
+    answer: 'NordVPN har et lite forsprang på strømming med bred dokumentasjon for tilgang til geoblokkert innhold og servere optimalisert for det. Proton VPN fungerer også med strømmetjenester på sine betalte abonnement, men gratisversjonen er ikke egnet for strømming. Hvis strømming er hovedgrunnen din til å skaffe VPN, er NordVPN det tryggere valget.',
+  },
+  {
+    question: 'Hvilken bør jeg velge?',
+    answer: 'Velg Proton VPN hvis personvern og åpenhet er din høyeste prioritet – sveitsisk base, åpen kildekode og gratisversjon gjør den unik. Velg NordVPN hvis du vil ha den beste totalpakken med størst servernettverk, best dokumentert strømmetilgang og mest polerte apper. Begge har servere i Norge.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-10-17', dateModified: '2026-10-17' }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-sammenligning.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-sammenligning.webp" alt="To lyspærer holdes opp – symbol på sammenligning av to alternativer" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">ProtonVPN vs NordVPN: personvern-duellen</h1>
+
+    <DirectAnswer>
+      <p><strong>Det korte svaret: Proton VPN vinner på åpenhet, NordVPN vinner på totalpakken.</strong></p>
+      <p class="mt-2">Proton VPN er basert i Sveits, har åpen kildekode på alle apper og tilbyr til og med et gratisabonnement – uslåelig for den personvernbevisste. NordVPN (vår vurdering 4,9/5) har større servernettverk, mer polerte apper og bedre dokumentert tilgang til strømmetjenester. Prisene er nesten like: fra 38 kr/mnd mot fra 39 kr/mnd. Begge har servere i Norge og uavhengig reviderte retningslinjer mot logging.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Rask sammenligning: ProtonVPN vs NordVPN</h2>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-200 p-3 text-left"></th>
+              <th class="border border-slate-200 p-3 text-left font-bold">Proton VPN</th>
+              <th class="border border-slate-200 p-3 text-left font-bold">NordVPN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Veiledende pris</td>
+              <td class="border border-slate-200 p-3">Fra 38 kr/mnd</td>
+              <td class="border border-slate-200 p-3">Fra 39 kr/mnd</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Gratisversjon</td>
+              <td class="border border-slate-200 p-3">Ja (begrenset)</td>
+              <td class="border border-slate-200 p-3">Nei</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Jurisdiksjon</td>
+              <td class="border border-slate-200 p-3">Sveits</td>
+              <td class="border border-slate-200 p-3">Panama</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Åpen kildekode</td>
+              <td class="border border-slate-200 p-3">Ja – alle apper</td>
+              <td class="border border-slate-200 p-3">Nei</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Servere (ifølge leverandøren)</td>
+              <td class="border border-slate-200 p-3">8 600+ i 110+ land</td>
+              <td class="border border-slate-200 p-3">8 000+ i 165+ land</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Samtidige enheter</td>
+              <td class="border border-slate-200 p-3">10</td>
+              <td class="border border-slate-200 p-3">10</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Pengene-tilbake-garanti</td>
+              <td class="border border-slate-200 p-3">30 dager</td>
+              <td class="border border-slate-200 p-3">30 dager</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Servere i Norge</td>
+              <td class="border border-slate-200 p-3">Ja</td>
+              <td class="border border-slate-200 p-3">Ja</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Vår vurdering</td>
+              <td class="border border-slate-200 p-3 font-bold">4,5 / 5</td>
+              <td class="border border-slate-200 p-3 font-bold">4,9 / 5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-slate-500">Veiledende priser – sjekk leverandørens nettside for gjeldende tilbud. Vurderingene er redaksjonelle.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Jurisdiksjon: Sveits mot Panama</h2>
+      <p>Dette er kjernen i duellen – og det som gjør den interessant for personvernbevisste nordmenn.</p>
+      <p><strong>Proton VPN er basert i Sveits.</strong> Sveits står utenfor EU og USA, har ingen plikt til å dele data med utenlandske etterretningstjenester gjennom avtaler som «Fourteen Eyes», og har noen av verdens strengeste personvernlover. Proton som selskap har også en merittliste: Da sveitsiske myndigheter i 2021 påla dem å logge en spesifikk bruker etter rettskjennelse, anket Proton og tapte – men saken viste at selskapet faktisk ikke hadde noe å utlevere utover det myndighetene krevde fremoverrettet. Det er den typen åpenhet personvernmiljøet verdsetter.</p>
+      <p><strong>NordVPN er basert i Panama.</strong> Panama står også utenfor de store overvåkingsalliansene og har ingen lover om obligatorisk datalagring. NordVPN har bestått flere uavhengige revisjoner av sine retningslinjer mot logging – det vil si at eksterne revisorer har bekreftet at selskapet ikke lagrer bruksdata.</p>
+      <p>I praksis er begge jurisdiksjoner gode. Forskjellen er filosofisk: Proton bygger tillit gjennom åpenhet (åpen kildekode, publiserte revisjonsrapporter, transparensrapporter), mens NordVPN bygger tillit gjennom revisjoner og teknisk arkitektur (RAM-servere som ikke kan lagre data permanent).</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Åpen kildekode: Protons unike fordel</h2>
+      <p>Dette er Proton VPNs sterkeste kort, og noe ingen av de andre store leverandørene kan matche: <strong>Alle Proton VPN-appene er åpen kildekode.</strong> Det betyr at hvem som helst – sikkerhetsforskere, journalister, konkurrenter – kan lese koden og verifisere at appen faktisk gjør det den sier.</p>
+      <p>Hvorfor betyr det noe? Fordi en VPN-app har full tilgang til all nettverkstrafikken din. Du må stole blindt på at den ikke lekker, logger eller manipulerer data. Med åpen kildekode trenger du ikke stole blindt – koden kan etterprøves. Proton publiserer også resultatene av uavhengige sikkerhetsrevisjoner av appene.</p>
+      <p>NordVPNs apper er lukket kildekode. Selskapet kompenserer med uavhengige revisjoner av retningslinjene mot logging og bug bounty-programmer, men du kan ikke selv verifisere koden. For de fleste brukere er dette uproblematisk – men for den som setter åpenhet høyest, er Proton det eneste riktige valget.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Gratisversjonen: prøv før du kjøper</h2>
+      <p>Proton VPN tilbyr noe unikt blant seriøse VPN-leverandører: <strong>et faktisk gratisabonnement uten tidsbegrensning.</strong> Det er ikke en prøveperiode – det er gratis for alltid, finansiert av betalende kunder.</p>
+      <p>Men vær klar over begrensningene: gratisversjonen har begrenset hastighet, et lite utvalg servere (ingen i Norge) og støtter ikke strømming av geoblokkert innhold. Den er ment for grunnleggende personvern – ikke som erstatning for et betalt abonnement.</p>
+      <p>Likevel er gratisversjonen genial for deg som er skeptisk: Du kan installere den i dag, teste at VPN faktisk fungerer på enhetene dine, og oppgradere til betalt når du er overbevist. Ingen kredittkort kreves for gratisversjonen. Les mer om fordeler og ulemper i vår guide <a class="text-brand-600 hover:underline" href="/no/gratis-vpn-vs-betalt/">gratis VPN vs betalt</a>.</p>
+      <p>NordVPN har ingen gratisversjon, men 30 dagers pengene-tilbake-garanti fungerer i praksis som en risikofri prøveperiode.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Servernettverk og dekning</h2>
+      <p>Tallene er imponerende hos begge: Proton VPN oppgir 8 600+ servere i 110+ land, NordVPN oppgir 8 000+ servere i 165+ land. Begge har servere i Norge – viktig for deg som vil ha norsk IP-adresse til nettbank, NRK og norske tjenester.</p>
+      <p>NordVPN dekker flere land (165+ mot 110+), som betyr flere eksotiske serverplasseringer hvis du trenger det. Proton VPN har til gjengjeld Secure Core-servere – trafikken rutes via ekstra sikre servere i Sveits, Sverige eller Island før den går videre. Det gir ekstra beskyttelse mot avanserte angrep, på bekostning av noe hastighet.</p>
+      <p>For en norsk bruker som hovedsakelig kobler til Norge, Sverige, Storbritannia og USA, er forskjellen ubetydelig. Begge har rikelig kapasitet.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Strømming: NordVPN leder</h2>
+      <p>Hvis hovedgrunnen din til å skaffe VPN er strømming – å se <a class="text-brand-600 hover:underline" href="/no/se-nrk-i-utlandet/">NRK i utlandet</a>, amerikansk Netflix eller andre geoblokkerte biblioteker – er NordVPN det tryggere valget. Selskapet har bredest dokumentasjon for strømmetilgang og investerer tungt i å holde serverne sine ublokkerte.</p>
+      <p>Proton VPN fungerer også med strømmetjenester på betalte abonnement, og har blitt bedre de siste årene. Men strømming har aldri vært Protons hovedfokus – personvern er det. Hvis du streamer mye, bør det veie tungt.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Pris: nesten identisk</h2>
+      <p>Her er det lite å velge mellom: Proton VPN koster veiledende fra 38 kr/mnd, NordVPN fra 39 kr/mnd på lengste abonnement. Én krone i måneden skiller dem – i praksis samme pris.</p>
+      <p>Den reelle prisforskjellen ligger i inngangsbilletten: Proton lar deg starte gratis og oppgradere når du vil. NordVPN krever betaling fra dag én (med 30 dagers angrefrist som sikkerhetsnett). Hvis du er usikker på om VPN er noe for deg, er Protons gratisversjon den risikofrieste starten i bransjen.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvem bør velge hva?</h2>
+      <p><strong>Velg Proton VPN hvis:</strong> personvern og åpenhet er din høyeste prioritet. Sveitsisk jurisdiksjon, åpen kildekode, publiserte revisjoner og en ærlig gratisversjon gjør den til det mest transparente valget på markedet. Vår vurdering er 4,5/5.</p>
+      <p><strong>Velg NordVPN hvis:</strong> du vil ha den beste totalpakken – størst landdekning, best dokumentert strømmetilgang, mest polerte apper og trusselbeskyttelse inkludert. Vår vurdering er 4,9/5, vårt høyeste terningkast.</p>
+      <p><strong>Vårt ærlige råd:</strong> Er du personvernentusiast, journalist, aktivist eller bare prinsipielt opptatt av åpenhet – ta Proton VPN. Er du en vanlig norsk bruker som vil ha «den beste VPN-en, ferdig snakka» – ta NordVPN. Du tar ikke feil uansett.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Proton-økosystemet: en fordel NordVPN ikke har</h2>
+      <p> Noe som sjelden nevnes i sammenligninger, men som kan vippe valget for mange: Proton VPN er del av et større personvernøkosystem. Samme selskap står bak <strong>Proton Mail</strong> (kryptert e-post), <strong>Proton Drive</strong> (kryptert skylagring), <strong>Proton Calendar</strong> og <strong>Proton Pass</strong> (passordbehandling).</p>
+      <p>Hvorfor betyr det noe? Hvis du allerede bruker – eller vurderer å bytte til – krypterte alternativer til Gmail og Google Drive, får du alt samlet under én sveitsisk paraply med én innlogging og én faktura. Proton Unlimited-abonnementet inkluderer alle tjenestene, og det kan faktisk bli rimeligere enn å betale for VPN, e-post og lagring hver for seg.</p>
+      <p>NordVPN har også bygget ut økosystemet sitt (NordPass for passord, NordLocker for lagring, Incogni for fjerning av persondata fra datameglere), men disse er separate produkter uten samme integrerte personvernfilosofi som Protons. For den som vil «de-Google» livet sitt, er Proton det mer helhetlige valget.</p>
+      <p>For den vanlige norske brukeren som bare trenger VPN, er dette mindre relevant – men det er verdt å vite at valget ditt kan vokse med deg.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">For norske brukere spesielt</h2>
+      <p>Noen praktiske forhold for deg som bor i Norge:</p>
+      <p><strong>Servere i Norge:</strong> Begge har servere i Norge – viktig for nettbank, <a class="text-brand-600 hover:underline" href="/no/vpn-og-bankid/">BankID</a> og for å se <a class="text-brand-600 hover:underline" href="/no/se-nrk-i-utlandet/">NRK i utlandet</a>. Med norsk server unngår du at bankens sikkerhetssystemer reagerer på utenlandsk IP.</p>
+      <p><strong>Hastighet fra Norge:</strong> Begge har god kapasitet på nordeuropeiske servere. Med norsk fiberforbindelse og server i Oslo eller Stockholm vil du sjelden merke at VPN-en er på – verken til strømming, videomøter eller vanlig surfing.</p>
+      <p><strong>Personvern og norske myndigheter:</strong> Verken sveitsiske eller panamanske myndigheter utleverer rutinemessig data til Norge uten rettslig prosess, og begge selskapene har retningslinjer mot logging som er uavhengig revidert. For en lovlydig norsk bruker er dette et ikke-tema – men det er godt å vite at personvernet står seg.</p>
+      <p><strong>Hvilken er enklest for nybegynnere?</strong> NordVPN har mer polerte og intuitive apper – det er VPN-en du kan installere hos foreldrene dine uten supporttelefoner i etterkant. Proton VPNs apper er gode, men har flere avanserte innstillinger (som Secure Core og ulike profiler) som kan forvirre ferske brukere. Hvis enkelhet teller, vinner NordVPN denne runden.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Oppsummering: to vinnere, ulike styrker</h2>
+      <p>Det finnes ingen taper i denne duellen – bare to ulike filosofier. Proton VPN er bygget for deg som vil verifisere alt selv: åpen kildekode, sveitsisk jurisdiksjon og publiserte revisjoner gir en åpenhet ingen konkurrent matcher. NordVPN er bygget for deg som vil ha den beste totalpakken uten å tenke: størst landdekning, best strømmetilgang og apper som bare fungerer.</p>
+      <p>Prismessig er de så å si identiske (38 mot 39 kr/mnd), så la ikke prisen avgjøre. Spør deg selv heller: Hva er viktigst for meg – maksimal åpenhet eller maksimal bekvemmelighet? Svaret ditt peker direkte på riktig valg.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Vårt førstevalg totalt: NordVPN</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – best totalt med størst landdekning, dokumentert strømmetilgang og uavhengig reviderte retningslinjer. Veiledende fra 39 kr/mnd.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Vil du sammenligne først? Se <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a>.</p>
+      </div>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">For maksimal åpenhet: Proton VPN</p>
+        <p class="text-sm text-slate-600 mb-4">Sveitsisk base, åpen kildekode og ærlig gratisversjon. Veiledende fra 38 kr/mnd med 30 dagers pengene-tilbake-garanti.</p>
+        <CtaButton brand="protonvpn" label="Prøv Proton VPN" sub="30 dager risikofritt" variant="secondary" />
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>

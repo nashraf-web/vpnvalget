@@ -76,10 +76,15 @@ export function reviewSchema(vpn: VpnProvider, pageUrl: string, reviewBody: stri
     '@context': 'https://schema.org',
     '@type': 'Review',
     '@id': `${pageUrl}#anmeldelse`,
+    // itemReviewed as Service (not Product): a VPN subscription is a service,
+    // and we publish no real on-page offers and no multi-reviewer aggregate
+    // ratings — inventing either would trip Google's Product-snippet rules
+    // (GSC flagged "offers/review/aggregateRating should be specified").
     itemReviewed: {
-      '@type': 'Product',
+      '@type': 'Service',
       name: `${vpn.name} VPN`,
-      brand: { '@type': 'Brand', name: vpn.name },
+      serviceType: 'VPN-tjeneste',
+      provider: { '@type': 'Organization', name: vpn.name },
     },
     author: {
       '@type': 'Organization',
@@ -112,7 +117,7 @@ export function articleSchema(opts: {
     headline: opts.headline,
     description: opts.description,
     url: opts.url,
-    image: opts.image ?? `${site.url}/og-default.png`,
+    image: opts.image ?? `${site.url}/og-default.webp`,
     datePublished: opts.datePublished,
     dateModified: opts.dateModified,
     inLanguage: 'nb-NO',
