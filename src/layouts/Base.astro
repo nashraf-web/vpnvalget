@@ -78,6 +78,9 @@ const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
     {analytics.bingSiteVerification && (
       <meta name="msvalidate.01" content={analytics.bingSiteVerification} />
     )}
+    {analytics.googleAdsenseAccount && (
+      <meta name="google-adsense-account" content={analytics.googleAdsenseAccount} />
+    )}
 
     {/* GA4 — consent-gated. The ID is exposed to the cookie-consent script,
         which loads gtag.js ONLY after the visitor explicitly accepts.

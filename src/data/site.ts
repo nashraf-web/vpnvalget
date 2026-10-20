@@ -49,4 +49,6 @@ export const analytics = {
   googleSiteVerification: '',
   /** Bing Webmaster Tools verification content value */
   bingSiteVerification: '',
+  /** Google AdSense account ID — renders the google-adsense-account meta tag */
+  googleAdsenseAccount: 'ca-pub-9075987189189683',
 };
