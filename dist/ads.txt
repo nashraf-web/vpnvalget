@@ -1,7 +1,1 @@
-# ads.txt for vpnvalget.com
-# https://www.vpnvalget.com/ads.txt
-#
-# Google AdSense publisher ID will be added here AFTER approval.
-# Format: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
-#
-# No fake or placeholder publisher IDs are used.
+google.com, pub-9075987189189683, DIRECT, f08c47fec0942fa0
