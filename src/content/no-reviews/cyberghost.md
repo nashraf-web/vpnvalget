@@ -1,6 +1,6 @@
 ---
 title: "CyberGhost anmeldelse 2026: lengst angrefrist i bransjen"
-description: "CyberGhost anmeldelse 2026: pris fra 23 kr/mnd, 45 dagers pengene-tilbake-garanti, 11 500+ servere og personvern revidert av Deloitte. Ærlig redaksjonell vurdering: 4,3 av 5."
+description: "CyberGhost anmeldelse 2026: pris fra 23 kr/mnd, 45 dagers garanti, 11 500+ servere og personvern revidert av Deloitte. Ærlig redaksjonell vurdering: 4,3 av 5."
 vpn: "cyberghost"
 datePublished: "2026-10-19"
 dateModified: "2026-10-19"

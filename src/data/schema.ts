@@ -1,1 +1,134 @@
-LyoqCiAqIEpTT04tTEQgc2NoZW1hIGJ1aWxkZXJzIOKAlCBBcnRpY2xlL1Jldmlldy9GQVFQYWdlL0JyZWFkY3J1bWJMaXN0L09yZ2FuaXphdGlvbi4KICogRXZlcnkgbW9uZXkgcGFnZSBnZXRzOiBSZXZpZXcgKHdoZXJlIGFwcGxpY2FibGUpICsgRkFRUGFnZSArIEJyZWFkY3J1bWJMaXN0LgogKi8KaW1wb3J0IHsgc2l0ZSB9IGZyb20gJy4vc2l0ZSc7CmltcG9ydCB0eXBlIHsgVnBuUHJvdmlkZXIgfSBmcm9tICcuL3ZwbnMnOwoKY29uc3Qgb3JnID0gewogICdAdHlwZSc6ICdPcmdhbml6YXRpb24nLAogICdAaWQnOiBgJHtzaXRlLnVybH0vI29yZ2FuaXNhc2pvbmAsCiAgbmFtZTogc2l0ZS5uYW1lLAogIHVybDogc2l0ZS51cmwsCiAgZW1haWw6IHNpdGUuZW1haWwsCiAgbG9nbzogYCR7c2l0ZS51cmx9L2Zhdmljb24uc3ZnYCwKfTsKCmV4cG9ydCBjb25zdCBvcmdhbml6YXRpb25TY2hlbWEgPSB7CiAgJ0Bjb250ZXh0JzogJ2h0dHBzOi8vc2NoZW1hLm9yZycsCiAgLi4ub3JnLAp9OwoKZXhwb3J0IGZ1bmN0aW9uIHdlYnNpdGVTY2hlbWEoKSB7CiAgcmV0dXJuIHsKICAgICdAY29udGV4dCc6ICdodHRwczovL3NjaGVtYS5vcmcnLAogICAgJ0B0eXBlJzogJ1dlYlNpdGUnLAogICAgJ0BpZCc6IGAke3NpdGUudXJsfS8jbmV0dHNpZGVgLAogICAgdXJsOiBzaXRlLnVybCwKICAgIG5hbWU6IHNpdGUubmFtZSwKICAgIGluTGFuZ3VhZ2U6ICduYi1OTycsCiAgICBwdWJsaXNoZXI6IHsgJ0BpZCc6IGAke3NpdGUudXJsfS8jb3JnYW5pc2Fzam9uYCB9LAogIH07Cn0KCmV4cG9ydCBpbnRlcmZhY2UgQ3J1bWIgewogIG5hbWU6IHN0cmluZzsKICB1cmw6IHN0cmluZzsKfQoKZXhwb3J0IGZ1bmN0aW9uIGJyZWFkY3J1bWJTY2hlbWEoY3J1bWJzOiBDcnVtYltdKSB7CiAgcmV0dXJuIHsKICAgICdAY29udGV4dCc6ICdodHRwczovL3NjaGVtYS5vcmcnLAogICAgJ0B0eXBlJzogJ0JyZWFkY3J1bWJMaXN0JywKICAgIGl0ZW1MaXN0RWxlbWVudDogY3J1bWJzLm1hcCgoYywgaSkgPT4gKHsKICAgICAgJ0B0eXBlJzogJ0xpc3RJdGVtJywKICAgICAgcG9zaXRpb246IGkgKyAxLAogICAgICBuYW1lOiBjLm5hbWUsCiAgICAgIGl0ZW06IGMudXJsLAogICAgfSkpLAogIH07Cn0KCmV4cG9ydCBpbnRlcmZhY2UgRmFxIHsKICBxdWVzdGlvbjogc3RyaW5nOwogIGFuc3dlcjogc3RyaW5nOwp9CgpleHBvcnQgZnVuY3Rpb24gZmFxU2NoZW1hKGZhcXM6IEZhcVtdKSB7CiAgcmV0dXJuIHsKICAgICdAY29udGV4dCc6ICdodHRwczovL3NjaGVtYS5vcmcnLAogICAgJ0B0eXBlJzogJ0ZBUVBhZ2UnLAogICAgbWFpbkVudGl0eTogZmFxcy5tYXAoKGYpID0+ICh7CiAgICAgICdAdHlwZSc6ICdRdWVzdGlvbicsCiAgICAgIG5hbWU6IGYucXVlc3Rpb24sCiAgICAgIGFjY2VwdGVkQW5zd2VyOiB7ICdAdHlwZSc6ICdBbnN3ZXInLCB0ZXh0OiBmLmFuc3dlciB9LAogICAgfSkpLAogIH07Cn0KCi8qKgogKiBSZXZpZXcgc2NoZW1hIGZvciBhIFZQTiByZXZpZXcgcGFnZS4KICogYHJldmlld0JvZHlgID0gc2hvcnQgZWRpdG9yaWFsIHN1bW1hcnkuIFJhdGluZyBpcyBvdXIgZWRpdG9yaWFsIG9waW5pb24uCiAqIE5PVEU6IG9ubHkgY2xhaW0gInRlc3RlZCIgd2hlbiB0ZXN0ZWRCeVVzIGlzIHRydWUgd2l0aCBwdWJsaXNoZWQgZGF0ZXMuCiAqCiAqIEZJWEVEIGZvciBHb29nbGUgU2VhcmNoIENvbnNvbGUgdmFsaWRhdGlvbjoKICogLSBpdGVtUmV2aWV3ZWQgdXNlcyBTZXJ2aWNlIHdpdGggY29tcGxldGUgcmVxdWlyZWQgZmllbGRzCiAqIC0gQWRkZWQgdXJsIHRvIFNlcnZpY2UgZm9yIGJldHRlciBlbnRpdHkgaWRlbnRpZmljYXRpb24KICovCmV4cG9ydCBmdW5jdGlvbiByZXZpZXdTY2hlbWEodnBuOiBWcG5Qcm92aWRlciwgcGFnZVVybDogc3RyaW5nLCByZXZpZXdCb2R5OiBzdHJpbmcpIHsKICByZXR1cm4gewogICAgJ0Bjb250ZXh0JzogJ2h0dHBzOi8vc2NoZW1hLm9yZycsCiAgICAnQHR5cGUnOiAnUmV2aWV3JywKICAgICdAaWQnOiBgJHtwYWdlVXJsfSNhbm1lbGRlbHNlYCwKICAgIGl0ZW1SZXZpZXdlZDogewogICAgICAnQHR5cGUnOiAnU2VydmljZScsCiAgICAgICdAaWQnOiBgJHtwYWdlVXJsfSN0amVuZXN0ZWAsCiAgICAgIG5hbWU6IGAke3Zwbi5uYW1lfSBWUE5gLAogICAgICBzZXJ2aWNlVHlwZTogJ1ZQTi10amVuZXN0ZScsCiAgICAgIHByb3ZpZGVyOiB7CiAgICAgICAgJ0B0eXBlJzogJ09yZ2FuaXphdGlvbicsCiAgICAgICAgbmFtZTogdnBuLm5hbWUsCiAgICAgICAgdXJsOiB2cG4ub2ZmaWNpYWxVcmwsCiAgICAgIH0sCiAgICAgIHVybDogdnBuLm9mZmljaWFsVXJsLAogICAgfSwKICAgIGF1dGhvcjogewogICAgICAnQHR5cGUnOiAnT3JnYW5pemF0aW9uJywKICAgICAgJ0BpZCc6IGAke3NpdGUudXJsfS8jb3JnYW5pc2Fzam9uYCwKICAgICAgbmFtZTogc2l0ZS5uYW1lLAogICAgICB1cmw6IHNpdGUudXJsLAogICAgfSwKICAgIHJldmlld1JhdGluZzogewogICAgICAnQHR5cGUnOiAnUmF0aW5nJywKICAgICAgcmF0aW5nVmFsdWU6IHZwbi5yYXRpbmcudG9GaXhlZCgxKSwKICAgICAgYmVzdFJhdGluZzogJzUnLAogICAgICB3b3JzdFJhdGluZzogJzEnLAogICAgfSwKICAgIHJldmlld0JvZHksCiAgICBpbkxhbmd1YWdlOiAnbmItTk8nLAogICAgcHVibGlzaGVyOiB7ICdAaWQnOiBgJHtzaXRlLnVybH0vI29yZ2FuaXNhc2pvbmAgfSwKICB9Owp9CgpleHBvcnQgZnVuY3Rpb24gYXJ0aWNsZVNjaGVtYShvcHRzOiB7CiAgaGVhZGxpbmU6IHN0cmluZzsKICBkZXNjcmlwdGlvbjogc3RyaW5nOwogIHVybDogc3RyaW5nOwogIGRhdGVQdWJsaXNoZWQ6IHN0cmluZzsKICBkYXRlTW9kaWZpZWQ6IHN0cmluZzsKICBpbWFnZT86IHN0cmluZzsKfSkgewogIHJldHVybiB7CiAgICAnQGNvbnRleHQnOiAnaHR0cHM6Ly9zY2hlbWEub3JnJywKICAgICdAdHlwZSc6ICdBcnRpY2xlJywKICAgIGhlYWRsaW5lOiBvcHRzLmhlYWRsaW5lLAogICAgZGVzY3JpcHRpb246IG9wdHMuZGVzY3JpcHRpb24sCiAgICB1cmw6IG9wdHMudXJsLAogICAgaW1hZ2U6IG9wdHMuaW1hZ2UgPz8gYCR7c2l0ZS51cmx9L29nLWRlZmF1bHQud2VicGAsCiAgICBkYXRlUHVibGlzaGVkOiBvcHRzLmRhdGVQdWJsaXNoZWQsCiAgICBkYXRlTW9kaWZpZWQ6IG9wdHMuZGF0ZU1vZGlmaWVkLAogICAgaW5MYW5ndWFnZTogJ25iLU5PJywKICAgIGF1dGhvcjogeyAnQGlkJzogYCR7c2l0ZS51cmx9LyNvcmdhbmlzYXNqb25gIH0sCiAgICBwdWJsaXNoZXI6IHsgJ0BpZCc6IGAke3NpdGUudXJsfS8jb3JnYW5pc2Fzam9uYCB9LAogIH07Cn0K
+/**
+ * JSON-LD schema builders — Article/Review/FAQPage/BreadcrumbList/Organization.
+ * Every money page gets: Review (where applicable) + FAQPage + BreadcrumbList.
+ */
+import { site } from './site';
+import type { VpnProvider } from './vpns';
+
+const org = {
+  '@type': 'Organization',
+  '@id': `${site.url}/#organisasjon`,
+  name: site.name,
+  url: site.url,
+  email: site.email,
+  logo: `${site.url}/favicon.svg`,
+};
+
+export const organizationSchema = {
+  '@context': 'https://schema.org',
+  ...org,
+};
+
+export function websiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${site.url}/#nettside`,
+    url: site.url,
+    name: site.name,
+    inLanguage: 'nb-NO',
+    publisher: { '@id': `${site.url}/#organisasjon` },
+  };
+}
+
+export interface Crumb {
+  name: string;
+  url: string;
+}
+
+export function breadcrumbSchema(crumbs: Crumb[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.name,
+      item: c.url,
+    })),
+  };
+}
+
+export interface Faq {
+  question: string;
+  answer: string;
+}
+
+export function faqSchema(faqs: Faq[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  };
+}
+
+/**
+ * Review schema for a VPN review page.
+ * `reviewBody` = short editorial summary. Rating is our editorial opinion.
+ * NOTE: only claim "tested" when testedByUs is true with published dates.
+ *
+ * FIXED for Google Search Console validation:
+ * - itemReviewed uses Service with complete required fields
+ * - Added url to Service for better entity identification
+ */
+export function reviewSchema(vpn: VpnProvider, pageUrl: string, reviewBody: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    '@id': `${pageUrl}#anmeldelse`,
+    itemReviewed: {
+      '@type': 'Service',
+      '@id': `${pageUrl}#tjeneste`,
+      name: `${vpn.name} VPN`,
+      serviceType: 'VPN-tjeneste',
+      provider: {
+        '@type': 'Organization',
+        name: vpn.name,
+        url: vpn.officialUrl,
+      },
+      url: vpn.officialUrl,
+    },
+    author: {
+      '@type': 'Organization',
+      '@id': `${site.url}/#organisasjon`,
+      name: site.name,
+      url: site.url,
+    },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: vpn.rating.toFixed(1),
+      bestRating: '5',
+      worstRating: '1',
+    },
+    reviewBody,
+    inLanguage: 'nb-NO',
+    publisher: { '@id': `${site.url}/#organisasjon` },
+  };
+}
+
+export function articleSchema(opts: {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified: string;
+  image?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: opts.headline,
+    description: opts.description,
+    url: opts.url,
+    image: opts.image ?? `${site.url}/og-default.webp`,
+    datePublished: opts.datePublished,
+    dateModified: opts.dateModified,
+    inLanguage: 'nb-NO',
+    author: { '@id': `${site.url}/#organisasjon` },
+    publisher: { '@id': `${site.url}/#organisasjon` },
+  };
+}

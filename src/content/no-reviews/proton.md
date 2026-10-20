@@ -1,7 +1,7 @@
 ---
 title: "Proton VPN anmeldelse 2026: best for personvern"
-description: "Proton VPN anmeldelse 2026: pris fra 38 kr/mnd, sveitsisk personvern, loggpolicy revidert fem år på rad og gratisversjon uten datatak. Ærlig redaksjonell vurdering: 4,5 av 5."
-vpn: "proton"
+description: "Proton VPN anmeldelse 2026: pris fra 38 kr/mnd, sveitsisk personvern, loggpolicy revidert 5 år på rad og gratisversjon. Ærlig redaksjonell vurdering: 4,5 av 5."
+vpn: "proton-vpn"
 datePublished: "2026-10-19"
 dateModified: "2026-10-19"
 directAnswer: "Proton VPN er tjenesten for den personvernbevisste: sveitsisk base, åpen kildekode, en loggpolicy som er revidert uavhengig fem år på rad, og funksjoner som Secure Core og Stealth-protokoll. Det er også den eneste seriøse VPN-en med en faktisk brukbar gratisversjon – ubegrenset datamengde og samme personvernpolitikk som den betalte. Veiledende pris fra 38 kroner måneden. Vår redaksjonelle vurdering er 4,5 av 5."

@@ -1,1 +1,24 @@
-aW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSAnYXN0cm8vY29uZmlnJzsKaW1wb3J0IHRhaWx3aW5kIGZyb20gJ0Bhc3Ryb2pzL3RhaWx3aW5kJzsKaW1wb3J0IHNpdGVtYXAgZnJvbSAnQGFzdHJvanMvc2l0ZW1hcCc7CgovLyBodHRwczovL2FzdHJvLmJ1aWxkL2NvbmZpZwpleHBvcnQgZGVmYXVsdCBkZWZpbmVDb25maWcoewogIHNpdGU6ICdodHRwczovL3ZwbnZhbGdldC5jb20nLAogIHRyYWlsaW5nU2xhc2g6ICduZXZlcicsCiAgaW50ZWdyYXRpb25zOiBbCiAgICB0YWlsd2luZCgpLAogICAgc2l0ZW1hcCh7CiAgICAgIGkxOG46IHsKICAgICAgICBkZWZhdWx0TG9jYWxlOiAnbm8nLAogICAgICAgIGxvY2FsZXM6IHsKICAgICAgICAgIG5vOiAnbmItTk8nLAogICAgICAgICAgc2U6ICdzdi1TRScsCiAgICAgICAgICBkazogJ2RhLURLJywKICAgICAgICAgIGRlOiAnZGUtREUnLAogICAgICAgIH0sCiAgICAgIH0sCiAgICAgIGZpbHRlcjogKHBhZ2UpID0+ICFwYWdlLmluY2x1ZGVzKCcvZ28vJyksCiAgICB9KSwKICBdLAp9KTsK
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
+
+// https://astro.build/config
+export default defineConfig({
+  site: 'https://vpnvalget.com',
+  trailingSlash: 'never',
+  integrations: [
+    tailwind(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'no',
+        locales: {
+          no: 'nb-NO',
+          se: 'sv-SE',
+          dk: 'da-DK',
+          de: 'de-DE',
+        },
+      },
+      filter: (page) => !page.includes('/go/'),
+    }),
+  ],
+});
