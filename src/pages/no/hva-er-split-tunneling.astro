@@ -1,0 +1,156 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/hva-er-split-tunneling/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'Hva er split tunneling?', url }];
+const title = 'Hva er split tunneling? Enkel forklaring + slik bruker du det (2026)';
+const description = 'Split tunneling lar deg velge hvilke apper som går gjennom VPN-en og hvilke som bruker vanlig nett. Enkel norsk forklaring, bruksområder og aktivering steg for steg.';
+const faqs = [
+  {
+    question: 'Hva skjer med trafikken som går utenom VPN-tunnelen?',
+    answer: 'Den går på vanlig måte via internettleverandøren din – med din virkelige IP-adresse og uten VPN-kryptering. Den er fortsatt beskyttet av nettsidenes egen HTTPS-kryptering (samme som uten VPN), men internettleverandøren kan se hvilke nettsteder du besøker, og tjenestene du bruker ser din faktiske plassering. Derfor bør du bare ekskludere apper der du bevisst aksepterer dette – for eksempel nettbanken din eller skriveren hjemme.',
+  },
+  {
+    question: 'Hvorfor virker ikke Vipps, BankID eller nettbanken min med VPN på?',
+    answer: 'Mange banker og finansapper blokkerer eller mistenkeliggjør trafikk fra VPN-servere, fordi svindlere ofte bruker VPN til å skjule hvor de faktisk befinner seg. Det er derfor du kan få feilmeldinger, ekstra sikkerhetssjekker eller helt avvist innlogging. Den vanligste løsningen er split tunneling: legg bank- og finansappene dine på listen over apper som går utenom VPN-en, mens alt annet fortsetter beskyttet. Se våre guider om VPN og BankID og VPN og Vipps for detaljer.',
+  },
+  {
+    question: 'Er split tunneling trygt å bruke?',
+    answer: 'Selve funksjonen er trygg, men den reduserer beskyttelsen for trafikken du ekskluderer – det er hele poenget, og det må være et bevisst valg. Hovedregelen: hold nettleseren, e-posten og alt sensitivt inne i VPN-tunnelen, og ekskluder bare apper med en konkret grunn (bank som blokkerer VPN, lokale enheter som skriver eller smarthjem). Ekskluder aldri torrent-klienten din – da mister du anonymiteten akkurat der du trenger den mest.',
+  },
+  {
+    question: 'Kan jeg bruke split tunneling på iPhone?',
+    answer: 'Stort sett ikke. iOS setter strenge begrensninger på hvordan apper kan styre nettverkstrafikk, så de fleste VPN-leverandører tilbyr ikke ekte split tunneling på iPhone og iPad – eller bare en svært begrenset variant. På Android, Windows og macOS er funksjonen derimot godt utbygd hos de store leverandørene. Sjekk leverandørens funksjonsliste for din plattform før du velger.',
+  },
+  {
+    question: 'Hva er «invers» split tunneling?',
+    answer: 'Vanlig split tunneling velger hvilke apper som skal gå UTENOM VPN-en (alt annet beskyttes). Invers split tunneling snur det på hodet: du velger hvilke apper som skal gå GJENNOM VPN-en, mens resten bruker vanlig nett. Det er praktisk hvis du bare vil beskytte én eller to apper – for eksempel torrent-klienten – og la alt annet gå normalt for maksimal fart. Surfshark tilbyr begge variantene under navnet «Bypasser».',
+  },
+  {
+    question: 'Fungerer split tunneling sammen med kill switch?',
+    answer: 'Ja – og det er en god kombinasjon. Kill switch blokkerer trafikk som skulle vært i VPN-tunnelen hvis forbindelsen faller ut, mens apper du bevisst har ekskludert med split tunneling fortsetter på vanlig nett som normalt. De to funksjonene jobber på forskjellige «lag»: split tunneling bestemmer HVILKEN trafikk som skal beskyttes, kill switch sørger for at den beskyttede trafikken aldri lekker ubeskyttet.',
+  },
+  {
+    question: 'Senker split tunneling farten på nettet?',
+    answer: 'Tvert imot – det kan gjøre opplevelsen raskere for apper du ekskluderer, siden trafikken deres slipper omveien via VPN-serveren. Men merk: dette er ikke en måte å «få VPN til å gå raskere» på. Trafikken inne i tunnelen går like fort eller sakte som før. Vil du ha mer fart på selve VPN-forbindelsen, se vår guide om hvorfor VPN kan gjøre nettet tregere.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-10-21', dateModified: '2026-10-21', image: `${site.url}/og-guide.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-guide.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-guide.webp" alt="Hvit trådløs ruter med antenner – symbol på nettverkstrafikk som styres med VPN" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Hva er split tunneling? Enkel forklaring</h1>
+
+    <DirectAnswer>
+      <p><strong>Det korte svaret: Split tunneling er en VPN-funksjon som lar deg velge hvilke apper eller nettsider som skal gå gjennom VPN-tunnelen – og hvilke som skal bruke din vanlige, ubeskyttede internettforbindelse.</strong></p>
+      <p class="mt-2">Tenk på det som to felt på motorveien: VPN-feltet er kryptert og anonymt, det vanlige feltet er åpent og direkte. Med split tunneling bestemmer du hvilke «biler» (apper) som skal kjøre i hvilket felt. Alt annet fortsetter som før – beskyttet av VPN-en. Funksjonen finnes hos alle de store leverandørene, men den er sjelden skrudd på som standard: du må aktivere og konfigurere den selv.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Problemet split tunneling løser</h2>
+      <p>En VPN er «alt eller ingenting» som standard: når du skrur den på, går <em>all</em> trafikken fra enheten din gjennom den krypterte tunnelen. Det er bra for personvernet – men det skaper friksjon i hverdagen:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Nettbank, Vipps og BankID nekter eller mistenkeliggjør deg.</strong> Banker blokkerer ofte VPN-servere fordi svindlere bruker dem til å skjule hvor de er. Resultatet er feilmeldinger, ekstra sikkerhetssjekker eller avvist innlogging – akkurat når du skal betale en regning.</li>
+        <li><strong>Lokale enheter slutter å virke.</strong> Skriveren på hjemmenettverket, Chromecast-en eller smarthjemmet ditt «forsvinner» fordi de bare er synlige på ditt lokale nettverk – ikke gjennom VPN-serveren i et annet land.</li>
+        <li><strong>Unødvendig omvei for fartssensitive ting.</strong> Skal du spille et lokalt spill eller strømme noe som ikke trenger VPN, gir tunnelen ekstra forsinkelse uten noen gevinst.</li>
+        <li><strong>Geoblokkering som jobber mot deg.</strong> Noen norske tjenester vil se at du er i Norge – er du koblet til en utenlandsk VPN-server, kan de nekte deg tilgang.</li>
+      </ul>
+      <p>Uten split tunneling er valget ditt enten å skru VPN-en helt av (og miste all beskyttelse) eller leve med friksjonen. Split tunneling gir deg et tredje alternativ: <strong>beskytt det som trenger beskyttelse, la resten gå direkte.</strong> Hvis du er ny på VPN-begrepet i seg selv, start med vår enkle forklaring av <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva en VPN er</a> først.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik fungerer det – enkelt forklart</h2>
+      <p>Inne i VPN-appen finner du en liste der du legger til apper (eller nettsider) som skal behandles spesielt. Det finnes tre varianter:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>App-basert (vanligst).</strong> Du velger enkeltapper – for eksempel nettbanken din eller Spotify – som skal gå utenom VPN-en. Alt annet fortsetter i tunnelen. Dette er varianten de fleste leverandører tilbyr.</li>
+        <li><strong>URL- eller IP-basert.</strong> I stedet for hele apper velger du enkeltdomener, som bankens nettside i nettleseren. Praktisk når problemet bare gjelder én tjeneste, ikke hele appen.</li>
+        <li><strong>Invers split tunneling.</strong> Motsatt logikk: du velger hvilke apper som skal gå <em>gjennom</em> VPN-en, mens alt annet bruker vanlig nett. Nyttig hvis du bare vil beskytte for eksempel torrent-klienten og la resten gå på full fart.</li>
+      </ul>
+      <p>Når regelen er satt, ruter VPN-appen trafikken automatisk – du merker ingenting i hverdagen. Nettbanken logger inn uten problemer, skriveren virker, og nettleseren din er fortsatt anonym og kryptert.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Når er det lurt å bruke split tunneling?</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Bank, Vipps og BankID.</strong> Det desidert vanligste bruksområdet i Norge. Legg finansappene på ekskluderingslisten, så slipper du blokkeringer og sikkerhetsvarsler – mens resten av trafikken din fortsatt er beskyttet. Se også <a class="text-brand-600 hover:underline" href="/no/vpn-og-bankid/">VPN og BankID</a> og <a class="text-brand-600 hover:underline" href="/no/vpn-og-vipps/">VPN og Vipps</a>.</li>
+        <li><strong>Lokale enheter.</strong> Skriver, nettverksdisk (NAS), Chromecast og smarthjem-dingser som bare finnes på hjemmenettverket ditt.</li>
+        <li><strong>Jobb-apper med pålagt plassering.</strong> Noen jobbverktøy krever at du ser ut til å være på kontornettverket eller i Norge – ekskluder dem, behold VPN på alt annet.</li>
+        <li><strong>Strømming av norsk innhold mens du er tilkoblet utlandet.</strong> Skal du se noe som krever norsk IP samtidig som du vil ha VPN på for resten, kan split tunneling løse floken.</li>
+        <li><strong>Maksimal fart på én app.</strong> Med invers split tunneling kan du la for eksempel et spill gå direkte for lavest mulig ping, mens alt annet fortsatt er beskyttet.</li>
+      </ul>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Når bør du IKKE bruke det</h2>
+      <p>Split tunneling er et verktøy, ikke en snarvei rundt personvern. Vær ærlig med deg selv om hva du ekskluderer:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Aldri ekskluder nettleseren din «for enkelhets skyld».</strong> Det meste av det sensitive du gjør på nett skjer i nettleseren – da er hele poenget med VPN-en borte.</li>
+        <li><strong>Aldri ekskluder torrent-klienten.</strong> I P2P-nettverk er IP-adressen din synlig for alle andre. Ekskluderer du torrent-trafikken fra tunnelen, er du fullt eksponert – se <a class="text-brand-600 hover:underline" href="/no/vpn-for-torrenting/">VPN for torrenting</a>.</li>
+        <li><strong>Ikke bruk det på usikre nettverk uten å tenke deg om.</strong> På hotell- eller flyplass-Wi-Fi er all ubeskyttet trafikk lettere å avlytte. Ekskluder minst mulig når du er på offentlig nett – les mer i <a class="text-brand-600 hover:underline" href="/no/vpn-for-reise/">VPN for reise</a>.</li>
+        <li><strong>Husk hva «utenom» betyr.</strong> Ekskludert trafikk går med din virkelige IP-adresse, og internettleverandøren din kan se hvilke tjenester du bruker. For bank er det greit (trafikken er uansett HTTPS-kryptert mellom deg og banken) – for alt sensitivt er det ikke det.</li>
+      </ul>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Split tunneling hos de største VPN-leverandørene</h2>
+      <p>Slik har de mest aktuelle leverandørene for nordmenn løst det, ifølge deres egen dokumentasjon:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Surfshark – «Bypasser».</strong> Den mest fleksible løsningen: velg apper eller nettsider som skal gå utenom VPN-en – eller snu det rundt med invers modus der du velger hva som skal <em>inn</em> i tunnelen. Tilgjengelig på Android og Windows. Vår vurdering: best for deg som vil finstyre.</li>
+        <li><strong>NordVPN.</strong> App-basert split tunneling på Android, Windows og Android TV, pluss URL-basert i nettleserutvidelsene (Chrome, Firefox, Edge). Vår vurdering: solid, men sjekk at din plattform støttes – iOS er ikke med.</li>
+        <li><strong>ExpressVPN.</strong> App-basert split tunneling der du velger hvilke apper som skal bruke VPN-en og hvilke som ikke skal det. Vår vurdering: enkel å forstå, litt mindre fleksibel enn Surfshark.</li>
+        <li><strong>ProtonVPN.</strong> Split tunneling på Android og Windows med både app- og IP-baserte regler. Vår vurdering: bra for deg som vil ha teknisk kontroll.</li>
+      </ul>
+      <p>En ærlig presisering: Funksjonslistene over er hentet fra leverandørenes egen dokumentasjon – vi har ikke kjørt daterte laboratorietester av hver variant. Vurderingene er redaksjonelle, ikke målte testresultater. Og et viktig forbehold: <strong>på iPhone/iPad tilbyr de fleste leverandørene ikke ekte split tunneling</strong> på grunn av begrensninger i iOS – sjekk funksjonslisten for din plattform før du velger. Les våre <a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN-</a> og <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark-anmeldelser</a> for helhetsbildet.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik slår du på split tunneling – steg for steg</h2>
+      <p>Fremgangsmåten er nesten identisk hos alle leverandører (eksempelet under bruker Surfsharks «Bypasser», men logikken er den samme overalt):</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Åpne VPN-appen</strong> og gå til Innstillinger.</li>
+        <li><strong>Finn «Split tunneling» eller «Bypasser»</strong> – ligger gjerne under Sikkerhet eller Tilkobling.</li>
+        <li><strong>Skru funksjonen på</strong> og velg modus: vanlig (velg hva som skal utenom) eller invers (velg hva som skal inn i tunnelen).</li>
+        <li><strong>Legg til apper eller nettsider</strong> på listen – for eksempel nettbanken din og Vipps.</li>
+        <li><strong>Test:</strong> Koble til VPN-en, åpne en ekskludert app og bekreft at den virker som normalt (for eksempel at banken logger inn uten VPN-advarsel). Sjekk samtidig at en IP-sjekk i nettleseren fortsatt viser VPN-serverens adresse – da vet du at resten av trafikken er beskyttet.</li>
+      </ol>
+      <p>Tips: Start med så få ekskluderinger som mulig. Hver app du legger til utenom tunnelen er en app du har valgt å ikke beskytte – legg bare til apper med en konkret grunn.</p>
+
+      <ProsCons
+        pros={[
+          'Fikser bank-, Vipps- og BankID-problemer uten å skru av VPN-en',
+          'Lokale enheter (skriver, Chromecast, smarthjem) virker igjen',
+          'Kan gi bedre fart/opplevelse for apper som ikke trenger VPN',
+          'Invers modus: beskytt kun det du vil, la resten gå på full fart',
+        ]}
+        cons={[
+          'Ekskludert trafikk er ubeskyttet – virkelig IP synlig, ISP kan se bruken',
+          'Krever at du tenker gjennom hver ekskludering – feil valg svekker personvernet',
+          'Begrenset eller manglende støtte på iPhone/iPad',
+          'Må konfigureres manuelt – er ikke på som standard',
+        ]}
+      />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Split tunneling vs kill switch – hva er forskjellen?</h2>
+      <p>De to funksjonene forveksles ofte, men de gjør motsatte ting – og de utfyller hverandre:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Split tunneling</strong> bestemmer <em>hvilken</em> trafikk som skal beskyttes av VPN-en. Det er et bevisst valg du tar på forhånd.</li>
+        <li><strong>Kill switch</strong> sørger for at trafikken som <em>skulle</em> vært beskyttet aldri lekker ut ubeskyttet hvis VPN-forbindelsen faller ut. Det er en nødbrems som slår inn automatisk.</li>
+      </ul>
+      <p>Kort sagt: split tunneling velger laget, kill switch passer på at ingen på laget forlater banen. Bruk gjerne begge samtidig – les vår forklaring av <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">hva kill switch er</a>. Får du problemer med at VPN-en ikke kobler til i det hele tatt, se <a class="text-brand-600 hover:underline" href="/no/vpn-fungerer-ikke/">feilsøkingsguiden vår</a>.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Vil du ha split tunneling som er enkel å styre?</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/surfshark/">Surfshark</a> – vår vurdering: mest fleksible split tunneling («Bypasser» med både vanlig og invers modus), ubegrenset antall enheter og enkle apper. Veiledende fra 23 kr/mnd.</p>
+        <CtaButton brand="surfshark" label="Prøv Surfshark" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Se også <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
