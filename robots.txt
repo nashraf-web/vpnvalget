@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /go/
 
 Sitemap: https://vpnvalget.com/sitemap-index.xml
