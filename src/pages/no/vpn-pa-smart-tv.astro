@@ -1,0 +1,172 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/vpn-pa-smart-tv/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'VPN på smart-TV', url }];
+const title = 'VPN på smart-TV: Samsung, LG og Android TV (2026)';
+const description = 'Slik får du VPN på smart-TV: app på Android TV og Google TV, Smart DNS på Samsung Tizen og LG webOS, eller VPN på ruteren for hele huset. Steg-for-steg-guide på norsk.';
+const faqs = [
+  {
+    question: 'Kan jeg installere en VPN-app direkte på Samsung-TV-en min?',
+    answer: 'Nei, ikke med de store leverandørene vi anbefaler. NordVPN, Surfshark og ExpressVPN har per oktober 2026 ingen egen app for Samsung Tizen. I stedet bruker du Smart DNS (leverandørens DNS-innstilling på TV-en), installerer VPN på ruteren, eller kobler TV-en til en enhet som allerede har VPN – for eksempel en Chromecast med Google TV eller en PC med HDMI-kabel. Sjekk alltid leverandørens egen app-side før du kjøper, fordi tilbudet kan endre seg.',
+  },
+  {
+    question: 'Kan jeg installere en VPN-app direkte på LG-TV-en min?',
+    answer: 'Samme svar som for Samsung: NordVPN, Surfshark og ExpressVPN har per oktober 2026 ingen egen app for LG webOS. Løsningene er de samme – Smart DNS, VPN på ruteren, eller en ekstern strømmeenhet med Android TV / Google TV som du kobler til TV-en via HDMI.',
+  },
+  {
+    question: 'Hvilke smart-TV-er støtter VPN-app direkte?',
+    answer: 'TV-er og strømmeenheter med Android TV eller Google TV – for eksempel Sony og TCL med Android TV, Chromecast med Google TV, Nvidia Shield og Xiaomi Mi Box. Der laster du VPN-appen ned fra Google Play akkurat som på en mobil, logger inn og velger server. Har du Apple TV, les vår egen guide for beste VPN for Apple TV.',
+  },
+  {
+    question: 'Hva er forskjellen på Smart DNS og VPN?',
+    answer: 'Smart DNS endrer bare hvilken DNS-server TV-en spør når den skal finne en strømmetjeneste, og kan dermed omgå geoblokkering. Den krypterer ikke trafikken din og skjuler ikke IP-adressen din fullt ut – så den gir ikke personvernbeskyttelsen en ekte VPN gir. Smart DNS er et strømmeverktøy, ikke et personvernverktøy. Vil du ha begge deler, bruk VPN på ruteren eller en Android TV-enhet med VPN-app.',
+  },
+  {
+    question: 'Hvorfor sier strømmetjenesten at jeg bruker VPN, selv om appen er på?',
+    answer: 'Strømmetjenester blokkerer kjente VPN-servere aktivt. Prøv først en annen server i samme land, og start strømmeappen på nytt etter serverbyttet – appen kan ha lagret den gamle posisjonen. Hjelper ikke det, tøm appens hurtigbuffer (cache) på TV-en, eller prøv Smart DNS i stedet. Noen tjenester, som NRK, krever dessuten at du befinner deg i Norge – da må serveren være norsk.',
+  },
+  {
+    question: 'Blir strømming på TV-en tregere med VPN?',
+    answer: 'Litt, men sjelden merkbart. Strømming i 4K krever rundt 15–25 Mbit/s, og de fleste norske fiberforbindelser har langt mer å gå på. Velg en server i nærheten – for eksempel i Norge eller Sverige – og bruk WireGuard-protokollen der appen tilbyr den. Blir det bufring, er det nesten alltid servervalget som er problemet: bytt til en mindre belastet server i samme land. Les mer i guiden om hvorfor VPN-en gjør nettet tregere.',
+  },
+  {
+    question: 'Kan jeg bruke gratis VPN på smart-TV-en?',
+    answer: 'I praksis nei. Gratis VPN-tjenester har sjelden apper for Android TV, og de som finnes er ofte for trege eller ustabile for strømming. I tillegg finansieres mange gratis VPN-er ved å selge brukerdata – det motsatte av personvern. En betalt tjeneste til veiledende fra rundt 23 kroner måneden gir deg app for TV-en, Smart DNS og VPN på ruteren i samme abonnement. Les sammenligningen gratis VPN vs betalt VPN før du bestemmer deg.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-10-30', dateModified: '2026-10-30', image: `${site.url}/og-streaming.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-streaming.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-streaming.webp" alt="Person strømmer innhold på TV med VPN-app på smarttelefonen" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">VPN på smart-TV: Samsung, LG og Android TV</h1>
+
+    <DirectAnswer>
+      <p><strong>Det korte svaret: Det kommer an på hvilken TV du har.</strong></p>
+      <p class="mt-2">På Android TV og Google TV installerer du VPN-appen direkte fra Google Play – ferdig på to minutter. På Samsung Tizen og LG webOS finnes det per oktober 2026 ingen egen app fra de store leverandørene vi anbefaler, så der bruker du Smart DNS, VPN på ruteren, eller en billig strømmeenhet med Android TV koblet til via HDMI. Alle metodene forklares steg for steg nedenfor.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Først: Hvilken TV har du?</h2>
+      <p>Dette er spørsmålet som avgjør alt annet, og det er her de fleste guider svikter – de sier bare «installer appen», uten å fortelle deg at appen ikke finnes for din TV. Slik ligger det an per oktober 2026:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Android TV / Google TV</strong> (Sony, TCL, Philips med Android TV, Chromecast med Google TV, Nvidia Shield, Xiaomi Mi Box): <strong>VPN-app finnes.</strong> Enkleste løsning av alle.</li>
+        <li><strong>Samsung Tizen</strong> (alle Samsung smart-TV-er siden 2015): <strong>Ingen egen VPN-app</strong> fra NordVPN, Surfshark eller ExpressVPN. Bruk Smart DNS, ruter eller ekstern enhet.</li>
+        <li><strong>LG webOS</strong> (alle LG smart-TV-er siden 2014): <strong>Ingen egen VPN-app</strong> fra de samme leverandørene. Samme løsninger som for Samsung.</li>
+        <li><strong>Apple TV:</strong> Egen løsning med tvOS-apper siden tvOS 17 – se vår guide om <a class="text-brand-600 hover:underline" href="/no/beste-vpn-for-apple-tv/">beste VPN for Apple TV</a>.</li>
+        <li><strong>Eldre TV-er uten smart-funksjoner:</strong> Koble til en Chromecast med Google TV eller en annen Android TV-enhet via HDMI – da får du både smart-TV og VPN-app i samme kjøp.</li>
+      </ul>
+      <p>Er du usikker på hvilket system TV-en din har, sjekk innstillingene: Samsung kaller sitt system Tizen, LG kaller sitt webOS, og TV-er med Google Play-butikken har Android TV eller Google TV. Sjekk alltid leverandørens egen app-side før du kjøper et abonnement – app-tilbudet for TV-er endrer seg oftere enn for mobil og PC.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Metode 1: VPN-app på Android TV og Google TV (enklest)</h2>
+      <p>Har du Android TV eller Google TV, er dette gjort på et par minutter:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Åpne Google Play</strong> på TV-en og søk etter VPN-leverandøren din (for eksempel NordVPN eller Surfshark).</li>
+        <li><strong>Installer appen</strong> og logg inn med kontoen din. Noen leverandører lar deg logge inn med en kode du skriver inn på mobilen eller PC-en i stedet for å taste passord med fjernkontrollen.</li>
+        <li><strong>Velg server.</strong> Skal du se norsk TV fra utlandet, velg en server i Norge. Skal du se innhold fra et annet land, velg en server der. Se <a class="text-brand-600 hover:underline" href="/no/se-nrk-i-utlandet/">se NRK i utlandet</a> eller <a class="text-brand-600 hover:underline" href="/no/beste-vpn-for-netflix-norge/">beste VPN for Netflix</a> for landsspesifikke tips.</li>
+        <li><strong>Koble til, og åpne strømmeappen.</strong> Husk rekkefølgen: VPN-en må være tilkoblet før du åpner Netflix, NRK eller Disney+ – ellers kan appen ha lagret den gamle posisjonen din. Start strømmeappen på nytt hvis den viser feil katalog.</li>
+        <li><strong>Velg WireGuard-protokollen</strong> i appens innstillinger hvis den tilbys – den gir best fart til strømming.</li>
+      </ol>
+      <p>Tips: Legg VPN-appen på startskjermen og skru på «koble til automatisk» hvis appen tilbyr det. Da slipper du å huske det hver gang du skal strømme.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Metode 2: Samsung Tizen med Smart DNS</h2>
+      <p>Smart DNS er leverandørenes egen løsning for TV-er uten VPN-app. Slik setter du det opp på en Samsung-TV:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Aktiver Smart DNS hos leverandøren.</strong> Logg inn på leverandørens nettside, finn Smart DNS-innstillingene (hos ExpressVPN heter det MediaStreamer) og registrer IP-adressen din. Dette er nødvendig fordi Smart DNS virker ved å gjenkjenne IP-adressen din.</li>
+        <li><strong>Noter DNS-adressene</strong> leverandøren oppgir – det er som regel to tallrekker.</li>
+        <li><strong>På TV-en:</strong> Innstillinger → Nettverk → Nettverksstatus → IP-innstillinger → DNS-innstilling → «Angi manuelt», og skriv inn DNS-adressene.</li>
+        <li><strong>Start TV-en på nytt</strong> og åpne strømmeappen. Nå skal tjenesten se deg som om du befinner deg i landet du har valgt hos leverandøren.</li>
+      </ol>
+      <p>Viktig ærlighet: Smart DNS er ikke en VPN. Den krypterer ikke trafikken din og skjuler ikke IP-adressen din – den omgår bare geoblokkering for strømming. Vil du ha ekte personvern på TV-en, må du bruke metode 4 (VPN på ruteren) i stedet. Og merk: Smart DNS fungerer bare med strømmetjenestene leverandøren støtter – sjekk listen på leverandørens nettside før du kjøper.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Metode 3: LG webOS med Smart DNS</h2>
+      <p>Fremgangsmåten på LG er nesten identisk, med litt andre menynavn:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Aktiver Smart DNS hos leverandøren</strong> og registrer IP-adressen din, akkurat som for Samsung over.</li>
+        <li><strong>På TV-en:</strong> Innstillinger → Nettverk → Wi-Fi-tilkobling (eller kablet tilkobling) → Avanserte innstillinger → Rediger → sett DNS til «Manuell» og skriv inn leverandørens DNS-adresser.</li>
+        <li><strong>Start TV-en på nytt</strong> og åpne strømmeappen.</li>
+      </ol>
+      <p>Samme forbehold som for Samsung: Smart DNS gir strømming, ikke personvern. Og hvis internettleverandøren din gir deg ny IP-adresse med jevne mellomrom (dynamisk IP), må du registrere den nye adressen hos leverandøren når Smart DNS plutselig slutter å virke – det er den vanligste årsaken til at Smart DNS «bare slutter å fungere».</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Metode 4: VPN på ruteren – dekker alle TV-er i huset</h2>
+      <p>Dette er den grundigste løsningen, og den eneste som gir ekte VPN-beskyttelse på Samsung- og LG-TV-er uten app: installer VPN-en på ruteren, så går all trafikk fra alle enheter i huset – TV-er, spillkonsoller, gjester – gjennom VPN-en automatisk. Ulempen er at oppsettet er mer teknisk, og at ikke alle rutere fra internettleverandøren støtter det. Vår egen guide <a class="text-brand-600 hover:underline" href="/no/vpn-pa-ruter/">VPN på ruter</a> forklarer hvilke rutere som fungerer og hvordan du setter det opp steg for steg.</p>
+      <p>En praktisk mellomting: Mange kjøper en egen, billig ruter til VPN-bruk ved siden av leverandørens ruter, og kobler bare TV-en til den. Da kan resten av huset bruke det vanlige nettet uten VPN, mens TV-en alltid går gjennom VPN-en.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Metode 5: Del VPN fra mobil eller PC (gratis, men upraktisk)</h2>
+      <p>Har du ikke lyst til å kjøpe noe nytt, finnes det to gratisløsninger som fungerer – men begge er upraktiske i lengden:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Mobil som hotspot:</strong> Koble VPN-en på mobilen, del internett som hotspot, og koble TV-en til mobilens nettverk. Funker, men tømmer batteriet og gir ofte lavere fart.</li>
+        <li><strong>HDMI fra PC:</strong> Koble VPN-en på PC-en og spill av strømmetjenesten i nettleseren, med bildet over HDMI til TV-en. Funker alltid, men du mister TV-ens fjernkontrollopplevelse.</li>
+        <li><strong>Chromecast / AirPlay:</strong> Start strømming på mobilen med VPN på, og cast til TV-en. Merk at noen strømmetjenester oppdager dette og spiller av direkte på TV-en uten VPN – da hjelper ikke metoden.</li>
+      </ul>
+      <p>For daglig bruk anbefaler vi metode 1 eller 4. Metode 5 er fin for å teste om VPN-en i det hele tatt fungerer med tjenesten du vil se, før du kjøper en strømmeenhet eller setter opp ruteren.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Smart DNS vs VPN-app vs ruter – sammenligning</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>VPN-app (Android TV):</strong> Ekte kryptering og personvern, enkel installasjon, bytt server med fjernkontrollen. Krever Android TV / Google TV.</li>
+        <li><strong>Smart DNS (Samsung / LG):</strong> Enkel å sette opp, ingen app nødvendig, fungerer på alle TV-er. Men ingen kryptering, ingen personvernbeskyttelse, og bare utvalgte strømmetjenester støttes.</li>
+        <li><strong>VPN på ruteren:</strong> Ekte VPN-beskyttelse på alle TV-er samtidig, ingen app per TV. Men mer teknisk oppsett, og serverbytte krever at du logger inn på ruteren.</li>
+        <li><strong>Ekstern strømmeenhet (Chromecast med Google TV):</strong> Billigste vei til VPN-app på en Samsung- eller LG-TV – du får både app og full fjernkontrollopplevelse for noen hundrelapper.</li>
+      </ul>
+
+      <ProsCons
+        pros={[
+          'Android TV / Google TV: VPN-app installeres på to minutter fra Google Play',
+          'Smart DNS gir strømming fra utlandet på Samsung og LG uten ekstra utstyr',
+          'VPN på ruteren beskytter alle TV-er i huset samtidig',
+          'En Chromecast med Google TV gir VPN-app på enhver TV for noen hundrelapper',
+        ]}
+        cons={[
+          'Samsung Tizen og LG webOS har ingen egen VPN-app fra de store leverandørene',
+          'Smart DNS krypterer ikke trafikken – det er strømming, ikke personvern',
+          'Strømmetjenester blokkerer VPN-servere aktivt – serverbytte kan være nødvendig',
+          'VPN på ruteren krever en ruter som støtter det, og mer teknisk oppsett',
+        ]}
+      />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: Hvilken VPN for smart-TV?</h2>
+      <p><strong>Vår vurdering</strong> (redaksjonell, ikke målte testresultater): Velg etter TV-en din, ikke etter reklamen. Har du Android TV, er NordVPN vårt førstevalg totalt med en god TV-app og mange servere i Norge – veiledende fra 39 kr/mnd. Er prisen viktigst, er Surfshark det beste budsjettvalget med ubegrenset antall enheter, slik at TV-en, mobilene og PC-ene dekkes av samme abonnement – veiledende fra 23 kr/mnd. Har du Samsung eller LG, legg vekt på Smart DNS-kvaliteten: ExpressVPNs MediaStreamer er den mest polerte Smart DNS-løsningen vi kjenner, veiledende fra 69 kr/mnd. Alle tre har 30 dagers pengene-tilbake-garanti, så du kan teste på din egen TV risikofritt.</p>
+      <p class="text-sm text-slate-500">Veiledende priser – sjekk leverandørens nettside for oppdatert pris. Vurderingene våre er redaksjonelle og bygger på leverandørenes dokumenterte egenskaper, ikke på egne målinger.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Test på din egen TV – risikofritt i 30 dager</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – vår vurdering: best totalt, med god Android TV-app og servere i Norge. Veiledende fra 39 kr/mnd.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
+        <p class="text-sm text-slate-600 mt-5 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/surfshark/">Surfshark</a> – vår vurdering: best på pris, med ubegrenset antall enheter for hele husstanden. Veiledende fra 23 kr/mnd.</p>
+        <CtaButton brand="surfshark" label="Prøv Surfshark" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Se også <a class="text-brand-600 hover:underline" href="/no/beste-vpn-for-apple-tv/">beste VPN for Apple TV</a> og <a class="text-brand-600 hover:underline" href="/no/vpn-pa-ruter/">VPN på ruter</a>.</p>
+      </div>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Feilsøking: Når det ikke fungerer på TV-en</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Strømmeappen viser feil katalog:</strong> VPN-en må være tilkoblet før appen åpnes. Lukk appen helt, koble til VPN-en, og åpne appen igjen.</li>
+        <li><strong>«Du bruker VPN»-melding:</strong> Bytt til en annen server i samme land, og tøm appens hurtigbuffer i TV-ens innstillinger. Hjelper ingenting, prøv Smart DNS i stedet for VPN-app.</li>
+        <li><strong>Bufring i 4K:</strong> Bytt til en server nærmere deg, eller skru ned til 1080p for å teste om problemet er farten. Les <a class="text-brand-600 hover:underline" href="/no/blir-internett-tregere-med-vpn/">hvorfor VPN-en gjør nettet tregere</a>.</li>
+        <li><strong>Smart DNS sluttet plutselig å virke:</strong> IP-adressen din har sannsynligvis endret seg. Registrer den nye adressen hos leverandøren og start TV-en på nytt.</li>
+        <li><strong>VPN-appen finnes ikke i butikken på TV-en:</strong> Da har TV-en din ikke Android TV – sjekk om den har Tizen eller webOS, og bruk Smart DNS eller ruter-metoden over.</li>
+        <li><strong>Ingenting kobler til i det hele tatt:</strong> Se <a class="text-brand-600 hover:underline" href="/no/vpn-fungerer-ikke/">feilsøkingsguiden vår</a> – problemet ligger som regel i nettverket, ikke i TV-en.</li>
+      </ul>
+      <p>Oppsummert: Finn først ut hvilket system TV-en din har. Android TV? Installer appen. Samsung eller LG? Smart DNS for strømming, ruter for personvern – eller en Chromecast med Google TV for å få det beste fra begge verdener. Og husk å sjekke leverandørens app-side før du kjøper: TV-støtten endrer seg, og morgendagens app kan gjøre dagens omvei unødvendig.</p>
+
+      <Methodology tested={false} />
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
