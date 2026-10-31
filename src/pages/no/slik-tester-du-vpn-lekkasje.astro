@@ -64,6 +64,53 @@ const schema = [
     </DirectAnswer>
 
     <div class="text-slate-700 leading-relaxed space-y-5">
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hurtigoversikt: lekkasjebeskyttelse per VPN</h2>
+      <p>Tabellen bygger på leverandørenes egen dokumentasjon og våre redaksjonelle vurderinger – ikke på målte laboratorietester fra oss. Bruk guiden under til å teste din egen VPN og døm selv.</p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-left">
+              <th class="bg-slate-100 px-3 py-2">VPN</th>
+              <th class="bg-slate-100 px-3 py-2">Kill switch</th>
+              <th class="bg-slate-100 px-3 py-2">Ekstra lekkasjevern</th>
+              <th class="bg-slate-100 px-3 py-2">Fra-pris*</th>
+              <th class="bg-slate-100 px-3 py-2">Vår vurdering</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border-t border-slate-200 px-3 py-2 font-semibold"><a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN</a></td>
+              <td class="border-t border-slate-200 px-3 py-2">Ja – systemnivå og appnivå på Windows</td>
+              <td class="border-t border-slate-200 px-3 py-2">Egen DNS, dokumentert IPv6-beskyttelse</td>
+              <td class="border-t border-slate-200 px-3 py-2">39 kr/mnd</td>
+              <td class="border-t border-slate-200 px-3 py-2">4,9 / 5</td>
+            </tr>
+            <tr>
+              <td class="border-t border-slate-200 px-3 py-2 font-semibold"><a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark</a></td>
+              <td class="border-t border-slate-200 px-3 py-2">Ja – enkel av/på-bryter</td>
+              <td class="border-t border-slate-200 px-3 py-2">Egen DNS, CleanWeb</td>
+              <td class="border-t border-slate-200 px-3 py-2">23 kr/mnd</td>
+              <td class="border-t border-slate-200 px-3 py-2">4,7 / 5</td>
+            </tr>
+            <tr>
+              <td class="border-t border-slate-200 px-3 py-2 font-semibold"><a class="text-brand-600 hover:underline" href="/no/anmeldelser/expressvpn/">ExpressVPN</a></td>
+              <td class="border-t border-slate-200 px-3 py-2">Ja – «Network Lock» (systemnivå)</td>
+              <td class="border-t border-slate-200 px-3 py-2">Privat DNS på hver server</td>
+              <td class="border-t border-slate-200 px-3 py-2">69 kr/mnd</td>
+              <td class="border-t border-slate-200 px-3 py-2">4,6 / 5</td>
+            </tr>
+            <tr>
+              <td class="border-t border-slate-200 px-3 py-2 font-semibold"><a class="text-brand-600 hover:underline" href="/no/anmeldelser/proton/">Proton VPN</a></td>
+              <td class="border-t border-slate-200 px-3 py-2">Ja – pluss «Permanent kill switch»</td>
+              <td class="border-t border-slate-200 px-3 py-2">Secure Core, NetShield, åpen kildekode</td>
+              <td class="border-t border-slate-200 px-3 py-2">38 kr/mnd</td>
+              <td class="border-t border-slate-200 px-3 py-2">4,5 / 5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-slate-500">* Veiledende priser per oktober 2026 – sjekk leverandørens nettside for oppdatert pris.</p>
+
       <h2 class="text-2xl font-extrabold text-ink pt-4">De tre lekkasjetypene – enkelt forklart</h2>
       <p>Før du tester, er det lurt å vite hva du leter etter. En VPN kan lekke på tre måter, og de krever ulike løsninger:</p>
       <ul class="list-disc pl-6 space-y-2">
@@ -114,6 +161,16 @@ const schema = [
       </ol>
       <p>Hvis VPN-en kobler fra og til gjentatte ganger mens du tester, er problemet ofte ikke lekkasje, men ustabil tilkobling – se vår <a class="text-brand-600 hover:underline" href="/no/vpn-fungerer-ikke/">feilsøkingsguide for VPN-problemer</a>. Og blir nettet merkbart tregere med VPN-en på, les guiden om <a class="text-brand-600 hover:underline" href="/no/blir-internett-tregere-med-vpn/">hvorfor VPN-en gjør nettet tregere</a> før du skylder på lekkasjefiksen.</p>
 
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik skrur du på kill switch – per enhet</h2>
+      <p>Kill switch er det viktigste enkelttiltaket mot lekkasje: den kutter all internettrafikk i det øyeblikket VPN-tunnelen bryter sammen, så din virkelige IP-adresse aldri eksponeres. Den er ikke alltid aktivert som standard – sjekk at den er på, på hver enhet du bruker:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Windows og macOS:</strong> Åpne VPN-appen → Innstillinger → Sikkerhet (eller «Tilkobling») → skru på «Kill switch». På Windows lar NordVPN deg velge mellom systemnivå («Internet Kill Switch», blokkerer all trafikk) og appnivå («App Kill Switch», blokkerer kun apper du velger) – eller begge.</li>
+        <li><strong>Android:</strong> Samme bryter i appens innstillinger. Godta i tillegg «alltid på»-VPN i Androids systeminnstillinger hvis appen ber om det – uten den tillatelsen kan operativsystemet omgå blokkeringen når du bytter mellom Wi-Fi og mobildata.</li>
+        <li><strong>iPhone og iPad:</strong> Kill switch finnes i appene til alle de fire leverandørene i tabellen over. Skru den på i appens innstillinger – og merk at iOS selv begrenser hva apper kan blokkere, så test etterpå med guiden over.</li>
+        <li><strong>Nulltoleranse:</strong> ProtonVPN tilbyr i tillegg «Permanent kill switch», som blokkerer all trafikk også når VPN-appen er avslått helt – helt til du kobler til manuelt. Det er for deg som aldri vil være på nett uten VPN.</li>
+      </ul>
+      <p>Test at den virker: Koble til VPN-en, koble den deretter brått fra, og bekreft at internett faktisk stopper. Får du ikke lastet noen nettside, fungerer den som den skal. Les hele <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">guiden om hva kill switch er</a> for forskjellen på systemnivå og appnivå, og når den kan skape problemer.</p>
+
       <ProsCons
         pros={[
           'Tar under fem minutter og krever ingen installasjon',
@@ -137,6 +194,7 @@ const schema = [
         <li><strong>NordVPN</strong> – egen DNS, kill switch på alle plattformer og dokumentert IPv6-beskyttelse. Vår vurdering: det tryggeste valget for deg som vil teste minst og stole mest. Veiledende fra 39 kr/mnd.</li>
         <li><strong>Surfshark</strong> – egen DNS og enkel kill switch, med CleanWeb som bonus mot skadelige nettsteder. Vår vurdering: enklest å sette opp riktig for nybegynnere. Veiledende fra 23 kr/mnd.</li>
         <li><strong>ExpressVPN</strong> – egen DNS på alle servere og «Network Lock» som kill switch-variant. Vår vurdering: solid, men dyrere enn de to over. Veiledende fra 69 kr/mnd.</li>
+        <li><strong>Proton VPN</strong> – kill switch pluss «Permanent kill switch» for nulltoleranse, Secure Core og åpen kildekode med uavhengige revisjoner. Vår vurdering: best for deg som vil ha maksimalt personvern – og gratisversjonen er et reelt alternativ for enkel beskyttelse. Veiledende fra 38 kr/mnd.</li>
       </ul>
       <p>Uansett hvilken du velger: test den med guiden over før du stoler på den. En VPN du aldri har testet, er en VPN du bare <em>tror</em> beskytter deg.</p>
 

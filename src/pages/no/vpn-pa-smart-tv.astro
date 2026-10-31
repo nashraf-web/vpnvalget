@@ -44,9 +44,22 @@ const faqs = [
   },
 ];
 const schema = [
-  articleSchema({ headline: title, description, url, datePublished: '2026-10-30', dateModified: '2026-10-30', image: `${site.url}/og-streaming.webp` }),
+  articleSchema({ headline: title, description, url, datePublished: '2026-10-30', dateModified: '2026-10-31', image: `${site.url}/og-streaming.webp` }),
   faqSchema(faqs),
   breadcrumbSchema(crumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'Slik bruker du VPN på smart-TV',
+    step: [
+      { '@type': 'HowToStep', name: 'VPN-app på Android TV og Google TV', text: 'Installer VPN-appen fra Google Play på TV-en, logg inn, velg server og koble til før du åpner strømme-appen.' },
+      { '@type': 'HowToStep', name: 'Samsung Tizen med Smart DNS', text: 'Aktiver Smart DNS hos leverandøren, registrer IP-adressen din og legg inn DNS-adressene manuelt under Nettverk på TV-en.' },
+      { '@type': 'HowToStep', name: 'LG webOS med Smart DNS', text: 'Aktiver Smart DNS hos leverandøren og legg inn DNS-adressene manuelt under Nettverk og avanserte innstillinger på TV-en.' },
+      { '@type': 'HowToStep', name: 'VPN på ruteren', text: 'Installer VPN på ruteren slik at all trafikk fra alle TV-er i huset går gjennom VPN automatisk.' },
+      { '@type': 'HowToStep', name: 'Del VPN fra mobil eller PC', text: 'Del VPN-tilkoblingen fra mobil som hotspot, via HDMI fra PC, eller ved å caste — greit for å teste, upraktisk til daglig.' },
+      { '@type': 'HowToStep', name: 'Fire TV Stick', text: 'Plugg Fire TV Stick i HDMI-porten, installer VPN-appen fra Amazon Appstore, logg inn og koble til før du strømmer.' },
+    ],
+  },
 ];
 ---
 
@@ -64,6 +77,53 @@ const schema = [
     </DirectAnswer>
 
     <div class="text-slate-700 leading-relaxed space-y-5">
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hurtigoversikt: VPN på smart-TV</h2>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-left">
+              <th class="bg-slate-100 px-3 py-2">VPN</th>
+              <th class="bg-slate-100 px-3 py-2">Android TV-app</th>
+              <th class="bg-slate-100 px-3 py-2">Fire TV-app</th>
+              <th class="bg-slate-100 px-3 py-2">Samsung / LG</th>
+              <th class="bg-slate-100 px-3 py-2">Smart DNS-navn</th>
+              <th class="bg-slate-100 px-3 py-2">Fra-pris*</th>
+              <th class="bg-slate-100 px-3 py-2">Pengene tilbake</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border-t border-slate-200 px-3 py-2 font-semibold"><a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN</a></td>
+              <td class="border-t border-slate-200 px-3 py-2">Ja</td>
+              <td class="border-t border-slate-200 px-3 py-2">Ja</td>
+              <td class="border-t border-slate-200 px-3 py-2">Smart DNS eller ruter</td>
+              <td class="border-t border-slate-200 px-3 py-2">SmartPlay / Smart DNS</td>
+              <td class="border-t border-slate-200 px-3 py-2">fra 39 kr/mnd</td>
+              <td class="border-t border-slate-200 px-3 py-2">30 dager</td>
+            </tr>
+            <tr>
+              <td class="border-t border-slate-200 px-3 py-2 font-semibold"><a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark</a></td>
+              <td class="border-t border-slate-200 px-3 py-2">Ja</td>
+              <td class="border-t border-slate-200 px-3 py-2">Ja</td>
+              <td class="border-t border-slate-200 px-3 py-2">Smart DNS eller ruter</td>
+              <td class="border-t border-slate-200 px-3 py-2">Smart DNS</td>
+              <td class="border-t border-slate-200 px-3 py-2">fra 23 kr/mnd</td>
+              <td class="border-t border-slate-200 px-3 py-2">30 dager</td>
+            </tr>
+            <tr>
+              <td class="border-t border-slate-200 px-3 py-2 font-semibold"><a class="text-brand-600 hover:underline" href="/no/anmeldelser/expressvpn/">ExpressVPN</a></td>
+              <td class="border-t border-slate-200 px-3 py-2">Ja</td>
+              <td class="border-t border-slate-200 px-3 py-2">Ja</td>
+              <td class="border-t border-slate-200 px-3 py-2">Smart DNS eller ruter</td>
+              <td class="border-t border-slate-200 px-3 py-2">MediaStreamer</td>
+              <td class="border-t border-slate-200 px-3 py-2">fra 69 kr/mnd</td>
+              <td class="border-t border-slate-200 px-3 py-2">30 dager</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-slate-500">* Veiledende priser fra guiden selv, 30. okt 2026 — sjekk leverandørens nettside før publisering, slik siden allerede ber leseren om. Fire TV-appene finnes i Amazon Appstore; eldre Fire TV Stick (1. og 2. generasjon) støttes ikke av alle leverandører, og nyere Fire TV med Vega OS har varierende støtte – sjekk leverandørens støtteside for din modell.</p>
+
       <h2 class="text-2xl font-extrabold text-ink pt-4">Først: Hvilken TV har du?</h2>
       <p>Dette er spørsmålet som avgjør alt annet, og det er her de fleste guider svikter – de sier bare «installer appen», uten å fortelle deg at appen ikke finnes for din TV. Slik ligger det an per oktober 2026:</p>
       <ul class="list-disc pl-6 space-y-2">
@@ -73,6 +133,7 @@ const schema = [
         <li><strong>Apple TV:</strong> Egen løsning med tvOS-apper siden tvOS 17 – se vår guide om <a class="text-brand-600 hover:underline" href="/no/beste-vpn-for-apple-tv/">beste VPN for Apple TV</a>.</li>
         <li><strong>Eldre TV-er uten smart-funksjoner:</strong> Koble til en Chromecast med Google TV eller en annen Android TV-enhet via HDMI – da får du både smart-TV og VPN-app i samme kjøp.</li>
       </ul>
+      <p><strong>Andre merker:</strong> Sony, TCL og Philips med Android TV bruker Metode 1 — appen finnes i Google Play. Hisense med VIDAA har ingen egen VPN-app: bruk Fire TV Stick (Metode 6), Smart DNS eller VPN på ruteren. Er du usikker på hvilket system TV-en din har, sjekk under Innstillinger → Om TV-en.</p>
       <p>Er du usikker på hvilket system TV-en din har, sjekk innstillingene: Samsung kaller sitt system Tizen, LG kaller sitt webOS, og TV-er med Google Play-butikken har Android TV eller Google TV. Sjekk alltid leverandørens egen app-side før du kjøper et abonnement – app-tilbudet for TV-er endrer seg oftere enn for mobil og PC.</p>
 
       <h2 class="text-2xl font-extrabold text-ink pt-4">Metode 1: VPN-app på Android TV og Google TV (enklest)</h2>
@@ -117,6 +178,18 @@ const schema = [
         <li><strong>Chromecast / AirPlay:</strong> Start strømming på mobilen med VPN på, og cast til TV-en. Merk at noen strømmetjenester oppdager dette og spiller av direkte på TV-en uten VPN – da hjelper ikke metoden.</li>
       </ul>
       <p>For daglig bruk anbefaler vi metode 1 eller 4. Metode 5 er fin for å teste om VPN-en i det hele tatt fungerer med tjenesten du vil se, før du kjøper en strømmeenhet eller setter opp ruteren.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Metode 6: Fire TV Stick — VPN-app på pinne (billigst på Samsung og LG)</h2>
+      <p>Har du Samsung Tizen eller LG webOS uten VPN-app, er en Fire TV Stick den billigste veien til en ekte VPN-app på TV-en — billigere enn ny TV og enklere enn ruter-oppsett. Stick-en plugges i HDMI-porten, og VPN-appen installeres rett på den.</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li>Plugg Fire TV Stick i en ledig HDMI-port på TV-en og koble den til Wi-Fi.</li>
+        <li>Gå til Apps / Amazon Appstore på Fire TV, søk etter VPN-leverandøren din (NordVPN, Surfshark eller ExpressVPN) og installer appen.</li>
+        <li>Logg inn — de fleste lar deg logge inn med en kode du taster på mobil eller PC i stedet for å skrive passord med fjernkontrollen.</li>
+        <li>Velg server — Norge for norsk TV fra utlandet, et annet land for innhold derfra.</li>
+        <li>Koble til VPN-en <strong>før</strong> du åpner strømme-appen, ellers kan appen ha lagret feil plassering. Start strømme-appen på nytt hvis den viser feil katalog.</li>
+      </ol>
+      <p><strong>På reise:</strong> Last inn VPN-appen og logg inn hjemme før du drar. På hotellet plugger du bare stick-en i hotellets TV og har norsk TV med deg i kofferten — samme oppsett, ingen ny konfigurasjon.</p>
+      <p><strong>Merk:</strong> Roku har ingen egen VPN-app — der må du bruke Smart DNS eller VPN på ruteren (Metode 4). Eldre Fire TV Stick (1. og 2. generasjon) støttes ikke av alle leverandører; nyere Fire TV med Vega OS har varierende støtte mellom leverandørene – sjekk leverandørens støtteside for din modell før du kjøper.</p>
 
       <h2 class="text-2xl font-extrabold text-ink pt-4">Smart DNS vs VPN-app vs ruter – sammenligning</h2>
       <ul class="list-disc pl-6 space-y-2">

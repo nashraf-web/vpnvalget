@@ -158,7 +158,7 @@ export const vpns: VpnProvider[] = [
   },
   {
     name: 'Proton VPN',
-    slug: 'proton-vpn',
+    slug: 'proton',
     goSlug: 'protonvpn',
     rating: 4.5,
     order: 4,

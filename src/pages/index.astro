@@ -1,16 +1,31 @@
 ---
-// Root → Norwegian (primary locale). Cloudflare Pages serves this statically.
+// Site root / renders the full Norwegian homepage content (same as /no/).
+// Rationale: AdSense and reviewers start at the domain root — it must show
+// a real, substantive page, not a 10-word redirect stub. The canonical
+// stays https://vpnvalget.com/no/ so search consolidates on /no/.
+// A server-side 301 is not possible on GitHub Pages; Cloudflare redirect
+// rules would need dashboard access.
+import Base from '../layouts/Base.astro';
+import HomeContent from '../components/HomeContent.astro';
+import { site } from '../data/site';
+import { homeTitle, homeDescription, homeFaqs } from '../data/homepage';
+import { faqSchema, breadcrumbSchema, websiteSchema, organizationSchema, articleSchema } from '../data/schema';
+
+const url = `${site.url}/no/`;
+const crumbs = [{ name: 'Hjem', url }];
+const schema = [
+  organizationSchema,
+  websiteSchema(),
+  articleSchema({
+    headline: homeTitle, description: homeDescription, url,
+    datePublished: '2026-10-17', dateModified: '2026-10-17',
+  }),
+  faqSchema(homeFaqs),
+  breadcrumbSchema(crumbs),
+];
 ---
-<!doctype html>
-<html lang="nb-NO">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0;url=/no/" />
-    <link rel="canonical" href="https://www.vpnvalget.com/no/" />
-    <meta name="robots" content="noindex, follow" />
-    <title>VPNValget – Norges ærlige VPN-guide</title>
-  </head>
-  <body>
-    <p><a href="/no/">Fortsett til den norske forsiden</a></p>
-  </body>
-</html>
+
+<Base title={homeTitle} description={homeDescription} canonical={url} locale="no"
+       alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <HomeContent url={url} />
+</Base>
