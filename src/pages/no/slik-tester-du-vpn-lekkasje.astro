@@ -1,0 +1,152 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/slik-tester-du-vpn-lekkasje/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'Slik tester du VPN-lekkasje', url }];
+const title = 'Slik tester du om VPN-en lekker: IP, DNS og WebRTC (2026)';
+const description = 'Mistenker du at VPN-en lekker? Steg-for-steg-guide på norsk: test IP-adresse, DNS og WebRTC før og etter tilkobling, tolk resultatene riktig og fiks lekkasjen – uten teknisk bakgrunn.';
+const faqs = [
+  {
+    question: 'Hva betyr det at en VPN «lekker»?',
+    answer: 'At noe av trafikken din slipper utenom den krypterte VPN-tunnelen, slik at din virkelige IP-adresse, din internettleverandør eller din faktiske posisjon blir synlig. De tre vanligste lekkasjetypene er IP-lekkasje (tunnelen er brutt eller omgått), DNS-lekkasje (navneoppslag går til internettleverandørens servere i stedet for VPN-ens) og WebRTC-lekkasje (nettleseren avslører din virkelige IP-adresse direkte). En VPN som lekker gir deg en falsk følelse av beskyttelse – derfor er det verdt å teste.',
+  },
+  {
+    question: 'Hvilke gratis verktøy kan jeg bruke for å teste VPN-en?',
+    answer: 'De mest brukte er ipleak.net (viser IP, DNS-servere og WebRTC i én oversikt), dnsleaktest.com (egen DNS-test, velg «Extended test» for full oversikt) og browserleaks.com (detaljert WebRTC- og fingeravtrykk-test). Alle er gratis og krever ingen installasjon – du åpner dem bare i nettleseren, først uten VPN og deretter med VPN på. Sammenlign resultatene: uten VPN skal du se din norske IP-adresse og din internettleverandør; med VPN skal du se VPN-serverens IP og land, og ingen norske DNS-servere.',
+  },
+  {
+    question: 'Hvorfor viser testen min internettleverandør selv om VPN-en er på?',
+    answer: 'Nesten alltid fordi det er en DNS-lekkasje: VPN-tunnelen fungerer, men DNS-forespørslene dine (hvilke nettsider du ber om) går fortsatt til internettleverandørens DNS-servere. Løsningen er å skru på DNS-lekkasjebeskyttelse i VPN-appens innstillinger, eller bytte til en VPN som håndterer DNS internt. Hjelper ikke det, kan du sette en offentlig DNS manuelt (for eksempel Cloudflare 1.1.1.1 eller Quad9 9.9.9.9) i operativsystemet – men da bør du teste på nytt etterpå.',
+  },
+  {
+    question: 'Hva er WebRTC-lekkasje, og hvordan stopper jeg den?',
+    answer: 'WebRTC er en nettleserteknologi for video- og lydsamtaler direkte i nettleseren. Den kan avsløre din virkelige IP-adresse til et nettsted selv om VPN-en er på, fordi nettleseren kontakter serveren utenfor tunnelen. Slik stopper du det: bruk en VPN-app med WebRTC-beskyttelse, installer et nettlesertillegg som blokkerer WebRTC (for eksempel «WebRTC Leak Prevent» i Chrome eller «WebRTC Control» i Firefox), eller skru av WebRTC i nettleserinnstillingene – i Firefox kan du sette media.peerconnection.enabled til false under about:config. Test på browserleaks.com etterpå for å bekrefte at lekkasjen er borte.',
+  },
+  {
+    question: 'Lekker VPN-en min hvis IP-adressen er riktig, men posisjonen er feil?',
+    answer: 'Nei, det er normalt og ikke en lekkasje. Geolokalisering basert på IP-adresse er upresis: en VPN-server i Oslo kan registreres som en annen by, eller databasen nettstedet bruker kan være utdatert. Det som teller, er at IP-adressen tilhører VPN-leverandøren (ikke din internettleverandør) og at landet stemmer med serveren du valgte. Viser testen derimot din egen internettleverandørs navn, er det en ekte lekkasje – da må du feilsøke.',
+  },
+  {
+    question: 'Bør jeg teste VPN-en på mobilen også, eller holder det med PC-en?',
+    answer: 'Test begge, fordi lekkasjer kan være plattformspesifikke. Mobilapper kan lekke via IPv6 eller via apper som omgår VPN-en, og Androids «alltid på»-innstillinger påvirker hvordan tunnelen oppfører seg ved nettverksbytte. Kjør samme før/etter-test i mobilnettleseren – først på Wi-Fi, deretter på mobildata – og sjekk at resultatet er likt på begge nettverk. Se også vår guide om hva kill switch gjør, fordi den tetter lekkasjen når tunnelen bryter sammen.',
+  },
+  {
+    question: 'Hvor ofte bør jeg teste om VPN-en lekker?',
+    answer: 'Test hver gang du bytter VPN-leverandør, etter større appoppdateringer, og når du bytter enhet eller operativsystem. I tillegg er det lurt å teste et par ganger i året som rutine – og alltid etter at du har endret innstillinger som DNS eller protokoll. En test tar under fem minutter, og den er den eneste måten å vite – i stedet for å anta – at beskyttelsen faktisk virker.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-10-31', dateModified: '2026-10-31', image: `${site.url}/og-guide.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-guide.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-guide.webp" alt="Hvit trådløs ruter med antenner – symbol på å teste om VPN-en lekker IP-adresse, DNS eller WebRTC" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Slik tester du om VPN-en lekker</h1>
+
+    <DirectAnswer>
+      <p><strong>Det korte svaret: Koble fra VPN-en, noter IP-adressen og DNS-serverne dine på ipleak.net – koble til VPN-en, og test igjen. Lekker ingenting, skal du nå se VPN-serverens IP-adresse og land, VPN-leverandørens (eller en nøytral) DNS, og ingen spor av din norske internettleverandør.</strong></p>
+      <p class="mt-2">Hele testen tar under fem minutter og krever ingen installasjon. Trikset er å teste <em>før og etter</em>: Uten en «før»-måling vet du ikke hva du skal sammenligne med, og et resultat som ser «feil» ut kan være helt normalt. Denne guiden viser deg de tre lekkasjetypene som faktisk betyr noe – IP, DNS og WebRTC – hvordan du tester hver av dem, og hva du gjør hvis noe lekker.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <h2 class="text-2xl font-extrabold text-ink pt-4">De tre lekkasjetypene – enkelt forklart</h2>
+      <p>Før du tester, er det lurt å vite hva du leter etter. En VPN kan lekke på tre måter, og de krever ulike løsninger:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>IP-lekkasje.</strong> Din virkelige IP-adresse er synlig selv om VPN-en er på. Årsak: tunnelen er brutt, appen har krasjet, eller trafikken går utenom tunnelen. Dette er den alvorligste lekkasjen – den avslører hvem du er og hvor du befinner deg.</li>
+        <li><strong>DNS-lekkasje.</strong> VPN-tunnelen fungerer, men navneoppslagene dine – altså spørsmålene om hvilken server som skjuler seg bak «vg.no» – går til internettleverandørens DNS-servere i stedet for VPN-ens. Leverandøren kan da se hvilke nettsider du besøker, selv om selve innholdet er kryptert. Dette er den vanligste lekkasjen, og den oppdages ofte først ved testing.</li>
+        <li><strong>WebRTC-lekkasje.</strong> Nettleseren din avslører din virkelige IP-adresse direkte til et nettsted, utenom VPN-tunnelen. Dette er en nettleserfeil, ikke en VPN-feil – men den undergraver beskyttelsen likevel. Den rammer særlig Chrome og Firefox uten tilleggsbeskyttelse.</li>
+      </ul>
+      <p>En fjerde kandidat, <strong>IPv6-lekkasje</strong>, oppstår når VPN-en bare beskytter IPv4-trafikken mens IPv6-trafikken går ukryptert. De fleste seriøse VPN-er blokkerer eller tunnelerer IPv6 automatisk i dag, men testen under avslører det hvis din leverandør ikke gjør det.</p>
+      <p>Er du ny på VPN-begrepet i seg selv, start med vår enkle forklaring av <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva en VPN er</a> først. Og husk forskjellen: en lekkasjetest sjekker om tunnelen holder tett <em>nå</em> – mens <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">kill switch</a> er funksjonen som tetter gapet automatisk når tunnelen bryter sammen senere.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Steg 1: Mål «før» – uten VPN</h2>
+      <p>Koble fra VPN-en helt, og åpne <strong>ipleak.net</strong> i nettleseren. Noter tre ting:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Din IP-adresse</strong> – den som vises øverst på siden.</li>
+        <li><strong>Internettleverandøren din</strong> – navnet som står ved siden av IP-adressen (for eksempel Telenor, Altibox eller Telia).</li>
+        <li><strong>DNS-serverne</strong> – listen nederst på siden. Uten VPN vil du som regel se leverandørens egne DNS-servere, ofte med norske navn.</li>
+      </ol>
+      <p>Dette er referansepunktet ditt. Alt som ligner på disse verdiene i «etter»-testen er et lekkasjetegn – alt annet er forventet.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Steg 2: Koble til VPN-en og test igjen</h2>
+      <p>Koble til VPN-en på en server i et annet land enn Norge – for eksempel Sverige eller Nederland – slik at forskjellen blir tydelig. Vent til appen bekrefter at tilkoblingen er aktiv, og åpne deretter ipleak.net på nytt. Sjekk punkt for punkt:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>IP-adressen skal ha endret seg.</strong> Den nye adressen skal tilhøre VPN-leverandøren, ikke din internettleverandør, og landet skal stemme med serveren du valgte. Ser du fortsatt din opprinnelige IP-adresse, lekker VPN-en – eller så er ikke tilkoblingen aktiv i det hele tatt.</li>
+        <li><strong>DNS-serverne skal ikke være norske.</strong> Listen skal vise VPN-leverandørens egne DNS-servere, eller nøytrale offentlige servere. Dukker din internettleverandørs navn opp her, har du en DNS-lekkasje – den vanligste lekkasjetypen, og den de fleste aldri oppdager uten å teste.</li>
+        <li><strong>WebRTC-seksjonen skal ikke vise din virkelige IP.</strong> På ipleak.net finner du WebRTC-resultatet lenger ned på siden. Viser den din opprinnelige IP-adresse (den fra steg 1), har du en WebRTC-lekkasje – selv om IP- og DNS-testen er grønn.</li>
+        <li><strong>IPv6 skal enten mangle eller være VPN-ens.</strong> Viser testen en IPv6-adresse som tilhører din internettleverandør, lekker IPv6-trafikken utenom tunnelen.</li>
+      </ul>
+      <p>For en grundigere DNS-sjekk, kjør også <strong>dnsleaktest.com</strong> og velg «Extended test». Den spør mange DNS-servere etter hverandre og avslører lekkasjer som en rask test kan overse. Tar testen under ett minutt, og resultatet skal vise kun VPN-leverandørens (eller nøytrale) servere.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Steg 3: Tolk resultatet riktig – dette er IKKE lekkasje</h2>
+      <p>Ikke alle «rare» resultater betyr at noe er galt. Disse er normale og ufarlige:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Feil by, riktig land.</strong> Geolokalisering basert på IP er upresis. En server i Oslo kan registreres som Bergen, eller databasen kan være utdatert. Det som teller er at adressen tilhører VPN-leverandøren og at landet stemmer.</li>
+        <li><strong>DNS-servere i et annet land enn VPN-serveren.</strong> Noen leverandører ruter DNS via egne servere i andre land. Det er greit så lenge serverne tilhører leverandøren eller en nøytral offentlig tjeneste – ikke din internettleverandør.</li>
+        <li><strong>Nettstedet gjetter feil posisjon.</strong> Nettsteder bruker også språk, tidssone og tidligere besøk til å gjette hvor du er. At et nettsted «tror» du er i Norge selv om VPN-en viser Sverige, er ikke en IP-lekkasje – det er en gjetning basert på andre signaler.</li>
+      </ul>
+      <p>En ekte lekkasje er derimot entydig: din opprinnelige IP-adresse, din internettleverandørs navn i DNS-listen, eller din virkelige IP i WebRTC-seksjonen. Da er det på tide å fikse.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik fikser du en lekkasje – i riktig rekkefølge</h2>
+      <p>Prøv tiltakene i denne rekkefølgen, og test på nytt etter hvert steg:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Skru på kill switch og DNS-lekkasjebeskyttelse</strong> i VPN-appens innstillinger. Begge finnes hos alle seriøse leverandører, men er ikke alltid aktivert som standard. Les hvordan <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">kill switch fungerer</a> hvis du er usikker på hva den gjør.</li>
+        <li><strong>Bytt protokoll.</strong> WireGuard og OpenVPN håndterer DNS og IPv6 ulikt. Bytt protokoll i appens innstillinger og test igjen – noen lekkasjer forsvinner bare ved protokollbytte.</li>
+        <li><strong>Skru av IPv6 i operativsystemet</strong> hvis testen fortsatt viser IPv6-lekkasje og VPN-en ikke blokkerer IPv6 selv. På Windows finner du det under nettverksadapterens egenskaper; på macOS under nettverksinnstillingene.</li>
+        <li><strong>Stopp WebRTC-lekkasje i nettleseren.</strong> Installer et WebRTC-blokkerende tillegg, eller skru av WebRTC i nettleserinnstillingene (Firefox: <em>about:config → media.peerconnection.enabled = false</em>). Test på browserleaks.com etterpå.</li>
+        <li><strong>Sett DNS manuelt.</strong> Hvis DNS fortsatt lekker til internettleverandøren, sett en offentlig DNS i operativsystemet – for eksempel Cloudflare (1.1.1.1) eller Quad9 (9.9.9.9) – og test igjen.</li>
+        <li><strong>Bytt server, deretter leverandør.</strong> Lekker det fortsatt etter alle tiltakene over, prøv en annen server i samme land. Lekker det på alle servere, er det et tegn på at leverandøren ikke tar lekkasjebeskyttelse på alvor – da er det på tide å bytte. Les hva <a class="text-brand-600 hover:underline" href="/no/hva-betyr-no-logs/">«no-logs» egentlig betyr</a> før du velger ny leverandør, så du ikke bytter til en som er like slapp med personvernet.</li>
+      </ol>
+      <p>Hvis VPN-en kobler fra og til gjentatte ganger mens du tester, er problemet ofte ikke lekkasje, men ustabil tilkobling – se vår <a class="text-brand-600 hover:underline" href="/no/vpn-fungerer-ikke/">feilsøkingsguide for VPN-problemer</a>. Og blir nettet merkbart tregere med VPN-en på, les guiden om <a class="text-brand-600 hover:underline" href="/no/blir-internett-tregere-med-vpn/">hvorfor VPN-en gjør nettet tregere</a> før du skylder på lekkasjefiksen.</p>
+
+      <ProsCons
+        pros={[
+          'Tar under fem minutter og krever ingen installasjon',
+          'Avslører den vanligste lekkasjen (DNS) som ellers er usynlig',
+          'Gir deg bevis – ikke bare antakelse – for at VPN-en virker',
+          'Gratis verktøy (ipleak.net, dnsleaktest.com, browserleaks.com)',
+        ]}
+        cons={[
+          'En grønn test i dag garanterer ikke grønn test etter neste appoppdatering',
+          'WebRTC-fiksen kan brekke videosamtaler i nettleseren',
+          'Geolokalisering er upresis – feil by kan se ut som lekkasje uten å være det',
+          'Testen dekker ikke fingeravtrykk, informasjonskapsler eller GPS – les hva VPN-en ikke beskytter mot',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: hvilke VPN-er tar lekkasjebeskyttelse på alvor?</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon – ikke målte laboratorietester fra oss. Vi har ikke kjørt daterte lekkasjetester av hver leverandør; bruk guiden over til å teste din egen VPN og døm selv.</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordVPN</strong> – egen DNS, kill switch på alle plattformer og dokumentert IPv6-beskyttelse. Vår vurdering: det tryggeste valget for deg som vil teste minst og stole mest. Veiledende fra 39 kr/mnd.</li>
+        <li><strong>Surfshark</strong> – egen DNS og enkel kill switch, med CleanWeb som bonus mot skadelige nettsteder. Vår vurdering: enklest å sette opp riktig for nybegynnere. Veiledende fra 23 kr/mnd.</li>
+        <li><strong>ExpressVPN</strong> – egen DNS på alle servere og «Network Lock» som kill switch-variant. Vår vurdering: solid, men dyrere enn de to over. Veiledende fra 69 kr/mnd.</li>
+      </ul>
+      <p>Uansett hvilken du velger: test den med guiden over før du stoler på den. En VPN du aldri har testet, er en VPN du bare <em>tror</em> beskytter deg.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Testet VPN-en din – og den lekker overalt?</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – vår høyest vurderte VPN med egen DNS, kill switch på alle plattformer og dokumentert lekkasjebeskyttelse. Veiledende fra 39 kr/mnd.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Se også <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
