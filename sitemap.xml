@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Static sitemap entry point. Mirrors the generated sitemap-index.xml
+     (single sitemap file: sitemap-0.xml). If the sitemap ever splits into
+     multiple files, add the new <sitemap> entries here too. -->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://vpnvalget.com/sitemap-0.xml</loc>
+  </sitemap>
+</sitemapindex>
