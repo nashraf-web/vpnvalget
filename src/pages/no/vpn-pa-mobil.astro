@@ -1,0 +1,157 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/vpn-pa-mobil/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'VPN på mobil', url }];
+const title = 'VPN på mobil: slik setter du opp VPN på iPhone og Android (2026)';
+const description = 'Slik setter du opp VPN på mobilen: steg for steg for iPhone og Android, alltid-på VPN, kill switch, batteri og GPS – og hva VPN på mobilen ikke skjuler.';
+const faqs = [
+  {
+    question: 'Trenger jeg VPN på mobilen?',
+    answer: 'Ikke alle, men mange har god nytte av det. Mobilen er den enheten du oftest kobler til offentlig Wi-Fi med – på kafé, flyplass og hotell – og det er der VPN-en gir mest. Bruker du mobilen til nettbank, jobb eller strømming i utlandet, er VPN-en et enkelt personverntiltak. Er du usikker, les vår ærlige guide om du trenger VPN i det hele tatt.',
+  },
+  {
+    question: 'Hvordan setter jeg opp VPN på iPhone?',
+    answer: 'Enklest: last ned leverandørens app fra App Store, logg inn, og godkjenn når iPhone spør om å legge til VPN-konfigurasjoner. Trykk deretter på koble til i appen, og velg Norge eller nærmeste server for best fart. Vil du sette opp manuelt, går det via Innstillinger > Generelt > VPN og enhetsadministrasjon > VPN > Legg til VPN-konfigurasjon – men da må du fylle inn servernavn og innloggingsdetaljer fra leverandøren selv, så appen er enklere for de fleste.',
+  },
+  {
+    question: 'Hvordan setter jeg opp VPN på Android?',
+    answer: 'Last ned leverandørens app fra Google Play, logg inn, og godkjenn når Android spør om å tillate VPN-tilkoblingen. Trykk koble til, og velg nærmeste server for best fart. Manuelt oppsett finner du under Innstillinger > Nettverk og internett > VPN > Legg til VPN – menytekstene kan variere litt mellom Samsung, Pixel og andre produsenter. For alltid-på-beskyttelse: trykk på tannhjulet ved VPN-en i samme meny og skru på «Alltid på VPN» og «Blokker tilkoblinger uten VPN».',
+  },
+  {
+    question: 'Skjuler VPN-en GPS-posisjonen min på mobilen?',
+    answer: 'Nei. En VPN endrer IP-adressen din, ikke GPS-signalet. Apper som får tilgang til posisjonen din – for eksempel kart, vær-apper eller enkelte strømme- og spillapper – kan fortsatt se hvor du faktisk er via GPS. Vil du begrense det, må du styre posisjonstillatelsene per app i telefonens innstillinger, i tillegg til VPN-en. VPN-en skjuler posisjonen din fra nettsteder og internettleverandøren, ikke fra apper du selv har gitt GPS-tilgang.',
+  },
+  {
+    question: 'Bruker VPN mye batteri eller mobildata på mobilen?',
+    answer: 'Batteriforbruket øker litt, fordi telefonen krypterer og dekrypterer all trafikk – men for de fleste er forskjellen liten i hverdagen, særlig med den effektive WireGuard-protokollen. Dataforbruket øker bare med noen få prosent på grunn av krypteringens overhodet. Merkes batteriet, hjelper det å velge nærmeste server, bruke WireGuard der appen tilbyr det, og å ikke la VPN-en koble til og fra hele tiden – en stabil tilkobling er mer energieffektiv enn stadige nytilkoblinger.',
+  },
+  {
+    question: 'Fungerer BankID og Vipps med VPN på mobilen?',
+    answer: 'Som regel, ja. BankID og Vipps fungerer normalt med VPN på, fordi de ikke er avhengige av IP-adressen din på samme måte som en strømmetjeneste. Skulle en bank- eller betalingsapp nekte å fungere, er det som regel appen som mistenker at noe er unormalt med tilkoblingen. Løsningen er da å bytte til en norsk server, skru av VPN-en akkurat mens du bruker den appen, eller bruke split tunneling på Android slik at akkurat den appen går utenom VPN-en mens resten er beskyttet.',
+  },
+  {
+    question: 'Er gratis VPN-apper trygge på mobilen?',
+    answer: 'Vær skeptisk. En VPN-tjeneste koster penger å drive – servere, båndbredde og utvikling – så en gratis app må tjene penger et sted, ofte via annonser eller ved å samle inn bruksdata. Det er det motsatte av personvern. På mobilen er risikoen ekstra stor fordi mange gratisapper ber om brede tillatelser. Velg heller en betalt leverandør med uavhengig revidert loggpolicy og 30 dagers pengene-tilbake-garanti, slik at du kan teste risikofritt. Les mer i vår sammenligning av gratis og betalt VPN.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-02', dateModified: '2026-11-02', image: `${site.url}/og-default.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-default.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-default.webp" alt="Kvinnehender som bruker en VPN-app på smarttelefonen – slik setter du opp VPN på mobilen" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">VPN på mobil: slik setter du opp VPN på iPhone og Android</h1>
+
+    <DirectAnswer>
+      <p><strong>Ja – det tar under fem minutter å sette opp VPN på mobilen, og du gjør det best via leverandørens app.</strong></p>
+      <p class="mt-2">Last ned appen fra App Store (iPhone) eller Google Play (Android), logg inn, godkjenn VPN-tillatelsen telefonen spør om, og trykk på koble til. Velg nærmeste server for best fart, eller Norge hvis du vil ha norsk IP-adresse. Deretter er all trafikk fra mobilen kryptert – også på offentlig Wi-Fi. Det viktigste å huske: en VPN på mobilen skjuler IP-adressen din, men ikke GPS-posisjonen din.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvorfor mobilen trenger VPN mest</h2>
+      <p>Mobilen er den enheten du tar med deg overalt – og dermed den enheten som oftest havner på nettverk du ikke kontrollerer. Hjemme på eget Wi-Fi er risikoen lav. På kafé, flyplass, hotell og tog er den høyere: åpne nettverk kan avlyttes, og noen kan sette opp et falskt nettverk med samme navn som kaféens for å fange opp trafikk. En VPN krypterer forbindelsen mellom mobilen og VPN-serveren, slik at ingen på det lokale nettverket kan lese det du sender og mottar.</p>
+      <p>Det er også på mobilen personvernlekkasjene er mest intime: posisjonsdata, bilder, meldinger, bank og jobb-e-post bor i samme enhet. Nybegynner på VPN generelt? Les først vår enkle forklaring på <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva er VPN?</a> – så gir resten av denne guiden mening.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik setter du opp VPN på iPhone – steg for steg</h2>
+      <ol class="list-decimal pl-6 space-y-3">
+        <li><strong>Last ned leverandørens app fra App Store.</strong> Søk på leverandørens navn og sjekk at det er den offisielle appen – se på utviklernavnet. Last aldri ned VPN-apper fra lenker i e-poster eller annonser.</li>
+        <li><strong>Logg inn med abonnementet ditt.</strong> Har du ikke abonnement ennå, oppretter du konto i appen eller på leverandørens nettside. Et abonnement dekker som regel både mobil og PC.</li>
+        <li><strong>Godkjenn VPN-konfigurasjonen.</strong> Første gang du trykker koble til, spør iPhone om appen får legge til VPN-konfigurasjoner. Trykk «Tillat» og bekreft med Face ID, Touch ID eller kode. Dette er iOS sin sikkerhetsmekanisme – appen kan ikke overvåke trafikken din uten at du eksplisitt har godkjent det.</li>
+        <li><strong>Velg server.</strong> For best fart: velg «raskeste server» eller nærmeste land. For norsk IP-adresse – for eksempel til NRK eller norske tjenester i utlandet – velg Norge. Les mer i vår guide om <a class="text-brand-600 hover:underline" href="/no/hvilken-vpn-server-bor-du-velge/">hvilken VPN-server du bør velge</a>.</li>
+        <li><strong>Slå på kill switch og automatisk tilkobling i appen.</strong> iPhone har ingen egen alltid-på-bryter for VPN i Innstillinger på samme måte som Android, så du er avhengig av appens egne innstillinger her. Skru på kill switch (bryter all trafikk hvis VPN-en faller ut) og automatisk tilkobling på ukjente nettverk. Les mer om <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">hva kill switch er</a> og hvorfor den betyr mest på mobilen, der tilkoblingen ofte bytter mellom Wi-Fi og mobildata.</li>
+      </ol>
+      <p>Manuelt oppsett uten app er mulig, men tungvint: Innstillinger &gt; Generelt &gt; VPN og enhetsadministrasjon &gt; VPN &gt; Legg til VPN-konfigurasjon. Da må du fylle inn servernavn, kontotype og innloggingsdetaljer fra leverandøren selv, og du mister appens kill switch og automatikk. For de aller fleste er appen det riktige valget.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik setter du opp VPN på Android – steg for steg</h2>
+      <ol class="list-decimal pl-6 space-y-3">
+        <li><strong>Last ned leverandørens app fra Google Play.</strong> Samme regel som på iPhone: sjekk utviklernavnet, og unngå APK-filer fra ukjente nettsteder – sidelasting av VPN-apper er en av de vanligste måtene skadevare forkledd som VPN spres på.</li>
+        <li><strong>Logg inn, og godkjenn tilkoblingsforespørselen.</strong> Når du trykker koble til første gang, viser Android en advarsel om at appen kan overvåke nettverkstrafikken. Det er standard for alle VPN-apper – trykk OK for en leverandør du stoler på, aldri for en app du ikke kjenner.</li>
+        <li><strong>Velg server og protokoll.</strong> Velg nærmeste server for fart, eller Norge for norsk IP. I appens innstillinger: velg WireGuard hvis den tilbys – den er rask og batterivennlig på mobil, og kobler raskt til igjen når du bytter nettverk.</li>
+        <li><strong>Skru på alltid-på VPN.</strong> Dette er Androids store fordel: gå til Innstillinger &gt; Nettverk og internett &gt; VPN, trykk på tannhjulet ved VPN-en din, og skru på «Alltid på VPN» og «Blokker tilkoblinger uten VPN». Da kan ingen app sende trafikk utenom tunnelen – ikke engang i de sekundene telefonen bytter fra Wi-Fi til mobildata.</li>
+        <li><strong>Vurder split tunneling.</strong> På Android tilbyr mange VPN-apper split tunneling: du velger hvilke apper som går gjennom VPN-en og hvilke som går utenom. Nyttig hvis én app – for eksempel en bank-app – fungerer dårlig med VPN, mens du vil beholde beskyttelsen for resten. Les vår forklaring av <a class="text-brand-600 hover:underline" href="/no/hva-er-split-tunneling/">split tunneling</a>. På iPhone er denne muligheten mer begrenset, fordi iOS styrer VPN-tunnelen strengere.</li>
+      </ol>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva VPN på mobilen ikke gjør</h2>
+      <p>Ærlighet først – her er grensene, slik at du ikke tror du er mer beskyttet enn du er:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Den skjuler ikke GPS-posisjonen din.</strong> VPN-en endrer IP-adressen, ikke GPS-signalet. Apper du har gitt posisjonstillatelse, vet fortsatt hvor du er. Styr posisjonstillatelser per app i telefonens innstillinger.</li>
+        <li><strong>Den gjør deg ikke anonym.</strong> Logger du inn på Google, Apple, Facebook eller banken, vet de hvem du er uansett IP-adresse. VPN-en beskytter forbindelsen, ikke identiteten overfor tjenester du frivillig logger inn på. Les den ærlige versjonen i <a class="text-brand-600 hover:underline" href="/no/gjor-vpn-deg-anonym/">gjør VPN deg anonym?</a></li>
+        <li><strong>Den beskytter ikke mot skadevare eller phishing.</strong> En VPN krypterer trafikken, men den stopper ikke at du trykker på en falsk lenke eller installerer en ondsinnet app. Noen VPN-apper har trusselbeskyttelse som blokkerer kjente skadelige domener, men det erstatter ikke sunn skepsis.</li>
+        <li><strong>Den fjerner ikke sporing fra apper og informasjonskapsler.</strong> Apper sporer deg via konto, enhets-ID og atferd – ikke bare IP-adresse. VPN-en tar bort ett sporingsignal, ikke alle.</li>
+      </ul>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Mobil-spesifikke innstillinger verdt å skru på</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Kill switch – alltid på.</strong> Mobilen bytter nettverk hele tiden: Wi-Fi hjemme, mobildata på bussen, kafé-WiFi. Hvert bytte er et øyeblikk der trafikken kan lekke utenom VPN-en hvis kill switch ikke er på. Dette er den viktigste enkeltinnstillingen på mobil.</li>
+        <li><strong>Automatisk tilkobling på ukjente nettverk.</strong> De fleste VPN-apper kan koble til automatisk når du kobler til et Wi-Fi-nettverk du ikke har merket som klarert. Skru det på – da slipper du å huske det selv.</li>
+        <li><strong>Skru av automatisk Wi-Fi-tilkobling til åpne nettverk.</strong> I telefonens Wi-Fi-innstillinger: ikke la mobilen koble til åpne nettverk automatisk. Da unngår du at den hopper på et falskt «gratis Wi-Fi» før VPN-en rekker å koble til.</li>
+        <li><strong>Test for lekkasjer etter oppsett.</strong> Koble til VPN-en, og sjekk at IP-adressen din faktisk er endret før du stoler på oppsettet. Vår guide <a class="text-brand-600 hover:underline" href="/no/slik-tester-du-vpn-lekkasje/">slik tester du om VPN-en lekker</a> viser hvordan, steg for steg.</li>
+      </ul>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Batteri, fart og mobildata – det du faktisk merker</h2>
+      <p>På fart: en god VPN på nærmeste server merkes knapt i hverdagen – surfing, meldinger og musikk flyter som normalt. 4K-strømming og videomøter krever mer; da hjelper nærmeste server og WireGuard-protokollen. Blir det tregt, bytt server først – det løser det meste. Les mer i <a class="text-brand-600 hover:underline" href="/no/blir-internett-tregere-med-vpn/">blir internett tregere med VPN?</a></p>
+      <p>På batteri: kryptering koster litt strøm, men forskjellen er liten for de fleste – og mindre enn forskjellen mellom et godt og et dårlig mobilnett. Hvis batteriet faller merkbart raskere etter at du installerte VPN, er det som regel fordi appen stadig kobler til og fra på ustabile nettverk. Løsning: stabil server, WireGuard, og alltid-på i stedet for å skru av og på manuelt.</p>
+      <p>På mobildata: krypteringen legger til noen få prosent overhodet. På et 10 GB-abonnement betyr det lite – men strømmer du mye video over mobildata, er det videoen, ikke VPN-en, som spiser dataen.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">VPN på mobilen på reise</h2>
+      <p>Reise er det stedet mobil-VPN-en virkelig tjener seg inn: hotell-WiFi, flyplasser og utenlandske mobilnett er de minst klarerte nettverkene du bruker, og samtidig de stedene du helst vil nå norske tjenester. Sett opp VPN-en hjemme før avreise – i enkelte land er VPN-nettsider og appbutikker begrenset, så nedlasting på stedet kan være vanskelig. Koble til Norge for NRK og norske tjenester, eller til landet du er i for lokale tjenester. Mer om dette i <a class="text-brand-600 hover:underline" href="/no/vpn-for-reise/">VPN for reise</a>.</p>
+      <p>Et reisetips mange glemmer: last ned offline-kart og strømmeinnhold hjemme, og la VPN-en stå på i bakgrunnen. Da er du beskyttet fra første sekund du kobler til hotellets nettverk, uten å måtte huske å starte appen.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">BankID, Vipps og apper som krangler med VPN</h2>
+      <p>De fleste norske apper fungerer fint med VPN på – inkludert BankID og Vipps, som ikke er avhengige av IP-adressen din på samme måte som en strømmetjeneste. Men enkelte apper – særlig bank, spill og strømmetjenester – kan reagere hvis IP-adressen plutselig er fra et annet land, eller hvis IP-en deles med tusenvis av andre VPN-brukere. Prøv i denne rekkefølgen: bytt til en norsk server, bytt server én gang til, bruk split tunneling (Android) for akkurat den appen, eller skru av VPN-en mens du bruker den appen. Les mer om samspillet med norske tjenester i <a class="text-brand-600 hover:underline" href="/no/vpn-og-bankid/">VPN og BankID</a> og <a class="text-brand-600 hover:underline" href="/no/vpn-og-vipps/">VPN og Vipps</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Bør VPN-en stå på hele tiden på mobilen?</h2>
+      <p>For de fleste: ja. Mobilen er alltid med deg, alltid tilkoblet, og bytter nettverk uten at du merker det – det er nettopp den bruken alltid-på VPN er laget for. Unntakene er få: apper som nekter å fungere med VPN, og situasjoner der du trenger lavest mulig forsinkelse, for eksempel konkurransespill. Da er split tunneling eller en midlertidig pause bedre enn å avinstallere. Full diskusjon finner du i <a class="text-brand-600 hover:underline" href="/no/bor-vpn-en-sta-pa-hele-tiden/">bør VPN-en stå på hele tiden?</a></p>
+
+      <ProsCons
+        pros={[
+          'Beskytter deg på offentlig Wi-Fi – der mobilen er mest utsatt',
+          'Alltid-på VPN og kill switch på Android tetter lekkasjer ved nettverksbytte',
+          'Ett abonnement dekker mobil, nettbrett og PC samtidig',
+          'Enkel å sette opp: app fra App Store eller Google Play, ett trykk for å koble til',
+        ]}
+        cons={[
+          'Skjuler ikke GPS-posisjonen din – apper med posisjonstillatelse ser deg fortsatt',
+          'Litt høyere batteriforbruk og noen få prosent dataoverhodet',
+          'Enkelte apper (bank, spill, strømming) kan krangle med VPN og kreve norsk server eller split tunneling',
+          'Gratis VPN-apper kan finansieres med annonser eller datasalg – det motsatte av personvern',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: hvilken VPN for mobilen?</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon – ikke målte laboratorietester fra oss. For mobilen teller tre ting mest: en god app, kill switch som faktisk fungerer, og antall enheter:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordVPN</strong> – solid app på både iPhone og Android, kill switch på begge plattformer, og rask NordLynx-protokoll. Vår vurdering: det tryggeste allround-valget for mobilen. Veiledende fra 39 kr/mnd.</li>
+        <li><strong>Surfshark</strong> – ubegrenset antall enheter på ett abonnement, perfekt når hele familiens mobiler, nettbrett og PC-er skal dekkes. Vår vurdering: best verdi for familier. Veiledende fra 23 kr/mnd.</li>
+        <li><strong>ExpressVPN</strong> – enkel app og «Network Lock» som kill switch-variant. Vår vurdering: solid, men dyrere enn de to over. Veiledende fra 69 kr/mnd.</li>
+      </ul>
+      <p>Er du usikker på om du i det hele tatt trenger VPN, les vår ærlige guide <a class="text-brand-600 hover:underline" href="/no/trenger-jeg-vpn/">trenger jeg VPN?</a> først – den hjelper deg å avgjøre det før du betaler for noe.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Sett opp VPN på mobilen i dag – det tar fem minutter.</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – vår høyest vurderte VPN, med kill switch på både iPhone og Android. Veiledende fra 39 kr/mnd.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Hele familien? <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark</a> fra 23 kr/mnd dekker ubegrenset antall enheter. Se også <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
