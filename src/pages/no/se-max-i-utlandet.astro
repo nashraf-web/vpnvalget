@@ -38,16 +38,20 @@ const faqs = [
   },
 ];
 const schema = [
-  articleSchema({ headline: title, description, url, datePublished: '2026-10-17', dateModified: '2026-10-17' }),
+  articleSchema({ headline: title, description, url, datePublished: '2026-10-17', dateModified: '2026-11-02', image: `${site.url}/og-streaming.webp` }),
   faqSchema(faqs),
   breadcrumbSchema(crumbs),
 ];
 ---
 
-<Base title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+<Base title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema} ogImage="/og-streaming.webp">
   <Breadcrumbs crumbs={crumbs} />
   <article class="max-w-3xl">
     <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Se HBO Max i utlandet med VPN</h1>
+
+    <figure class="my-6">
+      <img src="/og-streaming.webp" alt="Person strømmer HBO Max på TV i utlandet med VPN på smarttelefonen" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+    </figure>
 
     <DirectAnswer>
       <p><strong>Ja – med VPN kan du se ditt norske HBO Max-abonnement i utlandet.</strong></p>
