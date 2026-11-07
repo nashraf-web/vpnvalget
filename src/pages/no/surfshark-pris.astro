@@ -1,0 +1,149 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/surfshark-pris/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'Surfshark pris', url }];
+const title = 'Surfshark pris i kroner (2026): hva koster det egentlig?';
+const description = 'Hva koster Surfshark i Norge i 2026? Veiledende fra 23 kr/mnd på 2-årsabonnement – billigst av de seriøse VPN-ene. Alle planer, fornyelsesprisen og hvordan du betaler minst.';
+const faqs = [
+  {
+    question: 'Hva koster Surfshark i Norge i 2026?',
+    answer: 'Surfshark Starter koster veiledende fra ca. 23 kr/mnd på 2-årsabonnement (første periode, med 3 måneder gratis inkludert i kampanjer). One koster veiledende fra ca. 23 kr/mnd på samme binding under Black Friday-kampanjen – ellers ca. 26 kr/mnd. One+ koster veiledende fra ca. 37 kr/mnd på 2 år. Månedsabonnement uten binding koster veiledende ca. 150–175 kr/mnd for Starter. Surfshark fakturerer i dollar, så den nøyaktige kroneprisen avhenger av valutakursen når du betaler – sjekk leverandørens nettside for oppdatert pris.',
+  },
+  {
+    question: 'Hvorfor er Surfshark billigere enn NordVPN?',
+    answer: 'Surfshark er bygget som budsjettalternativet: lavere pris, men færre tilleggsverktøy og et noe mindre servernettverk enn NordVPN. I november 2026 koster Surfshark Starter veiledende fra 23 kr/mnd mot NordVPN Basic fra 39 kr/mnd på 2-årsabonnement – en forskjell på ca. 16 kr/mnd. Til gjengjeld dekker Surfshark ubegrenset antall enheter, mens NordVPN dekker 10. For store husholdninger er Surfshark ofte det beste kjøpet.',
+  },
+  {
+    question: 'Hva er fornyelsesprisen på Surfshark?',
+    answer: 'Introduksjonsprisen gjelder bare den første perioden. Når abonnementet fornyes etter 1–2 år, skjer det til ordinær årspris: Starter ca. 735 kr i året (79 dollar), One ca. 921 kr (99 dollar) og One+ ca. 1 107 kr (119 dollar) – altså rundt 61 kr/mnd for Starter etter første periode, mot 23 kr/mnd i starten. 2-årsabonnementet fornyes som årsabonnement, ikke som et nytt 2-årsabonnement. Sjekk alltid fornyelsesprisen i kassen før du betaler, og skru av automatisk fornyelse hvis du er usikker.',
+  },
+  {
+    question: 'Hvilken Surfshark-plan bør jeg velge?',
+    answer: 'For de fleste holder Starter: full VPN med ubegrenset antall enheter, CleanWeb (blokkerer annonser og sporere) og servere i Norge. One legger til antivirus, varsling ved datalekkasjer og privat søk – verdt det hvis du ikke allerede har antivirus. One+ legger til Incogni (fjerning av personopplysninger fra datameglere) og identitetstyveribeskyttelse. Under Black Friday-kampanjen koster One det samme som Starter – da er One det åpenbare valget.',
+  },
+  {
+    question: 'Kan jeg prøve Surfshark gratis?',
+    answer: 'Surfshark har ingen gratisversjon, men alle planer har 30 dagers pengene-tilbake-garanti. Du betaler først, tester tjenesten i opptil 30 dager, og får full refusjon hvis du kontakter kundeservice innen fristen. Kjøper du via App Store eller Google Play, må refusjonen gå via Apple/Google – kjøp derfor direkte fra surfshark.com når det er mulig.',
+  },
+  {
+    question: 'Er Surfshark verdt prisen sammenlignet med gratis VPN?',
+    answer: 'Ja, for de fleste. Gratis VPN-er tjener penger på andre måter – ofte ved å selge bruksdata eller vise annonser – og er trege og upålitelige. Surfshark koster veiledende fra 23 kr/mnd på 2-årsabonnement, med uavhengig revidert policy mot logging, servere i Norge og 30 dagers pengene-tilbake-garanti. Les hvorfor vi fraråder gratis VPN i vår sammenligning av gratis VPN vs betalt.',
+  },
+  {
+    question: 'Blir Surfshark billigere på Black Friday?',
+    answer: 'Ja – Black Friday er årets billigste tidspunkt. I 2026 er kampanjen live fra 12. oktober til 1. desember, med opptil 87–88 % rabatt og 3 måneder gratis på 2-årsabonnementene. Starter koster da veiledende fra 23 kr/mnd, og One koster det samme som Starter under kampanjen. Men husk: kampanjeprisen gjelder bare første periode – fornyelsesprisen er den samme som ellers. Les vår oversikt over årets VPN-tilbud på Black Friday før du slår til.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-07', dateModified: '2026-11-07', image: `${site.url}/og-guide.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-guide.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-guide.webp" alt="Hvit trådløs ruter med antenner – symbol på hva Surfshark koster i kroner i 2026" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Surfshark pris i kroner: hva koster det egentlig?</h1>
+
+    <DirectAnswer>
+      <p><strong>Kort svar: Surfshark koster veiledende fra ca. 23 kr/mnd på 2-årsabonnement (Starter, første periode).</strong></p>
+      <p class="mt-2">Det er den laveste prisen blant de seriøse VPN-ene vi anbefaler – og under Black Friday-kampanjen koster One-planen det samme som Starter. Men introduksjonsprisen gjelder bare første periode: fornyelsen etterpå er rundt 61 kr/mnd, og månedsabonnement uten binding koster veiledende ca. 150–175 kr/mnd. Surfshark fakturerer i dollar, så kroneprisen avhenger av valutakursen når du betaler. I denne guiden får du alle tre planene (Starter, One og One+), hva du faktisk får i hver av dem, fornyelsesfellen du må kjenne til – og hvordan du betaler minst mulig.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p>Surfshark er budsjettfavoritten vår: den billigste av de seriøse VPN-tjenestene, med <strong>ubegrenset antall enheter</strong> på ett abonnement – hele familien på samme konto. Men prisen er mer nyansert enn «fra 23 kr/mnd». Den prisen forutsetter lengste binding, forskuddsbetaling og at det er første periode. Her er hele bildet, ærlig og uten fin skrift.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Prisoversikt: alle Surfshark-planer i 2026</h2>
+      <p>Alle priser under er veiledende «fra»-priser per måned, omregnet fra Surfsharks offisielle dollarpriser (november 2026, under Black Friday-kampanjen). Surfshark fakturerer i dollar, så det du faktisk betaler i kroner avhenger av valutakursen og bankens valutapåslag den dagen du kjøper. Prisene varierer noe mellom land og kan A/B-testes av leverandøren – sjekk leverandørens nettside for oppdatert pris.</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Starter – veiledende fra ca. 23 kr/mnd</strong> på 2-årsabonnement (ca. 625 kr forskudd for første periode på 27 måneder, med 3 måneder gratis). 1 år: ca. 28 kr/mnd (ca. 417 kr for 15 måneder). Månedlig: ca. 150–175 kr/mnd.</li>
+        <li><strong>One – veiledende fra ca. 23 kr/mnd</strong> på 2-årsabonnement under Black Friday-kampanjen (samme totalpris som Starter: ca. 625 kr for 27 måneder). Uten kampanje: ca. 26 kr/mnd. 1 år: ca. 28 kr/mnd. Månedlig: ca. 185 kr/mnd.</li>
+        <li><strong>One+ – veiledende fra ca. 37 kr/mnd</strong> på 2-årsabonnement (ca. 1 002 kr forskudd for 27 måneder). 1 år: ca. 65 kr/mnd. Månedlig: ca. 213 kr/mnd.</li>
+      </ul>
+      <p class="text-sm text-slate-500">Veiledende priser basert på Surfsharks offisielle priser i november 2026 (2 år: Starter ca. 2,49 USD/mnd, One ca. 2,49 USD/mnd i kampanje – ellers ca. 2,79 USD/mnd, One+ ca. 3,99 USD/mnd). Sjekk leverandørens nettside for oppdaterte tilbud.</p>
+      <p>For en full oversikt over hva alle VPN-tjenester koster, se <a class="text-brand-600 hover:underline" href="/no/hva-koster-vpn/">hva koster VPN i Norge?</a> – og den fulle testen av tjenesten i <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark-anmeldelsen vår</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva får du i hvert abonnement?</h2>
+      <p>Alle tre planene har den samme VPN-kjernen: servere i 100+ land ifølge leverandøren, servere i Norge, kill switch, WireGuard-protokollen og <strong>ubegrenset antall enheter</strong> på samme konto. Forskjellen er tilleggsverktøyene – og det er her du bør være ærlig med deg selv om hva du faktisk kommer til å bruke:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Starter</strong> – ren VPN, og det holder for de fleste. Kryptert forbindelse, kill switch, CleanWeb (blokkerer annonser, sporere og skadelig programvare) og Alternative ID (genererer maskerte e-postadresser). Vår vurdering: det fornuftige valget for 9 av 10 nordmenn.</li>
+        <li><strong>One</strong> – alt i Starter, pluss antivirus, varsling ved datalekkasjer (Alert), privat søk og svindelbeskyttelse. Verdt det hvis du ikke allerede har antivirus – og under Black Friday-kampanjen koster One det samme som Starter, så da er valget enkelt.</li>
+        <li><strong>One+</strong> – alt i One, pluss Incogni (fjerner personopplysningene dine fra datameglere) og identitetstyveribeskyttelse. Mest relevant for deg som er ekstra bekymret for personvern og identitetstyveri – for de fleste er det overkill.</li>
+      </ul>
+      <p>En ærlig merknad: Surfshark selger deg gjerne dyrere planer, men Starter er nok for nesten alle. Betaler du 14 kr mer i måneden for Incogni du aldri bruker, er det penger ut av vinduet. Hva «no-logs» egentlig betyr – og hvorfor det er viktigere enn hvilken plan du velger – forklarer vi i <a class="text-brand-600 hover:underline" href="/no/hva-betyr-no-logs/">hva betyr «no-logs»?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Fornyelsesprisen: den dyre overraskelsen</h2>
+      <p>Her er bransjens minst likte hemmelighet, og den gjelder Surfshark som alle andre: <strong>introduksjonsprisen gjelder bare den første perioden.</strong> Når 2-årsabonnementet ditt fornyes, skjer det til ordinær årspris – og 2-årsabonnementet fornyes som <strong>årsabonnement</strong>, ikke som et nytt 2-årsabonnement. For Starter betyr det ca. 735 kr i året (79 dollar), altså rundt 61 kr/mnd – nesten tre ganger introduksjonsprisen. For One er fornyelsen ca. 921 kr i året (99 dollar), og for One+ ca. 1 107 kr i året (119 dollar). Det står i kassen, men i liten skrift – og mange oppdager det først når kortet belastes.</p>
+      <p>Slik beskytter du deg:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Les fornyelsesprisen i kassen</strong> før du betaler – Surfshark viser den på sin egen fornyelsesside, men du må lete.</li>
+        <li><strong>Skru av automatisk fornyelse</strong> med en gang etter kjøpet. Du kan alltids fornye manuelt – og da kan du også fange en ny kampanje.</li>
+        <li><strong>Sett en kalenderpåminnelse</strong> én måned før fornyelse, så du kan vurdere på nytt i ro og mak. Surfshark varsler 30 dager før fornyelse – bruk varselet.</li>
+        <li><strong>Vurder å si opp og kjøpe på nytt</strong> ved fornyelse – nye kunder får ofte introduksjonspris igjen, mens lojale kunder betaler full pris. Det er ikke elegant, men det er slik prismodellen fungerer.</li>
+      </ul>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik betaler du minst for Surfshark</h2>
+      <p>Vil du ha lavest mulig pris uten å gå på akkord med sikkerheten, er oppskriften enkel:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Velg 2-årsabonnementet.</strong> Månedsprisen er typisk 85 prosent lavere enn månedsabonnementet – ca. 23 kr/mnd mot ca. 150–175 kr/mnd for Starter. Det er den største enkeltbesparelsen som finnes.</li>
+        <li><strong>Velg One under kampanjen – Starter ellers.</strong> Under Black Friday koster One det samme som Starter, så da får du antivirus og datalekkasjevarsling gratis. Uten kampanje holder Starter for de fleste.</li>
+        <li><strong>Kjøp rundt Black Friday.</strong> Kampanjen i 2026 er live fra 12. oktober til 1. desember, med opptil 87–88 % rabatt og 3 måneder gratis. Men husk: kampanjeprisen gjelder bare første periode. Les <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">VPN-tilbud på Black Friday 2026</a> før du slår til.</li>
+        <li><strong>Bruk 30-dagersgarantien aktivt.</strong> Test tjenesten grundig de første ukene – på mobil, PC og til strømming – og krev refusjon hvis den ikke leverer. Det koster deg ingenting å prøve.</li>
+        <li><strong>Del kontoen med husholdningen.</strong> Én konto dekker ubegrenset antall enheter – det er under 2 kr per person i måneden hvis ti stykker deler (i praksis: hele familien, pluss telefon, nettbrett, PC og TV).</li>
+      </ol>
+      <p>Unngå månedsabonnementet med mindre du bare trenger VPN i noen få uker – for eksempel på én enkelt reise. Til 150–175 kr/mnd koster tre måneder like mye som nesten et halvt år på 2-årsprisen.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Surfshark vs alternativene: er det verdt prisen?</h2>
+      <p>Surfshark er den billigste av de seriøse VPN-ene – og det er poenget. Slik står det til mot de andre tjenestene vi anbefaler (veiledende «fra»-priser på 2-årsabonnement):</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Surfshark – fra 23 kr/mnd.</strong> Vår vurdering: best verdi for store husholdninger, takket være ubegrenset antall enheter. Se <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark-anmeldelsen</a>.</li>
+        <li><strong>NordVPN – fra 39 kr/mnd.</strong> Dyrere, men med større servernettverk (8 000+ servere ifølge leverandøren) og raskere NordLynx-protokoll. Vår vurdering: best totalt. Se <a class="text-brand-600 hover:underline" href="/no/nordvpn-pris/">hva NordVPN koster</a>.</li>
+        <li><strong>Proton VPN – fra ca. 32 kr/mnd.</strong> Omtrent samme pris som NordVPN i kampanje, sveitsisk personvern og åpen kildekode. Vår vurdering: best for deg som setter personvern over alt. Se <a class="text-brand-600 hover:underline" href="/no/protonvpn-vs-nordvpn/">ProtonVPN vs NordVPN</a>.</li>
+        <li><strong>ExpressVPN – fra ca. 28 kr/mnd i Black Friday-kampanje.</strong> Dyrest uten kampanje, men også enklest i bruk. Vår vurdering: for deg som vil ha noe som «bare fungerer». Se <a class="text-brand-600 hover:underline" href="/no/expressvpn-vs-surfshark/">ExpressVPN vs Surfshark</a>.</li>
+      </ul>
+      <p>Er du usikker på om du i det hele tatt trenger VPN, start med <a class="text-brand-600 hover:underline" href="/no/trenger-jeg-vpn/">trenger jeg VPN?</a> – den ærlige testen tar to minutter. Og vil du sammenligne alle tjenestene side om side, finner du alt i <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a>.</p>
+
+      <ProsCons
+        pros={[
+          'Veiledende fra ca. 23 kr/mnd på 2-årsabonnement – billigst av de seriøse VPN-ene',
+          'Ubegrenset antall enheter på én konto – hele husholdningen dekkes',
+          '30 dagers pengene-tilbake-garanti – du kan prøve risikofritt',
+          'Under Black Friday koster One det samme som Starter – antivirus inkludert uten ekstra kostnad',
+          'Starter-planen holder for de fleste – du trenger ikke betale for dyrere planer',
+        ]}
+        cons={[
+          'Fornyelsesprisen etter første periode er nesten tre ganger høyere – les kassen nøye',
+          'Faktureres i dollar – kroneprisen svinger med valutakursen',
+          'Månedsabonnementet er dyrt (ca. 150–175 kr/mnd) – lønner seg bare for kortvarig bruk',
+          'Noe mindre servernettverk enn NordVPN, og appen er litt mindre polert på enkelte plattformer',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: hva bør du betale for Surfshark?</h2>
+      <p>Dette er redaksjonelle vurderinger basert på Surfsharks offisielle priser og vilkår i november 2026 – ikke målte laboratorietester fra oss. Konklusjonen er enkel: <strong>kjøp Starter – eller One hvis kampanjen gjør dem like dyre – på 2 år, skru av automatisk fornyelse med en gang, og sett en påminnelse før fornyelse.</strong> Da betaler du veiledende ca. 23 kr/mnd i første periode for den billigste seriøse VPN-en på markedet – og du unngår den dyre fornyelsesoverraskelsen. Trenger du det største nettverket og den raskeste protokollen, er NordVPN til 39 kr/mnd det bedre kjøpet. Vil du ha alt forklart fra bunnen av, start med <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva er VPN?</a></p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Prøv Surfshark risikofritt i 30 dager.</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/surfshark/">Surfshark</a> – billigst av de seriøse VPN-ene, med ubegrenset antall enheter og servere i Norge. Veiledende fra 23 kr/mnd på 2-årsabonnement.</p>
+        <CtaButton brand="surfshark" label="Prøv Surfshark" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Sammenlign med <a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN</a> fra 39 kr/mnd eller se <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
