@@ -1,0 +1,174 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/vpn-for-fire-tv-stick/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'VPN for Fire TV Stick', url }];
+const title = 'VPN for Fire TV Stick i Norge (2026) – slik installerer du VPN på Firestick';
+const description = 'Slik installerer du VPN på Fire TV Stick i Norge – med app fra Amazon Appstore, sideloading på Fire OS eller VPN på ruteren. Beste VPN for Firestick i 2026, Fire OS vs Vega OS og feilsøking.';
+const faqs = [
+  {
+    question: 'Er det lovlig å bruke VPN på Fire TV Stick i Norge?',
+    answer: 'Ja, det er fullt lovlig å bruke VPN på Fire TV Stick i Norge – VPN er lovlig her til lands, og å installere en VPN-app på din egen strømmeenhet er helt greit. Merk at enkelte strømmetjenester har vilkår som forbyr å omgå geoblokkering, så du kan risikere at tjenesten blokkerer VPN-tilkoblingen. Det er et brudd på tjenestens vilkår, ikke på norsk lov.',
+  },
+  {
+    question: 'Hvilken VPN er best for Fire TV Stick?',
+    answer: 'Vår vurdering: NordVPN er det tryggeste allround-valget for Firestick – den har en polert Fire TV-app og var blant de første med app for det nye Vega OS. Surfshark er best verdi, fordi ett abonnement dekker ubegrenset antall enheter og prisen er lavest (veiledende fra 23 kr/mnd). ExpressVPN er det enkleste valget hvis du vil ha noe som «bare fungerer» med fjernkontrollen. Alle tre har native Fire TV-apper i Amazon Appstore.',
+  },
+  {
+    question: 'Fungerer gratis VPN på Fire TV Stick?',
+    answer: 'Det finnes gratis VPN-apper i Amazon Appstore, men vi anbefaler dem ikke til strømming: de har som regel datatak, få servere, lav hastighet og blir ofte blokkert av strømmetjenestene. Mange ukjente gratis VPN-er tjener penger ved å selge brukerdata. Til strømming i 4K er et billig betalt abonnement – for eksempel Surfshark fra 23 kr/mnd – langt bedre verdi. Les mer i gratis VPN vs betalt.',
+  },
+  {
+    question: 'Kan jeg installere VPN på Fire TV Stick 4K Select?',
+    answer: 'Ja, men bare apper som er laget for Vega OS. Fire TV Stick 4K Select (fra oktober 2025) kjører Amazons nye Vega OS i stedet for Fire OS, og der fungerer ikke sideloading. Per november 2026 har NordVPN, Surfshark, ExpressVPN og Proton VPN Vega OS-apper i Amazon Appstore – last ned VPN-appen direkte fra Appstore på stick-en. Har du en VPN uten Vega OS-app, er løsningen VPN på ruteren i stedet.',
+  },
+  {
+    question: 'Hvorfor finner jeg ikke VPN-appen i Amazon Appstore?',
+    answer: 'Den vanligste grunnen er at stick-en din kjører Vega OS og VPN-leverandøren din ikke har laget en Vega OS-app ennå (for eksempel har CyberGhost og Private Internet Access per november 2026 ingen Vega OS-app). Sjekk hvilket system du har under Innstillinger → Min Fire TV → Om. Kjører du Fire OS, finnes nesten alle VPN-apper i Appstore – og du kan i tillegg sideload-e med Downloader-appen. Kjører du Vega OS, må du bytte til en leverandør med Vega OS-app eller sette opp VPN på ruteren.',
+  },
+  {
+    question: 'Gjør VPN Fire TV Stick tregere?',
+    answer: 'Litt, men sjelden merkbart med en god leverandør. Kryptering koster noe hastighet – typisk 5–15 prosent med moderne protokoller som WireGuard eller NordLynx. For 4K-strømming trenger du rundt 25 Mbps, så på en normal norsk fiberlinje merker du det knapt. Velg en server nær deg for minst mulig fartstap, og unngå overfylte servere langt unna. Opplever du hakking, prøv en annen server i samme land først.',
+  },
+  {
+    question: 'Kan jeg se NRK på Fire TV Stick i utlandet med VPN?',
+    answer: 'Ja, med en norsk VPN-server. Koble VPN-appen på stick-en til en server i Norge, så tror NRK og TV 2 Play at du er hjemme. Merk at NRK- og TV 2 Play-appene ikke nødvendigvis finnes i Amazon Appstore på alle stick-er – da kan du se via Silk-nettleseren på Fire TV-en i stedet. Sjekk også vår guide om å se NRK i utlandet for full fremgangsmåte.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-08', dateModified: '2026-11-08', image: `${site.url}/og-streaming.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-streaming.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-streaming.webp" alt="Person strømmer TV på storskjerm med VPN-app på smarttelefonen – VPN på Fire TV Stick i Norge" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">VPN for Fire TV Stick i Norge</h1>
+
+    <DirectAnswer>
+      <p><strong>Kort svar: Ja – de store VPN-leverandørene har egne apper for Fire TV Stick i Amazon Appstore, og installasjonen tar under fem minutter.</strong></p>
+      <p class="mt-2">Søk opp VPN-en din i Appstore på stick-en, last ned appen, logg inn og trykk «Koble til». Men pass på én ting før du kjøper: Amazon har byttet operativsystem på de nyeste stick-ene til Vega OS, og der fungerer ikke alle VPN-apper – eller sideloading. I denne guiden får du vite hvilken stick du har, hvilke VPN-er som fungerer på den, og hvordan du installerer VPN steg for steg.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p>Fire TV Stick er en av de billigste måtene å gjøre en «dum» TV smart på – og for mange nordmenn er den også TV-en på hytta, i leiligheten og på reise. Men stick-en er like utsatt som alle andre enheter: internettleverandøren ser hva du strømmer, strømmetjenestene låser innhold etter hvilket land du er i, og på hotell-Wi-Fi er trafikken din lesbar for alle på samme nettverk. En VPN-app på stick-en fikser alle tre problemene på én gang. Er du helt ny på VPN, start med <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva en VPN er</a> før du leser videre.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvorfor bruke VPN på Fire TV Stick?</h2>
+      <p>Det er fire gode grunner – og den første er den de fleste tenker på:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Se mer innhold.</strong> Netflix, Disney+ og Max har ulike kataloger i ulike land. Med en VPN-server i USA får du den amerikanske katalogen på stick-en; med en norsk server får du NRK og TV 2 Play når du er i utlandet. Se <a class="text-brand-600 hover:underline" href="/no/se-amerikansk-disney-pluss/">amerikansk Disney+ i Norge</a> og <a class="text-brand-600 hover:underline" href="/no/se-nrk-i-utlandet/">se NRK i utlandet</a>.</li>
+        <li><strong>Personvern på TV-en.</strong> Uten VPN ser internettleverandøren hvilke strømmetjenester du bruker og når. Med VPN ser den bare at du er koblet til en VPN-server. Hva leverandøren faktisk ser, forklarer vi i <a class="text-brand-600 hover:underline" href="/no/kan-internettleverandoren-se-vpn/">kan internettleverandøren se at du bruker VPN?</a></li>
+        <li><strong>Unngå struping av hastigheten.</strong> Enkelte leverandører struper videotrafikk i travle perioder. En VPN skjuler at du strømmer video, slik at strupingen ikke slår inn. Mer om fart finner du i <a class="text-brand-600 hover:underline" href="/no/blir-internett-tregere-med-vpn/">blir internett tregere med VPN?</a></li>
+        <li><strong>Trygg strømming på reise.</strong> På hotell- og flyplass-Wi-Fi er trafikken din utsatt. Ta med stick-en, koble til VPN-en før du åpner strømmeappene, så er du beskyttet – samme råd som i <a class="text-brand-600 hover:underline" href="/no/vpn-for-reise/">VPN for reise</a>.</li>
+      </ul>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Viktig først: Fire OS eller Vega OS – hvilken stick har du?</h2>
+      <p>Amazon byttet operativsystem på de nyeste Fire TV Stick-ene i oktober 2025. Det gamle systemet, Fire OS, er basert på Android – der fungerer nesten alle VPN-apper, og du kan i tillegg sideload-e apper som ikke finnes i Appstore. Det nye systemet, Vega OS, er basert på Linux – der fungerer <strong>bare</strong> apper fra Amazon Appstore, og sideloading er blokkert for godt.</p>
+      <p>Slik sjekker du: gå til <strong>Innstillinger → Min Fire TV → Om</strong> på stick-en. Står det Fire OS 7 eller 8, har du en Fire OS-stick. Står det Vega OS (eller ingen Fire OS-versjon), har du en Vega OS-stick.</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Fire OS (sideloading mulig):</strong> Fire TV Stick 4K Max (2021 og 2023), Fire TV Stick 4K Plus, Fire TV Cube og alle eldre stick-er tilbake til 2. generasjon fra 2016.</li>
+        <li><strong>Vega OS (kun Appstore, ingen sideloading):</strong> Fire TV Stick 4K Select (fra oktober 2025), Fire TV Stick HD (2026) og den nye Fire TV Stick 4K fra september 2026. Amazon har bekreftet at alle fremtidige modeller kjører Vega OS.</li>
+      </ul>
+      <p>Per november 2026 har <strong>NordVPN, Surfshark, ExpressVPN og Proton VPN</strong> Vega OS-apper i Amazon Appstore – NordVPN og Surfshark var først ute. CyberGhost og Private Internet Access har foreløpig ingen Vega OS-app. Har du en Vega OS-stick og en VPN uten Vega-app, er løsningen enten å bytte VPN-leverandør eller å sette opp <a class="text-brand-600 hover:underline" href="/no/vpn-pa-ruter/">VPN på ruteren</a> – da dekkes stick-en automatisk.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik installerer du VPN på Fire TV Stick – steg for steg</h2>
+      <p>Dette er metoden som fungerer på både Fire OS og Vega OS, og den tar under fem minutter:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Opprett konto hos en VPN-leverandør</strong> på leverandørens nettside (ikke via tilfeldige nedlastingssider). Våre anbefalinger for Firestick står lenger ned.</li>
+        <li><strong>Åpne Amazon Appstore på stick-en</strong> fra hjem-skjermen og søk på VPN-ens navn – for eksempel «NordVPN» eller «Surfshark». Bruk gjerne Alexa-knappen på fjernkontrollen og si navnet i stedet for å taste.</li>
+        <li><strong>Velg appen og trykk «Last ned».</strong> Sjekk at det er den offisielle appen fra leverandøren – den skal ha leverandørens navn som utgiver.</li>
+        <li><strong>Åpne appen og logg inn.</strong> De fleste VPN-apper på Fire TV lar deg logge inn med en QR-kode du skanner med mobilen, i stedet for å taste passord med fjernkontrollen.</li>
+        <li><strong>Velg land og trykk «Koble til».</strong> Vil du se amerikansk Netflix, velg USA. Vil du se NRK i utlandet, velg Norge. For best fart, velg en server nær deg.</li>
+        <li><strong>Åpne strømmeappen din.</strong> Netflix, Disney+, Max og Prime Video fungerer nå gjennom VPN-tunnelen. Blir du blokkert, prøv en annen server i samme land.</li>
+      </ol>
+      <p>Et praktisk tips: installer og test VPN-appen <strong>hjemme før du reiser</strong>. Da vet du at påloggingen fungerer og at serveren du trenger ikke er blokkert – i stedet for å feilsøke på et hotellrom med dårlig Wi-Fi.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Sideloading med Downloader (kun Fire OS)</h2>
+      <p>Har du en Fire OS-stick og en VPN uten app i Amazon Appstore, kan du installere Android-appen manuelt – det kalles sideloading:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li>Gå til <strong>Innstillinger → Min Fire TV → Om</strong> og trykk på enhetsnavnet sju ganger for å låse opp <strong>Utvikleralternativer</strong>.</li>
+        <li>Åpne <strong>Utvikleralternativer → Installer ukjente apper</strong> og skru det på for Downloader-appen.</li>
+        <li>Installer den gratis <strong>Downloader</strong>-appen (oransje ikon, fra AFTVnews) fra Amazon Appstore.</li>
+        <li>I Downloader skriver du inn nedlastingslenken til VPN-ens Android-app (APK-fil) – <strong>kun fra leverandørens egen nettside</strong>, aldri fra tilfeldige APK-sider.</li>
+        <li>Installer appen, logg inn og koble til som normalt.</li>
+      </ol>
+      <p>To advarsler: Sideloadede apper hopper over Amazons app-gjennomgang, så en dårlig APK kan vise uønskede annonser eller samle data – last bare ned fra leverandøren selv. Og på Vega OS-stick-er fungerer ikke dette i det hele tatt: Downloader og sideloading er blokkert, så der er Appstore eller ruter-VPN de eneste veiene. Skru gjerne av «Installer ukjente apper» igjen når du er ferdig.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Alternativ: VPN på ruteren – dekker stick-en og alt annet</h2>
+      <p>Hvis VPN-en din ikke har noen Fire TV-app – eller du har en Vega OS-stick med en leverandør uten Vega-app – er ruteren redningen. Setter du VPN-en opp på ruteren hjemme, går <strong>all</strong> trafikk i huset gjennom tunnelen: Fire TV Stick-en, smart-TV-en, mobilene og PC-ene. Ulempen er at det er mer tungvint å bytte land (du må logge inn på ruterens administrasjonspanel), og at hastigheten kan falle noe fordi ruteren gjør krypteringsjobben. For daglig strømming der du bytter land ofte, er VPN-appen på stick-en mer praktisk. Den fulle fremgangsmåten finner du i <a class="text-brand-600 hover:underline" href="/no/vpn-pa-ruter/">VPN på ruteren</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Beste VPN for Fire TV Stick i 2026 – vår vurdering</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon, appfunksjoner på Fire TV og uavhengige tester fra anerkjente kilder – ikke målte laboratorietester fra oss. Det som teller mest på Firestick, er tre ting: en skikkelig Fire TV-app som er enkel å bruke med fjernkontroll, støtte for både Fire OS og Vega OS, og servere som strømmetjenestene ikke blokkerer.</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordVPN</strong> – polert Fire TV-app med serverkart, støtte for både Fire OS og Vega OS (var blant de første på Vega OS i november 2025), NordLynx-protokollen og servere i Oslo. Vår vurdering: det tryggeste allround-valget for Firestick. Veiledende fra 39 kr/mnd. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN-anmeldelse</a>.</li>
+        <li><strong>Surfshark</strong> – Fire TV-app for både Fire OS og Vega OS (Vega-app fra mai 2026), ubegrenset antall enheter på ett abonnement og lavest pris av de seriøse. Vår vurdering: best verdi for husholdninger der stick-en bare er én av mange enheter. Veiledende fra 23 kr/mnd. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark-anmeldelse</a>.</li>
+        <li><strong>ExpressVPN</strong> – svært enkel Fire TV-app med QR-pålogging og «favorittsteder» på førstesiden, Lightway-protokollen og MediaStreamer som Smart DNS-alternativ. Vår vurdering: solid og brukervennlig, men dyrere enn de to over. Veiledende fra 69 kr/mnd. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/expressvpn/">ExpressVPN-anmeldelse</a>.</li>
+        <li><strong>CyberGhost</strong> – dedikerte strømmeservere og 45 dagers pengene-tilbake-garanti, lengst i bransjen. Men merk: per november 2026 har CyberGhost ingen Vega OS-app, så den passer best på Fire OS-stick-er. Veiledende fra 23 kr/mnd. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/cyberghost/">CyberGhost-anmeldelse</a>.</li>
+      </ul>
+      <p>Veiledende priser – sjekk leverandørens nettside for oppdaterte tilbud. Alle har 30 dagers pengene-tilbake-garanti (CyberGhost 45 dager), så du kan teste appen på din egen stick risikofritt. Akkurat nå er dessuten <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">Black Friday-tilbudene live</a> – årets laveste priser på alle fire.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva kan du se med VPN på Fire TV Stick?</h2>
+      <p>Med VPN-appen på stick-en åpner du katalogene til de store strømmetjenestene: amerikansk Netflix, Disney+ og Max med en amerikansk server, og NRK og TV 2 Play med en norsk server når du er i utlandet. Netflix, Disney+, Max og Prime Video har alle egne Fire TV-apper, så der er det bare å koble til VPN-en og åpne appen.</p>
+      <p>For NRK og TV 2 Play er det et forbehold: appene finnes ikke nødvendigvis i Amazon Appstore på alle stick-er og i alle regioner. Da er omveien <strong>Silk-nettleseren</strong> på Fire TV-en – åpne nrk.no eller tv2play.no der, med VPN-en koblet til en norsk server. Det fungerer fint til vanlig TV-titting, selv om fjernkontroll-navigasjonen i en nettleser er litt klønete. Den fulle guiden finner du i <a class="text-brand-600 hover:underline" href="/no/se-nrk-i-utlandet/">se NRK i utlandet</a>.</p>
+      <p>Husk den ærlige grensen: å omgå geoblokkering bryter med strømmetjenestenes bruksvilkår – det er ikke straffbart i Norge, men tjenesten kan blokkere VPN-serverens IP-adresse. Skjer det, er løsningen som regel å prøve en annen server i samme land eller tømme appens mellomlager. Mer om grensen mellom vilkår og lov finner du i <a class="text-brand-600 hover:underline" href="/no/er-vpn-lovlig-i-norge/">er VPN lovlig i Norge?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vanlige problemer med VPN på Fire TV Stick – og løsningene</h2>
+      <p><strong>Strømmeappen sier at du bruker VPN.</strong> Netflix og de andre blokkerer kjente VPN-IP-er fortløpende. Prøv en annen server i samme land, tøm strømmeappens mellomlager (Innstillinger → Apper → appen → Tøm buffer), eller bruk leverandørens dedikerte strømmeservere hvis den har det.</p>
+      <p><strong>Strømmingen hakker eller bufferer.</strong> Velg en server nær deg, bytt protokoll i VPN-appen (WireGuard eller NordLynx er raskest), og sjekk at stick-en er koblet til 5 GHz Wi-Fi – 2,4 GHz er ofte for tregt til 4K. For 4K-strømming trenger du rundt 25 Mbps.</p>
+      <p><strong>VPN-appen mangler kill switch.</strong> Mange Fire TV-apper har ikke kill switch – faller VPN-en ut, fortsetter stick-en ukryptert uten at du merker det. Det er sjelden kritisk til strømming, men vil du ha kill switch, er ruter-VPN løsningen som dekker det. Hva kill switch er, forklarer vi i <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">hva er kill switch?</a></p>
+      <p><strong>Stick-en føles treg med VPN på.</strong> Eldre stick-er (før 4K Max) har svakere prosessor, og kryptering merker du fort der. Da hjelper det å bruke en lett protokoll (WireGuard), lukke apper du ikke bruker, og eventuelt oppgradere til en Fire TV Stick 4K Max.</p>
+      <p><strong>Du får ikke logget inn med fjernkontrollen.</strong> Bruk QR-påloggingen hvis appen tilbyr den – skann koden med mobilen i stedet for å taste e-post og passord bokstav for bokstav. Alternativt kan du koble til et Bluetooth-tastatur til stick-en.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Er det verdt å kjøpe Fire TV Stick i Norge?</h2>
+      <p>Amazon selger ikke Fire TV Stick offisielt i Norge – det finnes ingen norsk Amazon-butikk – så de fleste nordmenn kjøper stick-en via Amazon.de eller Amazon.co.uk og får den sendt hit. Prisen ligger vanligvis på noen hundrelapper, og den faller ofte under salgsperioder som Black Friday. Fire TV Stick 4K Max (2nd gen, 2023) er det tryggeste kjøpet akkurat nå: den kjører Fire OS med full VPN-støtte og sideloading, og den er kraftig nok til 4K HDR uten hakking.</p>
+      <p>Skal du kjøpe ny stick i dag, er valget egentlig mellom to ting: vil du ha full frihet (sideloading, alle VPN-apper) – kjøp en Fire OS-modell som 4K Max mens den fortsatt selges. Vil du ha den nyeste maskinvaren og er fornøyd med Appstore-apper – ta en Vega OS-modell, men sjekk først at VPN-en din har en Vega OS-app. Har du allerede Apple TV, er det verdt å lese <a class="text-brand-600 hover:underline" href="/no/beste-vpn-for-apple-tv/">beste VPN for Apple TV</a> før du bestemmer deg for en ny strømmeenhet. Og har du en vanlig smart-TV uten appstøtte for VPN, er svaret <a class="text-brand-600 hover:underline" href="/no/vpn-pa-smart-tv/">VPN på Smart-TV</a>.</p>
+
+      <ProsCons
+        pros={[
+          'De store VPN-ene har native Fire TV-apper i Amazon Appstore – installasjon tar under fem minutter',
+          'Samme abonnement dekker stick-en, mobilen, PC-en og TV-en – særlig god verdi hos Surfshark (ubegrenset enheter)',
+          'NordVPN og Surfshark har apper for både Fire OS og det nye Vega OS',
+          'Fire OS-stick-er støtter sideloading med Downloader for VPN-er uten Appstore-app',
+        ]}
+        cons={[
+          'Vega OS-stick-er (4K Select, HD 2026, ny 4K) blokkerer sideloading – du er låst til Appstore-apper',
+          'CyberGhost og flere andre leverandører har foreløpig ingen Vega OS-app',
+          'Mange Fire TV-apper mangler kill switch – faller VPN-en ut, strømmer du ukryptert',
+          'Strømmetjenestene blokkerer VPN-IP-er fortløpende – du må av og til bytte server',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: hvilken VPN bør du velge til Fire TV Stick?</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon og uavhengige tester fra anerkjente kilder – ikke målte laboratorietester fra oss. Har du en Fire OS-stick, er valget fritt: alle de store fungerer. Har du en Vega OS-stick, er NordVPN og Surfshark de tryggeste valgene akkurat nå. Les <a class="text-brand-600 hover:underline" href="/no/hva-betyr-no-logs/">hva «no-logs» egentlig betyr</a> før du velger – det er det viktigste løftet å sjekke uansett plattform.</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordVPN</strong> – polert Fire TV-app, Fire OS + Vega OS, NordLynx og servere i Oslo. Vår vurdering: det tryggeste allround-valget for Firestick. Veiledende fra 39 kr/mnd.</li>
+        <li><strong>Surfshark</strong> – Fire OS + Vega OS, ubegrenset antall enheter og lavest pris. Vår vurdering: best verdi hvis hele husholdningen skal dekkes. Veiledende fra 23 kr/mnd.</li>
+        <li><strong>ExpressVPN</strong> – enklest i bruk med fjernkontrollen, QR-pålogging og MediaStreamer. Vår vurdering: solid, men dyrere enn de to over. Veiledende fra 69 kr/mnd.</li>
+      </ul>
+      <p>Lurer du på hva VPN koster generelt? Se vår oversikt over <a class="text-brand-600 hover:underline" href="/no/hva-koster-vpn/">hva VPN koster i 2026</a>, eller sammenlign enkeltpriser i <a class="text-brand-600 hover:underline" href="/no/nordvpn-pris/">NordVPN pris</a> og <a class="text-brand-600 hover:underline" href="/no/surfshark-pris/">Surfshark pris</a>.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Gjør Fire TV Stick-en din klar – på fem minutter.</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – vår høyest vurderte VPN for Firestick, med app for både Fire OS og Vega OS. Veiledende fra 39 kr/mnd.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Vil du ha lavest pris? <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark</a> fra 23 kr/mnd dekker ubegrenset antall enheter. Se også <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
