@@ -14,7 +14,7 @@ const description = 'Hva koster en VPN i Norge? Vi sammenligner ærlige priser f
 const faqs = [
   {
     question: 'Hva koster en god VPN i Norge?',
-    answer: 'En god VPN koster veiledende mellom 23 og 69 kr/mnd på lengste abonnement. Surfshark og CyberGhost er rimeligst (veiledende fra 23 kr/mnd), NordVPN koster veiledende fra 39 kr/mnd, mens ExpressVPN er dyrest med veiledende fra 69 kr/mnd. Veiledende priser – sjekk leverandørens nettside.',
+    answer: 'En god VPN koster veiledende mellom 23 og 69 kr/mnd på lengste abonnement. CyberGhost er rimeligst (veiledende fra 23 kr/mnd), tett fulgt av Surfshark (veiledende fra 27 kr/mnd), NordVPN koster veiledende fra 39 kr/mnd, mens ExpressVPN er dyrest med veiledende fra 69 kr/mnd. Veiledende priser – sjekk leverandørens nettside.',
   },
   {
     question: 'Hvorfor varierer VPN-prisene så mye?',
@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     question: 'Hva er billigste VPN som fortsatt er god?',
-    answer: 'Surfshark og CyberGhost koster begge veiledende fra 23 kr/mnd og er våre billigste anbefalinger. Surfshark gir ubegrenset antall enheter, mens CyberGhost har 45 dagers angrefrist. Begge har uavhengig reviderte retningslinjer mot logging.',
+    answer: 'Surfshark (veiledende fra 27 kr/mnd) og CyberGhost (veiledende fra 23 kr/mnd) er våre billigste anbefalinger. Surfshark gir ubegrenset antall enheter, mens CyberGhost har 45 dagers angrefrist. Begge har uavhengig reviderte retningslinjer mot logging.',
   },
   {
     question: 'Skjulte kostnader ved VPN?',
@@ -38,7 +38,7 @@ const faqs = [
   },
 ];
 const schema = [
-  articleSchema({ headline: title, description, url, datePublished: '2026-10-17', dateModified: '2026-10-17' }),
+  articleSchema({ headline: title, description, url, datePublished: '2026-10-17', dateModified: '2026-11-09' }),
   faqSchema(faqs),
   breadcrumbSchema(crumbs),
 ];
@@ -54,14 +54,14 @@ const schema = [
 
     <DirectAnswer>
       <p><strong>En god VPN koster veiledende 23–69 kr/mnd i Norge.</strong></p>
-      <p class="mt-2">Billigst er Surfshark og CyberGhost (veiledende fra 23 kr/mnd), vårt førstevalg NordVPN koster veiledende fra 39 kr/mnd, og dyrest er ExpressVPN (veiledende fra 69 kr/mnd). Alle priser er «fra»-priser på lengste abonnement – sjekk leverandørens nettside for oppdaterte tilbud.</p>
+      <p class="mt-2">Billigst er CyberGhost (veiledende fra 23 kr/mnd) og Surfshark (veiledende fra 27 kr/mnd), vårt førstevalg NordVPN koster veiledende fra 39 kr/mnd, og dyrest er ExpressVPN (veiledende fra 69 kr/mnd). Alle priser er «fra»-priser på lengste abonnement – sjekk leverandørens nettside for oppdaterte tilbud.</p>
     </DirectAnswer>
 
     <div class="text-slate-700 leading-relaxed space-y-5">
       <h2 class="text-2xl font-extrabold text-ink pt-4">Prisoversikt: hva koster de beste VPN-tjenestene?</h2>
       <p>Her er ærlige veiledende priser for VPN-tjenestene vi anbefaler. Alle priser er «fra»-priser per måned på lengste abonnement (typisk 2 år), omregnet fra leverandørenes offisielle priser:</p>
       <ul class="list-disc pl-6 space-y-2">
-        <li><strong>Surfshark</strong> – veiledende fra 23 kr/mnd. Ubegrenset antall enheter. 30 dagers angrefrist.</li>
+        <li><strong>Surfshark</strong> – veiledende fra 27 kr/mnd. Ubegrenset antall enheter. 30 dagers angrefrist.</li>
         <li><strong>CyberGhost</strong> – veiledende fra 23 kr/mnd. 45 dagers angrefrist (lengst i testen).</li>
         <li><strong>Proton VPN</strong> – veiledende fra 38 kr/mnd. Sveitsisk personvern, åpen kildekode.</li>
         <li><strong>NordVPN</strong> – veiledende fra 39 kr/mnd. Vårt førstevalg totalt. 30 dagers angrefrist.</li>
@@ -116,7 +116,7 @@ const schema = [
 
       <h2 class="text-2xl font-extrabold text-ink pt-4">Vår anbefaling etter budsjett</h2>
       <ul class="list-disc pl-6 space-y-2">
-        <li><strong>Trangt budsjett:</strong> Surfshark (veiledende fra 23 kr/mnd) – mest for pengene.</li>
+        <li><strong>Trangt budsjett:</strong> Surfshark (veiledende fra 27 kr/mnd) – mest for pengene.</li>
         <li><strong>Best totalt:</strong> NordVPN (veiledende fra 39 kr/mnd) – vår vurdering: best kombinasjon av alt.</li>
         <li><strong>Maks personvern:</strong> Proton VPN (veiledende fra 38 kr/mnd) eller Mullvad (55 kr/mnd fast).</li>
         <li><strong>Enklest i bruk:</strong> ExpressVPN (veiledende fra 69 kr/mnd) – dyrest, men «bare fungerer».</li>
@@ -126,7 +126,7 @@ const schema = [
       <h2 class="text-2xl font-extrabold text-ink pt-4">Detaljert prissammenligning</h2>
       <p>La oss se nærmere på hva hver tjeneste koster og hva du får. Husk at alle «fra»-priser forutsetter lengste binding (typisk 2 år) og forskuddsbetaling:</p>
       <ul class="list-disc pl-6 space-y-2">
-        <li><strong>Surfshark – fra 23 kr/mnd:</strong> Det rimeligste seriøse alternativet. Ubegrenset antall enheter betyr at én konto kan dekke hele familien – effektivt noen få kroner per person per måned. Godt serverutvalg i 100 land.</li>
+        <li><strong>Surfshark – fra 27 kr/mnd:</strong> Et av de rimeligste seriøse alternativene. Ubegrenset antall enheter betyr at én konto kan dekke hele familien – effektivt noen få kroner per person per måned. Godt serverutvalg i 100 land.</li>
         <li><strong>CyberGhost – fra 23 kr/mnd:</strong> Samme prisnivå, men med 45 dagers angrefrist – lengst i testen. Spesialservere for strømming. Noe færre avanserte funksjoner.</li>
         <li><strong>Proton VPN – fra 38 kr/mnd:</strong> Sveitsisk personvern, åpen kildekode og gratisversjon som backup. Litt dyrere, men du betaler for dokumentert tillit.</li>
         <li><strong>NordVPN – fra 39 kr/mnd:</strong> Vårt førstevalg. Størst servernettverk (8 000+ ifølge leverandøren), rask NordLynx-protokoll, trusselbeskyttelse inkludert. Best totalpakke.</li>
@@ -138,7 +138,7 @@ const schema = [
       <h2 class="text-2xl font-extrabold text-ink pt-4">Månedspris vs totalpris: regn på det</h2>
       <p>«Fra 23 kr/mnd» høres billig ut – men du betaler hele perioden forskudd. Slik ser regnestykket ut:</p>
       <ul class="list-disc pl-6 space-y-2">
-        <li><strong>Surfshark 2 år:</strong> ca. 23 kr × 24 = ca. 550 kr forskudd. Det er under 2 kr dagen.</li>
+        <li><strong>Surfshark 2 år:</strong> ca. 27 kr × 27 måneder = ca. 720 kr forskudd. Det er under 1 kr dagen.</li>
         <li><strong>NordVPN 2 år:</strong> ca. 39 kr × 24 = ca. 936 kr forskudd. Under 3 kr dagen.</li>
         <li><strong>Månedsabonnement:</strong> Typisk 120–180 kr/mnd – over 6 ganger dyrere per måned enn 2-årsprisen.</li>
       </ul>
@@ -165,7 +165,7 @@ const schema = [
 
       <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
         <p class="font-bold text-ink mb-1">Best valuta for pengene</p>
-        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/surfshark/">Surfshark</a> – ubegrenset antall enheter til veiledende fra 23 kr/mnd. 30 dagers pengene-tilbake-garanti.</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/surfshark/">Surfshark</a> – ubegrenset antall enheter til veiledende fra 27 kr/mnd. 30 dagers pengene-tilbake-garanti.</p>
         <CtaButton brand="surfshark" label="Prøv Surfshark" sub="30 dager risikofritt" />
         <p class="text-xs text-slate-500 mt-3">Vil du ha vår totalvinner? <a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN</a> fra 39 kr/mnd. Se <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a>.</p>
       </div>

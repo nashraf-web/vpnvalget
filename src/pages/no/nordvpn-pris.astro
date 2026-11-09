@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     question: 'Er NordVPN verdt prisen sammenlignet med billigere VPN-er?',
-    answer: 'Det kommer an på hva du trenger. Surfshark koster veiledende fra 23 kr/mnd og dekker ubegrenset antall enheter – bedre verdi for store husholdninger. NordVPN koster veiledende fra 39 kr/mnd, men har større servernettverk (8 000+ servere ifølge leverandøren), servere i Oslo og raskere NordLynx-protokoll. For de fleste nordmenn er forskjellen på ca. 16 kr/mnd liten sammenlignet med hva du får – men trenger du bare grunnleggende VPN til lavest pris, er Surfshark det bedre kjøpet.',
+    answer: 'Det kommer an på hva du trenger. Surfshark koster veiledende fra 27 kr/mnd og dekker ubegrenset antall enheter – bedre verdi for store husholdninger. NordVPN koster veiledende fra 39 kr/mnd, men har større servernettverk (8 000+ servere ifølge leverandøren), servere i Oslo og raskere NordLynx-protokoll. For de fleste nordmenn er forskjellen på ca. 12 kr/mnd liten sammenlignet med hva du får – men trenger du bare grunnleggende VPN til lavest pris, er Surfshark det bedre kjøpet.',
   },
   {
     question: 'Blir NordVPN billigere på Black Friday?',
@@ -44,7 +44,7 @@ const faqs = [
   },
 ];
 const schema = [
-  articleSchema({ headline: title, description, url, datePublished: '2026-11-06', dateModified: '2026-11-06', image: `${site.url}/og-guide.webp` }),
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-06', dateModified: '2026-11-09', image: `${site.url}/og-guide.webp` }),
   faqSchema(faqs),
   breadcrumbSchema(crumbs),
 ];
@@ -75,6 +75,7 @@ const schema = [
         <li><strong>Prime – veiledende fra ca. 82 kr/mnd</strong> på 2-årsabonnement. Den dyreste planen, med identitetsbeskyttelse i tillegg.</li>
       </ul>
       <p class="text-sm text-slate-500">Veiledende priser basert på NordVPNs offisielle priser i november 2026 (2 år: Basic ca. 3,49 USD/mnd, Plus ca. 4,39 USD/mnd, Complete ca. 5,39 USD/mnd, Prime ca. 7,49 USD/mnd). Sjekk leverandørens nettside for oppdaterte tilbud.</p>
+      <p class="text-sm text-slate-500">Merk: Plus selges ikke lenger i alle regioner – i USA er utvalget nå Basic, Complete og Prime. Sjekk hvilke planer som tilbys i kassen før du kjøper.</p>
       <p>For en full oversikt over hva alle VPN-tjenester koster, se <a class="text-brand-600 hover:underline" href="/no/hva-koster-vpn/">hva koster VPN i Norge?</a> – og den fulle testen av tjenesten i <a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN-anmeldelsen vår</a>.</p>
 
       <h2 class="text-2xl font-extrabold text-ink pt-4">Hva får du i hvert abonnement?</h2>
@@ -111,7 +112,7 @@ const schema = [
       <h2 class="text-2xl font-extrabold text-ink pt-4">NordVPN vs alternativene: er det verdt prisen?</h2>
       <p>NordVPN er ikke den billigste VPN-en – og det er poenget. Slik står det til mot de andre tjenestene vi anbefaler (veiledende «fra»-priser på 2-årsabonnement):</p>
       <ul class="list-disc pl-6 space-y-2">
-        <li><strong>Surfshark – fra 23 kr/mnd.</strong> Billigst av de seriøse, og dekker ubegrenset antall enheter. Vår vurdering: best verdi for store husholdninger. Se <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark-anmeldelsen</a>.</li>
+        <li><strong>Surfshark – fra 27 kr/mnd.</strong> Billigst av de seriøse, og dekker ubegrenset antall enheter. Vår vurdering: best verdi for store husholdninger. Se <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark-anmeldelsen</a>.</li>
         <li><strong>Proton VPN – fra 38 kr/mnd.</strong> Omtrent samme pris som NordVPN, sveitsisk personvern og åpen kildekode. Vår vurdering: best for deg som setter personvern over alt. Se <a class="text-brand-600 hover:underline" href="/no/protonvpn-vs-nordvpn/">ProtonVPN vs NordVPN</a>.</li>
         <li><strong>ExpressVPN – fra 69 kr/mnd.</strong> Dyrest, men også enklest i bruk. Vår vurdering: for deg som vil ha noe som «bare fungerer». Se <a class="text-brand-600 hover:underline" href="/no/expressvpn-vs-surfshark/">ExpressVPN vs Surfshark</a>.</li>
         <li><strong>NordVPN – fra 39 kr/mnd.</strong> Vår vurdering: best totalt – størst servernettverk, raskest protokoll og servere i Oslo. De 16 kronene ekstra i måneden mot Surfshark kjøper deg dokumentert fart og det største nettverket.</li>
@@ -137,13 +138,13 @@ const schema = [
       <Methodology tested={false} />
 
       <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: hva bør du betale for NordVPN?</h2>
-      <p>Dette er redaksjonelle vurderinger basert på NordVPNs offisielle priser og vilkår i november 2026 – ikke målte laboratorietester fra oss. Konklusjonen er enkel: <strong>kjøp Basic på 2 år, skru av automatisk fornyelse med en gang, og sett en påminnelse før fornyelse.</strong> Da betaler du veiledende ca. 39 kr/mnd i første periode for Norges beste allround-VPN – og du unngår den dyre fornyelsesoverraskelsen. Trenger du bare grunnleggende VPN til lavest mulig pris, er Surfshark til 23 kr/mnd det bedre kjøpet. Vil du ha alt forklart fra bunnen av, start med <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva er VPN?</a></p>
+      <p>Dette er redaksjonelle vurderinger basert på NordVPNs offisielle priser og vilkår i november 2026 – ikke målte laboratorietester fra oss. Konklusjonen er enkel: <strong>kjøp Basic på 2 år, skru av automatisk fornyelse med en gang, og sett en påminnelse før fornyelse.</strong> Da betaler du veiledende ca. 39 kr/mnd i første periode for Norges beste allround-VPN – og du unngår den dyre fornyelsesoverraskelsen. Trenger du bare grunnleggende VPN til lavest mulig pris, er Surfshark til 27 kr/mnd det bedre kjøpet. Vil du ha alt forklart fra bunnen av, start med <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva er VPN?</a></p>
 
       <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
         <p class="font-bold text-ink mb-1">Prøv NordVPN risikofritt i 30 dager.</p>
         <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – vår høyest vurderte VPN totalt, med servere i Oslo og NordLynx-protokollen. Veiledende fra 39 kr/mnd på 2-årsabonnement.</p>
         <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
-        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Sammenlign med <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark</a> fra 23 kr/mnd eller se <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Sammenlign med <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark</a> fra 27 kr/mnd eller se <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
       </div>
     </div>
   </article>

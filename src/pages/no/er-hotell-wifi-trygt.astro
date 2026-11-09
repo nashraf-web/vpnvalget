@@ -1,0 +1,156 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/er-hotell-wifi-trygt/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'Er hotell-WiFi trygt?', url }];
+const title = 'Er hotell-WiFi trygt? Slik beskytter du deg med VPN (2026)';
+const description = 'Hotell-WiFi er sjelden trygt: åpne nettverk uten kryptering lar andre gjester snoke i trafikken din. Slik beskytter du passord, nettbank og BankID på hotell, flyplass og kafé – steg for steg.';
+const faqs = [
+  {
+    question: 'Er hotell-WiFi trygt?',
+    answer: 'Nei, ikke uten beskyttelse. De fleste hotellnettverk er åpne eller deler ett felles passord mellom alle gjester, og trafikken er ofte ukryptert. Da kan andre på samme nettverk i prinsippet snoke i det du sender. Bruk VPN, så krypteres all trafikk før den forlater enheten din – da spiller det ingen rolle hvor åpent hotellnettet er.',
+  },
+  {
+    question: 'Hva er et «evil twin»-nettverk?',
+    answer: 'Et «evil twin» er et falskt WiFi-nettverk som utgir seg for å være hotellets ekte nettverk – for eksempel «Hotel_WiFi_Free» i stedet for «Hotel_WiFi». Koble du deg til det falske nettverket, kan angriperen se og styre trafikken din. Sjekk alltid det nøyaktige nettverksnavnet med resepsjonen før du kobler til, og bruk VPN som sikkerhetsnett.',
+  },
+  {
+    question: 'Er det nok at nettsiden bruker HTTPS?',
+    answer: 'HTTPS beskytter innholdet på den enkelte nettsiden, men ikke alt annet: DNS-oppslag, hvilke nettsteder du besøker, og trafikk fra apper som ikke bruker HTTPS, er fortsatt synlig. HTTPS er et godt grunnlag, men ikke full beskyttelse på et åpent nettverk. VPN krypterer alt – også DNS og app-trafikk.',
+  },
+  {
+    question: 'Kan jeg bruke nettbank og BankID på hotell-WiFi?',
+    answer: 'Ja, men gjør det med VPN på. Bankapper og BankID bruker sterk kryptering, så risikoen er lavere enn ved vanlig surfing – men på et usikret nettverk er det fortsatt klokt å ha VPN-en koblet til først. Da er hele forbindelsen kryptert før den i det hele tatt når hotellets nettverk. Mer om dette i vår guide om VPN og BankID.',
+  },
+  {
+    question: 'Må jeg ha VPN på hele tiden på reise?',
+    answer: 'Ja, det er den enkleste regelen: slå på VPN-en når du kobler til et nettverk du ikke eier selv – hotell, flyplass, kafé, tog og konferanse. Sett VPN-appen til å koble til automatisk på ukjente nettverk, så slipper du å huske det. Hjemme på ditt eget passordbeskyttede nettverk er behovet mindre, men mange lar den stå på der også.',
+  },
+  {
+    question: 'Hvilken VPN er best for hotell-WiFi?',
+    answer: 'Vår vurdering: NordVPN er det tryggeste valget for reise – den har kill switch på alle plattformer, NordLynx-protokollen for god fart på svake hotellnett, og servere i Norge. Surfshark er best verdi for familier, fordi ett abonnement dekker ubegrenset antall enheter. Begge har 30 dagers pengene-tilbake-garanti, så du kan teste dem på din neste tur risikofritt.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-09', dateModified: '2026-11-09', image: `${site.url}/og-default.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-default.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-default.webp" alt="Kvinnehender som bruker en VPN-app på smarttelefonen – slik beskytter du deg på hotell-WiFi" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Er hotell-WiFi trygt?</h1>
+
+    <DirectAnswer>
+      <p><strong>Kort svar: Nei – hotell-WiFi er sjelden trygt uten beskyttelse.</strong></p>
+      <p class="mt-2">De fleste hotellnettverk er åpne eller deler ett felles passord mellom alle gjester, og trafikken er ofte ukryptert. Da kan andre på samme nettverk i prinsippet snoke i det du sender. Løsningen er enkel: koble til VPN-en før du gjør noe som helst på hotellnettet – da krypteres all trafikk før den forlater enheten din.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p>Du sjekker inn, får WiFi-passordet i resepsjonen, kobler til – og sjekker e-post, nettbank og sosiale medier som om du var hjemme. Det er akkurat det de fleste gjør. Problemet er at hotellnettet ikke er hjemmenettet ditt: det er et delt, ofte dårlig sikret nettverk der du har null kontroll over hvem andre som er koblet til, eller hva ruteren gjør med trafikken din. I denne guiden får du vite hva som faktisk kan gå galt – og hvordan du beskytter deg på under to minutter. Er du helt ny på VPN, start med <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva en VPN er</a> før du leser videre.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvorfor er hotell-WiFi utrygt?</h2>
+      <p>Det er fire konkrete svakheter ved hotellnettverk – og de fleste hoteller har minst én av dem:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Delt passord for alle gjester.</strong> Når alle på hotellet bruker samme WiFi-passord, er passordet i praksis offentlig. Alle som har bodd på hotellet – eller fått passordet av en venn – kan koble seg til nettverket ditt.</li>
+        <li><strong>Ingen kryptering mellom deg og ruteren.</strong> På mange hotell er det lokale nettverket ukryptert. Da kan trafikk som ikke er HTTPS-beskyttet, leses av andre på samme nettverk med gratis verktøy.</li>
+        <li><strong>Falske nettverk («evil twin»).</strong> En angriper kan sette opp et eget WiFi-nettverk med nesten samme navn som hotellets – for eksempel «Hotel_WiFi_Free» i stedet for «Hotel_WiFi». Koble du deg til det falske nettverket, går all trafikk gjennom angriperen.</li>
+        <li><strong>«Captive portal»-pålogging.</strong> Siden du må klikke deg gjennom for å få internett, er det lett å lure gjester til å taste inn passord eller laste ned noe på en falsk innloggingsside.</li>
+      </ul>
+      <p>Ingen av disse svakhetene betyr at noen garantert spionerer på deg akkurat nå – de fleste hotellgjester er helt vanlige folk. Men risikoen er reell nok til at sikkerhetseksperter har advart mot åpne hotellnettverk i årevis, og konsekvensen hvis noen først snoker, kan være stjålne passord, kaprede kontoer eller misbruk av bankinformasjon.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva er et «evil twin»-nettverk?</h2>
+      <p>Et «evil twin» (ond tvilling) er et falskt WiFi-nettverk som utgir seg for å være det ekte. Angriperen setter opp et tilgangspunkt med hotellets navn – gjerne med et lite avvik du ikke legger merke til, som «Hotel_WiFi» i stedet for «Hotel WiFi» – og venter på at gjester kobler seg til. Når du er koblet til tvillingen, kan angriperen se ukryptert trafikk, omdirigere deg til falske innloggingssider og stjele passord du taster inn.</p>
+      <p>Slik unngår du tvillingen: <strong>spør resepsjonen om det nøyaktige nettverksnavnet</strong> før du kobler til, og velg aldri et nettverk som dukker opp med et mistenkelig likt navn. Slå av «koble til automatisk» for åpne nettverk på mobilen, slik at telefonen ikke kobler seg til et falskt nettverk av seg selv neste gang du er i nærheten. Og viktigst: med VPN på spiller det langt mindre rolle om du havner på et falskt nettverk – trafikken er kryptert før den forlater enheten din.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva kan faktisk skje på usikret WiFi?</h2>
+      <p>Dette er de vanligste angrepene på åpne nettverk, forklart uten teknisk sjargong:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Avlytting av ukryptert trafikk.</strong> Nettsider og apper uten HTTPS sender data i klartekst. En angriper på samme nettverk kan lese det som sendes – meldinger, e-poster og passord til tjenester uten kryptering.</li>
+        <li><strong>Øktkapring («session hijacking»).</strong> Er du logget inn på en tjeneste uten HTTPS, kan en angriper stjele øktinformasjonskapselen din og overta innloggingen din uten å vite passordet.</li>
+        <li><strong>DNS-manipulasjon.</strong> Angriperen kan styre hvilken server nettadressen din peker til – du tror du er på bankens side, men er på en kopi som ser identisk ut.</li>
+        <li><strong>Ondsinnet omdirigering.</strong> På et kompromittert nettverk kan du sendes til falske oppdateringssider som ber deg laste ned «viktige oppdateringer» som i virkeligheten er skadevare.</li>
+      </ul>
+      <p>Det er verdt å være ærlig om omfanget: de fleste av disse angrepene krever at noen aktivt sitter på samme nettverk og prøver. Det er ikke slik at hotell-WiFi automatisk betyr at du blir hacket. Men på et hotell med hundrevis av gjester – og potensielt hvem som helst i lobbyen – er det ingen grunn til å ta sjansen når beskyttelsen tar to minutter å slå på.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Er det nok at nettsiden bruker HTTPS?</h2>
+      <p>HTTPS er et godt grunnlag, men det er ikke full beskyttelse på et åpent nettverk. Her er hvorfor:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>HTTPS beskytter bare den enkelte nettsiden.</strong> Innholdet på siden er kryptert, men DNS-oppslagene dine – altså hvilke nettsteder du besøker – er fortsatt synlige for nettverket.</li>
+        <li><strong>Ikke all trafikk er HTTPS.</strong> Mange apper, spill, e-postklienter og eldre tjenester sender fortsatt data ukryptert. Du ser ikke alltid om en app bruker HTTPS eller ikke.</li>
+        <li><strong>HTTPS beskytter ikke mot falske nettverk.</strong> Et «evil twin»-nettverk kan vise deg falske sikkerhetsadvarsler eller omdirigere deg før HTTPS i det hele tatt kommer i spill.</li>
+      </ul>
+      <p>Med VPN krypteres <strong>alt</strong> – nettsider, apper, DNS-oppslag og bakgrunnstrafikk – før noe forlater enheten din. Da spiller det ingen rolle om hotellets nettverk er åpent, delt eller kompromittert: den som avlytter, ser bare kryptert trafikk til én VPN-server. Les mer om hva en VPN faktisk skjuler i <a class="text-brand-600 hover:underline" href="/no/kan-internettleverandoren-se-vpn/">kan internettleverandøren se at du bruker VPN?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik beskytter du deg på hotell-WiFi – steg for steg</h2>
+      <p>Dette er rutinen som tar under to minutter, og som du bør gjøre hver gang du kobler til et nettverk du ikke eier:</p>
+      <ol class="list-decimal pl-6 space-y-3">
+        <li><strong>Installer VPN-appen før du reiser.</strong> Last ned og test VPN-en hjemme i Norge – noen land og enkelte hotellnettverk blokkerer VPN-nettsider, så nedlasting på hotellet kan være vanskelig.</li>
+        <li><strong>Sjekk nettverksnavnet med resepsjonen.</strong> Spør om det nøyaktige navnet på hotellets WiFi før du kobler til – da unngår du «evil twin»-nettverk med nesten like navn.</li>
+        <li><strong>Koble til VPN-en før du åpner noe annet.</strong> Åpne VPN-appen, velg en server – gjerne i Norge for norske tjenester – og vent til tilkoblingen er bekreftet. Først da åpner du e-post, nettbank eller sosiale medier.</li>
+        <li><strong>Slå på kill switch.</strong> I VPN-appens innstillinger finner du kill switch – den blokkerer all internettrafikk hvis VPN-tilkoblingen faller ut, slik at du aldri surfer ukryptert uten å merke det. Hva det er, forklarer vi i <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">hva er kill switch?</a></li>
+        <li><strong>Slå på automatisk tilkobling på ukjente nettverk.</strong> De fleste VPN-apper kan koble til automatisk når du blir med i et nytt nettverk. Da slipper du å huske det på flyplassen, kaféen eller toget.</li>
+        <li><strong>Unngå sensitive handlinger uten VPN.</strong> Skulle VPN-en mot formodning ikke fungere, vent med nettbank, passordbytte og innlogging til tjenester du bryr deg om – bruk mobildata i stedet.</li>
+      </ol>
+      <p>Et ekstra tips for deg som reiser mye: sett VPN-appen til å koble til en norsk server automatisk. Da får du ikke bare sikkerhet på hotellnettet – du får også tilgang til NRK og TV 2 Play i utlandet, slik vi beskriver i <a class="text-brand-600 hover:underline" href="/no/vpn-for-reise/">VPN for reise</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hotell-WiFi og nettbank, BankID og Vipps</h2>
+      <p>Dette er spørsmålet flest nordmenn stiller: kan jeg bruke nettbank og BankID på hotell-WiFi? Svaret er ja – men med VPN på først. Bankapper og BankID bruker sterk kryptering, så risikoen er lavere enn ved vanlig surfing. Men på et usikret nettverk er det fortsatt klokt å ha hele forbindelsen kryptert før den når hotellets ruter.</p>
+      <p>Et par praktiske merknader: enkelte banker kan reagere hvis du plutselig logger inn fra et annet land – det er bankens svindelvern som gjør jobben sin, ikke VPN-en som er problemet. Logger du inn med VPN til en norsk server, ser banken en norsk IP-adresse, og da slipper du som regel de varslene. Vipps fungerer normalt med VPN på, men hvis appen klager over posisjon, prøv en norsk server eller skru av VPN-en akkurat for den ene betalingen – og slå den på igjen etterpå. Les den fulle guiden i <a class="text-brand-600 hover:underline" href="/no/vpn-og-bankid/">VPN og BankID</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Flyplass, kafé og tog – samme regler, samme løsning</h2>
+      <p>Hotell er ikke det eneste stedet du bør passe på. Flyplass-WiFi er ofte helt åpent uten passord i det hele tatt, kafénettverk deles med alle som sitter i lokalet, og tog-WiFi går gjennom offentlige tilgangspunkter med hundrevis av samtidige brukere. Regelen er den samme overalt: <strong>kobler du til et nettverk du ikke eier, skal VPN-en være på</strong>.</p>
+      <p>På flyplassen er det også verdt å tenke på dette: gratis WiFi uten passord er det minst sikre alternativet av alle. Bruk heller mobildata til sensitive ting hvis du ikke har VPN tilgjengelig – mobildata er kryptert som standard og langt vanskeligere å avlytte enn åpen WiFi. Og på toget: de fleste norske tog har gratis WiFi, men det er et delt, offentlig nettverk – samme rutine som på hotellet gjelder.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvilken VPN er best for hotell-WiFi og reise?</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon, appfunksjoner og uavhengige tester fra anerkjente kilder – ikke målte laboratorietester fra oss. For reise teller tre ting mest: kill switch på alle plattformer, god fart på svake hotellnett, og norske servere slik at du får norske tjenester i utlandet.</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordVPN (fra 39 kr/mnd)</strong> – kill switch på Windows, macOS, Android og iOS, NordLynx-protokollen som holder farten oppe på svake hotellnett, og servere i Oslo ifølge leverandørens egne opplysninger. Vår vurdering: det tryggeste allround-valget for reise. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN-anmeldelse</a>.</li>
+        <li><strong>Surfshark (fra 27 kr/mnd)</strong> – ubegrenset antall enheter på ett abonnement, så hele familien er dekket på samme tur, og automatisk tilkobling på ukjente nettverk. Vår vurdering: best verdi for familier og husholdninger. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark-anmeldelse</a>.</li>
+      </ul>
+      <p>Veiledende priser – sjekk leverandørens nettside for oppdaterte tilbud. Begge har 30 dagers pengene-tilbake-garanti, så du kan teste dem på din neste tur risikofritt. Akkurat nå er dessuten <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">Black Friday-tilbudene live</a> – årets laveste priser.</p>
+
+      <ProsCons
+        pros={[
+          'VPN krypterer all trafikk før den forlater enheten – hotellets nettverk kan ikke leses, uansett hvor åpent det er',
+          'Kill switch hindrer at du surfer ukryptert hvis VPN-tilkoblingen faller ut',
+          'Samme VPN gir deg norske tjenester (NRK, TV 2 Play, nettbank) i utlandet',
+          'Automatisk tilkobling på ukjente nettverk – du slipper å huske det',
+        ]}
+        cons={[
+          'VPN-en koster noen kroner i måneden – gratis VPN-er er ikke et trygt alternativ på hotellnettverk',
+          'Farten kan falle noe på svake hotellnett – velg en server nær deg og en rask protokoll',
+          'Noen hotellnettverk blokkerer VPN-trafikk – da er mobildata det tryggeste alternativet',
+          'Du må huske å slå den på før du åpner e-post og nettbank – automatisk tilkobling løser dette',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: er hotell-WiFi trygt med VPN?</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon og uavhengige tester fra anerkjente kilder – ikke målte laboratorietester fra oss. Hotell-WiFi alene er ikke trygt: delte passord, ukryptert trafikk og falske nettverk gjør det til et av de mest risikable nettverkene du bruker i hverdagen. Med VPN på er bildet et annet – trafikken din er kryptert før den når hotellets ruter, og da spiller det ingen rolle hvem andre som er på nettverket.</p>
+      <p>Den praktiske konklusjonen er enkel: installer VPN-en hjemme, slå på automatisk tilkobling på ukjente nettverk, og tenk aldri på det igjen. Vil du ha full oversikt over hva VPN koster generelt, se <a class="text-brand-600 hover:underline" href="/no/hva-koster-vpn/">hva VPN koster i 2026</a>. Og fungerer VPN-en mot formodning ikke på hotellets nettverk, finner du løsningene i <a class="text-brand-600 hover:underline" href="/no/vpn-fungerer-ikke/">VPN fungerer ikke – feilsøkingsguiden</a>.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Skal du på reise? Sikre hotell-WiFi-en før du drar.</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – kill switch på alle plattformer og norske servere. Veiledende fra 39 kr/mnd.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Vil du dekke hele familien? <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark</a> fra 27 kr/mnd dekker ubegrenset antall enheter. Se også <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>

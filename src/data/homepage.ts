@@ -22,7 +22,7 @@ export const homeFaqs = [
   {
     question: 'Hva koster en god VPN?',
     answer:
-      'Veiledende priser per oktober 2026 ligger fra ca. 23 kr/mnd (Surfshark, CyberGhost på langtidsabonnement) til ca. 69 kr/mnd (ExpressVPN). Månedsabonnement uten binding er dyrere. Alle tjenestene vi anbefaler har minst 30 dagers pengene-tilbake-garanti.',
+      'Veiledende priser per november 2026 ligger fra ca. 23 kr/mnd (CyberGhost på langtidsabonnement) til ca. 69 kr/mnd (ExpressVPN). Månedsabonnement uten binding er dyrere. Alle tjenestene vi anbefaler har minst 30 dagers pengene-tilbake-garanti.',
   },
   {
     question: 'Fungerer VPN med NRK og norske strømmetjenester?',
