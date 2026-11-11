@@ -1,0 +1,206 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/nordvpn-vs-expressvpn/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'NordVPN vs ExpressVPN', url }];
+const title = 'NordVPN vs ExpressVPN: hvilken er best for nordmenn? (2026)';
+const description = 'NordVPN vs ExpressVPN – hvilken VPN bør nordmenn velge? Vi sammenligner pris, hastighet, strømming, enheter og personvern. Ærlig duell med veiledende priser i kroner.';
+const faqs = [
+  {
+    question: 'Hvilken er billigst – NordVPN eller ExpressVPN?',
+    answer: 'NordVPN er klart billigst med veiledende fra 39 kr/mnd på lengste abonnement, mot ExpressVPNs fra 69 kr/mnd. Over to år snakker vi om en forskjell på over 700 kroner. Begge har 30 dagers pengene-tilbake-garanti, så du kan prøve risikofritt.',
+  },
+  {
+    question: 'Hvilken VPN er best for strømming i Norge?',
+    answer: 'Begge er blant de beste til strømming, og begge har servere i Norge. ExpressVPN har et lite forsprang med MediaStreamer for enheter uten VPN-app og svært pålitelig tilgang til geoblokkert innhold. NordVPN holder likevel godt følge, og med sitt langt større servernettverk er det sjelden kø på serverne.',
+  },
+  {
+    question: 'Kan jeg bruke VPN-en på alle enhetene mine?',
+    answer: 'NordVPN tillater 10 samtidige enheter på ett abonnement, mens ExpressVPN tillater 8. For de fleste husholdninger holder begge, men har du mange dingser – mobiler, nettbrett, PC-er, TV og spillkonsoll – gir NordVPN litt mer rom. Vil du beskytte absolutt alt, kan du sette VPN-en direkte på ruteren.',
+  },
+  {
+    question: 'Hvilken er raskest – NordVPN eller ExpressVPN?',
+    answer: 'Vi har ikke publisert egne hastighetstester ennå. Basert på leverandørenes teknologi og uavhengige tester andre har publisert, er begge blant de raskeste: NordVPNs NordLynx (basert på WireGuard) og ExpressVPNs Lightway er begge bygget for høy hastighet og rask tilkobling. I praksis merker de fleste norske brukere liten forskjell til vanlig bruk.',
+  },
+  {
+    question: 'Hvilken har best personvern?',
+    answer: 'Begge har uavhengig reviderte retningslinjer mot logging. NordVPN er basert i Panama (utenfor EU/USA) og har fått retningslinjene sine revidert flere ganger. ExpressVPN er basert på De britiske Jomfruøyer og bruker TrustedServer-teknologi – servere som kun kjører på RAM og fysisk ikke kan lagre data permanent. For en vanlig norsk bruker er personvernet hos begge mer enn godt nok.',
+  },
+  {
+    question: 'Hvilken bør jeg velge som nordmann?',
+    answer: 'Velg NordVPN hvis pris, stort servernettverk og 10 enheter er viktigst – du får mest for pengene med veiledende fra 39 kr/mnd. Velg ExpressVPN hvis du vil ha markedets mest brukervennlige apper og er villig til å betale mer (fra 69 kr/mnd) for maksimal polering. Begge har servere i Norge og 30 dagers angrefrist.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-11', dateModified: '2026-11-11', image: `${site.url}/og-sammenligning.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema} ogImage="/og-sammenligning.webp">
+  <Breadcrumbs crumbs={crumbs} />
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">NordVPN vs ExpressVPN: hvilken er best for nordmenn?</h1>
+
+    <figure class="my-6">
+      <img src="/og-sammenligning.webp" alt="To lyspærer holdes opp – symbol på sammenligning av NordVPN og ExpressVPN" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+    </figure>
+
+    <DirectAnswer>
+      <p><strong>Det korte svaret: NordVPN vinner på pris, servernettverk og enheter – ExpressVPN vinner på enkelhet og polering.</strong></p>
+      <p class="mt-2">NordVPN koster veiledende fra 39 kr/mnd, har 8 000+ servere i 165+ land og tillater 10 enheter – vår vurdering er 4,9/5. ExpressVPN koster fra 69 kr/mnd, har 3 000+ servere i 105 land og tillater 8 enheter, men er kjent for markedets mest brukervennlige apper – vår vurdering er 4,6/5. Begge har servere i Norge, uavhengig reviderte retningslinjer mot logging og 30 dagers pengene-tilbake-garanti.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Rask sammenligning: NordVPN vs ExpressVPN</h2>
+      <p>Her er de viktigste forskjellene side ved side, basert på leverandørenes offisielle informasjon og vår redaksjonelle vurdering:</p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-200 p-3 text-left"></th>
+              <th class="border border-slate-200 p-3 text-left font-bold">NordVPN</th>
+              <th class="border border-slate-200 p-3 text-left font-bold">ExpressVPN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Veiledende pris</td>
+              <td class="border border-slate-200 p-3">Fra 39 kr/mnd</td>
+              <td class="border border-slate-200 p-3">Fra 69 kr/mnd</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Samtidige enheter</td>
+              <td class="border border-slate-200 p-3">10</td>
+              <td class="border border-slate-200 p-3">8</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Pengene-tilbake-garanti</td>
+              <td class="border border-slate-200 p-3">30 dager</td>
+              <td class="border border-slate-200 p-3">30 dager</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Servere (ifølge leverandøren)</td>
+              <td class="border border-slate-200 p-3">8 000+ i 165+ land</td>
+              <td class="border border-slate-200 p-3">3 000+ i 105 land</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Servere i Norge</td>
+              <td class="border border-slate-200 p-3">Ja (Oslo)</td>
+              <td class="border border-slate-200 p-3">Ja</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Protokoller</td>
+              <td class="border border-slate-200 p-3">NordLynx, OpenVPN, IKEv2</td>
+              <td class="border border-slate-200 p-3">Lightway, OpenVPN, IKEv2</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Jurisdiksjon</td>
+              <td class="border border-slate-200 p-3">Panama</td>
+              <td class="border border-slate-200 p-3">De britiske Jomfruøyer</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Uavhengig revisjon</td>
+              <td class="border border-slate-200 p-3">Ja, flere ganger</td>
+              <td class="border border-slate-200 p-3">Ja</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Vår vurdering</td>
+              <td class="border border-slate-200 p-3 font-bold">4,9 / 5</td>
+              <td class="border border-slate-200 p-3 font-bold">4,6 / 5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-slate-500">Veiledende priser – sjekk leverandørens nettside for gjeldende tilbud. Vurderingene er redaksjonelle.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Pris: NordVPN vinner klart</h2>
+      <p>Dette er den største forskjellen mellom de to. NordVPN koster veiledende fra 39 kr/mnd på lengste abonnement, mens ExpressVPN ligger på fra 69 kr/mnd – altså nesten dobbelt så mye. Over to år snakker vi om en forskjell på over 700 kroner.</p>
+      <p>ExpressVPN posisjonerer seg bevisst som premiumproduktet i markedet, med store investeringer i infrastruktur (som TrustedServer-teknologien der alle servere kun kjører på RAM) og svært polerte apper. Om det er verdt prisen, avhenger av hvor mye du verdsetter den ekstra poleringen – og hvor mange enheter du trenger.</p>
+      <p>Et aktuelt poeng akkurat nå: NordVPNs Black Friday-kampanje er live (opptil 78 % rabatt + 3 måneder gratis, og varslet 2,99 dollar i måneden i Black Friday-uken 24. november–1. desember). ExpressVPNs tilbud for 2026 er ikke bekreftet ennå per 11. november. Se vår oversikt over <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">VPN-tilbud på Black Friday 2026</a>. Les også den fulle prisoversikten i <a class="text-brand-600 hover:underline" href="/no/hva-koster-vpn/">hva koster VPN i 2026</a> og <a class="text-brand-600 hover:underline" href="/no/nordvpn-pris/">NordVPN pris i kroner</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Servernettverk: NordVPN er størst</h2>
+      <p>NordVPN har ifølge leverandøren over 8 000 servere i 165+ land, mot ExpressVPNs 3 000+ servere i 105 land. I praksis betyr et større nettverk to ting for deg som norsk bruker:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Mindre kø i rushtiden.</strong> Flere servere å velge mellom betyr at du sjelden havner på en overbelastet server – viktig hvis du streamer fotball eller ser <a class="text-brand-600 hover:underline" href="/no/se-eliteserien-i-utlandet/">Eliteserien i utlandet</a> på kampdager.</li>
+        <li><strong>Flere spesialservere.</strong> NordVPN tilbyr doble VPN-servere (trafikken rutes via to land), Onion over VPN og dedikert IP som tillegg. ExpressVPN har ingen tilsvarende spesialservere, men tilbyr privat DNS på hver server.</li>
+      </ul>
+      <p>Begge har servere i Norge – NordVPN i Oslo ifølge leverandøren – så du får norsk IP-adresse til <a class="text-brand-600 hover:underline" href="/no/se-nrk-i-utlandet/">NRK i utlandet</a> og norske strømmetjenester med begge.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Enheter: NordVPN gir deg to ekstra</h2>
+      <p>NordVPN tillater <strong>10 samtidige enheter</strong> på ett abonnement, mens ExpressVPN tillater 8. Forskjellen er ikke stor, men den kan merkes i en husholdning med mange dingser: to mobiler, to nettbrett, to PC-er, smart-TV og spillkonsoll er fort 8 enheter – da er NordVPNs to ekstra plasser en reell fordel.</p>
+      <p>Trenger du å beskytte absolutt alt i huset på én gang – inkludert enheter som ikke støtter VPN-apper – kan du sette opp <a class="text-brand-600 hover:underline" href="/no/vpn-pa-ruter/">VPN direkte på ruteren</a>. Da teller hele nettverket som én tilkobling hos begge leverandørene.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Strømming: ExpressVPN med lite forsprang</h2>
+      <p>Begge leverandørene fungerer godt med norske og internasjonale strømmetjenester. Men ExpressVPN har to fordeler som er verdt å nevne:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>MediaStreamer:</strong> En Smart DNS-tjeneste som lar deg se geoblokkert innhold på enheter uten VPN-app – som eldre smart-TV-er og spillkonsoller. NordVPN har Smart DNS også, men ExpressVPNs løsning er mer moden og enklere å sette opp.</li>
+        <li><strong>Pålitelighet:</strong> ExpressVPN har rykte på seg for å være blant de mest pålitelige til å omgå VPN-blokkeringer hos strømmetjenester – færre «denne tittelen er ikke tilgjengelig»-øyeblikk.</li>
+      </ul>
+      <p>Men la oss være ærlige: For 90 % av strømmebruken – <a class="text-brand-600 hover:underline" href="/no/beste-vpn-for-netflix-norge/">Netflix</a>, NRK i utlandet, Disney+ – fungerer NordVPN like godt, og det store servernettverket gjør det lett å finne en server som ikke er blokkert. Forskjellen merkes mest hvis du stadig bytter mellom mange lands biblioteker.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hastighet: jevnt, med ulike protokoller</h2>
+      <p>Vi har ikke publisert egne hastighetstester ennå – det er et ærlig forbehold. Det vi kan si basert på leverandørenes teknologi og uavhengige tester andre har publisert:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordVPNs NordLynx</strong> er bygget på WireGuard og er blant de raskeste protokollene i uavhengige tester, med lavt ressursbruk og rask tilkobling.</li>
+        <li><strong>ExpressVPNs Lightway</strong> er bygget for rask tilkobling (kobler til på brøkdeler av et sekund) og stabil ytelse, spesielt på mobile nettverk der du bytter mellom Wi-Fi og 4G/5G.</li>
+      </ul>
+      <p>I praksis vil de fleste norske brukere med fiber eller god 5G-dekning ikke merke hastighetsforskjell mellom de to til vanlig bruk – strømming i 4K, videomøter og surfing går smertefritt hos begge. Flaskehalser oppstår oftest på overbelastede servere i rushtiden, ikke i protokollen – og der hjelper NordVPNs større nettverk.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Brukervennlighet: ExpressVPN er enklest</h2>
+      <p>Dette er ExpressVPNs sterkeste kort. Appene er legendarisk enkle: én stor på-knapp, automatisk valg av beste server, og null forvirrende innstillinger for den som bare vil ha noe som fungerer. Det er VPN-en du kan installere på foreldrenes PC uten å måtte forklare noe.</p>
+      <p>NordVPNs apper er moderne og oversiktlige, men har flere funksjoner – Meshnet, dobbel VPN, trusselbeskyttelse, spesialservere – og flere innstillinger å forholde seg til. For den teknisk interesserte er det en fordel; for nybegynneren kan det være litt mye. Er du helt fersk, les guiden <a class="text-brand-600 hover:underline" href="/no/vpn-for-nybegynnere/">VPN for nybegynnere</a> først.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Personvern og sikkerhet: begge solide</h2>
+      <p>Begge leverandørene har uavhengig reviderte retningslinjer mot logging – eksterne revisorer har bekreftet at de ikke lagrer informasjon om hva brukerne gjør på nettet. Begge tilbyr kill switch (som kutter internett hvis VPN-en faller ut), sterk kryptering og moderne protokoller.</p>
+      <p>Forskjellene ligger i detaljene:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordVPN</strong> er basert i Panama (utenfor EU og USA) og har fått retningslinjene sine uavhengig revidert flere ganger. Ekstrafunksjoner som trusselbeskyttelse (blokkerer skadevare og sporere) og Meshnet (sikker tilkobling mellom egne enheter) følger med uten tilleggskostnad.</li>
+        <li><strong>ExpressVPN</strong> er basert på De britiske Jomfruøyer og bruker TrustedServer-teknologi – alle servere kjører kun på RAM og kan fysisk ikke lagre data permanent. Det er et sterkt teknisk personvernargument.</li>
+      </ul>
+      <p>For en vanlig norsk bruker er personvernet hos begge mer enn godt nok. Ingen av dem har hatt alvorlige sikkerhetsbrudd som har kompromittert brukerdata.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvem bør velge hva?</h2>
+      <p><strong>Velg NordVPN hvis:</strong> du vil ha mest mulig for pengene, det største servernettverket, 10 enheter og flest ekstrafunksjoner – med veiledende fra 39 kr/mnd og vår vurdering på 4,9/5 er det vårt førstevalg for Norge. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN-anmeldelse</a>.</p>
+      <p><strong>Velg ExpressVPN hvis:</strong> du vil ha det aller enkleste produktet, er villig til å betale premium for polering, eller streamer mye geoblokkert innhold på enheter uten VPN-app (der MediaStreamer hjelper). Vår vurdering er 4,6/5 – litt lavere enn NordVPN, hovedsakelig på grunn av prisen. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/expressvpn/">ExpressVPN-anmeldelse</a>.</p>
+      <p><strong>Vårt ærlige råd:</strong> For de fleste nordmenn er NordVPN det smarteste kjøpet. Prisforskjellen er så stor at ExpressVPN må være <em>merkbart</em> bedre for å forsvare den – og det er den ikke for vanlig bruk. Men hvis penger ikke er et tema og du vil ha «det beste uten å tenke», blir du ikke skuffet over ExpressVPN. Vil du sammenligne med det billigste alternativet også, se <a class="text-brand-600 hover:underline" href="/no/sammenlign/nordvpn-vs-surfshark/">NordVPN vs Surfshark</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">For norske brukere spesielt</h2>
+      <p><strong>Nettbank og BankID:</strong> Begge leverandørene har servere i Norge, og det er dem du bør bruke til nettbank. Norske banker har sikkerhetssystemer som reagerer på innlogging fra uventede land – med norsk VPN-server unngår du det problemet uansett hvilken leverandør du velger. Les vår guide om <a class="text-brand-600 hover:underline" href="/no/vpn-og-bankid/">VPN og BankID</a> hvis du opplever trøbbel.</p>
+      <p><strong>NRK og norske strømmetjenester i utlandet:</strong> Begge fungerer for å se <a class="text-brand-600 hover:underline" href="/no/se-nrk-i-utlandet/">NRK i utlandet</a> via norsk server. Nordmenn på reise får tilgang til hjemlige tjenester med begge.</p>
+      <p><strong>Kundeservice på norsk?</strong> Ingen av dem har kundeservice på norsk, men begge har døgnåpen engelsk chat som svarer raskt. For de fleste nordmenn er det uproblematisk.</p>
+      <p><strong>Betalingsmetoder:</strong> Begge aksepterer kredittkort og PayPal. Ingen av dem aksepterer Vipps direkte – men du kan betale med kortet som er knyttet til Vipps-kontoen din. Se vår guide om <a class="text-brand-600 hover:underline" href="/no/vpn-og-vipps/">VPN og Vipps</a> for detaljer.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Spørsmål du bør stille deg selv før du velger</h2>
+      <p>For å lande på riktig valg, svar ærlig på disse:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Hva er budsjettet?</strong> Forskjellen på 39 og 69 kr/mnd blir over 700 kroner på to år. Er poleringen verdt det for deg?</li>
+        <li><strong>Hvor mange enheter har jeg?</strong> Tell mobiler, nettbrett, PC-er, TV-er og spillkonsoller. Over 8? Da er NordVPNs 10 plasser et sterkt argument.</li>
+        <li><strong>Hvor teknisk er jeg?</strong> Vil du bare trykke på én knapp og glemme det? ExpressVPN. Liker du å finjustere innstillinger og bruke ekstrafunksjoner? NordVPN gir deg mer å leke med.</li>
+        <li><strong>Hvor mye streamer jeg?</strong> Daglig strømming fra mange land taler for ExpressVPNs pålitelighet og MediaStreamer. Vanlig Netflix og NRK? NordVPN holder i massevis.</li>
+      </ul>
+      <p>Uansett hva du velger: Begge har 30 dagers pengene-tilbake-garanti. Du kan faktisk prøve begge etter hverandre og beholde den du liker best – det koster deg ingenting annet enn litt tid.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Vårt valg for de fleste: NordVPN</p>
+        <p class="text-sm text-slate-600 mb-4">Best totalt med størst servernettverk, 10 enheter og servere i Oslo. Veiledende fra 39 kr/mnd med 30 dagers pengene-tilbake-garanti.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Black Friday-kampanjen er live: opptil 78 % rabatt + 3 måneder gratis. Se <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">årets VPN-tilbud</a>.</p>
+      </div>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Alternativ: ExpressVPN for maksimal polering</p>
+        <p class="text-sm text-slate-600 mb-4">Markedets mest brukervennlige apper og svært pålitelig strømming. Veiledende fra 69 kr/mnd med 30 dagers pengene-tilbake-garanti.</p>
+        <CtaButton brand="expressvpn" label="Prøv ExpressVPN" sub="30 dager risikofritt" variant="secondary" />
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
