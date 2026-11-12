@@ -1,0 +1,209 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/mullvad-vs-nordvpn/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'Mullvad vs NordVPN', url }];
+const title = 'Mullvad vs NordVPN: anonymitet mot funksjoner (2026)';
+const description = 'Mullvad vs NordVPN – hvilken VPN bør nordmenn velge? Vi sammenligner pris, anonymitet, servere, strømming og personvern. Ærlig duell med veiledende priser i kroner.';
+const faqs = [
+  {
+    question: 'Hvilken er billigst – Mullvad eller NordVPN?',
+    answer: 'NordVPN er billigst på lengste abonnement med veiledende fra 39 kr/mnd, mot Mullvads faste €5 i måneden (veiledende rundt 55 kr). Over to år er forskjellen veiledende rundt 380 kroner. Men prisene er ikke direkte sammenlignbare: Mullvad koster det samme uansett hvor lenge du binder deg, mens NordVPNs laveste pris krever to års binding og stiger ved fornyelse.',
+  },
+  {
+    question: 'Hvilken er best for personvern og anonymitet?',
+    answer: 'Mullvad vinner på anonymitet. Du registrerer deg uten e-post eller navn – bare et tilfeldig 16-sifret kontonummer – og du kan betale kontant i posten eller med kryptovaluta. NordVPN har også uavhengig reviderte retningslinjer mot logging og sterk sikkerhet, men krever e-post og vanlige betalingsopplysninger ved registrering. For de fleste er begge mer enn gode nok; forskjellen betyr mest for deg som setter anonymitet aller høyest.',
+  },
+  {
+    question: 'Kan Mullvad brukes til strømming, for eksempel Netflix og NRK?',
+    answer: 'Mullvad er begrenset til strømming av geoblokkert innhold. Tjenesten har ingen strømmeoptimaliserte servere og gjør ingen innsats for å omgå strømmetjenestenes VPN-blokkeringer. Til NRK i utlandet og norske tjenester via norsk server kan det fungere, men for amerikansk Netflix og lignende er NordVPN et langt tryggere valg. Mullvad er bygget for personvern, ikke for strømming.',
+  },
+  {
+    question: 'Hvor mange enheter kan jeg bruke samtidig?',
+    answer: 'NordVPN tillater 10 samtidige enheter på ett abonnement, mens Mullvad tillater 5. For en familie eller husholdning med mange mobiler, nettbrett og PC-er er NordVPNs 10 plasser en klar fordel. Trenger du å beskytte absolutt alt, kan du sette VPN-en direkte på ruteren – da teller hele nettverket som én tilkobling hos begge.',
+  },
+  {
+    question: 'Hvorfor har Mullvad ingen rabatter eller Black Friday-tilbud?',
+    answer: 'Mullvad har kostet €5 i måneden siden 2009 og kjører aldri salg, rabattkoder eller kampanjer – heller ikke på Black Friday. Det er et bevisst valg: samme pris for alle, hele året, uten lokketilbud som stiger ved fornyelse. NordVPN har derimot store kampanjer, blant annet på Black Friday – se vår oversikt over årets VPN-tilbud.',
+  },
+  {
+    question: 'Hvilken bør jeg velge som nordmann?',
+    answer: 'Velg Mullvad hvis anonymitet er det viktigste for deg – ingen e-post, kontantbetaling og fast pris uten overraskelser. Velg NordVPN hvis du vil ha lavest pris, størst servernettverk, 10 enheter og best strømming – vår vurdering er 4,9/5 mot Mullvads 4,4/5. Begge har servere i Norge og pengene-tilbake-garanti (14 dager hos Mullvad, 30 dager hos NordVPN).',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-12', dateModified: '2026-11-12', image: `${site.url}/og-sammenligning.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema} ogImage="/og-sammenligning.webp">
+  <Breadcrumbs crumbs={crumbs} />
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Mullvad vs NordVPN: anonymitet mot funksjoner</h1>
+
+    <figure class="my-6">
+      <img src="/og-sammenligning.webp" alt="To lyspærer holdes opp – symbol på sammenligning av Mullvad og NordVPN" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+    </figure>
+
+    <DirectAnswer>
+      <p><strong>Det korte svaret: Mullvad vinner på anonymitet – NordVPN vinner på pris, funksjoner og strømming.</strong></p>
+      <p class="mt-2">Mullvad koster fast €5 i måneden (veiledende rundt 55 kr), krever ingen e-post eller personopplysninger, og har 5 enheter og rundt 700 servere i 50 land – vår vurdering er 4,4/5. NordVPN koster veiledende fra 39 kr/mnd, har 8 000+ servere i 165+ land og tillater 10 enheter – vår vurdering er 4,9/5. Mullvad er valget for deg som setter anonymitet høyest; NordVPN er valget for deg som vil ha mest mulig for pengene.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Rask sammenligning: Mullvad vs NordVPN</h2>
+      <p>Her er de viktigste forskjellene side ved side, basert på leverandørenes offisielle informasjon og vår redaksjonelle vurdering:</p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-200 p-3 text-left"></th>
+              <th class="border border-slate-200 p-3 text-left font-bold">Mullvad</th>
+              <th class="border border-slate-200 p-3 text-left font-bold">NordVPN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Veiledende pris</td>
+              <td class="border border-slate-200 p-3">€5/mnd fast (ca. 55 kr)</td>
+              <td class="border border-slate-200 p-3">Fra 39 kr/mnd</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Rabatter / kampanjer</td>
+              <td class="border border-slate-200 p-3">Aldri – samme pris siden 2009</td>
+              <td class="border border-slate-200 p-3">Ja, ofte store tilbud</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Samtidige enheter</td>
+              <td class="border border-slate-200 p-3">5</td>
+              <td class="border border-slate-200 p-3">10</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Pengene-tilbake-garanti</td>
+              <td class="border border-slate-200 p-3">14 dager (ikke ved kontantbetaling)</td>
+              <td class="border border-slate-200 p-3">30 dager</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Servere (ifølge leverandøren)</td>
+              <td class="border border-slate-200 p-3">700+ i 50 land</td>
+              <td class="border border-slate-200 p-3">8 000+ i 165+ land</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Servere i Norge</td>
+              <td class="border border-slate-200 p-3">Ja</td>
+              <td class="border border-slate-200 p-3">Ja (Oslo)</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Protokoller</td>
+              <td class="border border-slate-200 p-3">WireGuard (OpenVPN faset ut jan. 2026)</td>
+              <td class="border border-slate-200 p-3">NordLynx, OpenVPN, IKEv2</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Jurisdiksjon</td>
+              <td class="border border-slate-200 p-3">Sverige</td>
+              <td class="border border-slate-200 p-3">Panama</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Uavhengig revisjon</td>
+              <td class="border border-slate-200 p-3">Ja (bl.a. Cure53, Assured AB)</td>
+              <td class="border border-slate-200 p-3">Ja, flere ganger</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Vår vurdering</td>
+              <td class="border border-slate-200 p-3 font-bold">4,4 / 5</td>
+              <td class="border border-slate-200 p-3 font-bold">4,9 / 5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-slate-500">Veiledende priser – sjekk leverandørens nettside for gjeldende tilbud. Vurderingene er redaksjonelle.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Pris: fast €5 mot rabattjakt</h2>
+      <p>Prismodellene kunne ikke vært mer forskjellige. Mullvad har kostet €5 i måneden siden 2009 – samme pris enten du betaler for én måned eller ett år, uten salg, uten rabattkoder og uten lokketilbud som stiger ved fornyelse. Den eneste rabatten er 10 % ved betaling med kryptovaluta. NordVPN koster veiledende fra 39 kr/mnd på lengste abonnement, men prisen er høyere på korte abonnement og stiger vanligvis ved fornyelse etter første periode.</p>
+      <p>Regnestykket: Over to år koster NordVPN veiledende rundt 940 kroner på lengste plan, mot rundt 1 320 kroner hos Mullvad – en forskjell på rundt 380 kroner. Men sammenligningen er ikke helt rettferdig: Hos Mullvad vet du alltid hva du betaler, mens NordVPNs laveste pris forutsetter at du binder deg i to år og fanger et godt tilbud. Akkurat nå, i Black Friday-perioden, er NordVPNs kampanje live med opptil 78 % rabatt + 3 måneder gratis – Mullvad har ingen Black Friday-tilbud i det hele tatt. Se vår oversikt over <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">VPN-tilbud på Black Friday 2026</a>, og les den fulle prisoversikten i <a class="text-brand-600 hover:underline" href="/no/hva-koster-vpn/">hva koster VPN i 2026</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Anonymitet: Mullvads sterkeste kort</h2>
+      <p>Dette er grunnen til at Mullvad eksisterer. Du oppretter konto uten e-post, uten navn og uten passord – du får bare et tilfeldig 16-sifret kontonummer som er hele identiteten din hos tjenesten. Du kan betale kontant i posten, med Bitcoin, Monero eller bankoverføring, i tillegg til kort og PayPal. Ingen annen stor VPN-leverandør går så langt for å vite minst mulig om kundene sine.</p>
+      <p>NordVPN krever e-postadresse og vanlige betalingsopplysninger ved registrering, som de aller fleste tjenester. Selskapet har til gjengjeld uavhengig reviderte retningslinjer mot logging, og det er ingen grunn til å tvile på at de holder det de lover. Forskjellen handler om prinsipp, ikke om NordVPN er utrygt: Mullvad er bygget for deg som ikke vil at leverandøren skal kunne koble kontoen din til deg i det hele tatt. Vil du forstå hva «no-logs» egentlig betyr, les guiden <a class="text-brand-600 hover:underline" href="/no/hva-betyr-no-logs/">hva betyr «no-logs»?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Servernettverk: David mot Goliat</h2>
+      <p>NordVPN har ifølge leverandøren over 8 000 servere i 165+ land – mer enn ti ganger så mange som Mullvads rundt 700 servere i 50 land. For en vanlig bruker betyr det to ting:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Mindre kø i rushtiden.</strong> Flere servere å velge mellom betyr at du sjelden havner på en overbelastet server – viktig hvis du streamer fotball eller ser <a class="text-brand-600 hover:underline" href="/no/se-eliteserien-i-utlandet/">Eliteserien i utlandet</a> på kampdager.</li>
+        <li><strong>Flere land å velge mellom.</strong> Trenger du server i et eksotisk land, er sjansen langt større hos NordVPN. Mullvads 50 land dekker likevel alle de vanlige – Norge, resten av Europa, USA og de store strømmelandene.</li>
+      </ul>
+      <p>Til Mullvads forsvar: Alle serverne kjører kun på RAM (ingenting lagres på disk), og selskapet eier deler av infrastrukturen selv. Kvalitet over kvantitet er hele poenget – men for deg som vil ha flest valg, er NordVPN overlegen. Begge har servere i Norge, så du får norsk IP-adresse til <a class="text-brand-600 hover:underline" href="/no/se-nrk-i-utlandet/">NRK i utlandet</a> med begge.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Enheter: 5 mot 10</h2>
+      <p>NordVPN tillater <strong>10 samtidige enheter</strong> på ett abonnement, mens Mullvad tillater 5. Forskjellen merkes i en husholdning: to mobiler, to nettbrett og to PC-er er fort 6 enheter – da er Mullvads grense allerede sprengt, og du må kjøpe en ekstra konto. NordVPN gir deg dobbelt så mye rom.</p>
+      <p>Trenger du å beskytte absolutt alt i huset på én gang – inkludert enheter som ikke støtter VPN-apper – kan du sette opp <a class="text-brand-600 hover:underline" href="/no/vpn-pa-ruter/">VPN direkte på ruteren</a>. Da teller hele nettverket som én tilkobling hos begge leverandørene.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Strømming: NordVPN vinner klart</h2>
+      <p>Her er det ingen jevn kamp. Mullvad har ingen strømmeoptimaliserte servere og gjør ingen innsats for å omgå strømmetjenestenes VPN-blokkeringer – tjenesten er bygget for personvern, ikke for å låse opp geoblokkert innhold. Til NRK i utlandet via norsk server kan det fungere, men amerikansk Netflix, Disney+ og BBC iPlayer er upålitelig eller blokkert.</p>
+      <p>NordVPN er blant de beste til strømming, med servere optimalisert for strømmetjenester og pålitelig tilgang til norske og internasjonale biblioteker. Hvis strømming er en viktig grunn til at du kjøper VPN, er valget enkelt. Les vår guide om <a class="text-brand-600 hover:underline" href="/no/beste-vpn-for-netflix-norge/">beste VPN for Netflix i Norge</a> for mer om dette.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hastighet: jevnt, med ulik filosofi</h2>
+      <p>Vi har ikke publisert egne hastighetstester ennå – det er et ærlig forbehold. Det vi kan si basert på leverandørenes teknologi og uavhengige tester andre har publisert:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Mullvad</strong> bruker kun WireGuard siden januar 2026, da OpenVPN ble faset ut. WireGuard er raskt og lett, og Mullvads egne implementering er bygget for å redusere fingeravtrykk. Tjenesten tilbyr også DAITA – en funksjon som legger til trafikkstøy for å hindre AI-basert trafikkanalyse – og Multihop, der trafikken rutes via to servere.</li>
+        <li><strong>NordVPNs NordLynx</strong> er også bygget på WireGuard og er blant de raskeste protokollene i uavhengige tester, med lavt ressursbruk og rask tilkobling.</li>
+      </ul>
+      <p>I praksis vil de fleste norske brukere med fiber eller god 5G-dekning ikke merke stor hastighetsforskjell mellom de to til vanlig bruk. Mullvads DAITA og Multihop kan koste litt fart hvis du skrur dem på – men det er valgfrie personvernfunksjoner, ikke noe du må bruke. Les mer om fart i guiden <a class="text-brand-600 hover:underline" href="/no/blir-internett-tregere-med-vpn/">blir internett tregere med VPN?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Personvern og sikkerhet: begge solide, ulik jurisdiksjon</h2>
+      <p>Begge leverandørene har uavhengig reviderte retningslinjer mot logging, kill switch (som kutter internett hvis VPN-en faller ut) og sterk kryptering. Forskjellene ligger i detaljene:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Mullvad</strong> er basert i Sverige – et land som er med i 14 Eyes-samarbeidet, men selskapets poeng er at det ikke finnes noe å overlevere: uten e-post, uten logger og med RAM-servere er det ingen brukerdata å hente. Retningslinjene er revidert av blant annet Cure53 og Assured AB, og selskapet har en lang merittliste for personvern siden 2009.</li>
+        <li><strong>NordVPN</strong> er basert i Panama (utenfor EU og USA) og har fått retningslinjene sine uavhengig revidert flere ganger. Ekstrafunksjoner som trusselbeskyttelse (blokkerer skadevare og sporere) og Meshnet (sikker tilkobling mellom egne enheter) følger med uten tilleggskostnad.</li>
+      </ul>
+      <p>For en vanlig norsk bruker er personvernet hos begge mer enn godt nok. Mullvads fordel er anonymitetsmodellen – at leverandøren vet minst mulig om deg fra starten av. Les mer om funksjonen som beskytter deg ved brudd i <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">hva er kill switch?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvem bør velge hva?</h2>
+      <p><strong>Velg Mullvad hvis:</strong> anonymitet er det viktigste for deg – ingen e-post ved registrering, mulighet for kontantbetaling, fast pris uten overraskelser, og en leverandør som aldri har kjørt et eneste salg. Det er også et godt valg for <a class="text-brand-600 hover:underline" href="/no/vpn-for-torrenting/">torrenting med VPN</a>, der personvernmodellen og kill switch-en er avgjørende. Vår vurdering er 4,4/5 – litt lavere enn NordVPN, hovedsakelig på grunn av strømming og færre enheter.</p>
+      <p><strong>Velg NordVPN hvis:</strong> du vil ha mest mulig for pengene, det største servernettverket, 10 enheter, best strømming og flest ekstrafunksjoner – med veiledende fra 39 kr/mnd og vår vurdering på 4,9/5 er det vårt førstevalg for Norge. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN-anmeldelse</a>.</p>
+      <p><strong>Vårt ærlige råd:</strong> For de fleste nordmenn er NordVPN det smarteste kjøpet. Men hvis du er den typen bruker som leser personvernerklæringer, betaler kontant og ikke vil at noen skal vite hvem du er – da er Mullvad den eneste tjenesten som tar det like alvorlig som deg. Vil du sammenligne NordVPN med andre alternativer også, se <a class="text-brand-600 hover:underline" href="/no/nordvpn-vs-expressvpn/">NordVPN vs ExpressVPN</a> og <a class="text-brand-600 hover:underline" href="/no/protonvpn-vs-nordvpn/">Proton VPN vs NordVPN</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">For norske brukere spesielt</h2>
+      <p><strong>Nettbank og BankID:</strong> Begge leverandørene har servere i Norge, og det er dem du bør bruke til nettbank. Norske banker har sikkerhetssystemer som reagerer på innlogging fra uventede land – med norsk VPN-server unngår du det problemet uansett hvilken leverandør du velger. Les vår guide om <a class="text-brand-600 hover:underline" href="/no/vpn-og-bankid/">VPN og BankID</a> hvis du opplever trøbbel.</p>
+      <p><strong>NRK og norske strømmetjenester i utlandet:</strong> Begge fungerer for å se <a class="text-brand-600 hover:underline" href="/no/se-nrk-i-utlandet/">NRK i utlandet</a> via norsk server. Nordmenn på reise får tilgang til hjemlige tjenester med begge – men NordVPN er det tryggere valget hvis du streamer mye.</p>
+      <p><strong>Kundeservice på norsk?</strong> Ingen av dem har kundeservice på norsk, men begge har engelsk support. Mullvads support svarer på e-post (du trenger ikke oppgi hvem du er – kontonummeret holder), mens NordVPN har døgnåpen chat som svarer raskt.</p>
+      <p><strong>Betalingsmetoder:</strong> NordVPN aksepterer kredittkort og PayPal. Mullvad aksepterer i tillegg kontanter i posten, Bitcoin, Monero og bankoverføring – og gir 10 % rabatt ved kryptobetaling. Ingen av dem aksepterer Vipps direkte, men du kan betale med kortet som er knyttet til Vipps-kontoen din. Se vår guide om <a class="text-brand-600 hover:underline" href="/no/vpn-og-vipps/">VPN og Vipps</a> for detaljer.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Spørsmål du bør stille deg selv før du velger</h2>
+      <p>For å lande på riktig valg, svar ærlig på disse:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Hvor viktig er anonymitet for meg?</strong> Vil du at leverandøren ikke skal vite hvem du er i det hele tatt? Da er Mullvad det eneste seriøse svaret. Er vanlig personvern godt nok? Da holder NordVPN.</li>
+        <li><strong>Hvor mye streamer jeg?</strong> Daglig strømming fra mange land taler for NordVPN. Bruker du VPN mest til personvern og surfing? Mullvad holder i massevis.</li>
+        <li><strong>Hvor mange enheter har jeg?</strong> Over 5 enheter? Da må du enten velge NordVPN eller kjøpe to Mullvad-kontoer.</li>
+        <li><strong>Vil jeg ha fast pris eller lavest pris?</strong> Mullvad koster det samme for alltid. NordVPN er billigere – men bare hvis du binder deg lenge og fanger et tilbud.</li>
+      </ul>
+      <p>Uansett hva du velger: Begge har pengene-tilbake-garanti – 14 dager hos Mullvad (gjelder ikke kontantbetaling) og 30 dager hos NordVPN. Du kan prøve begge etter hverandre og beholde den du liker best.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Vårt valg for de fleste: NordVPN</p>
+        <p class="text-sm text-slate-600 mb-4">Best totalt med størst servernettverk, 10 enheter og servere i Oslo. Veiledende fra 39 kr/mnd med 30 dagers pengene-tilbake-garanti.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Black Friday-kampanjen er live: opptil 78 % rabatt + 3 måneder gratis. Se <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">årets VPN-tilbud</a>.</p>
+      </div>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Alternativ: Mullvad for maksimal anonymitet</p>
+        <p class="text-sm text-slate-600 mb-4">Ingen e-post, kontantbetaling og fast €5 i måneden siden 2009. 14 dagers pengene-tilbake-garanti (gjelder ikke kontantbetaling).</p>
+        <a href="https://mullvad.net" rel="nofollow noopener" class="group inline-flex w-full sm:w-auto flex-col items-center justify-center gap-0.5 font-bold px-7 py-3.5 rounded-xl transition-all duration-200 text-center bg-white hover:bg-brand-50 text-brand-700 border-2 border-brand-500 hover:border-brand-600">
+          <span class="inline-flex items-center gap-1.5">Besøk Mullvad <span aria-hidden="true">→</span></span>
+          <span class="text-xs font-medium opacity-90">Fast €5/mnd – ingen salg, ingen overraskelser</span>
+        </a>
+        <p class="text-xs text-slate-500 mt-3">Mullvad har ingen affiliateprogram – denne lenken gir oss ingen provisjon. Vi anbefaler tjenesten fordi den er god, ikke fordi vi tjener på den.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
