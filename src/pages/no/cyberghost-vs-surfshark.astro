@@ -1,0 +1,204 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/cyberghost-vs-surfshark/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'CyberGhost vs Surfshark', url }];
+const title = 'CyberGhost vs Surfshark: budsjett-duellen for nordmenn (2026)';
+const description = 'CyberGhost vs Surfshark – hvilken budsjett-VPN bør nordmenn velge? Vi sammenligner pris, enheter, servere, strømming og angrefrist. Ærlig duell med veiledende priser i kroner.';
+const faqs = [
+  {
+    question: 'Hvilken er billigst – CyberGhost eller Surfshark?',
+    answer: 'CyberGhost er billigst på lengste abonnement med veiledende fra 23 kr/mnd, mot Surfsharks veiledende fra 27 kr/mnd. Forskjellen er liten – veiledende rundt 4 kroner i måneden, eller under 100 kroner i året. Men sammenlign totalprisen, ikke bare månedsprisen: CyberGhosts laveste pris krever lengst binding, og begge leverandørene hever prisen ved fornyelse etter første periode.',
+  },
+  {
+    question: 'Hvor mange enheter kan jeg bruke samtidig?',
+    answer: 'Surfshark tillater ubegrenset antall enheter på ett abonnement – mobil, nettbrett, PC og TV i hele husholdningen uten å telle. CyberGhost tillater 7 samtidige enheter. For en familie med mange enheter er Surfsharks ubegrensede grense en klar fordel; for én eller to personer holder CyberGhosts 7 plasser i massevis.',
+  },
+  {
+    question: 'Hvilken har lengst angrefrist?',
+    answer: 'CyberGhost har markedets lengste pengene-tilbake-garanti: 45 dager på abonnement over 6 måneder (14 dager på månedsabonnement). Surfshark har 30 dager. Vil du teste i ro og mak uten å binde deg, gir CyberGhost deg halvannen måned – halvannen uke mer enn Surfshark.',
+  },
+  {
+    question: 'Hvilken er best til strømming, for eksempel Netflix og NRK?',
+    answer: 'Begge fungerer godt til strømming, men på ulike måter. CyberGhost har dedikerte strømmeoptimaliserte servere merket per tjeneste – du velger «Netflix USA» eller «NRK» direkte i appen. Surfshark har ingen slike merkede servere, men er kjent for å låse opp mange strømmetjenester pålitelig, inkludert amerikansk Netflix. For nybegynnere er CyberGhosts merkede servere enklere; for erfarne brukere er forskjellen liten.',
+  },
+  {
+    question: 'Hvilken er best for personvern?',
+    answer: 'Begge har uavhengig reviderte retningslinjer mot logging og sterk kryptering. CyberGhost er basert i Romania (EU, utenfor 14 Eyes), mens Surfshark er basert i Nederland (EU, med i 14 Eyes). I praksis er personvernet hos begge mer enn godt nok for vanlige norske brukere – forskjellen i jurisdiksjon betyr mest for deg som setter personvern aller høyest.',
+  },
+  {
+    question: 'Hvilken bør jeg velge som nordmann?',
+    answer: 'Velg Surfshark hvis du har mange enheter i husholdningen og vil ha mest mulig for pengene – ubegrenset antall enheter og vår vurdering på 4,7/5. Velg CyberGhost hvis du vil ha lavest månedspris, lengst angrefrist (45 dager) og de enkleste strømmeserverne – vår vurdering er 4,3/5. Begge har servere i Norge og pengene-tilbake-garanti, så du kan prøve den ene og bytte hvis du ikke er fornøyd.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-13', dateModified: '2026-11-13', image: `${site.url}/og-sammenligning.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema} ogImage="/og-sammenligning.webp">
+  <Breadcrumbs crumbs={crumbs} />
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">CyberGhost vs Surfshark: budsjett-duellen for nordmenn</h1>
+
+    <figure class="my-6">
+      <img src="/og-sammenligning.webp" alt="To lyspærer holdes opp – symbol på sammenligning av CyberGhost og Surfshark" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+    </figure>
+
+    <DirectAnswer>
+      <p><strong>Det korte svaret: Surfshark vinner sammenlagt – CyberGhost vinner på pris og angrefrist.</strong></p>
+      <p class="mt-2">CyberGhost koster veiledende fra 23 kr/mnd, har 11 500+ servere i 100 land, 7 enheter og markedets lengste pengene-tilbake-garanti på 45 dager – vår vurdering er 4,3/5. Surfshark koster veiledende fra 27 kr/mnd, har 3 200+ servere i 100 land og ubegrenset antall enheter – vår vurdering er 4,7/5. Velg CyberGhost hvis du vil ha lavest pris og lengst tid til å angre; velg Surfshark hvis du har mange enheter og vil ha mest mulig for pengene.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Rask sammenligning: CyberGhost vs Surfshark</h2>
+      <p>Her er de viktigste forskjellene side ved side, basert på leverandørenes offisielle informasjon og vår redaksjonelle vurdering:</p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-200 p-3 text-left"></th>
+              <th class="border border-slate-200 p-3 text-left font-bold">CyberGhost</th>
+              <th class="border border-slate-200 p-3 text-left font-bold">Surfshark</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Veiledende pris</td>
+              <td class="border border-slate-200 p-3">Fra 23 kr/mnd</td>
+              <td class="border border-slate-200 p-3">Fra 27 kr/mnd</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Pengene-tilbake-garanti</td>
+              <td class="border border-slate-200 p-3">45 dager (14 dager på månedsabonnement)</td>
+              <td class="border border-slate-200 p-3">30 dager</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Samtidige enheter</td>
+              <td class="border border-slate-200 p-3">7</td>
+              <td class="border border-slate-200 p-3">Ubegrenset</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Servere (ifølge leverandøren)</td>
+              <td class="border border-slate-200 p-3">11 500+ i 100 land</td>
+              <td class="border border-slate-200 p-3">3 200+ i 100 land</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Servere i Norge</td>
+              <td class="border border-slate-200 p-3">Ja</td>
+              <td class="border border-slate-200 p-3">Ja</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Strømmeoptimaliserte servere</td>
+              <td class="border border-slate-200 p-3">Ja, merket per tjeneste</td>
+              <td class="border border-slate-200 p-3">Nei, men låser opp mange tjenester</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Protokoller</td>
+              <td class="border border-slate-200 p-3">WireGuard, OpenVPN, IKEv2</td>
+              <td class="border border-slate-200 p-3">WireGuard, OpenVPN, IKEv2</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Jurisdiksjon</td>
+              <td class="border border-slate-200 p-3">Romania</td>
+              <td class="border border-slate-200 p-3">Nederland</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-200 p-3 font-semibold">Uavhengig revisjon</td>
+              <td class="border border-slate-200 p-3">Ja</td>
+              <td class="border border-slate-200 p-3">Ja</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="border border-slate-200 p-3 font-semibold">Vår vurdering</td>
+              <td class="border border-slate-200 p-3 font-bold">4,3 / 5</td>
+              <td class="border border-slate-200 p-3 font-bold">4,7 / 5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-slate-500">Veiledende priser – sjekk leverandørens nettside for gjeldende tilbud. Vurderingene er redaksjonelle.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Pris: 23 mot 27 kroner i måneden</h2>
+      <p>Prisforskjellen er liten, men reell. CyberGhost er den billigste av de to med veiledende fra 23 kr/mnd på lengste abonnement, mot Surfsharks veiledende fra 27 kr/mnd. Over to år snakker vi om veiledende rundt 100 kroner i forskjell – ikke nok til å avgjøre valget alene, men verdt å vite.</p>
+      <p>Det som betyr mer enn fire kroner i måneden, er prismodellen. Begge krever lengst binding for lavest pris, og begge hever prisen ved fornyelse etter første periode – les alltid totalprisen før du kjøper, ikke bare den store rabattprosenten. Akkurat nå, i Black Friday-perioden, kjører begge leverandørene store kampanjer – se vår oversikt over <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">VPN-tilbud på Black Friday 2026</a> før du bestemmer deg. For full prisoversikt over alle leverandørene, se <a class="text-brand-600 hover:underline" href="/no/hva-koster-vpn/">hva koster VPN i 2026</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Enheter: ubegrenset mot 7</h2>
+      <p>Her er forskjellen størst. Surfshark tillater <strong>ubegrenset antall enheter</strong> på ett abonnement – det er ingen andre store leverandører som gjør det. To mobiler, to nettbrett, to PC-er, en TV og en spillkonsoll? Alt er dekket, uten å telle plasser eller kjøpe ekstra kontoer.</p>
+      <p>CyberGhost tillater 7 samtidige enheter. For én person eller et par holder det i massevis: mobil, nettbrett og PC per person er 6 plasser. Men i en familie med barn og mange skjermer kan grensen merkes fort – da må du enten prioritere hvilke enheter som beskyttes, eller sette opp <a class="text-brand-600 hover:underline" href="/no/vpn-pa-ruter/">VPN direkte på ruteren</a>, slik at hele nettverket teller som én tilkobling hos begge leverandørene.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Servernettverk: størst mot smartest</h2>
+      <p>CyberGhost har ifølge leverandøren over 11 500 servere i 100 land – mer enn tre ganger så mange som Surfsharks 3 200+ servere i like mange land. I praksis betyr det mindre kø på populære servere og flere valg i hvert land, men begge dekker alle landene norske brukere normalt trenger.</p>
+      <p>Det som skiller dem, er hvordan serverne er organisert. CyberGhost merker serverne sine etter formål – «Netflix USA», «BBC iPlayer» eller «Torrenting» – så du slipper å gjette hvilken server som fungerer til hva. Surfshark har ingen slike merkede servere, men tilbyr i stedet MultiHop (trafikken rutes via to servere) og Camouflage-modus som skjuler at du bruker VPN. Begge har servere i Norge, så du får norsk IP-adresse til <a class="text-brand-600 hover:underline" href="/no/se-nrk-i-utlandet/">NRK i utlandet</a> med begge.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Strømming: merkede servere mot pålitelig allrounder</h2>
+      <p>For strømming er CyberGhosts merkede servere den enkleste løsningen for nybegynnere: du åpner appen, velger «Netflix USA» eller «Disney+», og serveren er optimalisert for akkurat den tjenesten. Det fjerner gjettingen som ofte følger med VPN og strømming.</p>
+      <p>Surfshark er likevel en svært god strømme-VPN. Tjenesten låser opp amerikansk Netflix og mange andre strømmetjenester pålitelig, selv uten merkede servere – du velger bare landet og prøver. Hvis strømming er hovedgrunnen til at du kjøper VPN, er begge gode valg. Les vår guide om <a class="text-brand-600 hover:underline" href="/no/beste-vpn-for-netflix-norge/">beste VPN for Netflix i Norge</a> for mer om dette.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hastighet: jevnt, med et ærlig forbehold</h2>
+      <p>Vi har ikke publisert egne hastighetstester ennå – det er et ærlig forbehold. Det vi kan si basert på leverandørenes teknologi og uavhengige tester andre har publisert:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>CyberGhost</strong> bruker WireGuard som standard, som er raskt og lett. Uavhengige tester viser noe varierende ytelse på fjerntliggende servere – servere nær Norge er som regel raske, mens servere på andre siden av kloden kan være tregere.</li>
+        <li><strong>Surfshark</strong> bruker også WireGuard og er kjent for jevn fart på tvers av servere, med rask tilkobling og lavt ressursbruk.</li>
+      </ul>
+      <p>I praksis vil de fleste norske brukere med fiber eller god 5G-dekning ikke merke stor hastighetsforskjell mellom de to til vanlig bruk – strømming, surfing og videomøter fungerer fint hos begge. Les mer om fart i guiden <a class="text-brand-600 hover:underline" href="/no/blir-internett-tregere-med-vpn/">blir internett tregere med VPN?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Personvern og sikkerhet: begge solide, ulik jurisdiksjon</h2>
+      <p>Begge leverandørene har uavhengig reviderte retningslinjer mot logging, kill switch (som kutter internett hvis VPN-en faller ut) og sterk kryptering. Forskjellene ligger i detaljene:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>CyberGhost</strong> er basert i Romania – et EU-land som står utenfor 14 Eyes-samarbeidet. Selskapet publiserer jevnlige transparensrapporter som viser hvilke forespørsler om brukerdata de har mottatt (og ikke kunnet etterkomme, fordi de ikke logger). Retningslinjene er uavhengig revidert.</li>
+        <li><strong>Surfshark</strong> er basert i Nederland – også EU, men med i 14 Eyes-samarbeidet. Selskapet har til gjengjeld uavhengig reviderte retningslinjer mot logging, og ekstrasikkerhet som CleanWeb (blokkerer annonser og sporere) følger med uten tilleggskostnad.</li>
+      </ul>
+      <p>For en vanlig norsk bruker er personvernet hos begge mer enn godt nok. Vil du forstå hva «no-logs» egentlig betyr, les guiden <a class="text-brand-600 hover:underline" href="/no/hva-betyr-no-logs/">hva betyr «no-logs»?</a> – og les mer om funksjonen som beskytter deg ved brudd i <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">hva er kill switch?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Brukervennlighet: CyberGhost er enklest for nybegynnere</h2>
+      <p>CyberGhost er bygget for deg som vil ha det enkelt: store knapper, tydelige kategorier og servere merket etter hva de er til. Du trenger ikke vite hva WireGuard eller split tunneling er for å komme i gang – du trykker på «koble til» og er ferdig. Det er grunnen til at tjenesten ofte anbefales til førstegangsbrukere. Er du helt ny til VPN, les gjerne <a class="text-brand-600 hover:underline" href="/no/vpn-for-nybegynnere/">VPN for nybegynnere: komplett guide</a> først.</p>
+      <p>Surfsharks app er også ryddig og enkel, men har flere avanserte funksjoner synlig – MultiHop, statisk IP, Camouflage-modus og CleanWeb. Det gir mer å utforske for deg som liker å justere, men kan virke litt mer overveldende første gang. Begge har apper for Windows, Mac, iOS, Android og flere plattformer, og ingen av dem har kundeservice på norsk – begge tilbyr engelsk support.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Angrefrist: 45 dager er bransjens lengste</h2>
+      <p>CyberGhosts 45 dagers pengene-tilbake-garanti er den lengste blant de store leverandørene – halvannen måned til å teste i ro og mak, mot Surfsharks 30 dager. Merk at garantien på 45 dager gjelder abonnement over 6 måneder; månedsabonnement har 14 dagers angrefrist.</p>
+      <p>For deg som er usikker på om VPN er noe for deg, er de ekstra 15 dagene en reell fordel: du rekker å teste både hjemme, på reise og på offentlig Wi-Fi før du bestemmer deg. Surfsharks 30 dager er likevel mer enn nok for de fleste – en måned holder til å finne ut om tjenesten passer.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvem bør velge hva?</h2>
+      <p><strong>Velg CyberGhost hvis:</strong> du vil ha lavest månedspris (veiledende fra 23 kr/mnd), lengst angrefrist (45 dager) og de enkleste strømmeserverne – og du har 7 eller færre enheter å beskytte. Det er et godt valg for nybegynnere og for deg som vil prøve VPN risikofritt. Vår vurdering er 4,3/5. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/cyberghost/">CyberGhost-anmeldelse</a>.</p>
+      <p><strong>Velg Surfshark hvis:</strong> du har mange enheter i husholdningen og vil ha mest mulig for pengene – ubegrenset antall enheter, jevn fart og CleanWeb inkludert, med veiledende fra 27 kr/mnd og vår vurdering på 4,7/5. Det er vårt førstevalg i budsjettklassen. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark-anmeldelse</a>.</p>
+      <p><strong>Vårt ærlige råd:</strong> For de fleste norske husholdninger er Surfshark det smarteste kjøpet – ubegrenset antall enheter alene er verdt de ekstra kronene i måneden. Men hvis du er alene, er ny til VPN og vil ha lengst mulig tid til å angre, er CyberGhost et like trygt valg – og det billigste. Vil du sammenligne Surfshark med andre alternativer også, se <a class="text-brand-600 hover:underline" href="/no/expressvpn-vs-surfshark/">ExpressVPN vs Surfshark</a> og <a class="text-brand-600 hover:underline" href="/no/nordvpn-vs-expressvpn/">NordVPN vs ExpressVPN</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">For norske brukere spesielt</h2>
+      <p><strong>Nettbank og BankID:</strong> Begge leverandørene har servere i Norge, og det er dem du bør bruke til nettbank. Norske banker har sikkerhetssystemer som reagerer på innlogging fra uventede land – med norsk VPN-server unngår du det problemet uansett hvilken leverandør du velger. Les vår guide om <a class="text-brand-600 hover:underline" href="/no/vpn-og-bankid/">VPN og BankID</a> hvis du opplever trøbbel.</p>
+      <p><strong>NRK og norske strømmetjenester i utlandet:</strong> Begge fungerer for å se <a class="text-brand-600 hover:underline" href="/no/se-nrk-i-utlandet/">NRK i utlandet</a> via norsk server. Nordmenn på reise får tilgang til hjemlige tjenester med begge – CyberGhosts merkede strømmeservere gjør det litt enklere å finne riktig server første gang.</p>
+      <p><strong>Betalingsmetoder:</strong> Begge aksepterer kredittkort og PayPal. Ingen av dem aksepterer Vipps direkte, men du kan betale med kortet som er knyttet til Vipps-kontoen din. Se vår guide om <a class="text-brand-600 hover:underline" href="/no/vpn-og-vipps/">VPN og Vipps</a> for detaljer.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Spørsmål du bør stille deg selv før du velger</h2>
+      <p>For å lande på riktig valg, svar ærlig på disse:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Hvor mange enheter har jeg?</strong> Over 7 enheter? Da er Surfsharks ubegrensede grense det eneste som holder uten ekstra kontoer. 7 eller færre? Da holder CyberGhost fint.</li>
+        <li><strong>Hvor viktig er lavest mulig pris?</strong> CyberGhost er billigst per måned, men forskjellen er liten – veiledende rundt 4 kroner. Ikke la prisen alene avgjøre.</li>
+        <li><strong>Hvor lenge vil jeg ha til å angre?</strong> Vil du ha halvannen måned på deg, er CyberGhosts 45 dager unikt. 30 dager holder for de fleste, men ekstra tid er aldri feil.</li>
+        <li><strong>Er jeg nybegynner?</strong> CyberGhosts merkede servere og enklere app gjør starten lettere. Er du erfaren og vil ha avanserte funksjoner, gir Surfshark mer å leke med.</li>
+      </ul>
+      <p>Uansett hva du velger: Begge har pengene-tilbake-garanti – 45 dager hos CyberGhost og 30 dager hos Surfshark. Du kan prøve begge etter hverandre og beholde den du liker best.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Vårt valg for de fleste: Surfshark</p>
+        <p class="text-sm text-slate-600 mb-4">Best totalt med ubegrenset antall enheter og jevn fart. Veiledende fra 27 kr/mnd med 30 dagers pengene-tilbake-garanti.</p>
+        <CtaButton brand="surfshark" label="Prøv Surfshark" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Black Friday-kampanjen er live nå. Se <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">årets VPN-tilbud</a>.</p>
+      </div>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Alternativ: CyberGhost for lavest pris og lengst angrefrist</p>
+        <p class="text-sm text-slate-600 mb-4">Veiledende fra 23 kr/mnd og markedets lengste pengene-tilbake-garanti på 45 dager. Enklest for nybegynnere, med strømmeoptimaliserte servere.</p>
+        <CtaButton brand="cyberghost" variant="secondary" label="Prøv CyberGhost" sub="45 dager risikofritt" />
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
