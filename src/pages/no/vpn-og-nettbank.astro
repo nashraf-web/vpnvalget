@@ -1,0 +1,165 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/vpn-og-nettbank/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'VPN og nettbank', url }];
+const title = 'VPN og nettbank i Norge: DNB, SpareBank 1 og Nordea (2026)';
+const description = 'Blir du blokkert i nettbanken når VPN-en er på? Slik bruker du VPN med DNB, SpareBank 1 og Nordea – uten å bli sperret. Norsk server, delt tunnel og steg-for-steg-feilsøking.';
+const faqs = [
+  {
+    question: 'Er det trygt å bruke VPN med nettbank?',
+    answer: 'Ja, i utgangspunktet. Nettbanken din bruker allerede sterk kryptering (TLS), så passordet ditt er beskyttet selv uten VPN. VPN-en legger til et ekstra lag som skjuler trafikken din for nettverket du er på – nyttig på offentlig WiFi. Banken ser likevel at du kobler til fra en VPN-server, og det er det som kan utløse sikkerhetskontrollen. Bruk alltid en norsk server til nettbank, og følg bankens egne råd hvis den ber deg om ekstra verifisering.',
+  },
+  {
+    question: 'Hvorfor blokkerer DNB, SpareBank 1 og Nordea meg når VPN-en er på?',
+    answer: 'Bankene blokkerer ikke VPN-en som sådan – de reagerer på signalene tilkoblingen gir. Tre ting teller mest: landet IP-adressen din ser ut til å komme fra, om adressen tilhører et datasenter i stedet for en vanlig bredbåndsleverandør, og om den samme adressen har vært brukt til svindel tidligere. Logger du inn fra en utenlandsk VPN-server rett etter at du var logget inn fra Norge, ser det ut som et klassisk tegn på stjålet passord – og da slår svindelvernet inn.',
+  },
+  {
+    question: 'Hvilken VPN-server bør jeg bruke til nettbank?',
+    answer: 'Alltid en norsk server – helst Oslo. Da ser banken en norsk IP-adresse, og innloggingen skiller seg ikke fra en vanlig innlogging hjemmefra. Hold deg til det samme landet for alle bankoperasjoner, og ikke bytt server midt i en betaling. Alle VPN-ene vi anbefaler har servere i Norge ifølge leverandørene selv.',
+  },
+  {
+    question: 'Hva er delt tunnel, og hvorfor hjelper det med nettbank?',
+    answer: 'Delt tunnel (split tunneling) lar deg velge hvilke apper som skal gå via VPN og hvilke som skal bruke vanlig internett. Setter du nettbank-appen og BankID-appen til å gå utenom VPN-en, ser banken din vanlige norske IP-adresse – og resten av trafikken din er fortsatt beskyttet. NordVPN, Surfshark og ExpressVPN har alle delt tunnel i appene sine. Slik gjør du det, forklarer vi i guiden om hva delt tunnel er.',
+  },
+  {
+    question: 'Kan jeg bruke Vipps og BankID med VPN på?',
+    answer: 'Som regel ja. Vipps og BankID er mindre strenge på IP-adresser enn selve nettbanken, og de fleste bruker dem med VPN påslått uten problemer – særlig via en norsk server. Skulle Vipps nekte en betaling, er det nesten alltid nok å bytte til en norsk server eller skru av VPN-en i noen sekunder mens betalingen går gjennom. Mer om dette i guiden om VPN og BankID.',
+  },
+  {
+    question: 'Hva gjør jeg hvis banken har sperret kontoen min?',
+    answer: 'Slå først av VPN-en og logg inn på vanlig måte fra din vanlige IP-adresse – ofte er det nok til å låse opp. Virker ikke det, kontakt bankens kundeservice via de offisielle kanalene (app, nettside eller telefonnummeret på bankkortet ditt) og forklar at du brukte VPN. Del aldri BankID-koder eller passord med noen som ringer deg – banken ber aldri om det. Ikke prøv å «lure» banken med nye servere; det gjør bare svindelvernet mer mistenksomt.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-14', dateModified: '2026-11-14', image: `${site.url}/og-default.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-default.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-default.webp" alt="Kvinnehender som bruker en VPN-app på smarttelefonen – slik bruker du VPN med nettbank, DNB, SpareBank 1 og Nordea" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">VPN og nettbank i Norge: DNB, SpareBank 1 og Nordea</h1>
+
+    <DirectAnswer>
+      <p><strong>Kort svar: Ja, du kan bruke VPN med nettbank – men bruk alltid en norsk server.</strong></p>
+      <p class="mt-2">Bankene blokkerer ikke VPN-en som sådan, men svindelvernet reagerer på tre signaler: hvilket land IP-adressen din kommer fra, om den tilhører et datasenter i stedet for en vanlig bredbåndsleverandør, og om adressen har dårlig rykte fra tidligere brukere. En norsk VPN-server løser det første problemet – og delt tunnel, som sender bank-appen utenom VPN-en, løser resten. I denne guiden får du steg for steg for DNB, SpareBank 1 og Nordea, pluss hva du gjør hvis banken allerede har sperret deg.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p>Du er på ferie i utlandet, skrur på VPN-en og skal betale en regning i nettbanken – og så kommer meldingen: «Innloggingen ble avvist» eller «Vi kan ikke bekrefte at det er deg». Det er et av de vanligste problemene norske VPN-brukere møter, og det rammer kunder i alle de store bankene. I denne guiden forklarer vi hvorfor det skjer, hvordan du unngår det, og hva du gjør bank for bank. Er du helt ny på VPN, start med <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva en VPN er</a> før du leser videre.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvorfor blokkerer banken deg når VPN-en er på?</h2>
+      <p>Bankene publiserer ikke de nøyaktige reglene sine – det ville gjort svindelvernet lett å omgå – men sikkerhetseksperter er enige om hvilke tre signaler som teller mest når en innlogging vurderes:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Landet IP-adressen kommer fra.</strong> Logger du inn fra Norge klokken 10 og fra Tyskland klokken 10:02, ser det ut som et stjålet passord i bruk. En plutselig landendring er det sterkeste enkeltsignalet svindelvernet har.</li>
+        <li><strong>Typen IP-adresse.</strong> Vanlige kunder kommer fra adresser som tilhører Telenor, Telia, Altibox eller andre bredbåndsleverandører. VPN-servere bruker datasenteradresser, og de er offentlig kjent som nettopp det. For banken ser en datasenteradresse ut som automatikk eller en tunnel – ikke som en vanlig kunde.</li>
+        <li><strong>Adressen sitt rykte.</strong> Hundrevis av mennesker deler den samme VPN-serveren. Har noen av dem forsøkt svindel eller brute-force-innlogginger fra den adressen før deg, er adressen allerede flagget – og du arver problemet uten å ha gjort noe galt.</li>
+      </ul>
+      <p>Det viktige poenget: banken ser ikke krypteringen din, og den straffer deg ikke for å bruke VPN. Den reagerer på at tilkoblingen din <em>ser ut som</em> et svindelforsøk. Derfor handler løsningen om å få tilkoblingen til å se normal ut igjen – og det er lettere enn du tror.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Er det trygt å bruke VPN med nettbank?</h2>
+      <p>Ja, i utgangspunktet – men det er verdt å være ærlig om hva VPN-en faktisk gjør for deg her. Nettbanken din bruker allerede sterk kryptering (TLS, den samme teknologien som ligger bak HTTPS), så passordet og kontoinformasjonen din er beskyttet selv uten VPN. VPN-en er ikke laget som beskytter bankpassordet ditt.</p>
+      <p>Det VPN-en <em>gjør</em>, er å skjule trafikken din for nettverket du er på. På et åpent hotell- eller flyplassnettverk er det en reell fordel: ingen på samme nettverk kan se hvilke tjenester du kontakter. Hjemme på ditt eget passordbeskyttede nettverk er gevinsten mindre. Og én advarsel: en VPN beskytter deg ikke mot falske bankmeldinger eller phishing. Den største faren i hverdagen er en SMS eller e-post som utgir seg for å være banken din – og der hjelper ingen VPN. Les mer om dette i <a class="text-brand-600 hover:underline" href="/no/vpn-og-bankid/">VPN og BankID</a>, der vi også forklarer hvordan BankID-appen oppfører seg med VPN på.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik bruker du VPN med nettbank – steg for steg</h2>
+      <p>Denne rutinen fungerer for alle norske banker, og den tar under ett minutt å sette opp:</p>
+      <ol class="list-decimal pl-6 space-y-3">
+        <li><strong>Velg en norsk server – alltid.</strong> Koble til Oslo eller en annen norsk server i VPN-appen før du åpner nettbanken. Da ser banken en norsk IP-adresse, og innloggingen skiller seg ikke fra en vanlig innlogging hjemmefra.</li>
+        <li><strong>Hold deg til ett land.</strong> Ikke hopp mellom land i VPN-appen i løpet av dagen. Én landendring er nok til å utløse en ekstra kontroll; flere i løpet av kort tid ser ut som et angrep.</li>
+        <li><strong>Ikke bytt server midt i en betaling.</strong> Start betalingen og fullfør den på samme tilkobling. En adresseendring midt i en operasjon får nesten alltid betalingen avvist.</li>
+        <li><strong>Bruk bankens egen app.</strong> Bankappene er generelt mindre følsomme for IP-endringer enn nettbank i nettleseren, og de er laget for å fungere på reise.</li>
+        <li><strong>Sett opp delt tunnel for bank-appen.</strong> I VPN-appens innstillinger kan du velge at nettbank-appen og BankID-appen går utenom VPN-en, mens resten av trafikken din fortsatt er beskyttet. Da ser banken din vanlige norske IP-adresse. Hva det er, forklarer vi i <a class="text-brand-600 hover:underline" href="/no/hva-er-split-tunneling/">hva er delt tunnel?</a></li>
+        <li><strong>Slå på kill switch.</strong> Hvis VPN-tilkoblingen faller ut midt i en bankøkt, blokkerer kill switch all trafikk til VPN-en er tilbake – slik at du aldri sender banktrafikk ukryptert uten å merke det. Les <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">hva er kill switch?</a></li>
+      </ol>
+      <p>Fungerer det fortsatt ikke etter disse stegene, er det nesten alltid adressens rykte som er problemet: prøv en annen norsk server i samme VPN-app, eller vent en time og prøv igjen. Hjelper ingen ting, kontakt banken – aldri prøv å «lure» svindelvernet med nye servere gang på gang, det gjør bare banken mer mistenksom.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">DNB og VPN: slik gjør du det</h2>
+      <p>DNB er Norges største bank, og også den flest nordmenn i utlandet logger inn i. DNB bruker, som alle store banker, et svindelvern som vurderer enhet, nettleser og IP-adresse ved hver innlogging – og en utenlandsk VPN-server er det vanligste som utløser en ekstra kontroll.</p>
+      <p>Slik gjør du det med DNB: logg alltid inn via en norsk server i VPN-appen, og bruk helst DNB-appen i stedet for nettbank i nettleseren. Blir du bedt om ekstra verifisering, følg bankens egen prosedyre – vanligvis BankID – og ikke skru av og på VPN-en mens verifiseringen pågår. Skulle DNB sperre innloggingen helt, slå av VPN-en, logg inn fra din vanlige tilkobling og ta kontakt med DNBs kundeservice via appen eller nettsiden. Husk: DNB ber deg aldri om BankID-koder eller passord på telefon eller SMS – den som gjør det, er en svindler, ikke banken.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">SpareBank 1 og VPN: slik gjør du det</h2>
+      <p>SpareBank 1 er en allianse av lokale sparebanker, og innloggingen går gjennom samme sikkerhetssystem uansett hvilken lokalbank du har. Også her er mønsteret det samme: en norsk IP-adresse gir som regel grønt lys, en utenlandsk VPN-adresse kan utløse ekstra kontroll.</p>
+      <p>Slik gjør du det med SpareBank 1: velg norsk server før du åpner mobilbanken, og bruk mobilbank-appen fremfor nettleseren – den er mindre følsom for IP-endringer. SpareBank 1-kunder som bor i utlandet over lengre tid, opplever oftest problemer når de veksler mellom VPN-land flere ganger om dagen; hold deg til én norsk server så lenge du er på reise. Blir du avvist, slå av VPN-en og logg inn direkte – og kontakt banken din via appen hvis problemet vedvarer.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Nordea og VPN: slik gjør du det</h2>
+      <p>Nordea er en nordisk bank med kunder i flere land, og innloggingen vurderes på samme måte som hos DNB og SpareBank 1: enhet, nettleser og IP-adresse. Fordi Nordea opererer i flere land, er banken vant til kunder som logger inn fra utlandet – men en VPN-adresse fra et datasenter kan likevel utløse en ekstra sikkerhetskontroll.</p>
+      <p>Slik gjør du det med Nordea: bruk en norsk server i VPN-appen, og logg inn via Nordea-appen. Nordea bruker BankID og sin egen kode-app til verifisering – fullfør alltid verifiseringen på den samme tilkoblingen som du startet innloggingen på. Bytt aldri server mellom innlogging og betaling. Skulle innloggingen bli avvist, slå av VPN-en, logg inn på vanlig måte og kontakt Nordeas kundeservice via appen eller nettsiden.</p>
+      <p>For alle tre bankene gjelder det samme: har du bedriftskonto eller bruker du bankens bedriftsløsninger, vær ekstra forsiktig. Bedriftskontoer har ofte strengere svindelvern enn privatkontoer, og der er delt tunnel – bank-appen utenom VPN-en – den tryggeste løsningen.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vipps og BankID med VPN</h2>
+      <p>Vipps og BankID er mindre strenge på IP-adresser enn selve nettbanken, og de fleste bruker dem med VPN påslått uten å merke noe – særlig via en norsk server. BankID-appen sjekker først og fremst enheten din og BankID-informasjonen din, ikke hvor i verden IP-adressen din ser ut til å være.</p>
+      <p>Skulle Vipps nekte en betaling, er det nesten alltid nok å bytte til en norsk server eller skru av VPN-en i noen sekunder mens betalingen går gjennom – og slå den på igjen etterpå. Det samme gjelder BankID: virker ikke innloggingen med VPN på, skru den av for akkurat den ene innloggingen. Full oversikt finner du i <a class="text-brand-600 hover:underline" href="/no/vpn-og-bankid/">VPN og BankID</a> og <a class="text-brand-600 hover:underline" href="/no/vpn-og-vipps/">VPN og Vipps</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Nettbank i utlandet: det viktigste å huske</h2>
+      <p>For nordmenn på reise eller bosatt i utlandet er kombinasjonen VPN + nettbank nesten uunngåelig: du vil både ha sikkerhet på hotellnettet og tilgang til norske tjenester. Tre regler dekker det meste:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Norsk server til norske tjenester.</strong> NRK, TV 2 Play, Altinn og nettbanken din forventer alle en norsk IP-adresse. Én norsk server i VPN-appen dekker alt sammen – les mer i <a class="text-brand-600 hover:underline" href="/no/vpn-for-reise/">VPN for reise</a>.</li>
+        <li><strong>Installer VPN-en før du reiser.</strong> Enkelte land og hotellnettverk blokkerer VPN-nettsider, så nedlasting på stedet kan være vanskelig. Test også at nettbanken fungerer med VPN-en hjemmefra før avreise.</li>
+        <li><strong>Ha bankens sperrenummer lagret.</strong> Skulle kortet ditt bli sperret eller kontoen låst mens du er i utlandet, er telefonnummeret på baksiden av bankkortet ditt den raskeste veien tilbake. Lagre det på telefonen før du drar.</li>
+      </ul>
+      <p>Et praktisk tips for deg som bor i utlandet over lengre tid: bruk delt tunnel for bank-appen permanent, slik at banken alltid ser din vanlige tilkobling, mens resten av trafikken går via VPN-en. Da slipper du å tenke på det ved hver eneste innlogging.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva gjør du hvis banken har sperret deg?</h2>
+      <p>Har banken allerede sperret innloggingen eller kortet ditt, er dette rekkefølgen som fungerer best:</p>
+      <ol class="list-decimal pl-6 space-y-3">
+        <li><strong>Slå av VPN-en.</strong> Logg inn fra din vanlige IP-adresse – hjemmenettet eller mobildata – og se om sperren løsner av seg selv.</li>
+        <li><strong>Fullfør bankens egen verifisering.</strong> BankID, kodebrikke eller kode-app – bruk det banken ber om, på den samme tilkoblingen.</li>
+        <li><strong>Kontakt banken via offisielle kanaler.</strong> Bruk appen, nettsiden eller telefonnummeret på bankkortet ditt. Forklar at du brukte VPN – bankene kjenner problemet godt, og det er ikke noe du blir straffet for.</li>
+        <li><strong>Del aldri koder med noen som ringer deg.</strong> Banken ber aldri om BankID-koder, passord eller fullt kortnummer på telefon, SMS eller e-post. Den som ber om det, er en svindler.</li>
+        <li><strong>Ikke prøv server etter server.</strong> Å hoppe mellom VPN-servere for å «finne en som virker» ser ut som et angrep for svindelvernet og kan forlenge sperren.</li>
+      </ol>
+      <p>Skulle VPN-en mot formodning ikke fungere i det hele tatt på nettverket du er på, finner du løsningene i <a class="text-brand-600 hover:underline" href="/no/vpn-fungerer-ikke/">VPN fungerer ikke – feilsøkingsguiden</a>. Og på hotell- og flyplassnettverk gjelder de samme reglene som for alt annet: les <a class="text-brand-600 hover:underline" href="/no/er-hotell-wifi-trygt/">er hotell-WiFi trygt?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvilken VPN er best for nettbank?</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon, appfunksjoner og uavhengige tester fra anerkjente kilder – ikke målte laboratorietester fra oss. For nettbank teller tre ting mest: servere i Norge, delt tunnel i appen, og kill switch på alle plattformer.</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordVPN (fra 39 kr/mnd)</strong> – servere i Oslo ifølge leverandøren, delt tunnel på Windows og Android, kill switch på alle plattformer og NordLynx-protokollen for god fart. Vår vurdering: det tryggeste allround-valget for nettbank. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN-anmeldelse</a>.</li>
+        <li><strong>Surfshark (fra 27 kr/mnd)</strong> – servere i Norge ifølge leverandøren, delt tunnel i appen og ubegrenset antall enheter på ett abonnement, så hele husholdningen er dekket. Vår vurdering: best verdi for familier. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark-anmeldelse</a>.</li>
+      </ul>
+      <p>Veiledende priser – sjekk leverandørens nettside for oppdaterte tilbud. Begge har 30 dagers pengene-tilbake-garanti, så du kan teste dem mot nettbanken din risikofritt. Akkurat nå er dessuten <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">Black Friday-tilbudene live</a> – årets laveste priser.</p>
+
+      <ProsCons
+        pros={[
+          'Norsk VPN-server gjør at banken ser en vanlig norsk innlogging – som regel ingen problemer i det hele tatt',
+          'Delt tunnel lar bank-appen gå utenom VPN-en mens resten av trafikken er beskyttet',
+          'VPN-en beskytter deg på åpne hotell- og flyplassnettverk når du bruker nettbank på reise',
+          'Samme norske server gir deg også NRK, TV 2 Play og Altinn i utlandet',
+        ]}
+        cons={[
+          'Utenlandsk VPN-server utløser nesten garantert en ekstra sikkerhetskontroll i banken',
+          'Delte datasenteradresser kan ha dårlig rykte fra tidligere brukere – du arver problemet',
+          'Å bytte server midt i en betaling får betalingen avvist',
+          'Gratis VPN-er er ikke et trygt alternativ til bankbruk – ukjent logging og delte adresser',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: VPN og nettbank fungerer – med norsk server</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon og uavhengige tester fra anerkjente kilder – ikke målte laboratorietester fra oss. VPN og nettbank er ingen motsetning: bankene reagerer på signalene tilkoblingen gir, ikke på VPN-en i seg selv. Med en norsk server, én fast tilkobling per bankøkt og delt tunnel for bank-appen fungerer DNB, SpareBank 1 og Nordea som normalt – hjemme og på reise.</p>
+      <p>Den praktiske konklusjonen er enkel: sett VPN-appen til å koble til en norsk server automatisk, legg bank-appen i delt tunnel, og tenk aldri på det igjen. Vil du ha full oversikt over hva VPN koster generelt, se <a class="text-brand-600 hover:underline" href="/no/hva-koster-vpn/">hva VPN koster i 2026</a>. Og lurer du på om VPN-en gjør deg anonym på nettet, er svaret ærlig forklart i <a class="text-brand-600 hover:underline" href="/no/gjor-vpn-deg-anonym/">gjør VPN deg anonym?</a></p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Bruker du nettbank på reise? Sikre deg med en norsk server.</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – servere i Oslo, delt tunnel og kill switch på alle plattformer. Veiledende fra 39 kr/mnd.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Vil du dekke hele familien? <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark</a> fra 27 kr/mnd dekker ubegrenset antall enheter. Se også <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
