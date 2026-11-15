@@ -26,8 +26,13 @@ export default defineConfig({
       // /go/ = affiliate redirects (noindex, nofollow) and /se, /dk, /de =
       // noindex "coming soon" stubs until real localized content exists.
       // A page that is noindex must not be listed in the sitemap.
+      // The site root / is also excluded: it deliberately canonicalizes
+      // to /no/ (root renders the full Norwegian homepage for AdSense /
+      // reviewers while search consolidates on /no/), and GSC flagged it
+      // 2026-11-09 as "Alternate page with proper canonical tag".
       // NOTE: page URLs carry a trailing slash (trailingSlash: 'always').
       filter: (page) =>
+        page !== 'https://vpnvalget.com/' &&
         !page.includes('/go/') &&
         !page.endsWith('/se/') &&
         !page.endsWith('/dk/') &&
