@@ -1,0 +1,180 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/wireguard-vs-openvpn/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'WireGuard vs OpenVPN', url }];
+const title = 'WireGuard vs OpenVPN: hva bør du velge? (2026)';
+const description = 'WireGuard eller OpenVPN? Vi forklarer forskjellen på fart, sikkerhet og personvern – og hvilken protokoll du bør velge på mobil, PC og ruter i 2026.';
+const faqs = [
+  {
+    question: 'Er WireGuard tryggere enn OpenVPN?',
+    answer: 'Begge er trygge når de brukes av en seriøs leverandør – de bygger på anerkjent, moderne kryptering og har ingen kjente alvorlige svakheter. WireGuard er lettere å revidere fordi hele protokollen er rundt 4 000 kodelinjer, mens OpenVPN har over 100 000 linjer pluss OpenSSL-biblioteket. OpenVPN har til gjengjeld lengre historikk og flere uavhengige revisjoner bak seg. For de fleste nordmenn betyr valget av leverandør – og leverandørens retningslinjer mot logging – mer for sikkerheten enn valget mellom disse to protokollene.',
+  },
+  {
+    question: 'Hvilken protokoll er raskest – WireGuard eller OpenVPN?',
+    answer: 'WireGuard er raskest i uavhengige tester. I en benchmark fra september 2026 på en 1 Gbps-linje beholdt WireGuard 91 % av hastigheten, mens OpenVPN beholdt 52 % over UDP og 31 % over TCP med obfuskeringsmodus på. Forskjellen i praksis avhenger av server, avstand og enhet – og OpenVPN 2.7 (februar 2026) med den nye DCO-kjernemodulen tetter mye av gapet. Til strømming og gaming merker de fleste forskjellen; til vanlig surfing er den liten.',
+  },
+  {
+    question: 'Hvorfor lagrer WireGuard IP-adressen min på serveren?',
+    answer: 'WireGuard er bygget med faste konfigurasjoner: hver klient har en nøkkel og en tilordnet adresse som serveren må kjenne for å rute trafikken tilbake. I den opprinnelige utformingen lagres denne koblingen på serveren, noe som i teorien lar en leverandør knytte din virkelige IP-adresse til aktiviteten din. Seriøse leverandører løser dette teknisk – NordVPNs NordLynx bruker for eksempel et dobbelt NAT-system som gir deg en dynamisk adresse per økt, og koblingen slettes når økten avsluttes. Sjekk alltid leverandørens personvernerklæring og uavhengige revisjon.',
+  },
+  {
+    question: 'Kan jeg bruke WireGuard på mobilen?',
+    answer: 'Ja – alle de store VPN-appene tilbyr WireGuard (eller en variant som NordLynx) på både iPhone og Android, og det er som regel standardvalget i appene. WireGuard er ekstra godt egnet på mobil fordi det kobler til nesten umiddelbart og gjenoppretter tunnelen på under et halvt sekund når du bytter mellom WiFi og mobildata. Det bruker også mindre CPU enn OpenVPN, noe som er snillere mot batteriet. Les mer i guiden om VPN på mobil.',
+  },
+  {
+    question: 'Hvorfor finnes OpenVPN fortsatt, når WireGuard er raskere?',
+    answer: 'Fordi fart ikke er alt. OpenVPN kan kjøre over TCP på port 443, som ser ut som vanlig HTTPS-trafikk – og dermed kommer gjennom strenge brannmurer, hotellnettverk og sensurerte land der WireGuard over UDP blir blokkert. OpenVPN fungerer også på eldre rutere og enheter som ikke har WireGuard-støtte, og mange bedrifter har bygget hele sin infrastruktur rundt det. Det er grunnen til at nesten alle leverandører fortsatt tilbyr OpenVPN som reserveløsning, selv om WireGuard er standardvalget.',
+  },
+  {
+    question: 'Hva er NordLynx og Lightway?',
+    answer: 'Det er leverandørenes egne varianter bygget på de samme ideene som WireGuard. NordLynx er NordVPNs protokoll: WireGuard med et dobbelt NAT-lag som løser personvernsvakheten ved at serveren ellers må lagre din IP-adresse – den finnes bare hos NordVPN. Lightway er ExpressVPNs egen protokoll, lansert i 2020 med åpen kildekode-kjerne fra 2022, bygget for lynrask tilkobling og stabilitet ved nettverksbytte – den finnes bare hos ExpressVPN. Begge er raske, moderne alternativer til ren WireGuard, men du kan ikke bruke dem utenfor leverandørens egen app.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-15', dateModified: '2026-11-15', image: `${site.url}/og-vpn-fart.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-vpn-fart.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-vpn-fart.webp" alt="Fiberoptiske kabler i et serverrack – WireGuard er den raskeste VPN-protokollen i uavhengige tester" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">WireGuard vs OpenVPN: hva bør du velge?</h1>
+
+    <DirectAnswer>
+      <p><strong>Kort svar: Velg WireGuard (eller NordLynx) som standard – det er raskere, lettere og kobler til umiddelbart.</strong></p>
+      <p class="mt-2">WireGuard er den moderne protokollen: rundt 4 000 kodelinjer, innebygd i Linux-kjernen siden 2020 og raskest i uavhengige tester. OpenVPN er veteranen fra 2001: større, tregere, men langt mer fleksibel – den kan kjøre over TCP på port 443 og komme gjennom nettverk der WireGuard blir blokkert. For de fleste nordmenn er svaret enkelt: la appen velge WireGuard automatisk, og bytt til OpenVPN bare når tilkoblingen ikke fungerer. I denne guiden forklarer vi forskjellene, når hver av dem vinner, og hva NordLynx og Lightway har med saken å gjøre.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p>Åpner du innstillingene i en VPN-app, møter du ord som WireGuard, OpenVPN, IKEv2, NordLynx og Lightway – og de fleste lar bare stå på «Automatisk» uten å vite hva de velger. Det er som regel helt greit. Men protokollen er selve tunnelen trafikken din går gjennom, og den bestemmer hvor rask tilkoblingen blir, hvor lett den er å blokkere, og hvor mye batteri mobilen bruker. Er du helt ny på VPN, start med <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva en VPN er</a> – her forklarer vi de to viktigste protokollene, og hvordan du velger riktig.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva er WireGuard?</h2>
+      <p>WireGuard er den moderne protokollen, laget av sikkerhetsforsker Jason Donenfeld og først utgitt i 2016. Filosofien er radikal enkelhet: hele protokollen er rundt 4 000 kodelinjer – lite nok til at én enkelt sikkerhetsforsker kan lese og revidere alt. Til sammenligning har OpenVPN over 100 000 linjer, pluss OpenSSL-biblioteket på flere hundre tusen linjer til. Færre linjer betyr mindre angrepsflate og raskere revisjoner.</p>
+      <p>WireGuard ble tatt inn i Linux-kjernen i versjon 5.6, 29. mars 2020 – et kvalitetsstempel få protokoller får, fordi kravene til kode i kjernen er svært strenge. Protokollen bruker ett fast sett med moderne kryptografi, uten forhandling: ChaCha20-Poly1305 for kryptering, Curve25519 for nøkkelutveksling og BLAKE2s for hashing. Ingen valgmuligheter betyr ingen feilkonfigurasjon – du kan ikke ved et uhell velge en svak krypteringsmetode.</p>
+      <p>Teknisk kjører WireGuard i kjernen på Linux (i stedet for i et eget brukerprogram), bare over UDP, og den svarer ikke på noe som helst før pakken inneholder en gyldig nøkkel. Det gir tre praktiske fordeler: lynrask tilkobling, svært lavt strømforbruk og nesten umiddelbar gjenoppretting når du bytter nettverk. Protokollens håndtrykk er formelt analysert av forskerne Dowling og Paterson (2018), og selve protokollen er dokumentert i RFC 9518 fra januar 2024.</p>
+      <p>Én svakhet er verdt å kjenne til: i den opprinnelige utformingen må serveren lagre klientens IP-adresse for å rute trafikken tilbake. Seriøse leverandører har løst dette teknisk – mest kjent er NordVPNs NordLynx, som bruker dobbelt NAT slik at ingen kobling mellom din virkelige IP-adresse og aktiviteten din lagres på serveren. Les mer om dette under personvern lenger ned.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva er OpenVPN?</h2>
+      <p>OpenVPN er veteranen – åpen kildekode siden 2001, og i over tjue år bransjens standardprotokoll. Den er bygget på OpenSSL, det samme kryptobiblioteket som sikrer det meste av nettet, og den er ekstremt fleksibel: du kan velge krypteringsmetode, kjøre over både TCP og UDP, bruke hvilken som helst port – og den kan maskeres som vanlig HTTPS-trafikk på port 443.</p>
+      <p>Den fleksibiliteten er både styrken og svakheten. OpenVPN kan tilpasses nesten hva som helst: gamle rutere, bedriftsnettverk, strenge brannmurer og sensurerte land. Men den kjører i brukermodus (utenfor kjernen), med en konfigurasjonsfil på typisk 30–80 linjer, og hvert tilkoblingsoppsett bruker mer minne og CPU enn WireGuard. Resultatet er tregere tilkobling og lavere hastighet – særlig på svake enheter som rutere og gamle mobiler.</p>
+      <p>Det er likevel verdt å merke at gapet krymper: OpenVPN 2.7, utgitt i februar 2026, leveres med DCO-kjernemodulen som flytter databehandlingen inn i kjernen på Linux – og uavhengige tester viser at den tetter mye av fartsforskjellen til WireGuard. OpenVPN forsvinner ikke med det første, og det er bra: den er fortsatt den mest pålitelige veien gjennom nettverk som blokkerer alt annet.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">WireGuard vs OpenVPN – sammenligning</h2>
+      <p>Her er de viktigste forskjellene samlet i én tabell:</p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm text-left border border-slate-200 rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-slate-100 text-ink">
+              <th class="px-4 py-3 font-bold">Egenskap</th>
+              <th class="px-4 py-3 font-bold">WireGuard</th>
+              <th class="px-4 py-3 font-bold">OpenVPN</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr><td class="px-4 py-3 font-semibold">Lansert</td><td class="px-4 py-3">2016 (i Linux-kjernen fra 2020)</td><td class="px-4 py-3">2001</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Kodelinjer</td><td class="px-4 py-3">Ca. 4 000 – lett å revidere</td><td class="px-4 py-3">Over 100 000 + OpenSSL</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Kryptering</td><td class="px-4 py-3">Fast sett: ChaCha20-Poly1305, Curve25519</td><td class="px-4 py-3">Valgfri via OpenSSL (f.eks. AES-256)</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Transport</td><td class="px-4 py-3">Kun UDP</td><td class="px-4 py-3">TCP og UDP, port 443 mulig</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Fart</td><td class="px-4 py-3">Raskest i uavhengige tester</td><td class="px-4 py-3">Tregere, men gapet krymper med 2.7/DCO</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Tilkoblingstid</td><td class="px-4 py-3">Nesten umiddelbar (én runde håndtrykk)</td><td class="px-4 py-3">Noen sekunder</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Nettverksbytte</td><td class="px-4 py-3">Gjenoppretter på under et halvt sekund</td><td class="px-4 py-3">Må ofte koble til på nytt</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Blokkering</td><td class="px-4 py-3">Lett å gjenkjenne og blokkere</td><td class="px-4 py-3">Vanskelig å blokkere over TCP 443</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Enhetsstøtte</td><td class="px-4 py-3">Alle moderne systemer</td><td class="px-4 py-3">Også eldre rutere og systemer</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Best for</td><td class="px-4 py-3">Hverdagsbruk, strømming, gaming, mobil</td><td class="px-4 py-3">Strenge nettverk, eldre utstyr, bedrift</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Legg merke til raden om blokkering: WireGuards håndtrykk er så særegent at dyp pakkeinspeksjon lett kan gjenkjenne og stoppe det. Det er grunnen til at leverandører legger til obfuskeringsmoduser – som Proton VPNs Stealth – for restriktive nettverk. OpenVPN over TCP 443 ser derimot ut som helt vanlig nettsurfing, og er derfor vanskeligere å stoppe.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Fart: hvem er raskest i praksis?</h2>
+      <p>WireGuard vinner fartsduellen i omtrent alle uavhengige tester, og det er ikke jevnt. I en benchmark fra september 2026, utført på en 1 Gbps fiberlinje mot en server 900 kilometer unna, beholdt WireGuard 91 % av grunnlinjehastigheten, mens OpenVPN beholdt 52 % over UDP og 31 % over TCP med obfuskeringsmodus på. WireGuard hadde også lavest ekstra forsinkelse (+4 ms) og raskest gjenoppretting ved nettverksbytte (0,4 sekunder).</p>
+      <p>Men tallene må leses med forbehold: resultatet avhenger av maskinvare, serverbelastning og avstand, og en konkret «WireGuard er fire ganger raskere»-påstand gjelder bare det oppsettet den ble målt på. I praksis betyr det to ting for deg som norsk bruker: Har du rask fiber hjemme (500 Mbps eller mer), merker du forskjellen på store nedlastinger og 4K-strømming. Har du vanlig bredbånd eller mobildata, er forskjellen ofte for liten til å merke i hverdagen. Og husk at protokollen bare er én faktor – serverens belastning og avstanden til den betyr ofte mer enn protokollvalget. Les <a class="text-brand-600 hover:underline" href="/no/blir-internett-tregere-med-vpn/">blir internett tregere med VPN?</a> for hele bildet.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Sikkerhet og personvern: er WireGuard trygt?</h2>
+      <p>Ja – begge protokollene regnes som trygge av sikkerhetsmiljøet, men de er trygge på forskjellige måter. WireGuard er trygg fordi den er liten: hele protokollen kan leses av én person, det finnes ingen gamle krypteringsmetoder å velge feil, og kjernens sikkerhetsgjennomgang før innlemmingen i 2020 var grundig. OpenVPN er trygg fordi den er gammel: over tjue år med uavhengige revisjoner, sårbarheter som er funnet og fikset, og en enorm installasjonsbase som gjør at feil oppdages raskt.</p>
+      <p>Personvernforskjellen handler mest om én detalj: WireGuard lagrer som standard klientens IP-adresse på serveren. Det er et designvalg, ikke en feil – men det betyr at personvernet ditt avhenger av hvordan leverandøren har bygget rundt protokollen. NordVPN løste det med NordLynx og dobbelt NAT: du får en dynamisk adresse per økt, og koblingen mellom din virkelige adresse og økten slettes når du kobler fra. Andre leverandører bruker lignende teknikker. Sjekk derfor alltid leverandørens personvernerklæring og om retningslinjene mot logging er uavhengig revidert – det forklarer vi i <a class="text-brand-600 hover:underline" href="/no/hva-betyr-no-logs/">hva betyr «no-logs»?</a></p>
+      <p>Én ting protokollen ikke beskytter mot: den gjør deg ikke anonym. Nettleserens fingeravtrykk, informasjonskapsler og innlogginger avslører deg uansett protokoll – les det ærlige svaret i <a class="text-brand-600 hover:underline" href="/no/gjor-vpn-deg-anonym/">gjør VPN deg anonym?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">NordLynx og Lightway: leverandørenes egne varianter</h2>
+      <p>I VPN-appen din heter protokollen kanskje ikke WireGuard i det hele tatt. De to største leverandørene har bygget sine egne varianter:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordLynx (NordVPN).</strong> WireGuard med et dobbelt NAT-lag som løser personvernsvakheten beskrevet over. Lansert våren 2020, og i dag standardvalget i NordVPN-appen. Du får WireGuard-farten uten at serveren lagrer koblingen til din IP-adresse.</li>
+        <li><strong>Lightway (ExpressVPN).</strong> ExpressVPNs egen protokoll, lansert i 2020, med åpen kildekode-kjerne fra 2022. Bygget rundt samme moderne kryptografi som WireGuard (ChaCha20-Poly1305), men med rundt 2 000 kodelinjer, nesten umiddelbar tilkobling og svært rask gjenoppretting ved nettverksbytte. Finnes bare i ExpressVPN-appen.</li>
+      </ul>
+      <p>Proton VPN har på sin side lagt til Stealth, en obfuskeringsmodus som skjuler VPN-trafikken på restriktive nettverk. Poenget er det samme hos alle: ingen av variantene er «bedre WireGuard» i absolutt forstand – de er tilpasninger av den samme ideen, og du kan bare bruke dem hos leverandøren som laget dem. I praksis velger du altså leverandør først, og protokoll etterpå.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvilken protokoll bør du velge?</h2>
+      <p>For de aller fleste er svaret: <strong>la appen velge automatisk.</strong> Alle seriøse VPN-apper bruker i dag WireGuard (eller NordLynx/Lightway) som standard, og det er riktig valg i 9 av 10 situasjoner. Bytt manuelt bare når du har en konkret grunn:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Velg WireGuard / NordLynx når:</strong> du strømmer, gamer, bruker mobilen, eller bare vil ha best fart i hverdagen. Lav forsinkelse gjør den også til det beste valget for <a class="text-brand-600 hover:underline" href="/no/beste-vpn-for-gaming/">gaming</a> og videosamtaler. På mobil er den snillere mot batteriet enn OpenVPN.</li>
+        <li><strong>Velg OpenVPN (TCP) når:</strong> WireGuard ikke kobler til i det hele tatt – typisk på hotell, flyplass, skole eller jobbnettverk med streng brannmur, eller i land som sensurerer VPN-trafikk. TCP på port 443 kommer gjennom nesten alt. Feilsøker du en tilkobling som ikke virker, er protokollbytte ett av stegene i <a class="text-brand-600 hover:underline" href="/no/vpn-fungerer-ikke/">VPN fungerer ikke-guiden</a>.</li>
+        <li><strong>Velg OpenVPN på eldre utstyr:</strong> Har du en gammel ruter uten WireGuard-støtte, er OpenVPN ofte det eneste som fungerer. Les <a class="text-brand-600 hover:underline" href="/no/vpn-pa-ruter/">VPN på ruter</a> hvis du beskytter hele huset fra ruteren.</li>
+        <li><strong>Velg IKEv2 som mellomting:</strong> IKEv2/IPsec er raskt, stabilt på mobil og innebygd i de fleste operativsystemer. Det er et godt valg hvis både WireGuard og OpenVPN gir problemer – og det er standard på enkelte enheter.</li>
+      </ul>
+      <p>Bransjen beveger seg for øvrig tydelig i WireGuards retning: Mullvad fjernet OpenVPN-støtten helt 15. januar 2026 og tilbyr nå bare WireGuard. Det betyr ikke at OpenVPN er utrygt – bare at de fleste leverandører ser WireGuard som fremtiden, med OpenVPN som en nødvendig reserveløsning.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik bytter du protokoll i VPN-appen</h2>
+      <p>Du trenger ikke å forstå protokollene for å bytte mellom dem – det tar under ett minutt:</p>
+      <ol class="list-decimal pl-6 space-y-3">
+        <li><strong>Åpne VPN-appen</strong> og gå til Innstillinger (tannhjulet eller profilikonet).</li>
+        <li><strong>Finn «Protokoll» eller «Tilkobling».</strong> Hos NordVPN heter valget «VPN-protokoll» under Innstillinger → Tilkobling; hos Surfshark ligger det under Innstillinger → VPN-innstillinger.</li>
+        <li><strong>Velg protokoll.</strong> La stå på «Automatisk» til vanlig. Velg NordLynx/WireGuard for fart, OpenVPN (TCP) hvis tilkoblingen blokkeres, eller IKEv2 som mellomting.</li>
+        <li><strong>Koble fra og til igjen.</strong> Endringen gjelder først ved neste tilkobling – appen kobler som regel fra automatisk når du bytter.</li>
+        <li><strong>Test at det fungerer.</strong> Åpne en nettside og sjekk at IP-adressen din har endret seg. Hvordan du tester for lekkasjer, forklarer vi i <a class="text-brand-600 hover:underline" href="/no/slik-tester-du-vpn-lekkasje/">slik tester du VPN-lekkasje</a>.</li>
+      </ol>
+      <p>Bruker du kill switch – og det bør du – husk at den beskytter deg under protokollbyttet også: trafikken blokkeres til den nye tunnelen er oppe. Hva det er, forklarer vi i <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">hva er kill switch?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvilken VPN er best for protokollvalg?</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon, appfunksjoner og uavhengige tester fra anerkjente kilder – ikke målte laboratorietester fra oss. Alle leverandørene under tilbyr både WireGuard og OpenVPN, så du kan bytte fritt uten å bytte leverandør:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordVPN (fra 39 kr/mnd)</strong> – NordLynx, OpenVPN og IKEv2 i appen, servere i Oslo ifølge leverandøren, og delt tunnel på Windows og Android. Vår vurdering: det beste allround-valget, også for protokollvalg. Akkurat nå: Black Friday-tilbudet gir Basic fra $2,99/mnd (ca. 31 kr) + 3 måneder gratis, og kampanjen varer til 9. desember 2026 – se alle <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">Black Friday-tilbudene</a>. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN-anmeldelse</a>.</li>
+        <li><strong>Surfshark (fra 27 kr/mnd)</strong> – ren WireGuard, OpenVPN og IKEv2, ubegrenset antall enheter og servere i Norge ifølge leverandøren. Vår vurdering: best verdi hvis hele husstanden skal dekkes. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark-anmeldelse</a>.</li>
+        <li><strong>ExpressVPN (fra 69 kr/mnd)</strong> – Lightway, OpenVPN og IKEv2, med obfuskering som slås på automatisk ved behov. Vår vurdering: best hvis du ofte er på restriktive nettverk. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/expressvpn/">ExpressVPN-anmeldelse</a>.</li>
+      </ul>
+      <p>Veiledende priser – sjekk leverandørens nettside for oppdaterte tilbud. Alle tre har 30 dagers pengene-tilbake-garanti, så du kan teste protokollene mot ditt eget nettverk risikofritt. Vil du ha full oversikt over hva VPN koster generelt, se <a class="text-brand-600 hover:underline" href="/no/hva-koster-vpn/">hva VPN koster i 2026</a>. Og er du usikker på hvilken leverandør som passer deg, hjelper <a class="text-brand-600 hover:underline" href="/no/slik-velger-du-vpn/">sjekklisten for å velge VPN</a> deg gjennom valget.</p>
+
+      <ProsCons
+        pros={[
+          'WireGuard som standard gir best fart, raskest tilkobling og lavest batteribruk på mobilen',
+          'Liten kodebase (ca. 4 000 linjer) gjør protokollen lett å revidere og vanskelig å feilkonfigurere',
+          'Gjenoppretter tunnelen på under et halvt sekund når du bytter mellom WiFi og mobildata',
+          'NordLynx og Lightway gir samme fart med leverandørspesifikke personvern- og stabilitetsforbedringer',
+        ]}
+        cons={[
+          'WireGuard over UDP er lett å gjenkjenne og blokkere på strenge nettverk – da må du over på OpenVPN',
+          'Opprinnelig WireGuard lagrer klientens IP-adresse på serveren – personvernet avhenger av leverandørens løsning',
+          'OpenVPN er tregere og bruker mer CPU – merkbart på gamle mobiler og svake rutere',
+          'Å velge feil protokoll manuelt kan gi dårligere fart enn «Automatisk» – la appen velge til vanlig',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: WireGuard som standard, OpenVPN i reserve</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon og uavhengige tester fra anerkjente kilder – ikke målte laboratorietester fra oss. WireGuard har vunnet: det er raskere, enklere og mer fremtidsrettet enn OpenVPN, og alle seriøse leverandører bruker det – eller en variant av det – som standard. OpenVPNs rolle er ikke borte, men den har endret seg: fra standardvalg til reserveløsning for nettverk som blokkerer alt annet.</p>
+      <p>Den praktiske konklusjonen er enkel: la VPN-appen stå på «Automatisk», og vit at du nesten alltid bruker WireGuard eller NordLynx. Skulle tilkoblingen feile på et hotell, en flyplass eller et jobbnettverk, vet du nå nøyaktig hva du skal gjøre – bytt til OpenVPN over TCP. Vil du sammenligne leverandørene side om side, se <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Vil du ha WireGuard-fart med personvern på toppen?</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – NordLynx-protokollen, servere i Oslo og kill switch på alle plattformer. Veiledende fra 39 kr/mnd.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Vil du dekke hele familien? <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark</a> fra 27 kr/mnd dekker ubegrenset antall enheter. Se også <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
