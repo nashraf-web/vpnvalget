@@ -1,0 +1,162 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/vpn-pa-linux/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'VPN på Linux', url }];
+const title = 'VPN på Linux: guide for nordmenn (2026)';
+const description = 'Slik setter du opp VPN på Linux – Ubuntu, Debian, Fedora og Arch. Offisiell app eller manuelt oppsett med WireGuard og OpenVPN, steg for steg, med og uten terminal.';
+const faqs = [
+  {
+    question: 'Hvilken VPN er best for Linux?',
+    answer: 'Det avhenger av hvordan du vil bruke den. Mullvad er et sterkt valg for Linux-brukere: åpen kildekode, egen app med grafisk grensesnitt, WireGuard innebygd og ingen e-post ved registrering. Proton VPN har også en offisiell Linux-app med grafisk grensesnitt og åpen kildekode. NordVPN har en offisiell Linux-app, men den styres fra terminalen – ingen grafisk app. Surfshark og ExpressVPN tilbyr også offisielle Linux-apper. Alle leverandørene i denne guiden har servere i Norge ifølge leverandøren selv, så valget handler mest om du vil ha grafisk app eller terminal, og hvor mye du vektlegger personvern.',
+  },
+  {
+    question: 'Kan jeg bruke VPN på Linux uten terminalen?',
+    answer: 'Ja. Den enkleste veien er en leverandør med grafisk Linux-app – Mullvad og Proton VPN har det, og Surfshark har også en Linux-app med grafisk grensesnitt. Alternativt kan du bruke NetworkManager, som er innebygd i Ubuntu, Fedora og de fleste andre skrivebordsmiljøer: gå til Innstillinger → Nettverk → VPN → + og importer leverandørens .ovpn- eller WireGuard-konfigurasjonsfil. Da får du en VPN-bryter i systemmenyen uten å åpne terminalen en eneste gang.',
+  },
+  {
+    question: 'Hvordan installerer jeg WireGuard på Linux?',
+    answer: 'WireGuard er innebygd i Linux-kjernen fra versjon 5.6 (2020), så du trenger bare verktøyene rundt. På Ubuntu og Debian: sudo apt install wireguard. På Fedora: sudo dnf install wireguard-tools. På Arch: sudo pacman -S wireguard-tools. Deretter laster du ned en WireGuard-konfigurasjonsfil (.conf) fra VPN-leverandøren din, og starter tunnelen med sudo wg-quick up <filnavn>. Stopp den med sudo wg-quick down <filnavn>. Mange leverandører gjør dette automatisk i appen sin – du trenger bare manuell WireGuard hvis du vil ha full kontroll.',
+  },
+  {
+    question: 'Fungerer kill switch på Linux?',
+    answer: 'Ja, men det avhenger av leverandør og oppsett. De offisielle appene til NordVPN, Mullvad, Proton VPN og Surfshark har kill switch også på Linux. Bruker du NetworkManager eller manuell WireGuard/OpenVPN uten leverandørens app, er det ingen innebygd kill switch – da må du sette opp en brannmurregel selv, for eksempel med ufw, som blokkerer all trafikk utenfor VPN-tunnelen. Det er en av grunnene til at en offisiell app ofte er det tryggeste valget på Linux.',
+  },
+  {
+    question: 'Er gratis VPN trygt på Linux?',
+    answer: 'De samme reglene gjelder på Linux som overalt ellers: gratis VPN-er må tjene penger et sted, og mange gjør det ved å logge og selge data, vise reklame eller selge båndbredden din videre. Proton VPNs gratisabonnement er et hederlig unntak – det er fra samme selskap som den betalte tjenesten, uten datagrense, men med færre servere og lavere hastighetsprioritet. Vil du vite mer, les guiden om gratis VPN mot betalt VPN.',
+  },
+  {
+    question: 'Kan jeg bruke VPN på en Linux-server eller Raspberry Pi?',
+    answer: 'Ja, og det er en av de vanligste Linux-bruksområdene for VPN. WireGuard er ideelt på en server eller Raspberry Pi fordi det er lett, raskt og bruker lite strøm. Installer wireguard-tools, legg konfigurasjonsfilen i /etc/wireguard/, og aktiver tunnelen automatisk ved oppstart med sudo systemctl enable wg-quick@<filnavn>. Det samme oppsettet brukes ofte for å beskytte hele hjemmenettverket fra en ruter – les guiden om VPN på ruter hvis du vil dekke alle enhetene i huset på én gang.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-16', dateModified: '2026-11-16', image: `${site.url}/og-linux.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-linux.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-linux.webp" alt="Arbeidsplass med Tux, Linux-maskoten – slik setter du opp VPN på Linux i 2026" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">VPN på Linux: guide for nordmenn</h1>
+
+    <DirectAnswer>
+      <p><strong>Kort svar: Ja – VPN fungerer utmerket på Linux, og du trenger ikke terminalen for å komme i gang.</strong></p>
+      <p class="mt-2">Den enkleste veien er en leverandør med offisiell Linux-app: Mullvad og Proton VPN har grafiske apper, NordVPN og ExpressVPN har terminal-apper, og Surfshark har også en Linux-app. Vil du ha full kontroll, kan du sette opp WireGuard eller OpenVPN manuelt – WireGuard har vært innebygd i Linux-kjernen siden versjon 5.6 (2020), og NetworkManager i Ubuntu og Fedora lar deg importere en konfigurasjonsfil med et par klikk. I denne guiden viser vi alle tre veiene, hvilken leverandør som passer best til Linux, og fallgruvene du bør unngå.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p>Linux-brukere havner ofte mellom to stoler når de skal velge VPN: leverandørene skryter av appene sine for Windows og Mac, mens Linux nevnes i en bisetning – hvis det nevnes i det hele tatt. Sannheten er at Linux er et av de beste operativsystemene for VPN. WireGuard ble født på Linux og er innebygd i kjernen, OpenVPN har kjørt på Linux i over tjue år, og systemverktøy som NetworkManager gjør oppsettet overraskende enkelt. Er du helt ny på VPN, start med <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva en VPN er</a> – her forklarer vi hvordan du får den til å fungere på akkurat din distribusjon.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva er spesielt med VPN på Linux?</h2>
+      <p>Tre ting skiller Linux fra Windows og Mac når det gjelder VPN. For det første er WireGuard – den raskeste moderne protokollen – en del av selve Linux-kjernen siden versjon 5.6, som kom 29. mars 2020. Det betyr at tunnelen kjører med maksimal ytelse uten ekstra drivere eller programvare. Hvorfor protokollen betyr noe, forklarer vi i <a class="text-brand-600 hover:underline" href="/no/wireguard-vs-openvpn/">WireGuard vs OpenVPN</a>.</p>
+      <p>For det andre er Linux bygget rundt åpne standarder. OpenVPN, WireGuard og IKEv2 er alle åpne protokoller, og konfigurasjonsfilene deres er vanlig tekst du kan lese, redigere og ta med deg mellom leverandører. Du er aldri låst til én app – bytter du leverandør, importerer du bare en ny konfigurasjonsfil.</p>
+      <p>For det tredje varierer app-støtten. Noen leverandører satser på Linux, andre gjør det ikke. Mullvad og Proton VPN har grafiske Linux-apper med åpen kildekode, NordVPN og ExpressVPN tilbyr terminal-apper, og enkelte mindre leverandører har ingen Linux-app i det hele tatt. Derfor er det verdt å sjekke Linux-støtten før du betaler – ikke etterpå. Les også <a class="text-brand-600 hover:underline" href="/no/vpn-pa-mac/">VPN på Mac</a> hvis du har flere maskiner i huset.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik setter du opp VPN på Linux – tre veier</h2>
+      <p>Du har tre måter å komme i gang på, fra enklest til mest avansert. Alle tre fungerer på Ubuntu, Debian, Fedora, Arch og Linux Mint – med små forskjeller i pakkenavn.</p>
+
+      <h3 class="text-xl font-bold text-ink pt-2">1. Offisiell app fra leverandøren (enklest)</h3>
+      <p>Last ned leverandørens Linux-pakke (.deb for Ubuntu/Debian/Mint, .rpm for Fedora) fra leverandørens egen nettside, installer den, logg inn og koble til. Ferdig. Fordelen er at du får kill switch, automatisk servervalg og protokollbytte uten å konfigurere noe selv. Ulempen er at appene varierer: Mullvad og Proton VPN har grafisk grensesnitt, mens NordVPN og ExpressVPN styres fra terminalen med kommandoer som <code>nordvpn connect</code>. Det er likevel langt enklere enn manuelt oppsett – og appen holder seg oppdatert av seg selv.</p>
+
+      <h3 class="text-xl font-bold text-ink pt-2">2. NetworkManager (uten terminal)</h3>
+      <p>NetworkManager er nettverksverktøyet som følger med Ubuntu, Fedora og de fleste skrivebordsmiljøer (GNOME, KDE). Slik gjør du det:</p>
+      <ol class="list-decimal pl-6 space-y-3">
+        <li><strong>Installer VPN-tilleggene.</strong> På Ubuntu/Debian: <code>sudo apt install network-manager-openvpn-gnome network-manager-wireguard</code> – på Fedora: <code>sudo dnf install NetworkManager-openvpn-gnome NetworkManager-wireguard</code>.</li>
+        <li><strong>Last ned en konfigurasjonsfil</strong> (.ovpn for OpenVPN eller .conf for WireGuard) fra leverandørens nettside eller kontrollpanel.</li>
+        <li><strong>Åpne Innstillinger → Nettverk → VPN → +</strong> og velg «Importer fra fil». Velg filen du lastet ned, skriv inn brukernavn og passord hvis det spørres etter det, og lagre.</li>
+        <li><strong>Koble til</strong> ved å slå på VPN-bryteren i systemmenyen – samme sted som du velger WiFi-nettverk.</li>
+      </ol>
+      <p>Denne metoden fungerer med alle leverandører som tilbyr konfigurasjonsfiler, også de uten egen Linux-app. Husk likevel at du ikke får kill switch automatisk med NetworkManager – se avsnittet om sikkerhet lenger ned.</p>
+
+      <h3 class="text-xl font-bold text-ink pt-2">3. Manuelt med WireGuard eller OpenVPN (mest kontroll)</h3>
+      <p>Vil du styre alt selv, eller kjører du en server uten grafisk grensesnitt, er terminalen veien å gå. Slik setter du opp WireGuard:</p>
+      <ol class="list-decimal pl-6 space-y-3">
+        <li><strong>Installer verktøyene.</strong> Ubuntu/Debian: <code>sudo apt install wireguard</code>. Fedora: <code>sudo dnf install wireguard-tools</code>. Arch: <code>sudo pacman -S wireguard-tools</code>.</li>
+        <li><strong>Last ned konfigurasjonsfilen</strong> fra leverandøren og legg den i <code>/etc/wireguard/</code>, for eksempel som <code>no-oslo.conf</code>.</li>
+        <li><strong>Start tunnelen:</strong> <code>sudo wg-quick up no-oslo</code>. Stopp den med <code>sudo wg-quick down no-oslo</code>. Sjekk status med <code>sudo wg show</code>.</li>
+        <li><strong>Automatisk ved oppstart:</strong> <code>sudo systemctl enable wg-quick@no-oslo</code> – da er VPN-en oppe før du rekker å åpne nettleseren.</li>
+      </ol>
+      <p>For OpenVPN er oppskriften lik: installer <code>openvpn</code>, last ned en .ovpn-fil fra leverandøren, og kjør <code>sudo openvpn --config filnavn.ovpn</code>. Manuelt oppsett gir deg full kontroll over protokoll, server og DNS – men du mister appens kill switch og automatiske gjenoppretting, så det passer best for deg som vet hva du gjør. Er tilkoblingen ustabil, er feilsøkingstrinnene de samme som i <a class="text-brand-600 hover:underline" href="/no/vpn-fungerer-ikke/">VPN fungerer ikke-guiden</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvilken VPN er best for Linux?</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon, appfunksjoner og uavhengige tester fra anerkjente kilder – ikke målte laboratorietester fra oss. Tabellen viser Linux-støtten til de leverandørene vi følger tettest:</p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm text-left border border-slate-200 rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-slate-100 text-ink">
+              <th class="px-4 py-3 font-bold">Leverandør</th>
+              <th class="px-4 py-3 font-bold">Linux-app</th>
+              <th class="px-4 py-3 font-bold">Protokoller</th>
+              <th class="px-4 py-3 font-bold">Vår vurdering</th>
+              <th class="px-4 py-3 font-bold">Fra-pris</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr><td class="px-4 py-3 font-semibold">Mullvad</td><td class="px-4 py-3">Grafisk app, åpen kildekode</td><td class="px-4 py-3">WireGuard</td><td class="px-4 py-3">4,4 – best for personvern</td><td class="px-4 py-3">Fra 55 kr/mnd</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Proton VPN</td><td class="px-4 py-3">Grafisk app, åpen kildekode</td><td class="px-4 py-3">WireGuard, OpenVPN, Stealth</td><td class="px-4 py-3">4,5 – best for personvern</td><td class="px-4 py-3">Fra 38 kr/mnd</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">NordVPN</td><td class="px-4 py-3">Terminal-app (.deb/.rpm)</td><td class="px-4 py-3">NordLynx, OpenVPN, IKEv2</td><td class="px-4 py-3">4,9 – best totalt</td><td class="px-4 py-3">Fra 39 kr/mnd</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Surfshark</td><td class="px-4 py-3">Grafisk app</td><td class="px-4 py-3">WireGuard, OpenVPN, IKEv2</td><td class="px-4 py-3">4,7 – best for familier</td><td class="px-4 py-3">Fra 27 kr/mnd</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">ExpressVPN</td><td class="px-4 py-3">Terminal-app (.deb/.rpm)</td><td class="px-4 py-3">Lightway, OpenVPN, IKEv2</td><td class="px-4 py-3">4,6 – best for strømming</td><td class="px-4 py-3">Fra 69 kr/mnd</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">CyberGhost</td><td class="px-4 py-3">Terminal-app</td><td class="px-4 py-3">WireGuard, OpenVPN, IKEv2</td><td class="px-4 py-3">4,3 – lengst angrefrist</td><td class="px-4 py-3">Fra 23 kr/mnd</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>To leverandører skiller seg ut for Linux-brukere. <strong>Mullvad</strong> er bygget for denne målgruppen: hele appen er åpen kildekode, den bruker bare WireGuard, og du registrerer deg uten e-post – du får et kontonummer i stedet. Det er også den eneste av de store som droppet OpenVPN helt i januar 2026. <strong>Proton VPN</strong> er det beste valget hvis du vil ha både grafisk app og et stort servernettverk, med sveitsisk jurisdiksjon og åpen kildekode på toppen. Les sammenligningen <a class="text-brand-600 hover:underline" href="/no/mullvad-vs-nordvpn/">Mullvad vs NordVPN</a> hvis du veier personvern mot funksjoner.</p>
+      <p><strong>NordVPN</strong> er vårt førstevalg totalt sett, men på Linux må du trives i terminalen – appen har ingen grafisk versjon. Til gjengjeld får du NordLynx, det største servernettverket og servere i Oslo ifølge leverandøren. Akkurat nå: Black Friday-tilbudet gir Basic fra $2,99/mnd (ca. 31 kr) + 3 måneder gratis, og kampanjen varer til 9. desember 2026 – se alle <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">Black Friday-tilbudene</a>. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN-anmeldelse</a> eller <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark-anmeldelse</a> for hele bildet. Veiledende priser – sjekk leverandørens nettside for oppdaterte tilbud. Alle tre har 30 dagers pengene-tilbake-garanti (CyberGhost 45 dager).</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Sikkerhet på Linux: kill switch og DNS-lekkasjer</h2>
+      <p>Linux er i utgangspunktet et sikkert system, men VPN-sikkerheten avhenger av oppsettet ditt. <strong>Kill switch</strong> er det viktigste: uten den lekker trafikken din ut på det åpne nettet i det øyeblikket VPN-tunnelen faller. De offisielle appene til NordVPN, Mullvad, Proton VPN og Surfshark har kill switch også på Linux – skru den på før første tilkobling. Hva det er, forklarer vi i <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">hva er kill switch?</a></p>
+      <p>Bruker du NetworkManager eller manuell WireGuard/OpenVPN uten app, finnes ingen innebygd kill switch. Løsningen er en brannmurregel: med <code>ufw</code> kan du blokkere all utgående trafikk som ikke går gjennom VPN-grensesnittet (vanligvis <code>tun0</code> for OpenVPN eller <code>wg0</code> for WireGuard). Det krever noen terminalkommandoer, men det er en engangsjobb – og det er den samme teknikken mange bruker på servere og Raspberry Pi.</p>
+      <p>Test også at VPN-en faktisk holder tett: <a class="text-brand-600 hover:underline" href="/no/slik-tester-du-vpn-lekkasje/">slik tester du VPN-lekkasje</a> viser hvordan du sjekker IP-, DNS- og WebRTC-lekkasjer på et par minutter. På Linux er det verdt å sjekke DNS spesielt: enkelte distribusjoner bruker <code>systemd-resolved</code>, som kan sende DNS-spørringer utenom tunnelen hvis det ikke er riktig konfigurert. Leverandørens app håndterer dette automatisk – ved manuelt oppsett må du selv sørge for at DNS peker på leverandørens servere. Husk også at VPN-en ikke gjør deg anonym – les det ærlige svaret i <a class="text-brand-600 hover:underline" href="/no/gjor-vpn-deg-anonym/">gjør VPN deg anonym?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">VPN på Linux-server og Raspberry Pi</h2>
+      <p>Linux er ikke bare et skrivebordssystem – det er også det vanligste valget for hjemmeservere og Raspberry Pi. Her er VPN-en ekstra nyttig: du kan beskytte en server som står på hele døgnet, fjernstyre den trygt over WireGuard, eller kjøre hele hjemmenettverket gjennom tunnelen. Oppsettet er det samme som over, men uten grafisk grensesnitt: installer <code>wireguard-tools</code>, legg konfigurasjonen i <code>/etc/wireguard/</code>, og aktiver med <code>systemctl enable wg-quick@&lt;filnavn&gt;</code> slik at tunnelen starter automatisk ved oppstart.</p>
+      <p>Skal du dekke alle enhetene i huset – TV, spillkonsoll, telefoner og gjester – er det ofte smartere å legge VPN-en på ruteren i stedet for på hver enkelt maskin. Da beskyttes også enheter som ikke kan kjøre VPN selv. Les <a class="text-brand-600 hover:underline" href="/no/vpn-pa-ruter/">VPN på ruter</a> for oppsettet. Og er du usikker på hvilken leverandør som passer deg generelt, hjelper <a class="text-brand-600 hover:underline" href="/no/slik-velger-du-vpn/">sjekklisten for å velge VPN</a> deg gjennom valget – og <a class="text-brand-600 hover:underline" href="/no/hva-koster-vpn/">hva VPN koster i 2026</a> gir full prisoversikt.</p>
+
+      <ProsCons
+        pros={[
+          'WireGuard er innebygd i Linux-kjernen siden 2020 – raskest mulig tunnel uten ekstra drivere',
+          'Åpne standarder: konfigurasjonsfiler i ren tekst som kan tas med mellom leverandører',
+          'Mullvad og Proton VPN har grafiske Linux-apper med åpen kildekode – ingen terminal nødvendig',
+          'NetworkManager lar deg importere .ovpn- og WireGuard-filer med et par klikk',
+          'Perfekt for server og Raspberry Pi – lett, stabilt og automatisk ved oppstart',
+        ]}
+        cons={[
+          'NordVPN og ExpressVPN har bare terminal-apper på Linux – ingen grafisk versjon',
+          'Ingen innebygd kill switch i NetworkManager eller ved manuelt oppsett – krever brannmurregler',
+          'DNS-lekkasjer kan oppstå med systemd-resolved ved manuelt oppsett',
+          'App-utvalget er mindre enn på Windows og Mac – sjekk Linux-støtten før du betaler',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: Linux er et av de beste systemene for VPN</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon og uavhengige tester fra anerkjente kilder – ikke målte laboratorietester fra oss. Linux-brukere får noe Windows- og Mac-brukere ikke får: WireGuard i kjernen, åpne konfigurasjonsfiler og full kontroll over tunnelen. Prisen er at du må velge leverandør med omhu – app-støtten varierer, og kill switch er ikke alltid innebygd.</p>
+      <p>Den praktiske konklusjonen: Vil du ha grafisk app, velg Mullvad eller Proton VPN. Vil du ha det største nettverket og tåler terminalen, er NordVPN førstevalget. Og vil du ha full kontroll, er manuelt WireGuard-oppsett via NetworkManager eller wg-quick overraskende enkelt – det tar under ti minutter. Vil du sammenligne leverandørene side om side, se <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Vil du ha den beste allround-VPN-en – også på Linux?</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – NordLynx-protokollen, servere i Oslo og kill switch i terminal-appen. Veiledende fra 39 kr/mnd.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Vil du ha grafisk Linux-app med åpen kildekode? Les <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark</a> fra 27 kr/mnd eller sammenlign <a class="text-brand-600 hover:underline" href="/no/mullvad-vs-nordvpn/">Mullvad vs NordVPN</a>. Se også <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
