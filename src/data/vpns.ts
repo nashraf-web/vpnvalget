@@ -86,7 +86,7 @@ export const vpns: VpnProvider[] = [
     goSlug: 'surfshark',
     rating: 4.7,
     order: 2,
-    bestFor: 'Best på pris',
+    bestFor: 'Best for familier',
     priceNokFrom: 27,
     moneyBackDays: 30,
     maxDevices: 'Ubegrenset',
@@ -98,7 +98,7 @@ export const vpns: VpnProvider[] = [
     norwayServers: 'Servere i Norge (ifølge leverandøren)',
     pros: [
       'Ubegrenset antall enheter på ett abonnement',
-      'Lavest veiledende pris i testen',
+      'Blant de laveste veiledende prisene i testen',
       'Godt utvalg av servere, inkludert Norge',
       'CleanWeb blokkerer annonser og sporere',
     ],

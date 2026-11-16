@@ -19,7 +19,7 @@ faqs:
   - question: "Er CyberGhost bra for Norge?"
     answer: "Ja. Tjenesten har servere i Norge, fungerer med norske strømmetjenester via norsk IP, og 45 dagers angrefrist gjør det risikofritt å prøve. Med norsk server får du tilgang til NRK TV og TV 2 Play fra utlandet – nyttig på ferie og jobbreiser."
   - question: "Hva koster CyberGhost i 2026?"
-    answer: "Fra ca. 23 kr/mnd på 26-månedersabonnementet. Månedsabonnement koster mer og har kun 14 dagers angrefrist. Merk at fornyelsesprisen er høyere enn introduksjonsprisen – sett en påminnelse før fornyelse. Priser kan endres, så sjekk alltid leverandørens nettside."
+    answer: "Fra ca. 23 kr/mnd på 28-månedersabonnementet. Månedsabonnement koster mer og har kun 14 dagers angrefrist. Merk at fornyelsesprisen er høyere enn introduksjonsprisen – sett en påminnelse før fornyelse. Priser kan endres, så sjekk alltid leverandørens nettside."
   - question: "Er CyberGhost trygt?"
     answer: "Ja. Selskapet har strenge retningslinjer mot logging, revidert av Deloitte, holder til i Romania (utenfor 14 Eyes), og drifter RAM-baserte servere der ingenting kan lagres permanent. CyberGhost eies av Kape Technologies, som også eier ExpressVPN og Private Internet Access – revisjonene gjelder uavhengig av eierskap."
   - question: "Fungerer CyberGhost med Netflix?"
@@ -49,16 +49,16 @@ CyberGhost er VPN-en med markedets lengste angrefrist: 45 dagers pengene-tilbake
 
 | Abonnement | Veiledende pris | Angrefrist |
 |---|---|---|
-| 26 måneder (2 år + 2 mnd gratis) | fra ca. 23 kr/mnd | 45 dager |
+| 28 måneder (2 år + 4 mnd gratis) | fra ca. 23 kr/mnd | 45 dager |
 | 6 måneder | ca. 75 kr/mnd | 45 dager |
 | 1 måned | ca. 140 kr/mnd | 14 dager |
 
-Veiledende priser per oktober 2026, omregnet til NOK – faktiske priser kan variere. Sjekk leverandørens nettside for oppdatert pris.
+Veiledende priser per november 2026, omregnet til NOK – faktiske priser kan variere. Sjekk leverandørens nettside for oppdatert pris.
 
 To ting er verdt å vite om prisen:
 
 1. **Angrefristen er bransjens lengste.** 45 dager på alle planer over én måned – uten vilkår om databruk eller antall servere du har prøvd. Det er 15 dager mer enn de fleste konkurrenter gir.
-2. **Fornyelsesprisen stiger.** Etter de første 26 månedene går prisen opp til ordinær årspris (rundt 60 kr/mnd). Sett en påminnelse før fornyelse, eller vurder å bytte plan da.
+2. **Fornyelsesprisen stiger.** Etter de første 28 månedene går prisen opp til ordinær årspris (rundt 60 kr/mnd). Sett en påminnelse før fornyelse, eller vurder å bytte plan da.
 
 CyberGhost tilbyr også en gratis prøveperiode uten kortregistrering: 24 timer på Windows/macOS, 3 dager på Android og 7 dager på iOS.
 
