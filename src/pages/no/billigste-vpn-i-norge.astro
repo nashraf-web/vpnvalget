@@ -1,0 +1,191 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/billigste-vpn-i-norge/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'Billigste VPN i Norge', url }];
+const title = 'Billigste VPN i Norge (2026) – den ærlige prisguiden';
+const description = 'Hva er den billigste VPN-en i Norge i 2026? Sammenligning av de laveste prisene per måned, Black Friday-tilbudene som gjelder akkurat nå, og hva du faktisk får for pengene – uten skjulte fornyelsespriser.';
+const faqs = [
+  {
+    question: 'Hva er den billigste VPN-en i Norge i 2026?',
+    answer: 'På veiledende fra-pris er CyberGhost billigst av de seriøse leverandørene, fra 23 kr per måned på lengste abonnement, tett fulgt av Surfshark fra 27 kr per måned. Akkurat nå, under Black Friday 2026, er CyberGhost også billigst i dollar: 2,19 USD per måned. Men «billigst per måned» er ikke hele regnestykket – sjekk alltid totalprisen, fornyelsesprisen og hvor mange enheter abonnementet dekker før du velger.',
+  },
+  {
+    question: 'Er den billigste VPN-en god nok?',
+    answer: 'Ja, så lenge den kommer fra en seriøs leverandør. CyberGhost og Surfshark er begge etablerte tjenester med uavhengig revidert no-logs-policy, kill switch og servere i Norge. Det du oftest gir avkall på ved de billigste valgene, er ikke sikkerheten, men ekstratillegg som antivirus, passordhåndterer eller skylagring – ting de dyrere pakkene til NordVPN og Proton VPN inkluderer. For ren VPN-beskyttelse og strømming holder de billigste alternativene i massevis.',
+  },
+  {
+    question: 'Hvorfor er toårsabonnement billigst per måned?',
+    answer: 'Leverandørene gir store rabatter på lange abonnement fordi de får pengene på forhånd og beholder deg som kunde lenger. Månedsprisen på et toårsabonnement kan være under en tredjedel av månedsprisen på et månedsabonnement. Ulempen er at du binder deg og betaler hele beløpet på én gang – og at fornyelsesprisen etter de to årene nesten alltid er høyere enn introduksjonsprisen. Les alltid hva abonnementet koster ved fornyelse før du kjøper.',
+  },
+  {
+    question: 'Hva koster VPN-en etter første periode?',
+    answer: 'Mer enn introduksjonsprisen. VPN-leverandører selger nesten alltid første periode med stor rabatt, og fornyer deretter til normalpris. NordVPNs Basic-abonnement koster for eksempel 2,99 USD per måned i Black Friday-perioden, men fornyes til en vesentlig høyere årspris. Derfor er 30 eller 45 dagers angrefrist så verdifull: du kan prøve tjenesten skikkelig og si den opp før den fornyes, hvis du ikke vil fortsette til full pris.',
+  },
+  {
+    question: 'Er gratis VPN et alternativ til den billigste betalte VPN-en?',
+    answer: 'Som regel ikke. En gratis VPN koster vanligvis 0 kr, men du betaler på andre måter: datatak, færre servere, lavere hastighet og – hos de useriøse – salg av brukerdata eller annonser. Unntaket er gratisversjoner fra anerkjente leverandører med et betalt abonnement som hovedprodukt, for eksempel Proton VPN Free. For de fleste er likevel en billig betalt VPN til 23–27 kr per måned et langt bedre kjøp enn en gratis tjeneste. Les hele sammenligningen i vår guide om gratis VPN vs betalt VPN.',
+  },
+  {
+    question: 'Når er det billigst å kjøpe VPN?',
+    answer: 'Under Black Friday og Cyber Monday i slutten av november, når leverandørene konkurrerer om de laveste prisene i året. I 2026 faller Black Friday på fredag 27. november, men tilbudene er allerede i gang: NordVPNs kampanje varer til 9. desember, Surfsharks til 1. desember og CyberGhosts til 2. desember. Utenom november er prisene stort sett stabile hele året – det lønner seg sjelden å vente i månedsvis på et tilbud som kanskje aldri kommer.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-17', dateModified: '2026-11-17', image: `${site.url}/og-sammenligning.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-sammenligning.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-sammenligning.webp" alt="To lyspærer holdes opp – symbol på sammenligning av de billigste VPN-tjenestene i Norge i 2026" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Billigste VPN i Norge (2026)</h1>
+
+    <DirectAnswer>
+      <p><strong>Kort svar: CyberGhost er den billigste seriøse VPN-en i Norge akkurat nå – fra 23 kr per måned på lengste abonnement, og 2,19 USD per måned under Black Friday 2026.</strong></p>
+      <p class="mt-2">Surfshark er nummer to på pris (fra 27 kr per måned) og det beste kjøpet for husholdninger, fordi ett abonnement dekker ubegrenset antall enheter. NordVPN er dyrere (fra 39 kr per måned), men vår høyest vurderte VPN totalt sett. Prisene nedenfor er veiledende fra-priser – sjekk leverandørens nettside for oppdaterte tilbud, og les alltid fornyelsesprisen før du kjøper. Prisene i denne guiden er sjekket 17. november 2026.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p>«Billig VPN» kan bety tre forskjellige ting: lavest pris per måned, lavest totalpris, eller mest verdi for pengene. Denne guiden dekker alle tre – for den billigste månedsprisen er ikke alltid det billigste kjøpet. En VPN til 23 kr per måned som bare dekker sju enheter, kan bli dyrere for en familie enn en til 27 kr som dekker ubegrenset antall enheter. Og en introduksjonspris på 2,99 USD per måned hjelper lite hvis fornyelsesprisen er det dobbelte. Er du helt ny, start med <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva en VPN er</a> og <a class="text-brand-600 hover:underline" href="/no/hva-koster-vpn/">hva en VPN koster</a> før du sammenligner prisene her.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">De billigste VPN-ene i Norge – prisoversikt</h2>
+      <p>Tabellen viser veiledende fra-priser på leverandørenes lengste abonnement, slik de står på våre leverandørsider. Alle prisene er «fra»-priser i norske kroner, omregnet fra leverandørenes offisielle priser – de er veiledende, og den endelige prisen i handlekurven kan avvike noe med kurs og avgifter.</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-slate-100 text-left">
+              <th class="p-3 font-bold text-ink">VPN</th>
+              <th class="p-3 font-bold text-ink">Fra-pris / mnd</th>
+              <th class="p-3 font-bold text-ink">Enheter</th>
+              <th class="p-3 font-bold text-ink">Vår vurdering</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr>
+              <td class="p-3 font-semibold text-ink">CyberGhost</td>
+              <td class="p-3">fra 23 kr</td>
+              <td class="p-3">7</td>
+              <td class="p-3">4,3 / 5 – billigst, lengst angrefrist (45 dager)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Surfshark</td>
+              <td class="p-3">fra 27 kr</td>
+              <td class="p-3">Ubegrenset</td>
+              <td class="p-3">4,7 / 5 – best verdi for husholdninger</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Proton VPN</td>
+              <td class="p-3">fra 38 kr</td>
+              <td class="p-3">10</td>
+              <td class="p-3">4,5 / 5 – best for personvern</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">NordVPN</td>
+              <td class="p-3">fra 39 kr</td>
+              <td class="p-3">10</td>
+              <td class="p-3">4,9 / 5 – best totalt</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Mullvad</td>
+              <td class="p-3">fra 55 kr</td>
+              <td class="p-3">5</td>
+              <td class="p-3">4,4 / 5 – best for anonymitet, fast pris uten rabatter</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">ExpressVPN</td>
+              <td class="p-3">fra 69 kr</td>
+              <td class="p-3">8</td>
+              <td class="p-3">4,6 / 5 – best for strømming, dyrest</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-slate-500">Prisene er veiledende fra-priser på lengste abonnement, sjekket 17. november 2026. Vurderingene er redaksjonelle («vår vurdering»), ikke målte testresultater. Mullvad skiller seg ut ved å ha én fast pris hele året – ingen introduksjonsrabatter og ingen fornyelsesoverraskelser.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Black Friday 2026: akkurat nå er det billigere</h2>
+      <p>Black Friday 2026 faller på fredag 27. november, men VPN-tilbudene er allerede i gang – og i år er det ikke nødvendig å vente til selve dagen. Slik ser tilbudene ut per 17. november 2026, lest fra leverandørenes egne prissider og samlet i pressens Black Friday-oversikter:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordVPN:</strong> Basic til 2,99 USD per måned (74 % rabatt) på toårsabonnement, pluss 3 måneder gratis – kampanjen varer til 9. desember 2026. Complete-pakken, med antivirus og 1 TB skylagring, koster 3,99 USD per måned (78 % rabatt).</li>
+        <li><strong>Surfshark:</strong> Surfshark One til 2,49 USD per måned (88 % rabatt) på toårsabonnement, pluss 3 måneder gratis – kampanjen varer til 1. desember 2026. One-pakken gir antivirus og varsling ved datalekkasjer til samme pris som den rene VPN-pakken Starter.</li>
+        <li><strong>CyberGhost:</strong> 2,19 USD per måned (83 % rabatt) på toårsabonnement, pluss gratis måneder – antallet gratis måneder varierer gjennom kampanjeperioden, så sjekk antallet i handlekurven. Kampanjen varer til 2. desember 2026, og angrefristen er 45 dager – den lengste av alle.</li>
+      </ul>
+      <p>ExpressVPN har per 17. november 2026 ikke annonsert noen Black Friday-kampanje for 2026, så langt vi kan se. Proton VPN kjører også en Black Friday-kampanje, men vi har ikke en verifisert pris å oppgi her. Full oversikt over tilbudene, med lenker, finner du i <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">vår Black Friday-oversikt på bloggen</a>. Prisene over er i USD slik leverandørene viser dem – norske kort belastes i kroner etter dagens kurs, og skatter og avgifter kan komme i tillegg.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Månedspris er ikke hele regnestykket</h2>
+      <p>Tre ting avgjør hva en VPN faktisk koster deg – ikke bare tallet i annonsen:</p>
+      <p><strong>1. Totalprisen.</strong> Månedsprisen er et gjennomsnitt: 2,99 USD per måned høres billig ut, men beløpet trekkes på én gang – 80,73 USD for 27 måneder hos NordVPN i Black Friday-perioden. Sammenlign alltid totalbeløpet, ikke bare månedsprisen.</p>
+      <p><strong>2. Fornyelsesprisen.</strong> Introduksjonsprisen gjelder bare første periode. Når abonnementet fornyes, betaler du normalpris – ofte det dobbelte eller mer. Sjekk fornyelsesprisen i vilkårene før du kjøper, og vurder å skru av automatisk fornyelse med en gang, slik at du selv velger om du vil fortsette.</p>
+      <p><strong>3. Hvor mange enheter du dekker.</strong> Et abonnement som dekker ubegrenset antall enheter – som Surfshark – kan være billigst per person i en husholdning, selv om månedsprisen er noen kroner høyere enn det aller billigste alternativet. Regn ut prisen per enhet, ikke bare prisen per måned.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Billigst per leverandør – hva får du for pengene?</h2>
+      <p><strong>CyberGhost – fra 23 kr/mnd.</strong> Den laveste prisen av de seriøse leverandørene, og den eneste med 45 dagers angrefrist. Dedikerte servere for strømming og torrenting, sju enheter samtidig. Vår vurdering 4,3 / 5: billigst, men med færre funksjoner enn de dyrere konkurrentene.</p>
+      <p><strong>Surfshark – fra 27 kr/mnd.</strong> Bare fire kroner dyrere per måned, men ubegrenset antall enheter – det gjør den til det billigste valget for familier og husholdninger med mange enheter. Vår vurdering 4,7 / 5. Les <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">vår Surfshark-anmeldelse</a> og <a class="text-brand-600 hover:underline" href="/no/surfshark-pris/">Surfshark-pris i kroner</a>.</p>
+      <p><strong>Proton VPN – fra 38 kr/mnd.</strong> Sveitsisk jurisdiksjon, åpen kildekode og uavhengig revidert no-logs-policy. Vår vurdering 4,5 / 5: den billigste av personvernfavorittene. Sammenlignet med NordVPN i <a class="text-brand-600 hover:underline" href="/no/protonvpn-vs-nordvpn/">Proton VPN vs NordVPN</a>.</p>
+      <p><strong>NordVPN – fra 39 kr/mnd.</strong> Dyrere per måned enn de to billigste, men vår høyest vurderte VPN totalt (4,9 / 5): størst servernettverk, raskest protokoll og flest funksjoner. Under Black Friday er den faktisk billigere enn vanlig – 2,99 USD per måned. Les <a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">vår NordVPN-anmeldelse</a> og <a class="text-brand-600 hover:underline" href="/no/nordvpn-pris/">NordVPN-pris i kroner</a>.</p>
+      <p><strong>Mullvad – fra 55 kr/mnd.</strong> Den dyreste av de billige – men prisen er fast og ærlig hele året: ingen introduksjonsrabatt, ingen fornyelsesjokk, og du kan betale kontant for full anonymitet. Vår vurdering 4,4 / 5. Sammenlignet med NordVPN i <a class="text-brand-600 hover:underline" href="/no/mullvad-vs-nordvpn/">Mullvad vs NordVPN</a>.</p>
+      <p><strong>ExpressVPN – fra 69 kr/mnd.</strong> Den dyreste i denne sammenligningen, men også den med sterkest rykte på strømming. Vår vurdering 4,6 / 5. Velg den hvis strømming er hovedgrunnen – ellers får du mer for pengene andre steder.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Gratis VPN er ikke gratis</h2>
+      <p>Fristelsen er forståelig: hvorfor betale 23 kr per måned når det finnes gratis VPN-er? Fordi en VPN-tjeneste koster penger å drive – servere, båndbredde og ansatte må betales. Betaler du ikke med penger, betaler du ofte med noe annet: datatak, færre servere, lavere hastighet, annonser – eller i verste fall brukerdata som selges videre.</p>
+      <p>Unntaket er gratisversjoner fra anerkjente leverandører som lever av det betalte abonnementet – for eksempel Proton VPN Free, uten datatak, men med færre servere og lavere hastighetsprioritet. For de fleste er likevel 23–27 kr per måned for en billig betalt VPN et langt bedre kjøp enn en gratis tjeneste. Hele sammenligningen finner du i <a class="text-brand-600 hover:underline" href="/no/gratis-vpn-vs-betalt/">gratis VPN vs betalt VPN</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik sparer du mest på VPN</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Velg toårsabonnementet</strong> – månedsprisen kan være under en tredjedel av månedsabonnementet. Bind deg bare hvis du har brukt angrefristen til å teste tjenesten skikkelig.</li>
+        <li><strong>Kjøp under Black Friday</strong> – november er årets billigste kjøpsvindu, og tilbudene varer som regel til starten av desember. Les mer i <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">vår Black Friday-oversikt</a>.</li>
+        <li><strong>Skru av automatisk fornyelse</strong> med en gang etter kjøpet – da bestemmer du selv om du vil fortsette til fornyelsespris, eller bytte til en ny introduksjonspris hos en annen leverandør.</li>
+        <li><strong>Del abonnementet</strong> – med Surfsharks ubegrensede enheter kan hele husholdningen dele ett abonnement, noe som gjør prisen per person svært lav.</li>
+        <li><strong>Bruk angrefristen</strong> – 30 dager hos de fleste, 45 dager hos CyberGhost. Fungerer ikke tjenesten for deg, får du pengene tilbake uten spørsmål.</li>
+      </ul>
+      <p>Usikker på hvilken VPN som passer deg, uavhengig av pris? Bruk sjekklisten i <a class="text-brand-600 hover:underline" href="/no/slik-velger-du-vpn/">slik velger du VPN i 2026</a>, eller start helt fra begynnelsen med <a class="text-brand-600 hover:underline" href="/no/vpn-for-nybegynnere/">VPN for nybegynnere</a>. Full sammenligning av alle leverandørene finner du på <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a>.</p>
+
+      <ProsCons
+        pros={[
+          'CyberGhost fra 23 kr/mnd er den billigste seriøse VPN-en – med 45 dagers angrefrist',
+          'Surfshark fra 27 kr/mnd dekker ubegrenset antall enheter – billigst per person for husholdninger',
+          'Black Friday 2026 gir årets laveste priser: NordVPN 2,99 USD/mnd, Surfshark 2,49 USD/mnd, CyberGhost 2,19 USD/mnd',
+          'Alle de seks leverandørene har angrefrist – du kan prøve risikofritt og få pengene tilbake',
+        ]}
+        cons={[
+          'Introduksjonsprisen gjelder bare første periode – fornyelsesprisen er nesten alltid høyere',
+          'De billigste pakkene mangler ekstratillegg som antivirus, passordhåndterer og skylagring',
+          'Månedsprisen er et gjennomsnitt – hele beløpet trekkes på én gang på lange abonnement',
+          'Gratis VPN-er er sjelden et reelt alternativ – du betaler med data, hastighet eller personvern',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: billigst er ikke alltid best kjøp</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon – ikke målte laboratorietester fra oss. Skal du bare ha én VPN og vil betale minst mulig, er CyberGhost det ærlige svaret: lavest pris, lengst angrefrist. Har du familie eller mange enheter, er Surfshark det billigste kjøpet per person – ubegrenset antall enheter for fire kroner mer per måned. Og vil du ha den beste VPN-en uansett pris, er NordVPN vårt førstevalg, særlig under Black Friday når prisen er nede i 2,99 USD per måned.</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>CyberGhost</strong> – billigst i kroner og dollar, 45 dagers angrefrist. Vår vurdering: det billigste seriøse valget. Veiledende fra 23 kr/mnd.</li>
+        <li><strong>Surfshark</strong> – ubegrenset antall enheter, best verdi for husholdninger. Vår vurdering: best kjøp for de fleste. Veiledende fra 27 kr/mnd.</li>
+        <li><strong>NordVPN</strong> – høyest vurdert totalt, og billig under Black Friday (2,99 USD/mnd + 3 måneder gratis). Vår vurdering: best totalt. Veiledende fra 39 kr/mnd.</li>
+      </ul>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Få årets laveste VPN-pris før Black Friday-tilbudene går ut.</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – vår høyest vurderte VPN, nå 2,99 USD per måned + 3 måneder gratis under Black Friday (til 9. desember 2026). Veiledende fra 39 kr/mnd.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Vil du ha den aller billigste? CyberGhost fra 23 kr/mnd har 45 dagers angrefrist. Se også <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
