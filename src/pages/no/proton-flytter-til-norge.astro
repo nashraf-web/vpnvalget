@@ -1,0 +1,143 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/proton-flytter-til-norge/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'Proton flytter til Norge', url }];
+const title = 'Proton flytter til Norge? Det ærlige svaret (2026)';
+const description = 'Proton investerer 100 millioner sveitserfranc i datasentre i Tyskland og Norge – men flytter ikke ut av Sveits. Slik er det egentlig, og hva det betyr for norske Proton VPN-brukere.';
+const faqs = [
+  {
+    question: 'Flytter Proton til Norge?',
+    answer: 'Nei, ikke selskapet. Hovedkvarteret, den juridiske enheten og kjernen av Mail- og VPN-infrastrukturen blir i Genève i Sveits. Det som faktisk skjer, er at Proton investerer 100 millioner sveitserfranc i nye datasentre i Tyskland og Norge – for KI-tjenesten Lumo. Det er en kapasitetsutvidelse, ikke en utflytting.',
+  },
+  {
+    question: 'Er Proton VPN fortsatt trygg etter det sveitsiske overvåkingsforslaget?',
+    answer: 'Foreløpig ja – ingenting har endret seg for brukerne. Det sveitsiske VÜPF-forslaget har ikke trådt i kraft og ligger på vent i påvente av en andre høring, uten fastsatt dato. Proton VPN har bestått fem årlige uavhengige no-logs-revisjoner fra Securitum (2022–2026), og selskapets åpenhetsrapport viser 458 rettskjennelser siden 2017 uten at identifiserende brukerdata ble utlevert. Følg likevel med på den andre høringen – så lenge forslaget lever, er det sveitsiske personvernløftet svakere enn før.',
+  },
+  {
+    question: 'Hva er VÜPF?',
+    answer: 'VÜPF er den sveitsiske forordningen om overvåking av post- og teletrafikk. Revisjonen som ble foreslått i 2025, ville pålagt nettjenester med over 5 000 brukere å logge IP-adresser og lagre dem i seks måneder, og å identifisere brukerne sine. Et eget forslag, artikkel 50a, ville pålagt leverandører å fjerne kryptering på forespørsel. Den offentlige høringen ble avsluttet i mai 2025, og forslaget ligger nå på vent.',
+  },
+  {
+    question: 'Hvorfor valgte Proton Norge?',
+    answer: 'Proton har pekt på to ting: fornybar kraft og et stabilt, forutsigbart regelverk. Norge har rikelig med vannkraft, er et EØS-land med sterke personverntradisjoner, og ligger utenfor EU – samtidig som selskapet bygger datasentre her og i Tyskland. Tyskland ble valgt som vert for serverne til KI-tjenesten Lumo, mens Norge får deler av den nye datasenterkapasiteten.',
+  },
+  {
+    question: 'Har Proton VPN servere i Norge?',
+    answer: 'Ja, ifølge leverandøren selv har Proton VPN servere i Norge på de betalte planene. Det er viktig for norske brukere: med en norsk server får du norsk IP-adresse til nettbank, BankID og norske strømmetjenester, og bankens sikkerhetssystemer reagerer ikke på en utenlandsk IP. Gratisversjonen har et mindre serverutvalg og lavere hastighetsprioritet.',
+  },
+  {
+    question: 'Hva koster Proton VPN i Norge?',
+    answer: 'Veiledende fra 38 kroner i måneden på de lengste abonnementene – sjekk leverandørens nettside for oppdaterte priser. Akkurat nå (verifisert 18. november 2026) gir Black Friday-tilbudet 75 prosent rabatt på VPN Plus: 2,49 dollar i måneden i 24 måneder (59,76 dollar totalt), med fornyelse til 83,88 dollar i året. Tilbudet varer til 30. november 2026, og gjelder bare den første perioden – sjekk fornyelsesprisen før du betaler.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-18', dateModified: '2026-11-18', image: `${site.url}/og-vpn-fart.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-vpn-fart.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-vpn-fart.webp" alt="Fiberoptiske kabler i et serverrack – Proton bygger nye datasentre i Norge og Tyskland" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Proton flytter til Norge? Slik er det egentlig</h1>
+
+    <DirectAnswer>
+      <p><strong>Kort svar: Nei – Proton flytter ikke ut av Sveits.</strong></p>
+      <p class="mt-2">Hovedkvarteret, den juridiske enheten og kjernen av Mail- og VPN-infrastrukturen blir i Genève. Det som faktisk skjer, er at Proton investerer 100 millioner sveitserfranc i nye datasentre i Tyskland og Norge – for KI-tjenesten Lumo – etter at Sveits foreslo nye overvåkingsregler som ville pålagt selskapet å lagre brukerdata. For deg som norsk bruker endrer ingenting seg i dag, men Norge blir viktigere for Proton enn før. I denne artikkelen skiller vi fakta fra overskriftene, og forklarer hva flyttingen – og den som ikke skjer – betyr for deg.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p>Nyheten spredte seg fort sommeren 2025: «Proton forlater Sveits» og «Proton flytter til Norge». Overskriftene var ikke helt feil – men de var heller ikke helt riktige. Proton er selskapet bak en av verdens mest brukte personvern-VPN-er, og når et slikt selskap flytter på infrastrukturen sin, betyr det noe for alle som stoler på det. Er du norsk Proton-bruker, eller vurderer du å bli det, er det verdt å vite hva som faktisk skjer. Er du helt ny på VPN, start med <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva en VPN er</a> – her forklarer vi saken i dybden.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva skjedde egentlig? Tidslinjen</h2>
+      <p><strong>Mai 2025:</strong> Proton-sjef Andy Yen sier i et intervju med den sveitsiske avisen Le Temps at Proton stanser investeringene i Sveits. Bakgrunnen er et forslag om å endre den sveitsiske overvåkingsforordningen VÜPF. Yen sier rett ut at hvis forslaget vedtas slik det står, vil Proton bli mindre konfidensielt enn konkurrenter som Google – og at det er uholdbart for en virksomhet som selger personvern.</p>
+      <p><strong>Sommeren 2025:</strong> Proton kunngjør at selskapet investerer 100 millioner sveitserfranc i datasentre i Tyskland og Norge. Pengene skal bygge infrastruktur for KI-tjenesten Lumo. Yen understreker at beslutningen allerede er tatt og ikke kan reverseres, og at de 100 millionene bare er begynnelsen – bare 10 prosent av totalen. Den samlede investeringsplanen skal overstige 1 milliard sveitserfranc innen tiårets slutt.</p>
+      <p><strong>Juli 2025:</strong> Proton presiserer – og dette er poenget overskriftene ofte mistet: «Protons hovedkvarter, juridiske enhet og kjerneinfrastruktur for Mail og VPN blir i Genève. Det som flytter, er et nytt KI-datasenterkluster. Det er en kapasitetsutvidelse, ikke en utflytting.» Med andre ord: selskapet forlater ikke Sveits. Det bygger ny kapasitet et annet sted.</p>
+      <p><strong>Status november 2026:</strong> VÜPF-revisjonen har fortsatt ikke trådt i kraft. Forslaget ligger på vent i påvente av en andre høring, uten fastsatt dato. I februar 2026 skrev 19 sivilsamfunnsorganisasjoner, blant dem European Digital Rights, til det sveitsiske justisdepartementet og ba om at forslaget om datalagring og brukeridentifisering droppes. Ingenting har altså endret seg for brukerne ennå – men saken er ikke avgjort.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvorfor vil Proton ut av Sveits? VÜPF forklart</h2>
+      <p>VÜPF er den sveitsiske forordningen om overvåking av post- og teletrafikk. Revisjonen som ble lagt fram i 2025, ville endret spillereglene for alle nettjenester med over 5 000 brukere: de måtte logge IP-adresser og lagre dem i seks måneder, og identifisere brukerne sine. Et eget forslag, artikkel 50a, ville pålagt leverandører å fjerne kryptering på forespørsel fra myndighetene. For et selskap som Proton, som lover at det ikke kan se brukernes data, er det en direkte kollisjon med forretningsmodellen.</p>
+      <p>Det er verdt å nyansere bildet. Proton har selv påpekt at bestemmelsene om datalagring i den tilhørende loven BÜPF trolig ville unnta selskaper som Proton Mail og Proton VPN, fordi de ikke er store teleoperatører. Og Sveits er fortsatt et land utenfor EU og de store overvåkingsalliansene, der gjeldende lov ikke krever at en VPN-leverandør fører tilkoblingslogger. Problemet er ikke dagens lov – det er retningen den beveger seg i. Derfor bygger Proton ny infrastruktur i land der selskapet mener rammeverket er mer forutsigbart. Hva «no-logs» egentlig betyr, forklarer vi i <a class="text-brand-600 hover:underline" href="/no/hva-betyr-no-logs/">hva betyr «no-logs»?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvorfor valgte Proton Norge?</h2>
+      <p>Proton har pekt på to grunner til at valget falt på Tyskland og Norge: fornybar kraft og et stabilt regelverk. Norge har rikelig med vannkraft, er et EØS-land med sterke personverntradisjoner, og ligger utenfor EU – en kombinasjon som passer et selskap som bygger infrastruktur for personvern. Tyskland ble valgt som vert for serverne til KI-tjenesten Lumo, mens Norge får deler av den nye datasenterkapasiteten.</p>
+      <p>For Norge er det et tillitssignal: et av Europas mest profilerte personvernselskaper legger tung infrastruktur hit, samtidig som andre KI-aktører gjør det samme – Nscale, Aker og OpenAI annonserte sommeren 2025 Stargate Norway, et datasenter utenfor Narvik med mål om 100 000 GPU-er innen utgangen av 2026, drevet av fornybar kraft. Norge er i ferd med å bli et datasenterland, og Proton er en del av den bølgen.</p>
+      <p>Men vær ærlig med deg selv om hva dette betyr i praksis: Proton har ikke lovet norske brukere raskere VPN eller nye funksjoner som følge av investeringen. Datasentrene bygges for KI-kapasitet, ikke for VPN-servere. Det som kan komme norske brukere til gode over tid, er mer kapasitet i Norden generelt – men det er en mulighet, ikke et løfte. Les også <a class="text-brand-600 hover:underline" href="/no/protonvpn-vs-nordvpn/">Proton VPN vs NordVPN</a> hvis du veier personvern mot totalpakke.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva betyr det for deg som norsk Proton VPN-bruker?</h2>
+      <p>I dag: ingenting. Samme app, samme servere, samme sveitsiske jurisdiksjon for selskapet. Proton VPN har servere i Norge ifølge leverandøren selv, og det er det viktigste for deg som bor her: med en norsk server får du norsk IP-adresse til nettbank, <a class="text-brand-600 hover:underline" href="/no/vpn-og-bankid/">BankID</a> og <a class="text-brand-600 hover:underline" href="/no/se-nrk-i-utlandet/">NRK i utlandet</a>, og bankens sikkerhetssystemer reagerer ikke på en utenlandsk IP.</p>
+      <p>Personvernmerittene står også: Proton VPN har bestått fem årlige uavhengige no-logs-revisjoner fra Securitum (2022–2026), og den femte, publisert 16. juni 2026, fant ingen tegn til at serverne som ble undersøkt, logger nettleseraktivitet, DNS-spørringer eller trafikkinnhold. Selskapets åpenhetsrapport viser 458 rettskjennelser fra sveitsiske domstoler siden 2017 – 47 av dem i første halvår 2026 – uten at identifiserende brukerdata ble utlevert i noen av dem. Det er en merittliste ingen annen stor VPN-leverandør kan vise til. Samtidig er det ærlige svaret at en VPN ikke gjør deg anonym – les <a class="text-brand-600 hover:underline" href="/no/gjor-vpn-deg-anonym/">gjør VPN deg anonym?</a> før du tror noe annet.</p>
+      <p>Det du bør følge med på, er den andre høringen om VÜPF. Så lenge forslaget lever, er det sveitsiske personvernløftet svakere enn det var for få år siden – det er nettopp derfor Proton bygger alternativer i Tyskland og Norge. Det er også grunnen til at vi skriver denne artikkelen: når en leverandørs jurisdiksjon er under press, fortjener du å vite det før du binder deg til et toårsabonnement.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Proton VPN i Norge: fakta på bordet</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørens egen dokumentasjon, uavhengige revisjoner og dokumenterte tester fra anerkjente kilder – ikke målte laboratorietester fra oss.</p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm text-left border border-slate-200 rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-slate-100 text-ink">
+              <th class="px-4 py-3 font-bold">Fakta</th>
+              <th class="px-4 py-3 font-bold">Proton VPN</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr><td class="px-4 py-3 font-semibold">Jurisdiksjon</td><td class="px-4 py-3">Sveits (hovedkvarter i Genève)</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Servere i Norge</td><td class="px-4 py-3">Ja, ifølge leverandøren</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Servernettverk</td><td class="px-4 py-3">8 600+ servere i 110+ land (ifølge leverandøren)</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">No-logs-revisjon</td><td class="px-4 py-3">Securitum, årlig 2022–2026 – ingen logging funnet</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Rettskjennelser</td><td class="px-4 py-3">458 siden 2017, ingen identifiserende data utlevert</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Enheter samtidig</td><td class="px-4 py-3">10</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Protokoller</td><td class="px-4 py-3">WireGuard, OpenVPN, IKEv2, Stealth</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Vår vurdering</td><td class="px-4 py-3">4,5 – best for personvern</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Fra-pris</td><td class="px-4 py-3">Fra 38 kr/mnd (veiledende)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Pris akkurat nå:</strong> Black Friday-tilbudet gir 75 prosent rabatt på VPN Plus – 2,49 dollar i måneden i 24 måneder (59,76 dollar totalt), med fornyelse til 83,88 dollar i året. Tilbudet varer til 30. november 2026 og gjelder bare den første perioden – sjekk fornyelsesprisen før du betaler. Prisene er verifisert 18. november 2026. Se alle <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">Black Friday-tilbudene</a> og den ærlige prisguiden i <a class="text-brand-600 hover:underline" href="/no/billigste-vpn-i-norge/">billigste VPN i Norge</a>. Vil du ha full prisoversikt, se <a class="text-brand-600 hover:underline" href="/no/hva-koster-vpn/">hva VPN koster i 2026</a>.</p>
+
+      <ProsCons
+        pros={[
+          'Åpen kildekode på alle apper og årlige uavhengige no-logs-revisjoner siden 2022',
+          'Dokumentert merittliste: 458 rettskjennelser uten utlevering av identifiserende data',
+          'Servere i Norge – norsk IP til nettbank, BankID og NRK',
+          'Norge får mer av Protons infrastruktur – investering i nordisk kapasitet',
+          'Gratisversjon uten datagrense – unik blant gratis-VPN-er',
+          'Secure Core-servere via Sveits, Sverige og Island for ekstra beskyttelse',
+        ]}
+        cons={[
+          'Sveitsisk jurisdiksjon er under press så lenge VÜPF-forslaget lever',
+          'Hovedkvarteret blir i Sveits – «flyttingen» gjelder nye datasentre, ikke selskapet',
+          'Black Friday-prisen gjelder bare første periode – fornyelse til 83,88 dollar i året',
+          'Gratisversjonen har begrenset hastighet og færre servere, og støtter ikke strømming av geoblokkert innhold',
+          'Mindre servernettverk enn NordVPN – 110+ land mot 165+',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: Norge vinner, men Proton flytter ikke</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørens egen dokumentasjon og uavhengige revisjoner – ikke målte laboratorietester fra oss. Sannheten om «Proton flytter til Norge» er mer interessant enn overskriften: et sveitsisk personvernselskap investerer 100 millioner sveitserfranc i Norge og Tyskland fordi hjemlandets lover beveger seg i feil retning – og fordi Norge tilbyr fornybar kraft og et forutsigbart regelverk. Det er et tillitssignal til Norge, men ingen utflytting fra Sveits.</p>
+      <p>For deg som norsk bruker er konklusjonen enkel: Proton VPN er fortsatt et av de sterkeste personvernvalgene på markedet, med servere i Norge, åpen kildekode og en dokumentert merittliste. Men følg med på den andre høringen om VÜPF – og hvis du binder deg til et toårsabonnement på Black Friday, sjekk fornyelsesprisen først. Vil du sammenligne leverandørene side om side, se <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Vil du ha VPN-en med sterkest personvernmeritter?</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/go/protonvpn">Proton VPN</a> – sveitsisk base, åpen kildekode og fem årlige no-logs-revisjoner. Veiledende fra 38 kr/mnd – akkurat nå 75 % Black Friday-rabatt til 30. november 2026.</p>
+        <CtaButton brand="protonvpn" label="Prøv Proton VPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Black Friday-prisen gjelder bare første periode og fornyes til 83,88 dollar i året. Se også <a class="text-brand-600 hover:underline" href="/no/protonvpn-vs-nordvpn/">Proton VPN vs NordVPN</a> og <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
