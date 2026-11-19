@@ -1,0 +1,155 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/hvilke-nettsider-er-blokkert-i-norge/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'Blokkerte nettsider i Norge', url }];
+const title = 'Hvilke nettsider er blokkert i Norge – og hvorfor? (2026)';
+const description = '238 spillsider, The Pirate Bay og Kripos-filteret: slik fungerer nettblokkering i Norge, hvem som bestemmer hva som blokkeres – og hva en VPN faktisk endrer.';
+const faqs = [
+  {
+    question: 'Er det ulovlig å besøke en blokkert nettside i Norge?',
+    answer: 'Nei, å åpne en blokkert nettside er ikke i seg selv ulovlig. Lotteritilsynet skriver selv at du ikke har gjort noe ulovlig ved å søke opp en blokkert spillside – lovbruddet er spillselskapenes, ikke ditt. Det som kan være ulovlig, er det du gjør på siden: å laste ned opphavsrettsbeskyttet materiale uten tillatelse bryter åndsverksloven, og gevinster fra utenlandske spillselskaper kan være skattepliktige over 10 000 kroner.',
+  },
+  {
+    question: 'Hvilke nettsider er blokkert i Norge akkurat nå?',
+    answer: 'Tre grupper er blokkert for alle norske internettbrukere: overgrepsmateriale av barn via Kripos-filteret CSAADF (listen er ikke offentlig), torrent- og strømmesider fra Oslo tingretts dom i 2015 – blant dem The Pirate Bay og ExtraTorrent – og 238 utenlandske spillsider fra 72 selskaper, blokkert av Lotteritilsynet siden 2025. I tillegg blokkerer mange skoler og arbeidsplasser egne lister over nettsider på sine nettverk.',
+  },
+  {
+    question: 'Hvorfor er The Pirate Bay blokkert i Norge?',
+    answer: 'Oslo tingrett dømte 1. september 2015 at norske internettleverandører måtte blokkere The Pirate Bay, ExtraTorrent og fem andre torrent- og strømmesider, etter søksmål fra underholdningsbransjen under åndsverksloven § 56e. Det var første gang en norsk domstol påla nettblokkering utenom overgrepsmateriale. Blokkeringen gjelder i fem år av gangen og omfatter også nye domener sidene flytter til.',
+  },
+  {
+    question: 'Kan internettleverandøren min se at jeg bruker VPN?',
+    answer: 'Ja, leverandøren kan se at du er koblet til en VPN-server – men ikke hvilke nettsider du besøker eller hva du gjør der, fordi trafikken er kryptert. Det betyr også at leverandørens egen DNS-blokkering ikke lenger gjelder for deg: VPN-en bruker sin egen DNS-tjener i stedet for leverandørens. Les mer i vår guide om internettleverandøren kan se VPN-bruken din.',
+  },
+  {
+    question: 'Omgår en VPN DNS-blokkering?',
+    answer: 'Ja, teknisk sett: DNS-blokkering virker ved at internettleverandørens DNS-tjener gir deg feil adresse for den blokkerte siden. Med VPN går DNS-oppslaget gjennom VPN-leverandørens egen tjener i stedet, så leverandørens blokkering slår ikke inn. Det gjør likevel ikke ulovlig aktivitet lovlig – en VPN endrer hvordan trafikken din rutes, ikke hvilke lover som gjelder for det du gjør på nett.',
+  },
+  {
+    question: 'Hvorfor virker nettblokkeringen i Norge så dårlig?',
+    answer: 'Fordi DNS-blokkering er den svakeste formen for blokkering: den kan omgås ved å bytte DNS-tjener, bruke mobildata i stedet for hjemmenettet, eller bruke VPN. NRK undersøkte trafikken i november 2026 og fant at besøkene til 48 casinoer som ble blokkert våren 2025, hadde økt med om lag 30 prosent i de 17 månedene etter blokkeringen – 72 millioner besøk til blokkerte casinoer totalt. Kulturministeren har bedt Lotteritilsynet vurdere om blokkeringen virker i det hele tatt.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-19', dateModified: '2026-11-19', image: `${site.url}/og-guide.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-guide.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-guide.webp" alt="Hvit trådløs ruter med antenner – symbol på DNS-blokkering i Norge: internettleverandøren styrer hvilke nettsider du når" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Hvilke nettsider er blokkert i Norge – og hvorfor?</h1>
+
+    <DirectAnswer>
+      <p><strong>Kort svar: Ja, nettsider blokkeres i Norge – i tre hovedgrupper.</strong></p>
+      <p class="mt-2">Kripos-filteret CSAADF blokkerer overgrepsmateriale av barn. Oslo tingrett påla i 2015 norske internettleverandører å blokkere The Pirate Bay og seks andre torrent- og strømmesider. Og siden 2025 har Lotteritilsynet DNS-blokkert 238 utenlandske spillsider fra 72 selskaper som retter seg mot norske spillere uten tillatelse. Blokkeringen skjer nesten alltid på DNS-nivå: leverandøren din gir deg feil adresse, og du kommer aldri fram til siden. I denne artikkelen forklarer vi hvem som bestemmer, hvordan det virker teknisk – og hva en VPN faktisk endrer.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p>Norge har et av verdens frieste internett, og likevel er det nettsider du ikke får åpnet fra et norsk nettverk. Det er ingen hemmelighet – blokkeringene er vedtatt av Stortinget, domstolene eller politiet, og de er offentlige. Men de er spredt over tre ulike ordninger, tre ulike lover og tre ulike tiår, så det er lett å blande dem sammen. Her er hele bildet, samlet på ett sted. Er du helt ny på hvordan internett og VPN fungerer, start med <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva en VPN er</a> – resten av artikkelen forutsetter at du vet hva DNS er, omtrent.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">De tre blokkeringene – oversikt</h2>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm text-left border border-slate-200 rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-slate-100 text-ink">
+              <th class="px-4 py-3 font-bold">Blokkering</th>
+              <th class="px-4 py-3 font-bold">Siden</th>
+              <th class="px-4 py-3 font-bold">Hvem bestemmer</th>
+              <th class="px-4 py-3 font-bold">Omfang</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr><td class="px-4 py-3 font-semibold">CSAADF (Kripos-filteret)</td><td class="px-4 py-3">2004</td><td class="px-4 py-3">Kripos / politiet</td><td class="px-4 py-3">Overgrepsmateriale av barn – listen er ikke offentlig</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Torrent- og strømmesider</td><td class="px-4 py-3">1. sept. 2015</td><td class="px-4 py-3">Oslo tingrett</td><td class="px-4 py-3">The Pirate Bay, ExtraTorrent, Viooz, PrimeWire, Swefilmer, DreamfilmHD, Movie4k</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Utenlandske spillsider</td><td class="px-4 py-3">1. jan. 2025</td><td class="px-4 py-3">Lotteritilsynet</td><td class="px-4 py-3">238 nettsider fra 72 selskaper (per november 2026)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>I tillegg kommer blokkeringer du møter på skole- og jobbenettverk, og geoblokkering av norske tjenester når du er i utlandet – dem tar vi nederst i artikkelen. Først: de tre ordningene som gjelder for alle.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">1. Kripos-filteret (CSAADF) – den eldste blokkeringen</h2>
+      <p>Den eldste nettblokkeringen i Norge er også den minst omstridte. Filteret ble utviklet av Telenor i samarbeid med Kripos, etter initiativ fra daværende justisminister Odd-Einar Dørum, og har vært i drift siden 2004. I dag heter det CSAADF (Child Sexual Abuse Anti Distribution Filter), og de fleste norske internettleverandører bruker det.</p>
+      <p>Slik virker det: Når nettleseren din spør leverandørens DNS-tjener om adressen til et domene Kripos har meldt inn, får du ikke den riktige IP-adressen. I stedet sendes du til en stoppside på leverandørens egen server, med et stoppskilt og en forklaring på at besittelse av slikt materiale er forbudt. Politiet opplyser at hendelsen ikke logges, at ingen IP-adresser lagres, og at det ikke startes straffesaker på grunn av stoppsiden. Filteret reagerer bare på domener på Kripos' liste – det overvåker ikke søk eller fritekst.</p>
+      <p>Det er verdt å vite at filteret ble innført uten et eget stortingsvedtak, noe kritikere har pekt på som et prinsipielt problem: en blokkeringsmekanisme som først ble lovet å være frivillig, er i dag standard hos leverandørene som samarbeider med Kripos. Samtidig er det ingen seriøs debatt om selve formålet. Politiet har også en egen ordning, «Blokkeringsfilter for grunnskolen», der Kripos' cyberkrimsenter (NC3) vedlikeholder en liste over nettsider som er uegnet for barn – blant annet tilfeldige chatteplattformer og datingsider med 18-årsgrense – som deles med kommuner og skoler.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">2. The Pirate Bay-dommen i 2015 – første domstolsblokkering</h2>
+      <p>1. september 2015 falt en historisk dom i Oslo tingrett: For første gang påla en norsk domstol internettleverandørene å blokkere tilgang til nettsider – utenom overgrepsmateriale. Underholdningsbransjen, samlet i Rettighetsalliansen, hadde saksøkt leverandørene med hjemmel i åndsverksloven § 56e, og fikk fullt medhold. Telenor hadde nektet å blokkere uten en klar dom, og tapte.</p>
+      <p>Syv nettsteder ble blokkert i første runde: The Pirate Bay, ExtraTorrent, Viooz, PrimeWire, Swefilmer, DreamfilmHD og Movie4k. Påleggene varer i fem år av gangen og omfatter også nye domenenavn sidene flytter til. Men dommen avslørte også hvor porøs DNS-blokkering er: Kort tid etter at blokkeringen ble satt i verk, viste det seg at rettighetshaverne hadde glemt å liste ett av The Pirate Bays hoveddomener – thepiratebay.mn var fortsatt tilgjengelig for alle. Og bransjen selv innrømmet problemet med «domenehopping»: et nettsted kan kjøpe et nytt domene for noen tiere, og da må bransjen gjennom en ny full rettsprosess for å få også det blokkert.</p>
+      <p>Det er også verdt å rette en vanlig misforståelse: dommen handlet om tilgangen til sidene, ikke om brukerne. Å laste ned opphavsrettsbeskyttet materiale uten tillatelse er ulovlig etter åndsverksloven, men selve blokkeringen retter seg mot leverandørene – ikke mot deg som sitter ved tastaturet. Vil du vite mer om hvordan torrenting og VPN henger sammen, les <a class="text-brand-600 hover:underline" href="/no/vpn-for-torrenting/">VPN for torrenting i Norge</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">3. Pengespill-blokkeringen fra 2025 – den største så langt</h2>
+      <p>Den desidert største blokkeringsordningen i Norge er også den nyeste. 1. januar 2025 trådte pengespillsloven § 32a i kraft, og ga Lotteritilsynet hjemmel til å pålegge internettleverandørene å DNS-blokkere spillsider som retter seg mot norske spillere uten norsk tillatelse. Bakgrunnen er det norske spillmonopolet: bare Norsk Tipping og Norsk Rikstoto har lov til å tilby pengespill i Norge. Utenlandske selskaper kan ha lisens fra Malta eller Curaçao, men den gir ingen rett til å markedsføre eller tilby spill til nordmenn.</p>
+      <p>Tidslinjen så langt:</p>
+      <p><strong>24. mars 2025:</strong> Første vedtak – 57 nettsider fra 23 selskaper blokkeres.<br />
+      <strong>12. juni 2025:</strong> Ytterligere 47 nettsider blokkeres.<br />
+      <strong>September 2026:</strong> Lotteritilsynet varsler blokkering av 62 nye nettsider, blant dem prediksjonsmarkedene Polymarket og Kalshi.<br />
+      <strong>November 2026:</strong> Totalt 238 nettsider fra 72 selskaper er blokkert, ifølge kultur- og likestillingsminister Lubna Jaffery i et skriftlig svar til Stortinget 5. november 2026. I tillegg har 71 nettsider endret tilbudet sitt før blokkeringen rakk å tre i kraft, slik at de ikke lenger retter seg mot Norge.</p>
+      <p>Men virker det? I november 2026 undersøkte NRK trafikken til de blokkerte casinoene, og funnet var oppsiktsvekkende: For 48 casinoer som ble blokkert våren 2025, hadde trafikken fra Norge økt med om lag 30 prosent i de 17 månedene etter blokkeringen – totalt 72 millioner besøk til blokkerte casinoer. Lotteritilsynet har stilt spørsmål ved om NRKs estimater måler effekten riktig, men har samtidig opplyst at tilsynet ikke har andre verktøy å måle med. Kulturministeren har bedt tilsynet vurdere om blokkeringen virker i det hele tatt.</p>
+      <p>Én ting er likevel klar, og den er viktig for deg som bruker: Lotteritilsynet skriver selv at du ikke har gjort noe ulovlig ved å søke opp en blokkert spillside. Lovbruddet er spillselskapenes, ikke ditt – det er de som tilbyr spill i Norge uten tillatelse. Norske banker skal dessuten stanse betalinger til og fra selskaper uten norsk tillatelse, og Lotteritilsynet har fattet 45 slike betalingsvedtak overfor banker, det siste i august 2026. Hvordan VPN og nettcasino henger sammen i praksis, forklarer vi i <a class="text-brand-600 hover:underline" href="/no/vpn-og-nettcasino-norge/">VPN og nettcasino i Norge</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik fungerer DNS-blokkering – teknisk forklart</h2>
+      <p>Alle de tre ordningene over bruker i hovedsak samme teknikk: DNS-blokkering. Når du skriver en nettadresse i nettleseren, spør datamaskinen din en DNS-tjener – vanligvis internettleverandørens – om hvilken IP-adresse domenet peker til. Ved en DNS-blokkering svarer leverandørens DNS-tjener med feil adresse, eller sender deg til en stoppside. Du kommer aldri fram til den virkelige serveren.</p>
+      <p>Det er den svakeste formen for blokkering som finnes, av tre grunner. For det første er den lett å omgå: bytt DNS-tjener til en offentlig en, bruk mobildata i stedet for hjemmenettet, eller bruk en VPN – så er blokkeringen borte. For det andre er den upresis: hele domener blokkeres, ikke enkeltinnhold. For det tredje er den lett å vedlikeholde feil – som da The Pirate Bay-dommen glemte et hoveddomene.</p>
+      <p>Det er også derfor blokkeringene nesten aldri handler om deg som enkeltperson. De er rettet mot leverandørene og operatørene: leverandørene pålegges å blokkere, operatørene mister tilgangen til det norske markedet. Det er en viktig nyanse når du leser overskrifter om «blokkert i Norge» – det er sjelden du som er målet. Om du lurer på om leverandøren kan se hva du gjør på nett, les <a class="text-brand-600 hover:underline" href="/no/kan-internettleverandoren-se-vpn/">kan internettleverandøren se VPN-bruken din?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Andre blokkeringer du møter i hverdagen</h2>
+      <p><strong>Skole og jobb:</strong> Skoler og arbeidsplasser blokkerer ofte sosiale medier, strømming og spill på sine egne nettverk – enten via DNS-filter, brannmur eller nettleserpolicy. Her er det nettverkseieren som bestemmer, ikke staten, og blokkeringen gjelder bare så lenge du er på det nettverket. På mobilnettet ditt er du utenfor den.</p>
+      <p><strong>Geoblokkering:</strong> Den vanligste «blokkeringen» nordmenn møter, er egentlig motsatt vei: norske tjenester som NRK og TV 2 Play er utilgjengelige når du er i utlandet, fordi rettighetene bare gjelder i Norge. NRK sier selv at tjenesten ikke kan brukes med VPN, og ber deg skru den av. Les <a class="text-brand-600 hover:underline" href="/no/se-nrk-i-utlandet/">se NRK i utlandet</a> og <a class="text-brand-600 hover:underline" href="/no/se-tv2-play-i-utlandet/">se TV 2 Play i utlandet</a> for hele bildet.</p>
+      <p><strong>Nettleser og antivirus:</strong> Chrome, Edge og antivirusprogrammer blokkerer sider de mener er skadelige – phishing, skadevare og falske nettbutikker. Dette er ikke statlig blokkering, men sikkerhetsfiltre du vanligvis bør la stå på.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva gjør du når en nettside er blokkert?</h2>
+      <p>Før du gjør noe som helst: finn ut hvem som har blokkert siden. Feilmeldingen forteller det nesten alltid. En Kripos-stoppside, en side fra Lotteritilsynet, «ERR_BLOCKED_BY_ADMINISTRATOR» i Chrome, eller en melding fra skolens IT-avdeling – hver av dem peker på en annen ansvarlig, og bare den ansvarlige kan oppheve blokkeringen.</p>
+      <p>Er siden blokkert for alle, eller bare for deg? Sjekk på mobilnettet i stedet for Wi-Fi: virker siden der, er det hjemmenettet eller leverandøren din som blokkerer. Virker den ingen steder, kan siden være nede, eller den kan være blokkert på DNS-nivå hos alle norske leverandører. Sjekk også om du har skrevet adressen riktig – en skrivefeil gir samme «siden finnes ikke»-følelse som en blokkering.</p>
+      <p>Tror du en blokkering er feil – for eksempel at en helt legitim side har havnet på en blokkeringsliste – kan du klage. Kripos' stoppside har informasjon om klageadgang, og Lotteritilsynets vedtak kan påklages på vanlig måte. Å klage er den eneste måten en feilblokkering blir rettet på: listene revideres ikke av seg selv.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva en VPN endrer – og hva den ikke endrer</h2>
+      <p>En VPN endrer to ting som er relevante her. For det første bruker VPN-en sin egen DNS-tjener i stedet for internettleverandørens – så leverandørens DNS-blokkering slår ikke inn. For det andre krypteres trafikken din, slik at leverandøren ikke kan se hvilke domener du ber om. Teknisk sett omgår altså en VPN alle de tre norske blokkeringsordningene, fordi de alle hviler på leverandørens DNS.</p>
+      <p>Men det er like viktig å være ærlig om hva en VPN ikke endrer. Den gjør ikke ulovlig aktivitet lovlig: opphavsrettsbeskyttet materiale er fortsatt beskyttet, og utenlandske spillselskaper bryter fortsatt norsk lov ved å rette seg mot Norge – uansett hvordan du kobler deg til. Den hjelper heller ikke mot blokkeringer som ikke sitter i DNS: en side som blokkerer VPN-serveres IP-adresser, en skolebrannmur, eller en tjeneste som krever BankID, stopper deg uansett. Og den beskytter deg ikke mot deg selv: skumle sider er fortsatt skumle bak en VPN.</p>
+      <p>Det ærlige svaret er derfor: en VPN er et verktøy for personvern og frihet på nett – ikke en tryllestav mot lover. Bruk den til å beskytte trafikken din på offentlig Wi-Fi, til å holde nettlesingen din privat fra leverandøren, og til å nå tjenester du har lovlig tilgang til. Ikke bruk den som unnskyldning for å bryte loven. <a class="text-brand-600 hover:underline" href="/no/er-vpn-lovlig-i-norge/">VPN er fullt lovlig i Norge</a> – det er bruken som avgjør om noe er lovlig eller ikke.</p>
+
+      <ProsCons
+        pros={[
+          'VPN-en bruker egen DNS-tjener – leverandørens DNS-blokkering slår ikke inn',
+          'Kryptert trafikk: leverandøren ser ikke hvilke domener du ber om',
+          'Samme verktøy beskytter deg også på usikret hotell- og kafé-Wi-Fi',
+          'Lovlig i Norge – ingen generelle forbud mot VPN-bruk',
+        ]}
+        cons={[
+          'Gjør ikke ulovlig aktivitet lovlig – åndsverksloven og pengespilloven gjelder fortsatt',
+          'Hjelper ikke mot IP-blokkering, BankID-krav eller skolebrannmurer',
+          'Noen tjenester blokkerer VPN-servere og krever at du skrur VPN-en av',
+          'Gratis-VPN-er kan være verre enn ingen VPN – les guiden vår før du velger',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: blokkeringen er ekte – men porøs</h2>
+      <p>Dette er redaksjonelle vurderinger basert på offentlige kilder – dommer, Stortingets spørretimesvar og Lotteritilsynets egne tall – ikke målte laboratorietester fra oss. Bildet er tydelig: Norge blokkerer nettsider, og omfanget vokser – fra Kripos-filteret i 2004, via Pirate Bay-dommen i 2015, til 238 blokkerte spillsider i 2026. Samtidig er det like tydelig at DNS-blokkering er et svakt virkemiddel: NRKs tall viser at trafikken til blokkerte casinoer økte etter blokkeringen, og kulturministeren har bedt om en vurdering av om tiltaket virker i det hele tatt.</p>
+      <p>For deg som bruker er konklusjonen todelt. For det første: du har ikke gjort noe ulovlig bare ved å støte på en blokkert side – lovbruddene ligger hos operatørene. For det andre: hvis personvern er grunnen til at du leser dette, er en VPN det riktige verktøyet – ikke fordi den «jukser» blokkeringen, men fordi den tar DNS-oppslagene dine ut av leverandørens hender. Vil du sammenligne leverandørene, se <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> eller den ærlige prisguiden i <a class="text-brand-600 hover:underline" href="/no/billigste-vpn-i-norge/">billigste VPN i Norge</a>.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Vil du at DNS-oppslagene dine skal være dine egne?</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/go/nordvpn">NordVPN</a> – vårt førstevalg for Norge, med servere i Oslo, egen DNS-tjener og uavhengig reviderte no-logs-retningslinjer. Veiledende fra 39 kr/mnd – akkurat nå Black Friday-tilbud fra 2,99 dollar i måneden (verifisert 16. november 2026, kampanje til 9. desember 2026).</p>
+        <CtaButton brand="nordvpn" label="Se NordVPN" sub="30 dager pengene tilbake" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Black Friday-prisen gjelder bare første periode – sjekk fornyelsesprisen før du betaler. Se også <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">alle Black Friday-tilbudene</a> og <a class="text-brand-600 hover:underline" href="/no/hva-koster-vpn/">hva VPN koster i 2026</a>.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
