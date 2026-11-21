@@ -1,0 +1,224 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/beste-vpn-for-iphone/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'Beste VPN for iPhone', url }];
+const title = 'Beste VPN for iPhone i Norge (2026) – batteri, kill switch og fart';
+const description = 'Beste VPN for iPhone i Norge (2026): NordVPN er raskest, ExpressVPN bruker minst batteri, Proton VPN er best på personvern. Kill switch fungerer annerledes på iOS – her er hva du faktisk får, og hva du bør skru på.';
+const faqs = [
+  {
+    question: 'Hvilken VPN er best for iPhone i 2026?',
+    answer: 'Vår vurdering: NordVPN er best totalt på iPhone – raskest i uavhengige tester og med kill switch som alltid er på. ExpressVPN er best hvis batteriet er viktigst for deg: i Gizmodos iPhone-test i november 2026 brukte den bare 1 % ekstra batteri over 20 minutter video, mot 2–3 % hos de andre. Proton VPN er best for personvern, med åpen kildekode og en gratisversjon du kan prøve før du betaler. Surfshark er billigst for hele husholdningen, med ubegrenset antall enheter.',
+  },
+  {
+    question: 'Har iPhone kill switch på VPN?',
+    answer: 'Ja, men ikke på samme måte som på PC. iOS gir ikke apper en egen systembryter som blokkerer all trafikk utenfor VPN-en, slik Android gjør. I stedet bruker VPN-appene Apples «Connect On Demand»-regler og et flagg som heter includeAllNetworks (siden iOS 14): systemet sender trafikken gjennom tunnelen og kobler til igjen automatisk hvis den faller ut. Noe systemtrafikk fra Apple selv kan likevel gå utenom, og det kan være et kort vindu uten beskyttelse mens tunnelen kobles til igjen. NordVPN kaller sin iOS-løsning «Prevent VPN bypass» og har den alltid på – uten av/på-knapp. Proton VPN tilbyr i tillegg en avansert kill switch (beta) som bare slipper gjennom internett mens du er tilkoblet.',
+  },
+  {
+    question: 'Hvor mye batteri bruker en VPN på iPhone?',
+    answer: 'Mindre enn mange tror – men protokollen betyr mye. I Gizmodos iPhone-test (iPhone 17 Pro, november 2026) brukte ExpressVPN 1 % ekstra batteri over 20 minutter video, NordVPN og Proton VPN 2 %, Surfshark og Private Internet Access 3 %. Bruker du en gammel app som kjører OpenVPN, blir batteriforbruket merkbart høyere – OpenVPN er ikke innebygd i iOS og må kjøres som et tillegg i appen. Velg en VPN som bruker WireGuard eller NordLynx på iPhone, skru av funksjoner du ikke bruker, og koble til nærmeste server – da merker du knapt at VPN-en er på.',
+  },
+  {
+    question: 'Hvor mye tregere blir iPhone med VPN?',
+    answer: 'På en god VPN merker du det knapt. I Gizmodos test på iPhone 17 Pro i november 2026 (54,7 Mbps uten VPN) mistet NordVPN 13,6 % av farten i snitt, ExpressVPN 16,2 %, Proton VPN 17,5 %, Surfshark 21,4 % og Private Internet Access 24,2 %. Det holder til HD-video og videosamtaler for alle fem. Farten avhenger mest av serveravstanden: velg en server i Oslo eller nærmeste land, og bruk WireGuard eller NordLynx i stedet for OpenVPN.',
+  },
+  {
+    question: 'Kan jeg bruke gratis VPN på iPhone?',
+    answer: 'Du kan, men bare én gratisversjon er verdt å anbefale: Proton VPN Free – uten datagrense, med samme åpne kildekode og reviderte no-logs-policy som betalversjonen, og med Norge blant gratislandene. De fleste andre gratis VPN-apper i App Store lever av annonser, selger bruksdata eller har så lave datagrenser at de er ubrukelige til strømming. Les vår sammenligning av gratis VPN vs betalt VPN før du installerer noe ukjent.',
+  },
+  {
+    question: 'Skjuler VPN-en GPS-posisjonen min på iPhone?',
+    answer: 'Nei. En VPN endrer IP-adressen din, men ikke GPS-posisjonen. Apper som bruker Apples posisjonstjenester – for eksempel kart, værapp og enkelte strømmetjenester – ser fortsatt hvor telefonen faktisk er. Vil du stoppe det, må du skru av posisjonstilgang for den appen under Innstillinger > Personvern og sikkerhet > Posisjonstjenester. VPN-en skjuler posisjonen din for nettsider og for internettleverandøren din, ikke for telefonens egen GPS.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-21', dateModified: '2026-11-21', image: `${site.url}/og-default.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-default.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-default.webp" alt="Kvinnehender som bruker en VPN-app på smarttelefonen – beste VPN for iPhone i Norge i 2026" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Beste VPN for iPhone i Norge (2026) – batteri, kill switch og fart</h1>
+
+    <DirectAnswer>
+      <p><strong>Kort svar: NordVPN er best totalt på iPhone – raskest i test og med kill switch som alltid er på.</strong></p>
+      <p class="mt-2">Er batteriet viktigst, er ExpressVPN best: i Gizmodos iPhone-test i november 2026 brukte den bare 1 % ekstra batteri over 20 minutter video. Proton VPN er best på personvern, med åpen kildekode og en gratisversjon du kan prøve først. Men pass på: kill switch fungerer annerledes på iOS enn på PC – ingen VPN på iPhone har en helt tett kill switch, fordi Apple ikke tillater det. Tallene i denne guiden er fra Gizmodos uavhengige iPhone-test (iPhone 17 Pro, november 2026) og fra leverandørenes egen dokumentasjon – ikke fra egne målinger hos oss. Prisene er veiledende fra-priser, sjekket 21. november 2026.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p>Spørsmålet som startet denne guiden, kom fra en iPhone-bruker på Reddit i juli 2026: etter å ha byttet telefon tappet VPN-appen batteriet og gjorde alt så tregt at han skrudde den av – og da var jo hele poenget borte. Han ville ha en VPN med en kill switch som faktisk virker på iOS. Det er et godt spørsmål, for på iPhone er det tre ting som teller mer enn på PC: batteri, hvordan appen takler de konstante nettverksskiftene (hjemme-WiFi, mobilnett på bussen, kontornett) – og hva Apple i det hele tatt tillater en VPN-app å gjøre. Denne guiden svarer på alle tre, med ferske testtall. Har du aldri brukt VPN på mobil før, start med <a class="text-brand-600 hover:underline" href="/no/vpn-pa-mobil/">VPN på mobil: slik setter du opp VPN på iPhone og Android</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Beste VPN for iPhone – sammenlignet</h2>
+      <p>Tabellen bygger på Gizmodos iPhone-test fra november 2026: fem VPN-er testet på en iPhone 17 Pro, mot britiske, amerikanske og japanske servere, med standardprotokoll (WireGuard, NordLynx eller Lightway). Fartstapet er snittet mot 54,7 Mbps uten VPN. Batteriforbruket er ekstra forbruk over 20 minutter video (1440p) sammenlignet med samme video uten VPN. Prisene er veiledende fra-priser under Black Friday-kampanjene, sjekket 21. november 2026 – se <a class="text-brand-600 hover:underline" href="/no/black-friday-vpn-2026/">Black Friday VPN 2026</a> for full prisoversikt med fornyelsespriser.</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-slate-100 text-left">
+              <th class="p-3 font-bold text-ink">VPN</th>
+              <th class="p-3 font-bold text-ink">Fartstap (iPhone)</th>
+              <th class="p-3 font-bold text-ink">Ekstra batteri</th>
+              <th class="p-3 font-bold text-ink">Kill switch på iOS</th>
+              <th class="p-3 font-bold text-ink">Enheter</th>
+              <th class="p-3 font-bold text-ink">Fra / mnd</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr>
+              <td class="p-3 font-semibold text-ink">NordVPN</td>
+              <td class="p-3">13,6 %</td>
+              <td class="p-3">+2 %</td>
+              <td class="p-3">Ja – alltid på</td>
+              <td class="p-3">10</td>
+              <td class="p-3">ca. 29 kr</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">ExpressVPN</td>
+              <td class="p-3">16,2 %</td>
+              <td class="p-3">+1 %</td>
+              <td class="p-3">Ja – kan ikke skrus av</td>
+              <td class="p-3">10–14</td>
+              <td class="p-3">ca. 27 kr</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Proton VPN</td>
+              <td class="p-3">17,5 %</td>
+              <td class="p-3">+2 %</td>
+              <td class="p-3">Ja + avansert (beta)</td>
+              <td class="p-3">10</td>
+              <td class="p-3">ca. 24 kr</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Surfshark</td>
+              <td class="p-3">21,4 %</td>
+              <td class="p-3">+3 %</td>
+              <td class="p-3">Ja</td>
+              <td class="p-3">Ubegrenset</td>
+              <td class="p-3">ca. 24 kr</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Mullvad</td>
+              <td class="p-3">Ikke testet her</td>
+              <td class="p-3">Ikke testet her</td>
+              <td class="p-3">Ja</td>
+              <td class="p-3">5</td>
+              <td class="p-3">Fast ca. 58 kr</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-slate-500">Farts- og batteritall: Gizmodo, «Best VPN for iPhone 2026», testet på iPhone 17 Pro, november 2026. Mullvad var ikke med i Gizmodos iPhone-test – vi oppgir derfor ingen farts- eller batteritall for den, og prisen er fast 5 euro i måneden (ca. 58 kr), ikke en kampanjepris. Prisene over er veiledende fra-priser i norske kroner, omregnet med kurs 9,75 NOK per USD. Vurderingene våre er redaksjonelle («vår vurdering»), ikke målte testresultater fra oss.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Kill switch på iPhone: slik fungerer den egentlig</h2>
+      <p>Dette er den viktigste delen av guiden – og den de fleste sammenligninger hopper over. På Windows og Mac kan en kill switch kutte internett i det øyeblikket VPN-tunnelen faller ut. På iPhone finnes det ingen slik systembryter som en app kan slå på selv. Apple gir ikke tredjepartsapper den tilgangen. I stedet bruker VPN-appene to Apple-mekanismer: «Connect On Demand»-regler, som starter VPN-en igjen automatisk når nettverket skifter, og flagget includeAllNetworks (tilgjengelig siden iOS 14), som sender trafikken gjennom tunnelen. Men Apple gjør unntak for enkelte systemtjenester, og det kan være et kort vindu uten beskyttelse mens tunnelen kobles til igjen. En leverandør som lover en «helt tett kill switch» på iOS, lover mer enn Apple tillater. Les den fulle forklaringen i <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">hva er kill switch?</a></p>
+      <p>Slik ser det ut i praksis hos de fem leverandørene:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordVPN:</strong> iOS-løsningen heter «Prevent VPN bypass». Den er alltid på og har ingen av/på-knapp – du kan altså ikke skru den av ved en feil. Ifølge NordVPNs egen dokumentasjon tvinger den all trafikk som dekkes av VPN-konfigurasjonen, gjennom tunnelen, og den virker videre ved omstart av appen og når telefonen våkner fra dvale. Du finner den under profil-ikonet &gt; Innstillinger &gt; VPN-tilkobling.</li>
+        <li><strong>ExpressVPN:</strong> kill switch kan heller ikke skrus av på iPhone. Siden en oppdatering i mai 2026 kan appen i tillegg holde valgte IP-adresser utenfor VPN-en – en sjelden form for split tunneling på iOS.</li>
+        <li><strong>Proton VPN:</strong> har både standard kill switch og en avansert kill switch (beta) på iOS. Proton er ærlig om begrensningen: selv med kill switch på kan enkelte DNS-forespørsler fra Apple-tjenester gå utenom VPN-en, og mens den er på, når du ikke enheter på lokalnettet – for eksempel en skriver eller en AirPlay-høyttaler. Den avanserte varianten slipper bare gjennom internett mens du er tilkoblet.</li>
+        <li><strong>Surfshark:</strong> har kill switch på iOS, og tilbyr split tunneling for nettsider – du kan velge hvilke nettsteder som skal gå utenom VPN-en.</li>
+        <li><strong>Mullvad:</strong> har kill switch i iOS-appen, og bruker WireGuard som standard – samme lette protokoll som gir minst batteriforbruk.</li>
+      </ul>
+      <p>Regelen er enkel: stol ikke på en app som lover en «ekte» kill switch på iPhone. Velg en leverandør som forklarer begrensningen ærlig – og skru på automatisk tilkobling (auto-connect) på ukjente WiFi-nett, slik at tunnelen alltid er oppe når du trenger den.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Batteri: protokollen betyr mer enn merket</h2>
+      <p>Den største batterityven er ikke VPN-en i seg selv, men protokollen den bruker. OpenVPN er ikke innebygd i iOS – apper som bruker den, må kjøre sin egen implementering, og det koster merkbart mer strøm. WireGuard og IKEv2 er det du skal se etter: WireGuard kobler til raskere, takler nettverksskifter bedre og bruker mindre strøm. NordLynx (NordVPNs variant av WireGuard) og Lightway (ExpressVPNs egen protokoll) er bygget på samme prinsipp. I Gizmodos test var forskjellen målbar over en dag: ExpressVPN brukte 1 % ekstra batteri over 20 minutter video, NordVPN og Proton VPN 2 %, Surfshark 3 %. Det høres lite ut, men over en hel dag med VPN-en påslått hele tiden – slik den bør være – er det forskjellen mellom å komme hjem med 20 % eller 10 % batteri igjen. Vil du forstå hvorfor VPN-en kan gjøre nettet tregere, les <a class="text-brand-600 hover:underline" href="/no/blir-internett-tregere-med-vpn/">blir internett tregere med VPN?</a></p>
+      <p>Tre grep som sparer batteri uansett hvilken VPN du velger:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Velg WireGuard eller NordLynx/Lightway i innstillingene</strong> – aldri OpenVPN på iPhone hvis du kan unngå det.</li>
+        <li><strong>Koble til nærmeste server</strong> – en server i Oslo bruker mindre strøm enn en i Tokyo, fordi telefonen ikke må holde liv i en lang, ustabil forbindelse.</li>
+        <li><strong>Skru av ekstratjenester du ikke bruker</strong> – annonseblokkering og trusselbeskyttelse er nyttige, men de filtrerer all trafikken din og koster litt strøm. Har du dårlig batteri, skru dem av midlertidig.</li>
+      </ul>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">NordVPN – best totalt på iPhone</h2>
+      <p><a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN</a> er vår høyest vurderte VPN (4,9 / 5) – og på iPhone er det også den raskeste i uavhengige tester: 13,6 % fartstap i snitt i Gizmodos iPhone-test, mot 16,2 % for nærmeste konkurrent. NordLynx-protokollen kobler til igjen lynraskt når telefonen hopper mellom WiFi og mobilnett, slik at appene fortsetter å laste gjennom skiftet. Kill switch («Prevent VPN bypass») er alltid på uten av/på-knapp. Ulempen på iOS: ingen split tunneling – alle apper går gjennom VPN-en. Appen krever iOS 17 eller nyere, og er rangert 4,7 av 5 fra over 710 000 vurderinger i det amerikanske App Store (sjekket oktober 2026). Black Friday-pris: Basic fra ca. 29 kr per måned, kampanje til 9. desember 2026. Les <a class="text-brand-600 hover:underline" href="/no/nordvpn-pris/">NordVPN-pris i kroner</a>.</p>
+      <div class="my-4"><CtaButton brand="nordvpn" label="Sjekk NordVPN for iPhone" sub="Raskest i test · kill switch alltid på · fra ca. 29 kr/mnd" /></div>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">ExpressVPN – best på batteri</h2>
+      <p><a class="text-brand-600 hover:underline" href="/no/anmeldelser/expressvpn/">ExpressVPN</a> vant batteritesten i Gizmodo: bare 1 % ekstra batteri over 20 minutter video på iPhone, mens de andre brukte 2–3 %. Farten er nest best (16,2 % tap), og appen er den enkleste av de fem – én koble-til-knapp. Kill switch kan ikke skrus av, og siden mai 2026 kan du holde valgte IP-adresser utenfor VPN-en. Er du mye på farten og lever av telefonen, er dette det tryggeste valget for batteriet. Vår vurdering 4,6 / 5. Black Friday-pris: Basic fra ca. 27 kr per måned (fase 2, 17.–25. november) – fra 25. november er annonsert pris ca. 24 kr per måned i fase 3.</p>
+      <div class="my-4"><CtaButton brand="expressvpn" label="Sjekk ExpressVPN for iPhone" sub="Minst batteriforbruk · enkleste app · fra ca. 27 kr/mnd" variant="secondary" /></div>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Proton VPN – best på personvern, med gratisversjon</h2>
+      <p><a class="text-brand-600 hover:underline" href="/no/anmeldelser/proton/">Proton VPN</a> er valget hvis personvern er poenget: appene er åpen kildekode som hvem som helst kan inspisere, no-logs-policyen er uavhengig revidert for femte år på rad (Securitum, juni 2026), og selskapet flytter nå deler av infrastrukturen til Norge – les <a class="text-brand-600 hover:underline" href="/no/proton-flytter-til-norge/">Proton flytter til Norge</a>. På iPhone er den tredje raskest (17,5 % fartstap) og bruker 2 % ekstra batteri. Den har både standard og avansert kill switch (beta), og er den eneste av de fem med en gratisversjon som faktisk fungerer på iPhone: Proton VPN Free har ingen datagrense, og Norge er blant gratislandene. Vår vurdering 4,5 / 5. Black Friday-pris: Plus fra ca. 24 kr per måned, til 30. november 2026.</p>
+      <div class="my-4"><CtaButton brand="protonvpn" label="Sjekk Proton VPN for iPhone" sub="Åpen kildekode · gratisversjon · fra ca. 24 kr/mnd" variant="secondary" /></div>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Surfshark – billigst for hele familien</h2>
+      <p><a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark</a> er det billigste valget hvis hele husholdningen skal ha VPN på iPhone: ubegrenset antall enheter på ett abonnement. I Gizmodos test var den tregest av de fire store (21,4 % fartstap) og brukte mest batteri (+3 %), men det holder fortsatt til HD-video og videosamtaler. Den har kill switch på iOS, split tunneling for nettsider, og en roterende IP-funksjon som bytter IP-adressen din med jevne mellomrom mens du er tilkoblet. For en familie med fire iPhoner er prisen per telefon uslåelig. Vår vurdering 4,7 / 5. Black Friday-pris: Starter fra ca. 24 kr per måned, til 1. desember 2026. Les <a class="text-brand-600 hover:underline" href="/no/surfshark-pris/">Surfshark-pris i kroner</a>.</p>
+      <div class="my-4"><CtaButton brand="surfshark" label="Sjekk Surfshark for iPhone" sub="Ubegrenset enheter · fra ca. 24 kr/mnd" variant="secondary" /></div>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Mullvad – for den som vil ha minst mulig spor</h2>
+      <p><a class="text-brand-600 hover:underline" href="/no/anmeldelser/mullvad/">Mullvad</a> var ikke med i Gizmodos iPhone-test, så vi oppgir ingen farts- eller batteritall for den. Det vi vet: iOS-appen bruker WireGuard, har kill switch, og Mullvad krever ingen e-postadresse – du får et kontonummer, og kan til og med betale kontant i posten. Prisen er fast 5 euro i måneden (ca. 58 kr), uten Black Friday-rabatt og uten fornyelsesfelle. Vår vurdering 4,4 / 5. Velg Mullvad hvis anonymitet ved registrering er viktigere for deg enn strømming og fart.</p>
+      <div class="my-4"><CtaButton brand="mullvad" label="Besøk Mullvad" sub="Fast 5 €/mnd · ingen e-post nødvendig" variant="secondary" /></div>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik setter du opp VPN på iPhone – på to minutter</h2>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Last ned appen fra App Store</strong> – søk opp leverandøren (NordVPN, ExpressVPN, Proton VPN, Surfshark eller Mullvad) og installer den offisielle appen. Bruk aldri en tredjeparts «gratis VPN»-app du ikke kjenner.</li>
+        <li><strong>Logg inn og godkjenn VPN-konfigurasjonen</strong> – første gang du kobler til, spør iPhone om å legge til VPN-konfigurasjoner. Trykk «Tillat» og bekreft med Face ID eller kode.</li>
+        <li><strong>Skru på kill switch</strong> – i NordVPN heter den «Prevent VPN bypass» (alltid på), i Proton VPN finner du den under Innstillinger &gt; Kill switch. Hos ExpressVPN og Surfshark er den på som standard.</li>
+        <li><strong>Skru på automatisk tilkobling på ukjente nettverk</strong> – slik at VPN-en kobler seg til av seg selv på kafé-, hotell- og flyplass-WiFi. I NordVPN: Innstillinger &gt; Automatisk tilkobling &gt; Alltid.</li>
+        <li><strong>Velg protokoll</strong> – sett WireGuard, NordLynx eller Lightway i innstillingene. Unngå OpenVPN på iPhone – den bruker mer batteri og er tregere å koble til igjen.</li>
+        <li><strong>Velg nærmeste server</strong> – Norge eller nærmeste land gir best fart og minst batteriforbruk. Bruk hurtigkobling («Quick Connect») hvis du er usikker.</li>
+      </ol>
+      <p>Vil du ha hele oppsettet steg for steg – også for Android og manuelle profiler – les <a class="text-brand-600 hover:underline" href="/no/vpn-pa-mobil/">VPN på mobil</a>. Og husk: en VPN skjuler IP-adressen din, men ikke GPS-posisjonen – apper som bruker posisjonstjenester, ser fortsatt hvor du er.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvilken iPhone-VPN bør du velge?</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Vil du ha den raskeste?</strong> NordVPN – 13,6 % fartstap i test, kill switch alltid på. Vår vurdering: best totalt.</li>
+        <li><strong>Er batteriet viktigst?</strong> ExpressVPN – 1 % ekstra batteri, enkleste app. Vår vurdering: best på batteri.</li>
+        <li><strong>Er personvern viktigst?</strong> Proton VPN – åpen kildekode, revidert no-logs, gratisversjon med Norge som gratisland. Vår vurdering: best for personvern.</li>
+        <li><strong>Har hele familien iPhone?</strong> Surfshark – ubegrenset enheter, billigst per telefon. Vår vurdering: best for familien.</li>
+        <li><strong>Vil du registrere deg uten e-post?</strong> Mullvad – kontonummer i stedet for e-post, fast pris uten kampanje. Vår vurdering: best for anonymitet.</li>
+      </ul>
+      <p>Usikker på hvilken VPN som passer deg uavhengig av telefon? Bruk sjekklisten i <a class="text-brand-600 hover:underline" href="/no/slik-velger-du-vpn/">slik velger du VPN i 2026</a>, eller start helt fra begynnelsen med <a class="text-brand-600 hover:underline" href="/no/vpn-for-nybegynnere/">VPN for nybegynnere</a>. Lurer du på om gratis VPN er et alternativ på iPhone, les <a class="text-brand-600 hover:underline" href="/no/gratis-vpn-vs-betalt/">gratis VPN vs betalt VPN</a>. Full sammenligning av alle leverandørene finner du på <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a>.</p>
+
+      <ProsCons
+        pros={[
+          'NordVPN er raskest på iPhone i uavhengig test (13,6 % fartstap) – med kill switch som alltid er på',
+          'ExpressVPN bruker minst batteri (+1 % over 20 minutter video) og har den enkleste appen',
+          'Proton VPN har åpen kildekode, revidert no-logs og en gratisversjon med Norge som gratisland',
+          'Surfshark dekker ubegrenset enheter – billigst per iPhone for hele familien',
+          'Alle fem bruker WireGuard/NordLynx/Lightway – protokoller som sparer batteri på iOS',
+        ]}
+        cons={[
+          'Ingen VPN på iPhone har en helt tett kill switch – Apple tillater ikke en systembryter som på Android',
+          'Noe systemtrafikk fra Apple kan gå utenom VPN-en, selv med kill switch på',
+          'NordVPN har ingen split tunneling på iOS – alle apper går gjennom VPN-en',
+          'Surfshark er tregest av de fire store i test (21,4 % fartstap) og bruker mest batteri (+3 %)',
+          'Mullvad var ikke med i Gizmodos iPhone-test – vi har ingen farts- eller batteritall for den',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: NordVPN først, ExpressVPN hvis batteriet teller</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon og Gizmodos uavhengige iPhone-test fra november 2026 – ikke målte laboratorietester fra oss. Skal du ha én VPN på iPhone og vil ha den beste totalpakken, er NordVPN svaret: raskest i test, kill switch som aldri kan skrus av ved en feil, og servere i Oslo. Er telefonen din livsnerven og batteriet alltid på grensen, er ExpressVPN det ærligere valget: 1 % ekstra batteri er målbart bedre enn 2–3 %, og appen er den enkleste å leve med. Er personvern poenget, ta Proton VPN – og prøv gratisversjonen først, den koster deg ingenting. Og husk det viktigste: ingen VPN på iPhone beskytter deg helt alene. Skru på kill switch og automatisk tilkobling, velg WireGuard eller NordLynx, og ikke stol på en app som lover mer enn Apple tillater.</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>NordVPN</strong> – raskest på iPhone (13,6 % fartstap i test), kill switch alltid på. Vår vurdering: best totalt. Veiledende fra ca. 29 kr/mnd under Black Friday.</li>
+        <li><strong>ExpressVPN</strong> – minst batteriforbruk (+1 %), enkleste app. Vår vurdering: best på batteri. Veiledende fra ca. 27 kr/mnd under Black Friday.</li>
+        <li><strong>Proton VPN</strong> – best på personvern, med gratisversjon. Vår vurdering: best for den personvernbevisste. Veiledende fra ca. 24 kr/mnd under Black Friday.</li>
+      </ul>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Få den raskeste VPN-en for iPhone før Black Friday-tilbudene går ut – og husk å skru av automatisk fornyelse.</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – vår høyest vurderte VPN, raskest på iPhone i test, nå fra ca. 29 kr per måned under Black Friday (til 9. desember 2026). Veiledende fra ca. 29 kr/mnd. Fornyes til 139,08 USD i året – skru av automatisk fornyelse med en gang.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN på iPhone" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud og fornyelsespris. Vil du ha minst batteriforbruk? ExpressVPN fra ca. 27 kr/mnd brukte bare 1 % ekstra batteri i test. Se også <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
