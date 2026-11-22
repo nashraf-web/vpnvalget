@@ -1,0 +1,212 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/fungerer-vpn-i-kina/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'Fungerer VPN i Kina?', url }];
+const title = 'Fungerer VPN i Kina? (2026) – slik får du nett i Kina';
+const description = 'Fungerer VPN i Kina i 2026? Ja – men bare med de rette innstillingene, og ingen VPN kan love at den virker. Proton VPN og ExpressVPN er mest stabile i ferske tester fra november 2026. Installer før du reiser: du kan ikke laste ned VPN i Kina.';
+const faqs = [
+  {
+    question: 'Fungerer VPN i Kina i 2026?',
+    answer: 'Ja, men ikke alle – og ingen VPN kan garantere at den virker. Den kinesiske brannmuren blokkerer de fleste VPN-er, og det som virker i dag kan slutte å virke i morgen. I ferske tester fra november 2026 (Cybernews, på stedet i Shenzhen, og Gizmodo) klarte Proton VPN, ExpressVPN, NordVPN og Surfshark å koble til – men bare med obfuskering slått på (Stealth, NordWhisper eller NoBorders). Top10VPNs test samme måned fant derimot at NordVPN bare kom gjennom 13 % av gangene, mens Astrill og Proton VPN var mest stabile. Konklusjonen: velg en VPN med obfuskering, installer den før du reiser, og ha en reserve-VPN klar.',
+  },
+  {
+    question: 'Hvilken VPN er best for Kina?',
+    answer: 'Vår vurdering: Proton VPN er det beste allround-valget for Kina – Stealth-protokollen er gratis på alle abonnement, og leverandøren har den mest detaljerte Kina-guiden av alle. ExpressVPN er enklest å bruke, med automatisk obfuskering og en egen feilsøkingsguide for Kina. NordVPN fungerer med obfuskerte servere og NordWhisper, men NordVPN sier selv at appene deres er blokkert i Kina, og at du må sette opp en manuell IKEv2-tilkobling. Surfshark fungerer på NoBorders-servere med Camouflage Mode. Mullvad fungerer bare fra amerikanske servere med obfuskering – asiatiske servere er blokkert. Astrill er spesialisten som i tester har 100 % suksessrate, men den er dyr og har ingen pengene-tilbake-garanti.',
+  },
+  {
+    question: 'Er det lovlig å bruke VPN i Kina?',
+    answer: 'Kina krever at VPN-leverandører er godkjent av myndighetene, så bruk av en ikke-godkjent VPN er teknisk sett ulovlig. I praksis retter håndhevelsen seg mot leverandører og mot kinesiske borgere som selger VPN-tilgang – turister og forretningsreisende blir svært sjelden bøtelagt for å bruke VPN til å sjekke e-post eller sosiale medier. Men risikoen finnes, og den er din: vi er ikke jurister, og reglene kan strammes inn uten varsel. Bruk aldri VPN i Kina til noe som bryter kinesisk lov, og vær klar over at sensuren også gjelder det du skriver mens du er der.',
+  },
+  {
+    question: 'Kan jeg laste ned en VPN når jeg først er i Kina?',
+    answer: 'I de fleste tilfeller nei. VPN-leverandørenes nettsider og appbutikkene er blokkert i Kina, så du kan verken laste ned appen eller opprette et abonnement når du først har landet. Installer og test VPN-en hjemme i Norge før du reiser – og last ned manuelle oppsettsfiler (for eksempel WireGuard- eller IKEv2-konfigurasjon) og en reserve-VPN i samme slengen. Noen leverandører har speilnettsider og alternative nedlastingslenker, men du kan ikke regne med å finne dem uten nett.',
+  },
+  {
+    question: 'Hvorfor sluttet VPN-en min å virke i Kina?',
+    answer: 'Den kinesiske brannmuren oppdateres kontinuerlig, og den blokkerer VPN-trafikk i bølger – særlig rundt politisk følsomme datoer som 4. juni og 1. oktober (nasjonaldagen). Prøv dette i rekkefølge: bytt til en annen server (gjerne i Japan, Hongkong eller Singapore først, deretter lenger unna), bytt protokoll til leverandørens obfuskeringsmodus (Stealth, NordWhisper, NoBorders eller Lightway), slå på kill switch, og start appen på nytt. Hjelper ingenting, er reserve-VPN-en din neste steg – derfor bør du alltid ha to VPN-er installert før du reiser.',
+  },
+  {
+    question: 'Hvilke nettsider er blokkert i Kina?',
+    answer: 'Google (inkludert Gmail og Google Maps), YouTube, Facebook, Instagram, WhatsApp, X, Netflix, Wikipedia og de fleste vestlige nyhetssider er blokkert i Kina. Norske tjenester som NRK og BankID kan også være utilgjengelige eller ustabile uten VPN. Kinesiske apper som WeChat, Alipay og Baidu fungerer uten VPN, og er ofte nødvendige for å betale og komme seg rundt. En VPN med obfuskering gir deg tilgang til de blokkerte tjenestene – så lenge tilkoblingen holder.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-22', dateModified: '2026-11-22', image: `${site.url}/og-kina.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-kina.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-kina.webp" alt="Shanghais skyline med Oriental Pearl Tower – slik får du nett med VPN i Kina i 2026" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Fungerer VPN i Kina? (2026) – slik får du nett i Kina</h1>
+
+    <DirectAnswer>
+      <p><strong>Kort svar: Ja – men bare med obfuskering slått på, og ingen VPN kan love at den virker.</strong></p>
+      <p class="mt-2">I ferske tester fra november 2026 kom Proton VPN, ExpressVPN, NordVPN og Surfshark gjennom den kinesiske brannmuren – men resultatene varierer fra by til by og fra uke til uke. Cybernews testet 25 VPN-er på stedet i Shenzhen i november 2026 og kåret NordVPN til beste allround-valg, mens Top10VPN samme måned fant at NordVPN bare kom gjennom 13 % av gangene og at Astrill og Proton VPN var mest stabile. Den viktigste regelen: installer og test VPN-en hjemme i Norge før du reiser – i Kina er VPN-nettsidene blokkert, og du kan ikke laste ned en VPN når du først har landet. Tallene i denne guiden er fra leverandørenes egen dokumentasjon og fra uavhengige tester (Cybernews, Gizmodo, Top10VPN, november 2026) – ikke fra egne målinger hos oss. Prisene er veiledende fra-priser, sjekket 22. november 2026.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p>Skal du til Kina – på ferie, forretninger eller studier – er internett det første som overrasker deg. Google, Gmail, YouTube, Facebook, Instagram, WhatsApp, X og Netflix er blokkert. Uten VPN sitter du igjen med kinesiske apper og kinesiske søkemotorer. Og her er fellen mange nordmenn går i: de laster ned «en gratis VPN» på flyplassen i Shanghai og oppdager at den ikke virker – eller at den ikke kan lastes ned i det hele tatt. Denne guiden forklarer hvilke VPN-er som faktisk kommer gjennom brannmuren i november 2026, hvordan du setter dem opp, og hva du gjør når tilkoblingen plutselig dør. Skal du bare på en vanlig utenlandsreise uten sensur, er <a class="text-brand-600 hover:underline" href="/no/vpn-for-reise/">VPN for reise</a> guiden du trenger i stedet.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">VPN i Kina – sammenlignet (november 2026)</h2>
+      <p>Tabellen bygger på leverandørenes egen dokumentasjon og på uavhengige tester publisert i november 2026: Cybernews (felt-test i Shenzhen, 25 VPN-er), Gizmodo (sammenligningstest) og Top10VPN (månedlig testserie). Ingen av leverandørene lover at tjenesten virker i Kina – det er det viktigste å forstå før du betaler. Prisene er veiledende fra-priser under Black Friday-kampanjene, sjekket 22. november 2026 – se <a class="text-brand-600 hover:underline" href="/no/black-friday-vpn-2026/">Black Friday VPN 2026</a> for full prisoversikt med fornyelsespriser.</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-slate-100 text-left">
+              <th class="p-3 font-bold text-ink">VPN</th>
+              <th class="p-3 font-bold text-ink">Obfuskering</th>
+              <th class="p-3 font-bold text-ink">Hva leverandøren sier om Kina</th>
+              <th class="p-3 font-bold text-ink">Pengene tilbake</th>
+              <th class="p-3 font-bold text-ink">Fra / mnd</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr>
+              <td class="p-3 font-semibold text-ink">Proton VPN</td>
+              <td class="p-3">Stealth-protokoll</td>
+              <td class="p-3">Kan virke, ingen garanti – prøv Japan, Hongkong eller Singapore først</td>
+              <td class="p-3">30 dager</td>
+              <td class="p-3">ca. 24 kr</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">ExpressVPN</td>
+              <td class="p-3">Automatisk</td>
+              <td class="p-3">Egen feilsøkingsguide for Kina</td>
+              <td class="p-3">30 dager</td>
+              <td class="p-3">ca. 27 kr</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">NordVPN</td>
+              <td class="p-3">NordWhisper + obfuskerte servere</td>
+              <td class="p-3">Appene er blokkert i Kina – manuell IKEv2 kreves</td>
+              <td class="p-3">30 dager</td>
+              <td class="p-3">ca. 29 kr</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Surfshark</td>
+              <td class="p-3">NoBorders + Camouflage Mode</td>
+              <td class="p-3">Manuell WireGuard anbefales som reserve</td>
+              <td class="p-3">30 dager</td>
+              <td class="p-3">ca. 24 kr</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Mullvad</td>
+              <td class="p-3">QUIC, Shadowsocks, UDP-over-TCP</td>
+              <td class="p-3">Asiatiske servere blokkert – bruk amerikanske servere</td>
+              <td class="p-3">14 dager</td>
+              <td class="p-3">Fast ca. 58 kr</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Astrill VPN</td>
+              <td class="p-3">StealthVPN, OpenWeb</td>
+              <td class="p-3">Ingen offentlig uttalelse om Kina</td>
+              <td class="p-3">Ingen garanti</td>
+              <td class="p-3">Dyr – premiumpris</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-slate-500">Testresultater: Cybernews felt-test i Shenzhen (november 2026, 25 VPN-er, China Unicom-nett), Gizmodo «Best VPN for China» (november 2026) og Top10VPNs månedlige Kina-test (november 2026). Resultatene er øyeblikksbilder – det som virker i Shenzhen, virker ikke nødvendigvis i Beijing eller på et annet nett. Prisene er veiledende fra-priser i norske kroner; Astrill oppgir vi ingen pris for, fordi den er vesentlig dyrere enn de andre og vi ikke har en verifisert NOK-pris. Vurderingene våre er redaksjonelle («vår vurdering»), ikke målte testresultater fra oss.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvorfor vanlig VPN ikke virker i Kina</h2>
+      <p>Den kinesiske brannmuren – «Great Firewall» – leser ikke bare hvilke nettsider du besøker, den leser også hvordan trafikken din ser ut. En vanlig VPN-tilkobling har et gjenkjennelig mønster, og brannmuren kjenner igjen mønsteret og kutter forbindelsen. Derfor virker ikke en VPN i Kina med standardinnstillingene: du må bruke obfuskering – en teknikk som forkler VPN-trafikken som vanlig nettrafikk, slik at brannmuren ikke ser at det er en VPN. Det er dette Stealth (Proton), NordWhisper (NordVPN), NoBorders (Surfshark) og Lightway (ExpressVPN) gjør. OpenVPN – den gamle standardprotokollen – blir i praksis blokkert i Kina i dag. Vil du forstå protokollene, les <a class="text-brand-600 hover:underline" href="/no/wireguard-vs-openvpn/">WireGuard vs OpenVPN</a>.</p>
+      <p>Brannmuren strammes også inn i bølger. Rundt politisk følsomme datoer – 4. juni og 1. oktober (nasjonaldagen) – blir blokkeringen merkbart hardere, og selv VPN-er som virket uken før, kan slutte å virke. Det er grunnen til at testresultatene spriker så mye: Cybernews fant NordVPN best i Shenzhen i november 2026, mens Top10VPN samme måned målte bare 13 % suksess for NordVPN og kåret Astrill og Proton VPN til de mest stabile. Begge kan ha rett – de testet i ulike byer, på ulike nett og på ulike dager. Ta derfor ingen enkelt test som en garanti, og reis aldri med bare én VPN.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Installer før du reiser – du kan ikke laste ned VPN i Kina</h2>
+      <p>Dette er den dyreste feilen du kan gjøre: å vente til du er i Kina. VPN-leverandørenes nettsider er blokkert der, og appbutikkene (App Store og Google Play) i Kina tilbyr ikke VPN-apper. Du kan verken opprette et abonnement eller laste ned appen når du først har landet. Gjør alt dette hjemme i Norge, minst et par dager før avreise:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Opprett abonnement og installer appen</strong> – på alle enhetene du tar med (telefon, nettbrett, PC).</li>
+        <li><strong>Slå på obfuskering</strong> – Stealth, NordWhisper, NoBorders eller Lightway, avhengig av leverandør. Test at tilkoblingen virker hjemmefra først.</li>
+        <li><strong>Slå på kill switch</strong> – slik at ingen trafikk lekker ut hvis tunnelen faller ut. Les <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">hva er kill switch?</a> hvis du er usikker på hva det er.</li>
+        <li><strong>Last ned manuelle oppsettsfiler</strong> – WireGuard- eller IKEv2-konfigurasjon fra leverandøren, som reserve hvis appen ikke kobler til. NordVPN krever manuell IKEv2 i Kina, fordi appene deres er blokkert der.</li>
+        <li><strong>Installer en reserve-VPN</strong> – helst en annen leverandør enn hoved-VPN-en din. Proton VPN Free har Stealth-protokollen gratis, men gratisversjonen kom ikke gjennom brannmuren i Cybernews' test – betalversjonen gjorde det. En gratis reserve er bedre enn ingen reserve, men ikke stol på den alene.</li>
+        <li><strong>Lagre leverandørens speilnettside og kundeservice-e-post offline</strong> – du får ikke googlet deg fram til hjelp uten VPN.</li>
+      </ol>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Proton VPN – best allround-valg for Kina</h2>
+      <p><a class="text-brand-600 hover:underline" href="/no/anmeldelser/proton/">Proton VPN</a> er vår vurdering for Kina: Stealth-protokollen er innebygd i alle abonnement – også gratisversjonen – og Proton har den mest detaljerte Kina-guiden av alle leverandørene. Proton er ærlig om begrensningen: de sier at det finnes «bevis for at VPN-en virker i Kina», men gir ingen garanti. Guiden deres anbefaler å prøve servere i Japan, Hongkong eller Singapore først, og deretter lenger unna hvis de er blokkert. I Top10VPNs test i november 2026 hadde Proton VPN 90 % suksessrate – nest best av alle. Vår vurdering 4,5 / 5. Black Friday-pris: Plus fra ca. 24 kr per måned, til 30. november 2026. Les også <a class="text-brand-600 hover:underline" href="/no/proton-flytter-til-norge/">Proton flytter til Norge</a> – selskapet bygger nå datasentre i Norge.</p>
+      <div class="my-4"><CtaButton brand="protonvpn" label="Sjekk Proton VPN for Kina" sub="Stealth-protokoll · gratisversjon å teste med · fra ca. 24 kr/mnd" /></div>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">ExpressVPN – enklest for førstegangsreisende</h2>
+      <p><a class="text-brand-600 hover:underline" href="/no/anmeldelser/expressvpn/">ExpressVPN</a> er valget hvis du ikke vil tenke på innstillinger: obfuskeringen er automatisk, og leverandøren har en egen feilsøkingsguide for Kina. I Cybernews' felt-test i Shenzhen i november 2026 var ExpressVPN blant de tre som kom gjennom og holdt forbindelsen stabil. I en annen månedlig testserie ble ExpressVPN kåret til den mest konsistente VPN-en for Kina over tid. Ulempen er prisen etter Black Friday – fornyelsesprisen er høyere enn introduksjonsprisen, så skru av automatisk fornyelse med en gang. Vår vurdering 4,6 / 5. Black Friday-pris: Basic fra ca. 27 kr per måned (fase 2, 17.–25. november) – fra 25. november er annonsert pris ca. 24 kr per måned i fase 3.</p>
+      <div class="my-4"><CtaButton brand="expressvpn" label="Sjekk ExpressVPN for Kina" sub="Automatisk obfuskering · egen Kina-guide · fra ca. 27 kr/mnd" variant="secondary" /></div>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">NordVPN – virker, men krever manuelt oppsett</h2>
+      <p><a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN</a> er vår høyest vurderte VPN totalt (4,9 / 5) – og i Kina er bildet delt. Siden juli 2026 bruker NordVPN NordWhisper, en protokoll som forkler VPN-trafikken som vanlig nettsurfing, og Cybernews kåret NordVPN til beste allround-valg i sin Shenzhen-test i november 2026: den kom gjennom brannmuren og låste opp alle de 10 testede nettsidene. Men NordVPN sier selv at appene deres er blokkert i Kina, og henviser til manuelt IKEv2-oppsett fra Nord-kontoen din – og Top10VPN målte bare 13 % suksess for NordVPN samme måned. Det betyr: NordVPN kan virke svært godt i Kina, men du må sette den opp manuelt før avreise og være forberedt på at appen ikke kobler til. Har du allerede NordVPN, er det verdt å prøve – men ikke reis med NordVPN som eneste VPN. Black Friday-pris: Basic fra ca. 29 kr per måned, kampanje til 9. desember 2026. Les <a class="text-brand-600 hover:underline" href="/no/nordvpn-pris/">NordVPN-pris i kroner</a>.</p>
+      <div class="my-4"><CtaButton brand="nordvpn" label="Sjekk NordVPN for Kina" sub="NordWhisper-obfuskering · krever manuelt oppsett · fra ca. 29 kr/mnd" variant="secondary" /></div>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Surfshark – billigst, med NoBorders som reserve</h2>
+      <p><a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark</a> fungerer i Kina på NoBorders-servere med Camouflage Mode slått på, og leverandøren anbefaler å laste ned en manuell WireGuard-konfigurasjon som reserve før avreise. I Cybernews' Shenzhen-test i november 2026 kom Surfshark gjennom brannmuren og var blant de fem anbefalte. Ubegrenset antall enheter på ett abonnement betyr at hele reisefølget kan være dekket av samme avtale. Vår vurdering 4,7 / 5. Black Friday-pris: Starter fra ca. 24 kr per måned, til 1. desember 2026. Les <a class="text-brand-600 hover:underline" href="/no/surfshark-pris/">Surfshark-pris i kroner</a>.</p>
+      <div class="my-4"><CtaButton brand="surfshark" label="Sjekk Surfshark for Kina" sub="NoBorders-servere · ubegrenset enheter · fra ca. 24 kr/mnd" variant="secondary" /></div>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Mullvad og Astrill – for den tekniske og for langtidsboende</h2>
+      <p><a class="text-brand-600 hover:underline" href="/no/anmeldelser/mullvad/">Mullvad</a> er et spesielt tilfelle i Kina: brannmuren blokkerer alle Mullvads servere i Asia, så du må koble til amerikanske servere med obfuskering (QUIC, Shadowsocks eller UDP-over-TCP) – og bruke Multihop hvis du ikke når serveren du vil ha. I Top10VPNs test i november 2026 hadde Mullvad 85 % suksessrate, og den er det billigste månedlige alternativet med fast pris på 5 euro (ca. 58 kr) uten kampanje og uten fornyelsesfelle. Men Mullvad er for den teknisk komfortable – oppsettet er mer arbeid enn hos de andre. <strong>Astrill VPN</strong> er spesialisten: i Top10VPNs ti år lange testserie har den 100 % suksessrate i Kina, og den er førstevalget for journalister og langtidsboende. Men den er vesentlig dyrere enn alle andre, har ingen pengene-tilbake-garanti, og vi har ingen affiliatelenke til den – vi anbefaler den her fordi testene sier det, ikke fordi vi tjener på det.</p>
+      <div class="my-4"><CtaButton brand="mullvad" label="Besøk Mullvad" sub="Fast 5 €/mnd · amerikanske servere med obfuskering" variant="secondary" /></div>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Er VPN lovlig i Kina?</h2>
+      <p>Kina krever at VPN-leverandører er godkjent av myndighetene. Bruk av en ikke-godkjent VPN er teknisk sett ulovlig. I praksis retter håndhevelsen seg mot selskaper som selger VPN-tilgang og mot kinesiske borgere – turister og forretningsreisende blir svært sjelden bøtelagt for å sjekke e-posten eller sosiale medier gjennom en VPN. Men «sjelden» er ikke «aldri»: reglene kan strammes inn uten varsel, og du bør vite at risikoen finnes før du reiser. Vi er ikke jurister. Bruk aldri VPN i Kina til noe som bryter kinesisk lov, og husk at sensuren også gjelder det du skriver og deler mens du er der. Vil du vite hvordan loven er hjemme i Norge, les <a class="text-brand-600 hover:underline" href="/no/er-vpn-lovlig-i-norge/">er VPN lovlig i Norge?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">VPN-en sluttet å virke i Kina – slik fikser du det</h2>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Bytt server</strong> – prøv Japan, Hongkong eller Singapore først. Virker ikke de, prøv lenger unna (Europa eller USA). Noen servere blir blokkert, andre ikke – det er tilfeldig fra dag til dag.</li>
+        <li><strong>Bytt protokoll</strong> – skru på leverandørens obfuskeringsmodus: Stealth (Proton), NordWhisper (NordVPN), NoBorders/Camouflage Mode (Surfshark) eller Lightway (ExpressVPN). Slå av OpenVPN – den blir blokkert.</li>
+        <li><strong>Slå på kill switch og start appen på nytt</strong> – en fersk tilkobling får ofte en ny, ublokkert server.</li>
+        <li><strong>Prøv den manuelle konfigurasjonen</strong> – WireGuard- eller IKEv2-filen du lastet ned hjemme. Den går ofte gjennom når appen ikke gjør det.</li>
+        <li><strong>Bytt til reserve-VPN-en</strong> – det er derfor du installerte to. Bruk den andre leverandørens obfuskeringsmodus fra starten.</li>
+        <li><strong>Vent til kvelden</strong> – blokkeringen varierer gjennom døgnet, og en server som er blokkert om morgenen, kan virke om kvelden. Særlig rundt 4. juni og 1. oktober kan du måtte vente dager.</li>
+      </ol>
+      <p>Og hvis ingenting virker: hotell-WiFi og mobildata fra kinesiske operatører er like sensurert som alt annet – det finnes ingen «uten VPN»-vei til Google eller Gmail i Kina. Ha WeChat og Alipay installert som plan B for betaling og meldinger, og avtal med dem hjemme hvordan dere holder kontakten hvis du blir uten nett i noen dager.</p>
+
+      <ProsCons
+        pros={[
+          'Proton VPN har Stealth-protokoll på alle abonnement og den mest detaljerte Kina-guiden',
+          'ExpressVPN har automatisk obfuskering og egen feilsøkingsguide for Kina – enklest å bruke',
+          'NordVPN kom gjennom brannmuren i Cybernews’ Shenzhen-test (november 2026) og låste opp alle testede nettsider',
+          'Surfshark er billigst med NoBorders-servere og dekker ubegrenset enheter på én avtale',
+          'Mullvad har fast pris uten fornyelsesfelle og fungerer fra amerikanske servere med obfuskering',
+        ]}
+        cons={[
+          'Ingen VPN kan garantere at den virker i Kina – resultatene varierer etter by, nett og uke',
+          'NordVPNs apper er blokkert i Kina ifølge leverandøren selv – manuelt IKEv2-oppsett kreves',
+          'Mullvads asiatiske servere er blokkert – du må bruke amerikanske servere med obfuskering',
+          'Proton VPN Free kom ikke gjennom brannmuren i Cybernews’ test – gratisversjonen holder ikke i Kina',
+          'Blokkeringen strammes inn rundt 4. juni og 1. oktober – selv fungerende VPN-er kan slutte å virke',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: Proton VPN først, ExpressVPN hvis du vil ha det enkelt</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon og uavhengige tester fra november 2026 (Cybernews, Gizmodo, Top10VPN) – ikke målte laboratorietester fra oss. Skal du til Kina og vil ha det beste allround-valget, er Proton VPN svaret: Stealth-protokollen er gratis på alle abonnement, Kina-guiden er den grundigste, og 90 % suksessrate i Top10VPNs test er nest best av alle. Vil du slippe å tenke på innstillinger, ta ExpressVPN – automatisk obfuskering og egen Kina-guide. Har du allerede NordVPN, kan den virke svært godt, men sett opp manuell IKEv2 før avreise og ta med en reserve. Og uansett hvilken du velger: installer før du reiser, test hjemme, ta med to VPN-er – og vit at ingen av dem kan love deg nett i Kina.</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Proton VPN</strong> – Stealth på alle abonnement, mest detaljerte Kina-guide. Vår vurdering: best allround for Kina. Veiledende fra ca. 24 kr/mnd under Black Friday.</li>
+        <li><strong>ExpressVPN</strong> – automatisk obfuskering, enklest å bruke. Vår vurdering: best for førstegangsreisende. Veiledende fra ca. 27 kr/mnd under Black Friday.</li>
+        <li><strong>NordVPN</strong> – NordWhisper og obfuskerte servere, men krever manuelt oppsett. Vår vurdering: best hvis du allerede har abonnement. Veiledende fra ca. 29 kr/mnd under Black Friday.</li>
+      </ul>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Skal du til Kina snart? Installer VPN-en før du reiser – i Kina er VPN-nettsidene blokkert.</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/proton/">Proton VPN</a> – vårt førstevalg for Kina, med Stealth-protokoll på alle abonnement, nå fra ca. 24 kr per måned under Black Friday (til 30. november 2026). Veiledende fra ca. 24 kr/mnd. Fornyes til standardpris – skru av automatisk fornyelse med en gang.</p>
+        <CtaButton brand="protonvpn" label="Prøv Proton VPN før Kina-turen" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud og fornyelsespris. Vil du ha det enklest mulig? ExpressVPN fra ca. 27 kr/mnd har automatisk obfuskering. Se også <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
