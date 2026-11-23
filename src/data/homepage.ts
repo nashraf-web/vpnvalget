@@ -22,7 +22,7 @@ export const homeFaqs = [
   {
     question: 'Hva koster en god VPN?',
     answer:
-      'Veiledende priser per november 2026 ligger fra ca. 23 kr/mnd (CyberGhost på langtidsabonnement) til ca. 69 kr/mnd (ExpressVPN). Månedsabonnement uten binding er dyrere. Alle tjenestene vi anbefaler har minst 30 dagers pengene-tilbake-garanti.',
+      'Veiledende priser per november 2026 ligger fra ca. 19 kr/mnd (CyberGhost på langtidsabonnement) til ca. 69 kr/mnd (ExpressVPN). Månedsabonnement uten binding er dyrere. Alle tjenestene vi anbefaler har minst 30 dagers pengene-tilbake-garanti.',
   },
   {
     question: 'Fungerer VPN med NRK og norske strømmetjenester?',
@@ -37,7 +37,7 @@ export const homeFaqs = [
   {
     question: 'Kan jeg bruke gratis VPN?',
     answer:
-      'Gratis VPN-tjenester har vanligvis hastighetsbegrensninger, datakvoter og færre servere. Noen, som Proton VPNs gratisversjon, er seriøse personvernalternativer, men for strømming og full ytelse anbefaler vi en betalt tjeneste – de koster fra ca. 23 kr/mnd.',
+      'Gratis VPN-tjenester har vanligvis hastighetsbegrensninger, datakvoter og færre servere. Noen, som Proton VPNs gratisversjon, er seriøse personvernalternativer, men for strømming og full ytelse anbefaler vi en betalt tjeneste – de koster fra ca. 19 kr/mnd.',
   },
   {
     question: 'Hvordan tester VPNValget VPN-tjenester?',

@@ -201,7 +201,7 @@ export const vpns: VpnProvider[] = [
     rating: 4.3,
     order: 5,
     bestFor: 'Lengst angrefrist',
-    priceNokFrom: 23,
+    priceNokFrom: 19,
     moneyBackDays: 45,
     maxDevices: '7',
     servers: '11 500+ (ifølge leverandøren)',
