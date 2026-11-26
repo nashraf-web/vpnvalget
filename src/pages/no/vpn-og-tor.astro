@@ -1,0 +1,205 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/vpn-og-tor/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'VPN og Tor', url }];
+const title = 'VPN og Tor (2026): slik kombinerer du dem – og når du ikke bør';
+const description = 'Tor Browser alene er nok for de fleste. Men vil du kombinere VPN og Tor, finnes det to måter – Tor over VPN og VPN over Tor (Onion over VPN) – med helt ulike konsekvenser for anonymiteten din. Slik fungerer de, hvilke VPN-er som har innebygde Tor-servere, og hva Tor Project selv anbefaler. Sjekket 26. november 2026.';
+const faqs = [
+  {
+    question: 'Hva er forskjellen på Tor over VPN og VPN over Tor?',
+    answer: 'Ved Tor over VPN kobler du deg først til VPN-en, og så til Tor-nettverket: internettleverandøren din ser bare at du bruker VPN, og Tor-nettverkets første relé ser VPN-serverens adresse – ikke din. Ved VPN over Tor (NordVPN kaller det Onion over VPN) går trafikken først gjennom Tor og så gjennom en VPN-server: Tor-nettverkets siste relé (exit-noden) ser VPN-serveren i stedet for nettsiden du besøker. De to oppsettene beskytter mot ulike ting, og bare Tor over VPN kan brukes sammen med Tor Browser.',
+  },
+  {
+    question: 'Anbefaler Tor Project å bruke VPN sammen med Tor?',
+    answer: 'Nei, ikke generelt. Tor Project skriver på sin hjelpeside at å kombinere VPN med Tor kan svekke anonymiteten hvis det ikke er konfigurert riktig, og at de ikke anbefaler det for de fleste brukere – bare for avanserte brukere med et konkret behov. For folk flest er Tor Browser alene den anbefalte løsningen. Unntaket er situasjoner der internettleverandøren din blokkerer Tor, eller der du har en konkret grunn til å skjule Tor-bruken din for nettverket du er på.',
+  },
+  {
+    question: 'Hvilken VPN har innebygd Tor-støtte?',
+    answer: 'NordVPN har Onion over VPN-servere: du kobler deg til en slik server i appen, og trafikken din sendes gjennom Tor-nettverket – da kan du åpne .onion-adresser i en vanlig nettleser. Per 5. november 2026 hadde NordVPN fem slike servere: to i Amsterdam, to i Stockholm og én i Zürich, og funksjonen krever OpenVPN-protokollen. Proton VPN har tilsvarende Tor over VPN-servere (merket «-TOR») på Plus-abonnementet, men flere kilder melder i november 2026 at Proton er i ferd med å fase ut disse serverne. Mullvad har ingen innebygde Tor-servere, men er populær blant Tor-brukere fordi du ikke trenger e-post for å registrere deg, kan betale kontant, og selskapet har bygget Mullvad Browser sammen med Tor Project.',
+  },
+  {
+    question: 'Kan jeg bruke Tor Browser uten VPN?',
+    answer: 'Ja – og det er det Tor Project anbefaler for de fleste. Tor Browser er gratis, og den sender trafikken din gjennom tre frivillig drevne reléer før den når nettsiden, slik at ingen enkelt aktør ser både hvem du er og hva du besøker. En VPN legger til et ekstra lag, men også en ekstra part som kan se trafikken din – nemlig VPN-leverandøren. Hvis målet ditt er å skjule at du bruker Tor for internettleverandøren din, er en VPN et verktøy for det. Hvis målet er anonymitet i seg selv, er Tor Browser alene vanligvis nok.',
+  },
+  {
+    question: 'Gjør VPN og Tor sammen meg helt anonym?',
+    answer: 'Nei. Kombinasjonen skjuler IP-adressen din og hva du gjør på nettet for internettleverandøren, men den beskytter ikke mot alt annet som avslører deg: logger du inn på Google, Facebook eller BankID, vet tjenesten hvem du er uansett. Nettleserens fingeravtrykk – skjermstørrelse, skrifter, språk – kan identifisere deg på tvers av økter, og Tor Browser er bygget nettopp for å motvirke dette, mens en vanlig nettleser over Onion over VPN ikke er det. Tor-nettverkets exit-node kan også se ukryptert trafikk. Full anonymitet finnes ikke – kombinasjonen gir sterkere personvern, ikke usynlighet.',
+  },
+  {
+    question: 'Hvor tregt blir det med VPN og Tor?',
+    answer: 'Merkerbart tregt. Tor sender trafikken din gjennom tre reléer drevet av frivillige, og det koster fart: ifølge Tor Metrics tok en nedlasting på 5 MB median 4–11 sekunder over Tor i oktober 2026, og .onion-nettsider tok 11–23 sekunder. Legger du en VPN oppå, kommer kryptering og en ekstra server i tillegg. Til lesing og tekstbasert surfing er det greit; til video, store nedlastinger og spill er kombinasjonen uegnet. Hvis farten betyr noe, er en vanlig VPN-tilkobling – uten Tor – det riktige valget.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-26', dateModified: '2026-11-26', image: `${site.url}/og-guide.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-guide.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-guide.webp" alt="Hvit trådløs ruter med antenner – symbol på VPN og Tor: slik kombinerer du dem i 2026" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">VPN og Tor (2026): slik kombinerer du dem – og når du ikke bør</h1>
+
+    <DirectAnswer>
+      <p><strong>Kort svar: For de fleste er Tor Browser alene nok – Tor Project anbefaler ikke å legge til en VPN med mindre du har en konkret grunn.</strong></p>
+      <p class="mt-2">Vil du likevel kombinere dem, finnes det to oppsett: <strong>Tor over VPN</strong> (VPN først, så Tor – skjuler Tor-bruken for internettleverandøren) og <strong>VPN over Tor</strong> (Tor først, så VPN – NordVPNs Onion over VPN – åpner .onion-adresser i en vanlig nettleser). De beskytter mot ulike ting, og feil oppsett kan svekke anonymiteten i stedet for å styrke den.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p>VPN og Tor er de to mest kjente verktøyene for personvern på nettet – og de forveksles ofte. En VPN krypterer trafikken din og skjuler IP-adressen din bak en server. Tor sender trafikken gjennom tre frivillig drevne reléer, slik at ingen enkelt aktør ser både hvem du er og hva du besøker. Mange lurer på om de bør bruke begge samtidig: blir man dobbelt så anonym da? Svaret er mer nyansert – og overraskende for mange: Tor Project selv fraråder kombinasjonen for de fleste. Denne guiden forklarer de to måtene å kombinere VPN og Tor på, når hver av dem gir mening, hvilke VPN-er som har innebygde Tor-servere, og hva kombinasjonen ikke beskytter mot. Les også <a class="text-brand-600 hover:underline" href="/no/gjor-vpn-deg-anonym/">gjør VPN deg anonym?</a> for det ærlige svaret om hva en VPN alene beskytter mot.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva er Tor, kort forklart?</h2>
+      <p>Tor er et nettverk av frivillig drevne servere – reléer – som sender trafikken din i en kryptert kjede: inn i det første reléet, videre til det andre, ut av det tredje (exit-noden) og til nettsiden. Hvert relé kjenner bare det forrige og det neste leddet, så ingen enkelt aktør ser hele ruten. Tor Browser er den offisielle nettleseren fra Tor Project – gratis, lastes ned fra torproject.org – og den er bygget for å motvirke fingeravtrykk: den gjør nettleseren din lik alle andres, blokkerer sporere og isolerer informasjonskapsler per nettside. Tor gir også tilgang til .onion-adresser – nettsider som bare finnes inne i Tor-nettverket. Det er viktig å forstå at Tor og VPN løser ulike problemer: Tor skjuler hvem du er for nettsiden du besøker, mens en VPN skjuler hva du gjør for internettleverandøren din. De overlapper – men de er ikke det samme verktøyet.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">To måter å kombinere VPN og Tor på</h2>
+      <p>Det finnes to oppsett, og de gjør motsatte ting. Tabellen under viser forskjellen – les den før du velger, for det er lett å velge feil vei:</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-slate-100 text-left">
+              <th class="p-3 font-bold text-ink">Oppsett</th>
+              <th class="p-3 font-bold text-ink">Rute</th>
+              <th class="p-3 font-bold text-ink">Hva skjules for hvem</th>
+              <th class="p-3 font-bold text-ink">Brukes med</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr>
+              <td class="p-3 font-semibold text-ink">Tor over VPN</td>
+              <td class="p-3">Du → VPN → Tor → nettside</td>
+              <td class="p-3">Internettleverandøren ser bare VPN-tilkoblingen, ikke at du bruker Tor. Tor-nettverkets første relé ser VPN-serverens adresse, ikke din.</td>
+              <td class="p-3">Tor Browser + hvilken som helst VPN</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">VPN over Tor</td>
+              <td class="p-3">Du → Tor → VPN → nettside</td>
+              <td class="p-3">Tor-nettverkets exit-node ser VPN-serveren i stedet for nettsiden. Nettsiden ser VPN-serverens adresse, ikke Tor-exit-noden.</td>
+              <td class="p-3">Vanlig nettleser + NordVPN Onion over VPN / Proton Tor over VPN</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Tor over VPN er det vanligste oppsettet, og det eneste som fungerer sammen med Tor Browser: du starter VPN-en først, og åpner deretter Tor Browser som normalt. Internettleverandøren din ser at du er koblet til en VPN-server – men ikke at du bruker Tor. Det er nyttig hvis du er på et nettverk som blokkerer Tor, eller hvis du ikke vil at leverandøren skal vite at du bruker Tor i det hele tatt. Ulempen: VPN-leverandøren vet at du bruker Tor, og den ser din virkelige IP-adresse. Hele poenget står derfor og faller på om VPN-leverandøren fører logger – les <a class="text-brand-600 hover:underline" href="/no/hva-betyr-no-logs/">hva «no-logs» betyr</a> før du velger leverandør til dette.</p>
+      <p>VPN over Tor er det motsatte: trafikken går først gjennom Tor, og så gjennom en VPN-server. Da kan du åpne .onion-adresser i en vanlig nettleser som Chrome eller Firefox – uten Tor Browser. Men prisen er høy: du mister Tor Browsers beskyttelse mot fingeravtrykk, og nettsiden du besøker ser VPN-serverens adresse i stedet for Tor-exit-noden, som kan være en fordel mot nettsider som blokkerer Tor-trafikk. NordVPN kaller dette Onion over VPN, og Proton VPN kaller det Tor over VPN. Merk at de to leverandørene bruker samme begrep om ulike ting – sjekk alltid hvilken retning trafikken faktisk går.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva sier Tor Project selv?</h2>
+      <p>Tor Project er tydelige på sin egen hjelpeside: å kombinere VPN med Tor kan svekke anonymiteten hvis det ikke er konfigurert riktig, og de anbefaler det generelt ikke – unntatt for avanserte brukere. Grunnen er at en VPN legger til en fast, betalende part i kjeden: VPN-leverandøren kjenner din virkelige IP-adresse, vet når du kobler deg til, og kan – hvis den fører logger – koble aktiviteten din til deg. Tor alene er designet slik at ingen enkelt aktør har hele bildet. Med en VPN i kjeden har plutselig én aktør et stort bilde. Det betyr ikke at kombinasjonen er meningsløs – den har reelle bruksområder: å komme forbi nettverk som blokkerer Tor, å skjule Tor-bruk for internettleverandøren, eller å nå .onion-adresser uten Tor Browser. Men for folk flest, uten et slikt konkret behov, er Tor Browser alene den anbefalte løsningen. Vår vurdering følger Tor Projects linje her: ikke legg til kompleksitet du ikke trenger.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvilken VPN passer best med Tor?</h2>
+      <p>De fleste VPN-er fungerer til Tor over VPN – du trenger bare en VPN-app og Tor Browser, og ingen spesiell funksjon. Forskjellene ligger i de innebygde Tor-serverne og i hvor lite leverandøren vet om deg:</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-slate-100 text-left">
+              <th class="p-3 font-bold text-ink">VPN</th>
+              <th class="p-3 font-bold text-ink">Tor-funksjon</th>
+              <th class="p-3 font-bold text-ink">Viktig å vite</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr>
+              <td class="p-3 font-semibold text-ink">NordVPN</td>
+              <td class="p-3">Onion over VPN (VPN over Tor)</td>
+              <td class="p-3">Fem servere per 5. november 2026: to i Amsterdam, to i Stockholm, én i Zürich. Krever OpenVPN-protokollen. Sjette Deloitte no-logs-revisjon kunngjort februar 2026.</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Proton VPN</td>
+              <td class="p-3">Tor over VPN-servere (merket «-TOR»)</td>
+              <td class="p-3">Bare på Plus-abonnementet. Tor fører bare TCP-trafikk, så UDP og ping går ikke gjennom. Flere kilder melder i november 2026 at Proton er i ferd med å fase ut Tor-serverne – sjekk at funksjonen fortsatt finnes før du kjøper for den.</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Mullvad</td>
+              <td class="p-3">Ingen innebygde Tor-servere</td>
+              <td class="p-3">Brukes med Tor Browser (Tor over VPN). Fast pris 5 euro i måneden, ingen e-post ved registrering – bare et tilfeldig kontonummer – og kontant betaling er mulig. Bygget Mullvad Browser sammen med Tor Project. Siste uavhengige revisjon er fra Assured (GotaTun), mars 2026.</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Surfshark / ExpressVPN</td>
+              <td class="p-3">Ingen innebygde Tor-servere</td>
+              <td class="p-3">Fungerer fint til Tor over VPN med Tor Browser. ExpressVPN har KPMG-revidert no-logs-policy (2025). Ingen av dem åpner .onion-adresser uten Tor Browser.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>En advarsel er på sin plass: ikke bruk Onion over VPN eller Tor-servere sammen med Tor Browser – da sender du trafikken gjennom Tor to ganger, og alt blir bare tregere uten å bli tryggere. Velg én vei: enten Tor Browser over en vanlig VPN-server, eller en vanlig nettleser over en Onion over VPN-server. Og uansett leverandør: sjekk at no-logs-policyen er uavhengig revidert i 2026 – les <a class="text-brand-600 hover:underline" href="/no/hva-betyr-no-logs/">hva «no-logs» betyr</a> for å forstå hva revisjonene faktisk beviser. Vil du sammenligne leverandørene, se <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a>.</p>
+      <div class="my-4"><CtaButton brand="nordvpn" label="Sjekk NordVPN – med Onion over VPN" sub="30 dager pengene-tilbake-garanti" /></div>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik setter du opp Tor over VPN – steg for steg</h2>
+      <p>Dette er oppsettet Tor Project selv beskriver, og det tar fem minutter:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Velg en no-logs-revidert VPN.</strong> Leverandøren ser at du bruker Tor og kjenner din virkelige IP-adresse – så dette er hele grunnmuren. NordVPN (Deloitte, februar 2026) eller Proton VPN (Securitum, juni 2026) er trygge valg.</li>
+        <li><strong>Last ned Tor Browser fra torproject.org – aldri fra andre steder.</strong> Falske Tor-nedlastinger er en kjent felle, og en manipulert nettleser ødelegger hele poenget.</li>
+        <li><strong>Slå på kill switch i VPN-appen.</strong> Hvis VPN-tilkoblingen faller ut mens Tor Browser er åpen, lekker den virkelige IP-adressen din til internettleverandøren. Les <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">hva er kill switch?</a>.</li>
+        <li><strong>Koble til en vanlig VPN-server – ikke en Tor-server.</strong> Velg en server nær deg for best fart. Onion over VPN-servere er til vanlig nettleser, ikke til Tor Browser.</li>
+        <li><strong>Åpne Tor Browser og sjekk at den fungerer.</strong> Gå til check.torproject.org – siden forteller deg om du er koblet til Tor-nettverket. Bruk aldri Tor Browser til innlogginger du vil holde private – se neste avsnitt.</li>
+      </ol>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik bruker du Onion over VPN (NordVPN)</h2>
+      <p>Vil du åpne .onion-adresser uten Tor Browser, er NordVPNs Onion over VPN veien:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Bytt protokoll til OpenVPN i NordVPN-appen.</strong> Onion over VPN-serverne vises bare med OpenVPN – ikke med NordLynx.</li>
+        <li><strong>Velg en Onion over VPN-server i serverlisten.</strong> Per 5. november 2026 finnes fem: to i Amsterdam, to i Stockholm og én i Zürich.</li>
+        <li><strong>Åpne .onion-adressen i en vanlig nettleser.</strong> Trafikken går nå gjennom VPN-serveren og videre gjennom Tor-nettverket.</li>
+        <li><strong>Vær klar over grensen:</strong> du får tilgang til .onion-adresser, men ikke Tor Browsers beskyttelse mot fingeravtrykk. Til anonym surfing er Tor Browser fortsatt det riktige verktøyet.</li>
+      </ol>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva kombinasjonen IKKE beskytter mot</h2>
+      <p>Dette er den delen mange overser – og den viktigste i hele guiden. VPN + Tor skjuler IP-adressen din og innholdet i trafikken din for internettleverandøren. Det er alt det gjør. Det beskytter ikke mot: <strong>innlogginger</strong> – logger du inn på Google, Meta eller BankID, vet tjenesten hvem du er uansett IP-adresse; <strong>nettleserfingeravtrykk</strong> – skjermstørrelse, skrifter og språk kan identifisere deg på tvers av økter, og bare Tor Browser motvirker dette systematisk; <strong>exit-noden</strong> – det siste Tor-reléet kan se ukryptert trafikk, så bruk alltid HTTPS; <strong>deg selv</strong> – laster du ned filer, åpner dokumenter eller skriver inn personlige opplysninger, hjelper ingen kryptering. Og farten: ifølge Tor Metrics tok en nedlasting på 5 MB median 4–11 sekunder over Tor i oktober 2026, og .onion-nettsider tok 11–23 sekunder – før VPN-en legges til. Til lesing og tekst er det greit. Til video, spill og store filer er kombinasjonen uegnet. Les <a class="text-brand-600 hover:underline" href="/no/ip-lagring-i-norge/">IP-lagring i Norge</a> for hva internettleverandøren din faktisk lagrer om deg – med eller uten VPN.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva kan du gjøre – helt konkret?</h2>
+      <p>Oppsummert, i prioritert rekkefølge:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Start med Tor Browser alene.</strong> For de fleste er det nok – og det er det Tor Project anbefaler. Last ned bare fra torproject.org.</li>
+        <li><strong>Legg til VPN bare hvis du har en grunn.</strong> Gode grunner: nettverket blokkerer Tor, eller du vil skjule Tor-bruk for internettleverandøren. «Dobbelt så anonymt» er ikke en grunn.</li>
+        <li><strong>Velg Tor over VPN – VPN først, så Tor Browser.</strong> Det er det eneste oppsettet som fungerer med Tor Browser og som skjuler Tor-bruken for leverandøren.</li>
+        <li><strong>Bruk en no-logs-revidert VPN.</strong> Leverandøren ser at du bruker Tor og kjenner IP-adressen din – velg en med fersk, uavhengig revisjon (NordVPN Deloitte februar 2026, Proton VPN Securitum juni 2026).</li>
+        <li><strong>Slå på kill switch – alltid.</strong> Uten den lekker den virkelige IP-adressen din hvis VPN-tilkoblingen faller ut.</li>
+        <li><strong>Aldri Onion over VPN + Tor Browser samtidig.</strong> Tor to ganger gir bare treghet, ikke mer sikkerhet.</li>
+        <li><strong>Ikke logg inn på personlige kontoer over Tor.</strong> Da vet tjenesten hvem du er uansett – kombinasjonen er bortkastet.</li>
+      </ol>
+
+      <ProsCons
+        pros={[
+          'Tor over VPN skjuler Tor-bruken din for internettleverandøren – nyttig på nettverk som blokkerer Tor',
+          'Onion over VPN (NordVPN) åpner .onion-adresser i en vanlig nettleser, uten Tor Browser',
+          'Kombinasjonen gir sterkere personvern enn VPN alene – to uavhengige lag med kryptering og ruting',
+          'Tor Browser alene er gratis og anbefalt av Tor Project – ingen VPN trengs for de fleste',
+        ]}
+        cons={[
+          'Tor Project fraråder kombinasjonen for de fleste – feil oppsett kan svekke anonymiteten',
+          'Merkerbart tregt: 5 MB tok median 4–11 sekunder over Tor i oktober 2026 – før VPN-en legges til',
+          'VPN-leverandøren ser at du bruker Tor og kjenner IP-adressen din – hele poenget avhenger av no-logs-policyen',
+          'Beskytter ikke mot innlogginger, fingeravtrykk eller exit-noden – full anonymitet finnes ikke',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: Tor Browser alene – VPN bare ved behov</h2>
+      <p>Dette er redaksjonelle vurderinger basert på Tor Projects egne hjelpesider, leverandørenes offisielle funksjonsbeskrivelser og uavhengige guider (PrivacyAffairs, Gizmodo, Reviewed by Pro – alle oppdatert november 2026) – ikke målte tester fra oss. Vår konklusjon følger Tor Project: for de fleste nordmenn er Tor Browser alene riktig valg – gratis, anbefalt og uten en ekstra part som kjenner IP-adressen din. Legg til en VPN bare hvis du har en konkret grunn: nettverket blokkerer Tor, eller du vil skjule Tor-bruken for internettleverandøren. Velg da Tor over VPN med en no-logs-revidert leverandør og kill switch på. Trenger du .onion-adresser i en vanlig nettleser, er NordVPNs Onion over VPN (fem servere, OpenVPN) det enkleste alternativet – men husk at du da mister Tor Browsers fingeravtrykksbeskyttelse. Og uansett oppsett: aldri logg inn på personlige kontoer over Tor – da er hele poenget borte. Se <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Skal du kombinere VPN og Tor?</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – vårt førstevalg, med Onion over VPN-servere og sjette Deloitte no-logs-revisjon kunngjort i februar 2026. 30 dagers pengene-tilbake-garanti. Fornyes til standardpris – skru av automatisk fornyelse med en gang.</p>
+        <CtaButton brand="nordvpn" label="Sjekk NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud og fornyelsespris. Vil du ha det billigst mulig? Se <a class="text-brand-600 hover:underline" href="/no/billigste-vpn-i-norge/">billigste VPN i Norge</a>. Se også <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
