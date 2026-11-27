@@ -1,0 +1,221 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/no-logs-revisjoner-2026/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'No-logs-revisjoner 2026', url }];
+const title = 'Hvilke VPN-er har bestått no-logs-revisjon i 2026?';
+const description = 'NordVPN, Proton, ExpressVPN, Surfshark, CyberGhost, PIA og Mullvad: hvem har fersk no-logs-revisjon i 2026, hvem publiserer hele rapporten – og hva revisjonene faktisk beviser. Sjekket 27. november 2026.';
+const faqs = [
+  {
+    question: 'Hvilken VPN har den ferskeste no-logs-revisjonen i 2026?',
+    answer: 'Proton VPN har den ferskeste revisjonen som er publisert i 2026: femte årlige Securitum-revisjon, publisert 16. juni 2026, med hele rapporten åpent tilgjengelig. NordVPNs sjette Deloitte-revisjon ble kunngjort 3. februar 2026, men feltarbeidet – selve undersøkelsen – ble gjort 10. november til 12. desember 2025. Private Internet Access fullførte sin tredje Deloitte-revisjon 19. desember 2025, og CyberGhosts tredje Deloitte-revisjon er datert per 31. oktober 2025. «Ferskest» avhenger altså av om du teller publiseringsdato eller undersøkelsesdato.',
+  },
+  {
+    question: 'Hva betyr ISAE 3000?',
+    answer: 'ISAE 3000 (Revised) er den internasjonale standarden for uavhengig attestasjonsarbeid som ikke er revisjon av regnskap – den brukes når et firma skal bekrefte at en påstand (her: «vi logger ikke») stemmer med hvordan systemene faktisk er satt opp. Nesten alle VPN-revisjonene i denne guiden er gjort etter ISAE 3000. Standarden sier noe om metoden, ikke om resultatet: en revisjon etter ISAE 3000 er fortsatt et øyeblikksbilde av systemene på undersøkelsestidspunktet, og den beviser ikke at ingenting kan endres etterpå.',
+  },
+  {
+    question: 'Beviser en no-logs-revisjon at VPN-en ikke logger?',
+    answer: 'Nei – ikke alene. En revisjon beviser at uavhengige revisorer, på de datoene de undersøkte, ikke fant noe som motsier leverandørens no-logs-påstand i de systemene de fikk se. Den beviser ikke at leverandøren aldri logger, at alle servere ble undersøkt, eller at systemene ikke er endret siden. Revisjonen er betalt av leverandøren selv, og omfanget (hva som ble sjekket, og hva som ble utelatt) varierer. Derfor bør revisjonen leses sammen med to andre ting: om rapporten er offentlig, og om påstanden er testet utenfor revisjonen – i retten eller ved et politibeslag.',
+  },
+  {
+    question: 'Hvorfor publiserer ikke alle VPN-er hele revisjonsrapporten?',
+    answer: 'Proton VPN, Surfshark og CyberGhost publiserer hele rapporten åpent. NordVPN og ExpressVPN gjør det ikke – hos dem må du logge inn på kundekontoen din for å lese rapporten. Leverandørene begrunner det med at rapportene inneholder tekniske detaljer om infrastrukturen, men forskjellen er reell for deg som kunde: en rapport du ikke kan lese, kan du heller ikke etterprøve. Åpen publisering er derfor et pluss i seg selv, og det er en av grunnene til at Proton VPN skiller seg ut i 2026.',
+  },
+  {
+    question: 'Hvilke VPN-er har fått no-logs-kravet testet i retten eller av politiet?',
+    answer: 'Fire av leverandørene i denne guiden: Private Internet Access ble stevnet for brukerlogger i amerikansk føderal domstol i 2016 og 2017 – og hadde ingenting å utlevere. Mullvad fikk kontoret sitt ransaket av svensk politi i april 2023 – politiet gikk tomhendt fordi det ikke fantes kundedata. ExpressVPN fikk en server beslaglagt av tyrkiske myndigheter i 2016 i forbindelse med Karlov-saken – serveren inneholdt ingen logger som identifiserte brukeren. Proton VPN sier at no-logs-policyen er testet i over 400 rettssaker, og at selskapet fikk 47 bindende dataforespørsler i første halvår 2026 uten å utlevere noe.',
+  },
+  {
+    question: 'Har Mullvad en no-logs-revisjon?',
+    answer: 'Nei – Mullvad har ingen egen no-logs-attest fra et revisjonsfirma, slik NordVPN, Proton og de andre har. I stedet publiserer Mullvad komponentrevisjoner: Cure53 har revidert infrastrukturen fire ganger (sist juni 2024), Assured reviderte GotaTun – Mullvads WireGuard-implementering – i mars 2026, X41 D-Sec reviderte konto- og betalingstjenestene i januar 2026, og Leviathan Security Group reviderte Android-appen i juni 2026. Til gjengjeld har Mullvads no-logs-krav den sterkeste praktiske testen av alle: svensk politi ransaket kontoret i april 2023 og fant ingen kundedata å ta med seg.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-27', dateModified: '2026-11-27', image: `${site.url}/og-sammenligning.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-sammenligning.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-sammenligning.webp" alt="To lyspærer holdes opp – symbol på sammenligning av no-logs-revisjonene til VPN-leverandørene i 2026" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">Hvilke VPN-er har bestått no-logs-revisjon i 2026?</h1>
+
+    <DirectAnswer>
+      <p><strong>Kort svar: Seks store VPN-er har fersk, uavhengig no-logs-revisjon: NordVPN (sjette Deloitte-revisjon, kunngjort februar 2026), Proton VPN (femte Securitum-revisjon, 16. juni 2026), ExpressVPN (KPMG, publisert juni 2025), Surfshark (andre Deloitte-revisjon, juni 2025), CyberGhost (tredje Deloitte-revisjon, 2025) og Private Internet Access (tredje Deloitte-revisjon, desember 2025).</strong></p>
+      <p class="mt-2">Mullvad har ingen egen no-logs-attest, men publiserer komponentrevisjoner – og fikk kravet sitt testet på den hardeste måten: svensk politi ransaket kontoret i april 2023 og gikk tomhendt. Størst åpenhet har Proton VPN: hele rapporten ligger åpent ute. NordVPN og ExpressVPN krever innlogging for å lese rapporten.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p>«Vi logger ikke» står på nettsiden til nesten alle VPN-leverandører. Påstanden koster ingenting å skrive – og den kan ikke etterprøves utenfra. Derfor er uavhengige revisjoner det viktigste beviset en VPN kan legge fram: et eksternt firma undersøker servere, konfigurasjon og rutiner, og bekrefter om systemene faktisk er satt opp slik leverandøren påstår. Men revisjoner er ikke like: noen er ferske, noen er gamle, noen er offentlige, noen er låst bak innlogging – og alle er øyeblikksbilder. Denne guiden går gjennom alle no-logs-revisjonene fra 2026, leverandør for leverandør, med datoer, revisor og hva som faktisk ble sjekket. Hvis du ikke vet hva «no-logs» betyr i praksis, les <a class="text-brand-600 hover:underline" href="/no/hva-betyr-no-logs/">hva «no-logs» betyr</a> først.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva er en no-logs-revisjon – og hva beviser den?</h2>
+      <p>En no-logs-revisjon – eller rettere: en uavhengig attestasjonsvurdering – er en undersøkelse der et eksternt firma (ofte et av de fire store revisjonsselskapene, eller et sikkerhetsselskap som Securitum eller Cure53) får tilgang til VPN-leverandørens servere, konfigurasjonsfiler og rutiner. Revisorene intervjuer ansatte, inspiserer serverinfrastrukturen og sjekker om systemene er satt opp slik at aktivitets- og tilkoblingslogger ikke kan lagres. Nesten alle revisjonene i denne guiden er gjort etter standarden <strong>ISAE 3000 (Revised)</strong> – den internasjonale standarden for attestasjonsoppdrag som ikke er regnskapsrevisjon.</p>
+      <p>Det er tre ting du må forstå før du stoler på en revisjon. For det første er den et <strong>øyeblikksbilde</strong>: revisorene sjekker systemene slik de var på undersøkelsesdatoene – ikke hvordan de er i dag, og ikke hvordan de var før eller etter. For det andre er den <strong>betalt av leverandøren selv</strong> – det er normalt i bransjen, men det betyr at omfanget er avtalt med leverandøren, og at deler av infrastrukturen kan være utelatt. For det tredje finnes det ulike <strong>sikkerhetsnivåer</strong>: «reasonable assurance» (høy grad av sikkerhet, som NordVPNs Deloitte-revisjon) er sterkere enn «limited assurance» (begrenset sikkerhet, som Private Internet Access sin siste revisjon). En revisjon er et sterkt signal – men den er ikke et bevis for all framtid. Les <a class="text-brand-600 hover:underline" href="/no/gjor-vpn-deg-anonym/">gjør VPN deg anonym?</a> for hva en VPN – revidert eller ikke – faktisk beskytter mot.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Oversikt: alle no-logs-revisjonene i 2026</h2>
+      <p>Tabellen under oppsummerer statusen per 27. november 2026. «Rapport offentlig?» forteller om du selv kan lese hele rapporten uten å være kunde – det er den raskeste måten å skille åpenhet fra markedsføring på.</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-slate-100 text-left">
+              <th class="p-3 font-bold text-ink">VPN</th>
+              <th class="p-3 font-bold text-ink">Siste no-logs-revisjon</th>
+              <th class="p-3 font-bold text-ink">Revisor</th>
+              <th class="p-3 font-bold text-ink">Rapport offentlig?</th>
+              <th class="p-3 font-bold text-ink">Testet i retten / av politiet?</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr>
+              <td class="p-3 font-semibold text-ink">NordVPN</td>
+              <td class="p-3">6. revisjon – feltarbeid 10. nov–12. des 2025, kunngjort 3. feb 2026</td>
+              <td class="p-3">Deloitte Litauen</td>
+              <td class="p-3">Nei – bare i Nord-kontoen</td>
+              <td class="p-3">Nei</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Proton VPN</td>
+              <td class="p-3">5. årlige revisjon, publisert 16. juni 2026</td>
+              <td class="p-3">Securitum</td>
+              <td class="p-3">Ja – hele rapporten er publisert</td>
+              <td class="p-3">Ja – over 400 saker, 47 krav i H1 2026, null utlevert</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">ExpressVPN</td>
+              <td class="p-3">KPMG, per 28. feb 2025, publisert juni 2025</td>
+              <td class="p-3">KPMG</td>
+              <td class="p-3">Bak innlogging / vilkår</td>
+              <td class="p-3">Ja – serverbeslag i Tyrkia 2016, ingen logger funnet</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Surfshark</td>
+              <td class="p-3">2. revisjon – feltarbeid 14. mai–10. juni 2025, rapport juni 2025</td>
+              <td class="p-3">Deloitte</td>
+              <td class="p-3">Ja – offentlig PDF</td>
+              <td class="p-3">Nei</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">CyberGhost</td>
+              <td class="p-3">3. revisjon, per 31. okt 2025, kunngjort feb 2026</td>
+              <td class="p-3">Deloitte Romania</td>
+              <td class="p-3">Ja – kan lastes ned</td>
+              <td class="p-3">Nei</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Private Internet Access</td>
+              <td class="p-3">3. revisjon, ferdig 19. des 2025</td>
+              <td class="p-3">Deloitte Romania</td>
+              <td class="p-3">Ikke oppgitt</td>
+              <td class="p-3">Ja – stevninger 2016 og 2017, ingenting utlevert</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-ink">Mullvad</td>
+              <td class="p-3">Ingen egen no-logs-attest</td>
+              <td class="p-3">– (Cure53, Assured, X41 D-Sec for komponenter)</td>
+              <td class="p-3">Komponentrapporter offentlige</td>
+              <td class="p-3">Ja – politiransaking 2023, gikk tomhendt</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">NordVPN – sjette Deloitte-revisjon (februar 2026)</h2>
+      <p>NordVPN har den lengste revisjonshistorikken av alle leverandørene her: første no-logs-vurdering av PwC i 2018, andre av PwC i 2020, deretter Deloitte i 2022, 2023 og 2024 – og den sjette, av Deloitte Litauen, med feltarbeid 10. november til 12. desember 2025 og rapport utstedt 12. desember 2025. Resultatet ble kunngjort 3. februar 2026. Deloitte konkluderte med at NordVPNs IT-systemer og støtteoperasjoner er utformet og implementert i tråd med selskapets no-logs-erklæring. Omfanget dekket standardservere, Double VPN, obfuscated-servere og Onion over VPN-servere – altså også de spesialserverne som brukes sammen med Tor. Les <a class="text-brand-600 hover:underline" href="/no/vpn-og-tor/">VPN og Tor</a> for hva Onion over VPN er.</p>
+      <p>Svakheten er åpenheten: hele rapporten er ikke publisert – du må logge inn på Nord-kontoen din for å lese den. Det er den samme praksisen som ved de fem tidligere revisjonene. NordVPN er registrert i Panama, utenfor 14-Eyes-alliansen, og panamansk lov krever ikke at VPN-leverandører lagrer data. Selskapet har ikke fått no-logs-kravet testet i retten eller ved et beslag, slik PIA, Mullvad og ExpressVPN har.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Proton VPN – femte Securitum-revisjon på rad (juni 2026)</h2>
+      <p>Proton VPN publiserte 16. juni 2026 sin femte årlige no-logs-revisjon på rad, utført av det europeiske sikkerhetsselskapet Securitum – samme firma hvert år siden 2022. Revisorene tilbrakte flere dager på stedet i Zürich, gjennomgikk VPN-konfigurasjonsfiler og serverkonfigurasjon, vurderte driftsrutiner og intervjuet ansatte. Konklusjonen i 2026-rapporten: «The technical evidence reviewed during the engagement did not indicate that the examined Proton VPN server infrastructure logs users&#8217; browsing activity, DNS queries, destination services, network traffic contents or user-identifiable connection metadata.» Rapporten fant heller ingen vedvarende registre som kunne knytte en bestemt bruker til aktivitet på en revidert server.</p>
+      <p>Det som skiller Proton fra alle de andre, er kombinasjonen av åpenhet og rettslig test: hele rapporten er publisert åpent, og Proton sier at no-logs-policyen er testet i over 400 rettssaker. I første halvår 2026 mottok selskapet 47 bindende dataforespørsler fra sveitsiske myndigheter – og utleverte ingenting, fordi dataene ikke finnes. Det er det sterkeste praktiske beviset i denne guiden. Proton er registrert i Sveits, som i 2025 foreslo seks måneders lagring av metadata – et forslag som nå er satt på vent. Les <a class="text-brand-600 hover:underline" href="/no/proton-flytter-til-norge/">Proton flytter til Norge</a> for hva det betyr for norske brukere.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">ExpressVPN – KPMG om TrustedServer (juni 2025)</h2>
+      <p>ExpressVPNs nyeste no-logs-bevis er en KPMG-vurdering av TrustedServer-infrastrukturen – selskapets RAM-servere som ikke lagrer noe på disk. Vurderingen ble gjort etter ISAE (UK) 3000 Type 1, med skjæringspunkt 28. februar 2025, og publisert i juni 2025. KPMG ga «reasonable assurance» for at systemene var utformet for å hindre aktivitets- og tilkoblingslogging slik de var utformet på den datoen. Merk begrensningen: Type 1 vurderer utformingen på ett tidspunkt, ikke hvordan systemene fungerte over en periode. KPMG har revidert ExpressVPNs personvernpåstander i 2022, 2023 og 2025, mens PwC Sveits gjorde det i 2019 og 2020.</p>
+      <p>ExpressVPN sier at selskapet har publisert 27 uavhengige revisjoner totalt per mai 2026 – inkludert Cure53-revisjoner av Lightway-protokollen, apper og nettleserutvidelser. Og selskapet har det eldste praktiske beviset i bransjen: i 2016 beslagla tyrkiske myndigheter en ExpressVPN-server i forbindelse med Karlov-saken – og fant ingen logger som identifiserte brukeren de lette etter. ExpressVPN er registrert på De britiske Jomfruøyer, der det ikke finnes lov om datalagring for VPN-leverandører. Ulempen er den samme som hos NordVPN: KPMG-rapporten leses bare etter innlogging og aksept av vilkår.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Surfshark – andre Deloitte-revisjon (juni 2025)</h2>
+      <p>Surfshark har to Deloitte no-logs-revisjoner: den første ble kunngjort i januar 2023, den andre ble rapportert i juni 2025, med feltarbeid 14. mai til 10. juni 2025. Den andre revisjonen dekket standardservere, statiske IP-servere og MultiPort-servere, og ble gjort etter ISAE 3000. Deloitte konkluderte med at Surfsharks IT-systemer og drift i all vesentlighet er i tråd med selskapets egen beskrivelse av no-logs-policyen. Rapporten fra 2025 er publisert som en offentlig PDF på Surfsharks nettside – mer åpent enn NordVPN og ExpressVPN.</p>
+      <p>Surfsharks personvernerklæring er den mest presise om tidsfrister: bruker-ID, IP-adresse og tidsstempler finnes bare under økten og slettes automatisk innen 15 minutter etter at du kobler fra. I tillegg har Cure53 revidert Dausos-protokollen i 2026, og SecuRing har testet apper og infrastruktur i 2025 uten å finne kritiske sårbarheter. Surfshark er registrert i Nederland (9-Eyes) og eies av Nord Security – samme konsern som NordVPN. Det er verdt å vite: revisjonene kjøpes av samme konsern for begge merkevarene. Surfshark har ikke fått no-logs-kravet testet i retten.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">CyberGhost – tredje Deloitte-revisjon (2025)</h2>
+      <p>CyberGhost fullførte i 2025 sin tredje uavhengige revisjon av Deloitte Audit Romania, etter de to første i 2022 og 2024 (den andre per 31. januar 2024). Den tredje er datert per 31. oktober 2025 og ble kunngjort i selskapets gjennomsiktighetsrapport for fjerde kvartal 2025 / februar 2026. Revisjonen ble gjort etter ISAE 3000 (Revised) og dekket VPN-servernnettverket, konfigurasjon, endringshåndtering, hendelseshåndtering – og det tokenbaserte systemet for dedikert IP. Deloitte bekreftet at serverkonfigurasjonen samsvarer med selskapets no-logs-policy. Hele rapporten kan lastes ned fra CyberGhosts nettside.</p>
+      <p>CyberGhost er registrert i Romania og eies av Kape Technologies – samme eier som ExpressVPN og Private Internet Access. Selskapet publiserer kvartalsvise gjennomsiktighetsrapporter med antall juridiske forespørsler. To begrensninger er verdt å nevne: revisjonene dekker serveroppsett og policy, ikke app-kode – vi fant ingen publisert tredjepartsrevisjon av CyberGhost-appene – og selskapet har ikke fått kravet testet i retten. Les <a class="text-brand-600 hover:underline" href="/no/er-dedikert-ip-verdt-det/">er dedikert IP verdt det?</a> hvis du vurderer CyberGhosts dedikerte IP-tillegg.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Private Internet Access – tredje Deloitte-revisjon (desember 2025)</h2>
+      <p>Private Internet Access (PIA) fullførte 19. desember 2025 sin tredje Deloitte Audit Romania-revisjon, med skjæringspunkt 31. oktober 2025. De to første var i 2022 (per 30. juni 2022) og 2024. Revisjonen ble gjort etter ISAE 3000 (Revised) og dekket VPN-konfigurasjon, driftssystemer og det tokenbaserte systemet for dedikert IP. Deloitte fant ingenting som tydet på at systemene ikke var i tråd med selskapets no-logging-beskrivelse. Et viktig forbehold: PIAs rapport er en «limited assurance»-rapport – altså et lavere sikkerhetsnivå enn NordVPNs og ExpressVPNs «reasonable assurance». PIA sier at alle VPN-tjenester kjører i flyktige containere uten vedvarende disklagring, og at logging er slått av både på container- og tjenestenivå.</p>
+      <p>PIAs sterkeste kort er ikke revisjonen, men rettshistorikken: selskapet ble stevnet for brukerlogger i amerikansk føderal domstol i 2016 og 2017 – og hadde ingenting å utlevere. I fjerde kvartal 2025 mottok PIA 30 juridiske forespørsler (syv stevninger, én arrestordre, ti andre myndighets- eller sivile krav og tolv utenlandske eller uformelle henvendelser) – ingen av dem førte til utlevering av brukerdata. PIA er registrert i USA (Five Eyes) og eies av Kape Technologies, og appene er åpen kildekode. For mange er kombinasjonen av tre revisjoner og to rettssaker det mest overbevisende beviset i denne guiden – til tross for USA-jurisdiksjonen.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Mullvad – ingen no-logs-attest, men politi-testet</h2>
+      <p>Mullvad er unntaket i denne guiden: selskapet har ingen egen no-logs-attest fra et revisjonsfirma. I stedet publiserer Mullvad komponentrevisjoner – uavhengige undersøkelser av deler av tjenesten. Cure53 har revidert infrastrukturen fire ganger (sist juni 2024). Assured Security Consultants reviderte GotaTun – Mullvads Rust-implementering av WireGuard – 19. januar til 15. februar 2026 (publisert 6. mars 2026) og fant ingen store sårbarheter. X41 D-Sec reviderte konto- og betalingstjenestene 21. januar 2026, og Leviathan Security Group reviderte Android-appen 1. juni 2026. Mullvads no-logging-policy, sist oppdatert 17. juni 2026, åpner med: «We do not keep activity logs of any kind.»</p>
+      <p>Men Mullvad har noe ingen revisjon kan gi: en praktisk test. I april 2023 ransaket svensk politi Mullvads kontor i Göteborg med en ransakingsordre for kundedata – og gikk tomhendt, fordi det ikke fantes kundedata å ta med seg. Det er det sterkeste enkelbeviset i denne guiden, og det er strukturelt: Mullvad krever ingen e-post ved registrering – du får et tilfeldig kontonummer – tar imot kontant betaling og koster fast 5 euro i måneden. Ulempen er at det ikke finnes én samlet no-logs-attest å vise til, og at nettverket er lite (rundt 700 servere). Les <a class="text-brand-600 hover:underline" href="/no/mullvad-vs-nordvpn/">Mullvad vs NordVPN</a> for en direkte sammenligning.</p>
+      <div class="my-4"><CtaButton brand="nordvpn" label="Sjekk NordVPN – seks Deloitte-revisjoner" sub="30 dager pengene-tilbake-garanti" /></div>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hva revisjonene IKKE beviser</h2>
+      <p>Selv den beste revisjonen har grenser – og ærlighet krever at vi sier dem rett ut:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Øyeblikksbilde, ikke garanti.</strong> En revisjon sier hvordan systemene var på undersøkelsesdatoene. Den sier ingenting om dagen etter, og den sier ingenting om en leverandør skulle endre policy i morgen. Ferskhet teller: en revisjon fra 2025 er bedre enn en fra 2022, men ingen av dem er et løfte for 2027.</li>
+        <li><strong>Omfanget er avtalt.</strong> Revisorene sjekker det som er i oppdraget – og noe er alltid utelatt. Surfsharks 2025-rapport utelater for eksempel strømmingsinfrastruktur, web- og API-infrastruktur og fysisk sikkerhet. Les alltid hva som ble sjekket – og hva som ikke ble det.</li>
+        <li><strong>Leverandøren betaler.</strong> Alle revisjonene her er bestilt og betalt av leverandøren selv. Det betyr ikke at de er jukset – revisjonsfirmaene setter sitt eget navn på spill – men det betyr at uavhengigheten har en grense. En revisjon er ikke det samme som en tilsynsmyndighets kontroll.</li>
+        <li><strong>Type 1 er ikke Type 2.</strong> ExpressVPNs KPMG-vurdering er Type 1: den sjekker om systemene er utformet riktig på ett tidspunkt. En Type 2-vurdering ville sjekket om systemene faktisk fungerte slik over en periode. De fleste VPN-revisjoner er Type 1 eller tilsvarende øyeblikksbilder.</li>
+        <li><strong>Limited er ikke reasonable.</strong> PIAs siste rapport gir «limited assurance» – et lavere sikkerhetsnivå enn «reasonable assurance». Det er ikke et dårlig resultat, men det er et svakere utsagn enn konkurrentenes.</li>
+        <li><strong>En revisjon beskytter ikke mot deg selv.</strong> Logger du inn på Google, Meta eller BankID over VPN-en, vet tjenesten hvem du er uansett. Les <a class="text-brand-600 hover:underline" href="/no/ip-lagring-i-norge/">IP-lagring i Norge</a> for hva internettleverandøren din lagrer om deg – med eller uten VPN.</li>
+      </ol>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Revisjon eller rettssak – hva er sterkest bevis?</h2>
+      <p>Hvis vi rangerer bevistypene, står rettslig test øverst – fordi den ikke kan planlegges eller betales for. Når politiet ransaker et kontor (Mullvad 2023) eller en domstol stevner en leverandør (PIA 2016 og 2017), har leverandøren ingen kontroll over utfallet: enten finnes dataene, eller så gjør de det ikke. En revisjon er planlagt, avgrenset og betalt av leverandøren – og selv om den er ærlig utført, er den et svakere bevis. Derfor er den ærlige rangeringen slik: <strong>1) rettslig test + fersk revisjon</strong> (Proton, PIA), <strong>2) fersk revisjon med offentlig rapport</strong> (Proton, Surfshark, CyberGhost), <strong>3) fersk revisjon bak innlogging</strong> (NordVPN, ExpressVPN), <strong>4) komponentrevisjoner uten no-logs-attest</strong> (Mullvad – men med den sterkeste enkelttesten av alle). Ingen leverandør er perfekt på alle punkter. Les <a class="text-brand-600 hover:underline" href="/no/kan-politiet-spore-deg-med-vpn/">kan politiet spore deg med VPN?</a> for hva politiet faktisk kan gjøre – med og uten VPN.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Slik leser du en revisjon selv – sjekkliste</h2>
+      <p>Du trenger ikke stole på oss – eller på leverandøren. Sjekk dette før du kjøper:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Dato.</strong> Når ble feltarbeidet gjort, og når ble rapporten publisert? En revisjon eldre enn to år er historie, ikke bevis.</li>
+        <li><strong>Revisor.</strong> Er det et kjent, uavhengig firma – Deloitte, KPMG, PwC, Securitum, Cure53 – eller et ukjent selskap du aldri har hørt om?</li>
+        <li><strong>Standard.</strong> Står det ISAE 3000? Da er metoden anerkjent. Står det ingenting om standard, er «revisjonen» ofte bare en sikkerhetsgjennomgang.</li>
+        <li><strong>Rapporten.</strong> Kan du lese hele rapporten selv? Proton, Surfshark og CyberGhost publiserer den åpent. NordVPN og ExpressVPN krever innlogging. En rapport du ikke kan lese, kan du ikke etterprøve.</li>
+        <li><strong>Omfang.</strong> Hva ble sjekket – og hva ble utelatt? Strømmingsservere, app-kode og fysisk sikkerhet er ofte utenfor.</li>
+        <li><strong>Gjentakelse.</strong> Én revisjon er et datapunkt. Fem eller seks revisjoner over åtte år – som NordVPN og Proton har – er et mønster.</li>
+        <li><strong>Rettshistorikk.</strong> Har leverandøren fått kravet testet utenfor revisjonen? Søk på leverandørens navn + «court» eller «subpoena» før du bestemmer deg.</li>
+      </ol>
+
+      <ProsCons
+        pros={[
+          'Proton VPN: ferskeste revisjon publisert i 2026 (16. juni), hele rapporten åpen – pluss 47 krav i H1 2026 uten utlevering',
+          'NordVPN: lengste revisjonshistorikk – seks uavhengige vurderinger siden 2018 (PwC og Deloitte)',
+          'Surfshark og CyberGhost: ferske Deloitte-revisjoner fra 2025 med rapporten offentlig tilgjengelig',
+          'PIA og Mullvad: no-logs-kravet er testet i retten og av politiet – det sterkeste beviset som finnes',
+        ]}
+        cons={[
+          'Alle revisjoner er øyeblikksbilder – de beviser ikke hvordan systemene er i dag',
+          'NordVPN og ExpressVPN publiserer ikke hele rapporten – du må logge inn for å lese den',
+          'Revisjonene er betalt av leverandørene selv, og omfanget er avtalt med dem',
+          'Mullvad har ingen egen no-logs-attest – bare komponentrevisjoner, til gjengjeld med polititest',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: Proton først på åpenhet – NordVPN først på historikk</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egne revisjonskunngjøringer, Deloitte-, KPMG- og Securitum-rapportsammendrag og uavhengig dekning (TechRadar, CyberInsider, Gizmodo, SecureGuides – alle lest november 2026) – ikke målte tester fra oss. Vår konklusjon: Hvis du vil ha det sterkeste samlede beviset i 2026, er <strong>Proton VPN</strong> førstevalget – ferskeste revisjon publisert i år, hele rapporten åpen, fem år på rad med samme revisor, og 47 bindende krav i første halvår 2026 uten at noe ble utlevert. Hvis du vil ha den lengste historikken, er <strong>NordVPN</strong> førstevalget – seks uavhengige vurderinger siden 2018 – men du må stole på sammendraget, fordi hele rapporten ligger bak innlogging. <strong>Surfshark</strong> er det beste budsjettvalget med åpen rapport, <strong>PIA</strong> er det beste valget hvis rettshistorikk teller mest, og <strong>Mullvad</strong> er valget hvis du vil at leverandøren skal vite minst mulig om deg i utgangspunktet – ingen e-post, kontant betaling, og en politiransaking som endte med ingenting. Uansett hvem du velger: sjekk at revisjonen er fersk, les rapporten selv hvis den er offentlig, og husk at ingen revisjon beskytter deg mot innlogginger – der vet tjenesten hvem du er uansett. Se <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning, eller <a class="text-brand-600 hover:underline" href="/no/billigste-vpn-i-norge/">billigste VPN i Norge</a> hvis prisen avgjør.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Vil du ha VPN-en med lengst revisjonshistorikk?</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – vårt førstevalg, med seks uavhengige no-logs-vurderinger siden 2018, sist av Deloitte (kunngjort februar 2026). 30 dagers pengene-tilbake-garanti. Fornyes til standardpris – skru av automatisk fornyelse med en gang.</p>
+        <CtaButton brand="nordvpn" label="Sjekk NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud og fornyelsespris. Vil du ha det billigst mulig? Se <a class="text-brand-600 hover:underline" href="/no/billigste-vpn-i-norge/">billigste VPN i Norge</a>. Se også <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
