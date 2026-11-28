@@ -1,0 +1,191 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DirectAnswer from '../../components/DirectAnswer.astro';
+import Faq from '../../components/Faq.astro';
+import CtaButton from '../../components/CtaButton.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import Methodology from '../../components/Methodology.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, faqSchema, articleSchema } from '../../data/schema';
+
+const url = `${site.url}/no/vpn-pa-chromebook/`;
+const crumbs = [{ name: 'Hjem', url: `${site.url}/no/` }, { name: 'VPN på Chromebook', url }];
+const title = 'VPN på Chromebook: slik setter du det opp (2026)';
+const description = 'Slik bruker du VPN på Chromebook – Android-app fra Play Store, Chrome-utvidelse eller innebygd VPN i ChromeOS. Steg for steg, med kill switch, gratisalternativ og fallgruver for skole-Chromebook.';
+const faqs = [
+  {
+    question: 'Kan jeg installere VPN på en Chromebook?',
+    answer: 'Ja. Den enkleste veien er å installere leverandørens Android-app fra Google Play Store – NordVPN, Proton VPN, Surfshark, ExpressVPN og CyberGhost har alle Android-apper som kjører på Chromebook og beskytter hele enheten, ikke bare nettleseren. Har du ikke tilgang til Play Store, kan du bruke leverandørens Chrome-utvidelse eller sette opp VPN manuelt i ChromeOS-innstillingene.',
+  },
+  {
+    question: 'Fungerer NordVPN på Chromebook?',
+    answer: 'Ja. NordVPN har en Android-app som installeres fra Play Store på Chromebooken, og en Chrome-utvidelse for nettleseren. Android-appen er det beste valget fordi den dekker alle apper på enheten – også Android-apper og Linux-containeren – mens utvidelsen bare beskytter trafikken i Chrome. Appen bruker NordLynx-protokollen og har kill switch.',
+  },
+  {
+    question: 'Beskytter en Chrome-utvidelse hele Chromebooken?',
+    answer: 'Nei. En VPN-utvidelse i Chrome beskytter bare trafikken i selve nettleseren. Android-apper, Linux-containeren og annen trafikk på Chromebooken går utenom. Vil du beskytte hele enheten, må du bruke leverandørens Android-app fra Play Store eller sette opp VPN i ChromeOS-innstillingene. Utvidelsen er likevel nyttig på skole- eller jobb-Chromebook der Play Store er låst av administrator.',
+  },
+  {
+    question: 'Finnes det gratis VPN til Chromebook?',
+    answer: 'Ja, men utvalget er lite. Proton VPNs gratisabonnement er det eneste gratisalternativet vi anbefaler: ingen datagrense, ingen logging ifølge leverandørens reviderte policy, og Android-appen kjører på Chromebook. Gratisversjonen har servere i et begrenset antall land – Norge er blant dem – og lavere hastighetsprioritet enn betalende brukere. Windscribe (10 GB per måned) og TunnelBear (2 GB per måned) er alternativer med datagrense. De fleste andre gratis VPN-er bør du unngå: les guiden om gratis VPN mot betalt VPN før du installerer noe ukjent.',
+  },
+  {
+    question: 'Hvorfor kan jeg ikke installere VPN-appen på skole-Chromebooken?',
+    answer: 'Skole-Chromebook er som regel administrert av skolen eller kommunen via Google Admin-konsollen. Administratoren kan låse Play Store, blokkere installasjon av apper og styre hvilke VPN-profiler som er tillatt – og da kan du ikke installere en VPN-app selv. I slike tilfeller er en Chrome-utvidelse noen ganger tillatt, eller skolen har allerede satt opp en VPN-profil for deg. Du kan ikke omgå administratorlåsen, og det er heller ikke meningen – skolens nettverksregler gjelder.',
+  },
+  {
+    question: 'Har Chromebook innebygd kill switch?',
+    answer: 'ChromeOS har ingen kill switch med det navnet, men Android VPN-apper på Chromebook kan settes til «Alltid på VPN» og «Blokker tilkoblinger uten VPN» – det er det nærmeste du kommer en kill switch. Du finner det under Innstillinger → Apper → Google Play Store → Administrer Android-innstillinger → Nettverk og internett → VPN → tannhjulet ved VPN-tilkoblingen. Skru på begge valgene, så blokkeres all trafikk hvis VPN-tunnelen faller. Bruker du den innebygde ChromeOS-VPN-en, finnes ikke den samme bryteren – da er Android-appen det tryggere valget.',
+  },
+  {
+    question: 'Fungerer VPN med Linux på Chromebook?',
+    answer: 'Ja. Har du skrudd på Linux (Crostini) på Chromebooken, kan du installere WireGuard eller OpenVPN i Linux-terminalen på samme måte som på en vanlig Linux-maskin. Men merk: VPN-tunnelen i Linux-containeren beskytter bare trafikken inne i containeren – ikke Chrome-nettleseren eller Android-appene. Vil du beskytte hele Chromebooken, er Android-appen fra Play Store fortsatt den riktige veien. Les guiden om VPN på Linux hvis du vil sette opp WireGuard manuelt.',
+  },
+];
+const schema = [
+  articleSchema({ headline: title, description, url, datePublished: '2026-11-28', dateModified: '2026-11-28', image: `${site.url}/og-chromebook.webp` }),
+  faqSchema(faqs),
+  breadcrumbSchema(crumbs),
+];
+---
+
+<Base ogImage="/og-chromebook.webp" title={title} description={description} canonical={url} locale="no" alternates={{ no: url, 'x-default': url }} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <figure class="my-6">
+    <img src="/og-chromebook.webp" alt="Chromebook med Chrome-logoen på lokket – slik setter du opp VPN på Chromebook i 2026" width="1920" height="1080" class="rounded-2xl w-full" loading="eager" fetchpriority="high" />
+  </figure>
+  <article class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink mb-6">VPN på Chromebook: slik setter du det opp</h1>
+
+    <DirectAnswer>
+      <p><strong>Kort svar: Ja – VPN fungerer på Chromebook, og den enkleste veien er leverandørens Android-app fra Google Play Store.</strong></p>
+      <p class="mt-2">ChromeOS har ingen vanlige skrivebords-apper for VPN, så du har tre veier inn: Android-appen fra Play Store (beskytter hele enheten), en Chrome-utvidelse (beskytter bare nettleseren) eller den innebygde VPN-klienten i ChromeOS (manuelt oppsett med IKEv2, L2TP, OpenVPN eller WireGuard på enkelte modeller). For de aller fleste er Android-appen det riktige valget – den tar to minutter å installere, har kill switch, og dekker både Chrome, Android-apper og Linux-containeren. I denne guiden viser vi alle tre veiene, hvilken leverandør som passer best til Chromebook, og fallgruvene – spesielt på skole-Chromebook der Play Store kan være låst.</p>
+    </DirectAnswer>
+
+    <div class="text-slate-700 leading-relaxed space-y-5">
+      <p>Chromebook er vanlig i norske skoler, på hjemmekontoret og som en billig andremaskin – lett, billig, rask å starte og med batteri som varer hele dagen. Men når det gjelder VPN, skiller den seg fra Windows og Mac: det finnes ingen egen VPN-app for ChromeOS å laste ned fra leverandørens nettside. I stedet må du bruke en av de tre veiene under. Er du helt ny på VPN, start med <a class="text-brand-600 hover:underline" href="/no/hva-er-vpn/">hva en VPN er</a> – her forklarer vi hvordan du får den til å fungere på akkurat din Chromebook.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Tre måter å bruke VPN på Chromebook</h2>
+      <p>Alle tre metodene fungerer i 2026, men de beskytter ulikt. Tabellen oppsummerer forskjellen før vi går gjennom hver metode steg for steg:</p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm text-left border border-slate-200 rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-slate-100 text-ink">
+              <th class="px-4 py-3 font-bold">Metode</th>
+              <th class="px-4 py-3 font-bold">Beskyttet</th>
+              <th class="px-4 py-3 font-bold">Kill switch</th>
+              <th class="px-4 py-3 font-bold">Passer for</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr><td class="px-4 py-3 font-semibold">Android-app fra Play Store</td><td class="px-4 py-3">Hele enheten</td><td class="px-4 py-3">Ja, via «Alltid på VPN»</td><td class="px-4 py-3">De fleste – enklest og tryggest</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Chrome-utvidelse</td><td class="px-4 py-3">Bare Chrome-nettleseren</td><td class="px-4 py-3">Nei</td><td class="px-4 py-3">Skole-/jobb-Chromebook med låst Play Store</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Innebygd VPN i ChromeOS</td><td class="px-4 py-3">Hele enheten</td><td class="px-4 py-3">Nei</td><td class="px-4 py-3">Manuelt oppsett, jobb/skole eller egen server</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-xl font-bold text-ink pt-2">1. Android-app fra Play Store (enklest – anbefales)</h3>
+      <p>De aller fleste Chromebook-modeller fra de siste årene støtter Google Play Store, og da er dette veien å gå. Leverandørens Android-app kjører som en system-VPN på ChromeOS og beskytter all trafikk på enheten – Chrome, Android-apper og Linux-containeren.</p>
+      <ol class="list-decimal pl-6 space-y-3">
+        <li><strong>Åpne Play Store</strong> på Chromebooken og søk etter leverandøren din, for eksempel «NordVPN» eller «Proton VPN».</li>
+        <li><strong>Installer appen</strong> og logg inn med kontoen din.</li>
+        <li><strong>Trykk på koble til</strong> – appen velger som regel den raskeste serveren automatisk. Vil du ha norsk IP-adresse, velg en server i Oslo fra serverlisten.</li>
+        <li><strong>Skru på kill switch:</strong> gå til Innstillinger → Apper → Google Play Store → Administrer Android-innstillinger → Nettverk og internett → VPN → tannhjulet ved tilkoblingen, og skru på «Alltid på VPN» og «Blokker tilkoblinger uten VPN». Da lekker ingen trafikk ut hvis tunnelen faller. Hva det er, forklarer vi i <a class="text-brand-600 hover:underline" href="/no/hva-er-kill-switch/">hva er kill switch?</a></li>
+      </ol>
+      <p>Det tar under to minutter, og du trenger ingen teknisk kunnskap. Appen oppdaterer seg selv via Play Store, og du kan bytte serverland med et par trykk – praktisk for strømming. Vil du se amerikansk Netflix eller Disney+ på Chromebooken, er det Android-appen du skal bruke – les <a class="text-brand-600 hover:underline" href="/no/beste-vpn-for-netflix-norge/">beste VPN for Netflix i Norge</a> for hvilke tjenester som fungerer.</p>
+
+      <h3 class="text-xl font-bold text-ink pt-2">2. Chrome-utvidelse (bare nettleseren)</h3>
+      <p>Har du ikke tilgang til Play Store – for eksempel på en skole- eller jobb-Chromebook – er leverandørens Chrome-utvidelse et brukbart alternativ. Du installerer den fra Chrome Web Store, logger inn og kobler til. Men vær klar over begrensningen: utvidelsen beskytter bare trafikken i Chrome-nettleseren. Android-apper, Linux-containeren og alt annet på enheten går utenom tunnelen.</p>
+      <p>Et praktisk tips: ExpressVPNs Chrome-utvidelse starter i «Remote Control»-modus, som er laget for å styre skrivebordsappen – en app ChromeOS ikke har. Bytt til «Proxy Mode» i utvidelsens innstillinger før du kobler til, ellers fungerer den ikke som forventet. For NordVPN, Surfshark, Proton VPN og CyberGhost fungerer utvidelsene rett ut av boksen. Utvidelsen er også et greit valg hvis du bare vil bytte Netflix-region raskt i nettleseren – men for full beskyttelse på offentlig WiFi er Android-appen bedre. Les <a class="text-brand-600 hover:underline" href="/no/er-hotell-wifi-trygt/">er hotell-WiFi trygt?</a> hvis du ofte kobler deg på åpne nettverk.</p>
+
+      <h3 class="text-xl font-bold text-ink pt-2">3. Innebygd VPN i ChromeOS (manuelt oppsett)</h3>
+      <p>ChromeOS har en innebygd VPN-klient under Innstillinger → Nettverk → Legg til tilkobling. Ifølge Googles egen dokumentasjon støtter den IKEv2, L2TP over IPsec og – på grunnleggende nivå – OpenVPN og WireGuard på enkelte modeller. WireGuard-støtten finnes ikke på alle Chromebook-er, og Google beskriver den som grunnleggende.</p>
+      <ol class="list-decimal pl-6 space-y-3">
+        <li><strong>Åpne klokken nede til høyre → Innstillinger → Nettverk → Legg til tilkobling.</strong></li>
+        <li><strong>Velg «Legg til innebygd VPN»</strong> (for IKEv2 eller L2TP) eller «OpenVPN / L2TP» (for OpenVPN og WireGuard på støttede modeller).</li>
+        <li><strong>Fyll inn serveradresse, brukernavn, passord eller nøkler</strong> – informasjonen får du fra arbeidsgiveren, skolen eller VPN-leverandøren din. For WireGuard må du lime inn nøkler og endepunkt fra leverandøren.</li>
+        <li><strong>Lagre og trykk Koble til.</strong> Et VPN-ikon vises ved klokken når tunnelen er aktiv.</li>
+      </ol>
+      <p>Denne metoden passer best når arbeidsgiveren eller skolen din gir deg VPN-opplysninger, eller når du driver din egen WireGuard-server. Den er mer tungvint enn en app, og du får ingen kill switch og ingen automatisk serverbytte. Trenger du OpenVPN med avanserte innstillinger eller en .ovpn-fil, peker Google deg selv til OpenVPN for Android-appen i stedet – den innebygde klienten håndterer bare enkle oppsett. Er tilkoblingen ustabil, er feilsøkingstrinnene de samme som i <a class="text-brand-600 hover:underline" href="/no/vpn-fungerer-ikke/">VPN fungerer ikke-guiden</a>. Hvorfor protokollen betyr noe, forklarer vi i <a class="text-brand-600 hover:underline" href="/no/wireguard-vs-openvpn/">WireGuard vs OpenVPN</a>.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Hvilken VPN er best for Chromebook?</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon, appfunksjoner og uavhengige tester fra anerkjente kilder – ikke målte laboratorietester fra oss. Det som teller mest på Chromebook, er at Android-appen er god, at den har kill switch, og at leverandøren har servere i Norge:</p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm text-left border border-slate-200 rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-slate-100 text-ink">
+              <th class="px-4 py-3 font-bold">Leverandør</th>
+              <th class="px-4 py-3 font-bold">Android-app</th>
+              <th class="px-4 py-3 font-bold">Chrome-utvidelse</th>
+              <th class="px-4 py-3 font-bold">Vår vurdering</th>
+              <th class="px-4 py-3 font-bold">Fra-pris</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr><td class="px-4 py-3 font-semibold">NordVPN</td><td class="px-4 py-3">Ja, NordLynx + kill switch</td><td class="px-4 py-3">Ja</td><td class="px-4 py-3">4,9 – best totalt</td><td class="px-4 py-3">Fra 39 kr/mnd</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Proton VPN</td><td class="px-4 py-3">Ja, fullt verktøysett + gratisversjon</td><td class="px-4 py-3">Ja</td><td class="px-4 py-3">4,5 – best for personvern</td><td class="px-4 py-3">Fra 38 kr/mnd</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Surfshark</td><td class="px-4 py-3">Ja, ubegrenset enheter</td><td class="px-4 py-3">Ja</td><td class="px-4 py-3">4,7 – best for familier</td><td class="px-4 py-3">Fra 27 kr/mnd</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">ExpressVPN</td><td class="px-4 py-3">Ja, enklest å lære</td><td class="px-4 py-3">Ja (bruk Proxy Mode)</td><td class="px-4 py-3">4,6 – best for strømming</td><td class="px-4 py-3">Fra 69 kr/mnd</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">CyberGhost</td><td class="px-4 py-3">Ja</td><td class="px-4 py-3">Ja, også gratisversjon</td><td class="px-4 py-3">4,3 – lengst angrefrist</td><td class="px-4 py-3">Fra 19 kr/mnd</td></tr>
+            <tr><td class="px-4 py-3 font-semibold">Mullvad</td><td class="px-4 py-3">Ja, WireGuard, ingen e-post</td><td class="px-4 py-3">Nei</td><td class="px-4 py-3">4,4 – best for personvern</td><td class="px-4 py-3">Fra 55 kr/mnd</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>NordVPN</strong> er vårt førstevalg også på Chromebook: Android-appen dekker hele enheten, NordLynx-protokollen er rask på svak maskinvare, og Chrome-utvidelsen fungerer som reserve på låste enheter. Akkurat nå: Black Friday-tilbudet gir Basic fra $2,99/mnd (ca. 31 kr) + 3 måneder gratis, og kampanjen varer til 9. desember 2026 – se alle <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">Black Friday-tilbudene</a>. <strong>Proton VPN</strong> er det beste valget hvis personvern teller mest – og den eneste av de store med en gratisversjon uten datagrense. <strong>Surfshark</strong> passer familier med flere Chromebook-er, siden én konto dekker ubegrenset antall enheter. Les vår <a class="text-brand-600 hover:underline" href="/no/anmeldelser/nordvpn/">NordVPN-anmeldelse</a> eller <a class="text-brand-600 hover:underline" href="/no/anmeldelser/surfshark/">Surfshark-anmeldelse</a> for hele bildet. Veiledende priser – sjekk leverandørens nettside for oppdaterte tilbud. Alle tre har 30 dagers pengene-tilbake-garanti (CyberGhost 45 dager).</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Kill switch på Chromebook: slik skrur du den på</h2>
+      <p>ChromeOS har ingen kill switch med det navnet, men Android VPN-apper har to innstillinger som gjør samme jobb. Slik aktiverer du dem:</p>
+      <ol class="list-decimal pl-6 space-y-3">
+        <li><strong>Innstillinger → Apper → Google Play Store → Administrer Android-innstillinger.</strong></li>
+        <li><strong>Nettverk og internett → VPN</strong>, og trykk på tannhjulet ved VPN-tilkoblingen din.</li>
+        <li><strong>Skru på «Alltid på VPN»</strong> – da starter VPN-en automatisk hver gang Chromebooken starter.</li>
+        <li><strong>Skru på «Blokker tilkoblinger uten VPN»</strong> – da blokkeres all trafikk hvis tunnelen faller, helt til VPN-en er oppe igjen.</li>
+      </ol>
+      <p>Dette er spesielt viktig på offentlig WiFi – på skolen, på kafé eller på hotell – der du ikke vil at trafikken din plutselig skal gå ukryptert. Test også at VPN-en faktisk holder tett: <a class="text-brand-600 hover:underline" href="/no/slik-tester-du-vpn-lekkasje/">slik tester du VPN-lekkasje</a> viser hvordan du sjekker IP-, DNS- og WebRTC-lekkasjer på et par minutter. Husk at VPN-en ikke gjør deg anonym – les det ærlige svaret i <a class="text-brand-600 hover:underline" href="/no/gjor-vpn-deg-anonym/">gjør VPN deg anonym?</a></p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Gratis VPN på Chromebook – hva holder?</h2>
+      <p>Proton VPNs gratisabonnement er det eneste gratisalternativet vi anbefaler på Chromebook. Android-appen er den samme som i betalversjonen, det er ingen datagrense, og leverandørens no-logs-policy er uavhengig revidert. Ulempene er færre serverland – Norge er blant gratislandene – og lavere hastighetsprioritet når mange er pålogget. Windscribe gir 10 GB gratis per måned og TunnelBear 2 GB, men begge er for lite til daglig strømming.</p>
+      <p>De samme reglene gjelder på Chromebook som overalt ellers: gratis VPN-er må tjene penger et sted, og mange gjør det ved å logge og selge data eller vise reklame. Installer aldri en ukjent gratis VPN fra Play Store uten å sjekke hvem som står bak – les <a class="text-brand-600 hover:underline" href="/no/gratis-vpn-vs-betalt/">gratis VPN mot betalt VPN</a> før du velger. Og husk at en gratis VPN ikke låser opp Netflix eller andre strømmetjenester like pålitelig som en betalt – vil du strømme, er det verdt å betale for en av leverandørene i tabellen over.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Chromebook på skolen: dette må du vite</h2>
+      <p>Mange norske elever får Chromebook fra skolen, og de maskinene er administrert. Det betyr tre ting i praksis. For det første kan administratoren låse Play Store, og da kan du ikke installere VPN-apper selv – prøv Chrome-utvidelsen i stedet, hvis den er tillatt. For det andre kan administratoren sende ut VPN-profiler fra Google Admin-konsollen, slik at skolens egen VPN allerede er satt opp for deg. For det tredje kan skolen ha regler for hva nettverket brukes til – VPN gjør ikke noe ulovlig lovlig, og det omgår ikke skolens innholdsfilter på magisk vis hvis filteret sitter på nettverksnivå.</p>
+      <p>Har du din egen Chromebook hjemme, gjelder ingen av disse begrensningene – da er Android-appen fra Play Store veien å gå. Og gamle Chrome-apper for VPN fungerer ikke lenger: Google fjernet støtten for installerte Chrome-apper i juli 2025, så hvis du finner en gammel veiledning som peker på en Chrome-app, er den utdatert. VPN er for øvrig fullt lovlig i Norge – les <a class="text-brand-600 hover:underline" href="/no/er-vpn-lovlig-i-norge/">er VPN lovlig i Norge?</a> for hele bildet.</p>
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Avansert: VPN i Linux-containeren (Crostini)</h2>
+      <p>Har du skrudd på Linux på Chromebooken (Innstillinger → Avansert → Utviklere → Linux-utviklingsmiljø), kan du installere WireGuard eller OpenVPN i terminalen – samme oppskrift som på vanlig Linux: installer <code>wireguard-tools</code>, legg konfigurasjonsfilen i <code>/etc/wireguard/</code>, og start tunnelen med <code>sudo wg-quick up &lt;filnavn&gt;</code>. Men merk begrensningen: tunnelen beskytter bare trafikken inne i Linux-containeren – ikke Chrome-nettleseren eller Android-appene. For de fleste er det derfor smartere å bruke Android-appen, og la Linux-containeren være for utvikling og terminalarbeid. Vil du sette opp WireGuard manuelt, se <a class="text-brand-600 hover:underline" href="/no/vpn-pa-linux/">VPN på Linux</a>. Har du også en Mac i huset, se <a class="text-brand-600 hover:underline" href="/no/vpn-pa-mac/">VPN på Mac</a> – og <a class="text-brand-600 hover:underline" href="/no/vpn-pa-mobil/">VPN på mobil</a> hvis telefonen din også trenger beskyttelse.</p>
+
+      <ProsCons
+        pros={[
+          'Android-appen fra Play Store beskytter hele enheten og tar to minutter å installere',
+          '«Alltid på VPN» + «Blokker tilkoblinger uten VPN» gir ekte kill switch på ChromeOS',
+          'Proton VPNs gratisversjon uten datagrense fungerer på Chromebook',
+          'Chrome-utvidelsen er en grei reserve på skole- og jobb-Chromebook med låst Play Store',
+          'Chromebook er rask og lett – VPN-en merkes knapt på batteri og ytelse',
+        ]}
+        cons={[
+          'Ingen egen VPN-app for ChromeOS – du er avhengig av Android-appen eller utvidelsen',
+          'Chrome-utvidelsen beskytter bare nettleseren, ikke Android-apper eller Linux',
+          'Innebygd WireGuard-støtte finnes bare på enkelte modeller, og er grunnleggende',
+          'Skole-Chromebook kan ha låst Play Store – da kan du ikke installere VPN selv',
+          'VPN i Linux-containeren beskytter bare containeren, ikke resten av enheten',
+        ]}
+      />
+
+      <Methodology tested={false} />
+
+      <h2 class="text-2xl font-extrabold text-ink pt-4">Vår vurdering: Android-appen er svaret på Chromebook</h2>
+      <p>Dette er redaksjonelle vurderinger basert på leverandørenes egen dokumentasjon og uavhengige tester fra anerkjente kilder – ikke målte laboratorietester fra oss. Chromebook har ingen egen VPN-app, men det er ikke et problem i praksis: Android-appen fra Play Store gjør jobben like godt som en skrivebordsapp på Windows eller Mac – den dekker hele enheten, har kill switch og bytter server med et par trykk.</p>
+      <p>Den praktiske konklusjonen: Har du Play Store, installer NordVPN eller Proton VPN som Android-app og skru på «Alltid på VPN» og «Blokker tilkoblinger uten VPN». Er Play Store låst – som på mange skole-Chromebook-er – bruk leverandørens Chrome-utvidelse til nettleseren, og spør IT-ansvarlig om skolens egen VPN-profil. Og dropp den innebygde ChromeOS-klienten med mindre arbeidsgiveren eller skolen gir deg opplysningene – den er laget for administratorer, ikke for deg som bare vil være trygg på offentlig WiFi. Vil du sammenligne leverandørene side om side, se <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a> for full sammenligning.</p>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 my-8">
+        <p class="font-bold text-ink mb-1">Vil du ha den beste allround-VPN-en – også på Chromebook?</p>
+        <p class="text-sm text-slate-600 mb-4"><a class="text-brand-600 hover:underline font-medium" href="/no/anmeldelser/nordvpn/">NordVPN</a> – Android-app med NordLynx, kill switch via «Alltid på VPN», og servere i Oslo. Veiledende fra 39 kr/mnd.</p>
+        <CtaButton brand="nordvpn" label="Prøv NordVPN" sub="30 dager risikofritt" />
+        <p class="text-xs text-slate-500 mt-3">Prisene er veiledende – sjekk leverandørens nettside for oppdaterte tilbud. Vil du ha gratis VPN uten datagrense? Les <a class="text-brand-600 hover:underline" href="/no/anmeldelser/proton/">Proton VPN</a> eller sammenlign <a class="text-brand-600 hover:underline" href="/no/">beste VPN for Norge</a>. Se også <a class="text-brand-600 hover:underline" href="/no/blogg/vpn-tilbud-black-friday-2026/">Black Friday-tilbudene</a> før 9. desember.</p>
+      </div>
+    </div>
+  </article>
+  <Faq faqs={faqs} />
+</Base>
